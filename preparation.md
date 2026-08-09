@@ -1,6 +1,4451 @@
-# Intuitive Explanation Covering Module 3 - 8 of Distributed & Parallel Computing
+# Intuitive Explanation Covering Module 1 - 8 of Distributed & Parallel Computing
 
 ---
+
+
+<details>
+<summary><strong>Module 1: Cloud Concepts Overview — Intuitive and Narrative Explanation</strong></summary>
+
+# Module 1: Cloud Concepts Overview — Intuitive and Narrative Explanation
+
+Module 1 is basically the **“why cloud exists”** chapter.
+
+Before AWS teaches you EC2, S3, VPC, IAM, databases, and all the alphabet soup, this module answers four bigger questions:
+
+1. **What is cloud computing?**
+2. **Why would a company use cloud instead of its own data center?**
+3. **What exactly is AWS?**
+4. **How does a company actually prepare itself to move to the cloud?**
+
+Those are exactly the four major sections in the module. 
+
+---
+
+# 1. Start with the big idea
+
+Imagine a company called **QuickMart**.
+
+QuickMart wants to launch an online store.
+
+In the traditional world, management might say:
+
+> “We need servers.”
+
+So the IT team must:
+
+```text
+Estimate how much traffic will come
+↓
+Choose servers
+↓
+Get budget approval
+↓
+Order hardware
+↓
+Wait for delivery
+↓
+Install servers
+↓
+Configure networking
+↓
+Install operating systems
+↓
+Maintain everything
+```
+
+That may take weeks or months.
+
+And the really amusing part is that their original estimate may be completely wrong.
+
+If they buy too much:
+
+```text
+Demand:
+████
+
+Capacity:
+████████████
+
+Unused:
+████████
+```
+
+Money is wasted.
+
+If they buy too little:
+
+```text
+Demand:
+████████████
+
+Capacity:
+████
+
+Result:
+Site struggles or fails
+```
+
+Cloud computing exists largely because companies got tired of playing this very expensive guessing game.
+
+---
+
+# 2. What is cloud computing?
+
+The module gives a very important definition:
+
+> Cloud computing is the **on-demand delivery** of compute power, databases, storage, applications, and other IT resources **via the internet**, with **pay-as-you-go pricing**. 
+
+There are three phrases you should absolutely notice:
+
+```text
+ON DEMAND
+VIA THE INTERNET
+PAY AS YOU GO
+```
+
+Those three phrases explain most of cloud computing.
+
+---
+
+# 3. What does “on demand” mean?
+
+Suppose QuickMart suddenly needs five servers.
+
+Traditional approach:
+
+> “Submit purchase request. Wait. Procurement is investigating the emotional state of the invoice.”
+
+Cloud:
+
+> “Create five virtual servers now.”
+
+That is **on-demand access**.
+
+You don't normally need to buy a physical server first.
+
+Conceptually:
+
+```text
+Need resource
+↓
+Request resource
+↓
+Resource becomes available
+```
+
+That speed becomes one of the major cloud advantages later in the chapter.
+
+---
+
+# 4. What does “via the internet” mean?
+
+The resources do not need to physically sit inside your company's building.
+
+You can access computing services remotely.
+
+For example:
+
+```text
+Your laptop
+    ↓
+Internet
+    ↓
+AWS
+    ↓
+Server / database / storage
+```
+
+You are consuming IT infrastructure as a service.
+
+---
+
+# 5. What does “pay-as-you-go” mean?
+
+Instead of necessarily purchasing a large amount of hardware before you know how much you need, cloud lets you pay based more closely on usage.
+
+Traditional:
+
+```text
+Buy server first
+↓
+Use it later
+```
+
+Cloud:
+
+```text
+Use resource
+↓
+Pay for usage
+```
+
+This is the financial idea that Module 2 expands much further.
+
+---
+
+# 6. Infrastructure as hardware vs infrastructure as software
+
+Page 7 introduces one of the best conceptual ideas in the module:
+
+> Cloud computing lets you stop thinking of infrastructure only as **hardware** and instead think of it as **software**. 
+
+This sounds abstract, but it is actually simple.
+
+## Traditional infrastructure
+
+Suppose you need another server.
+
+A server is a physical thing.
+
+You might need to:
+
+```text
+Buy it
+Ship it
+Rack it
+Wire it
+Configure it
+Maintain it
+```
+
+## Cloud infrastructure
+
+A virtual server can instead be created through:
+
+```text
+Console
+Command
+Script
+API
+```
+
+So infrastructure begins behaving more like software.
+
+---
+
+# 7. Why “infrastructure as software” matters
+
+Imagine increasing capacity.
+
+### Hardware world
+
+You want 20 additional servers.
+
+That involves physical procurement.
+
+### Cloud world
+
+You can create additional resources programmatically.
+
+This means infrastructure can become:
+
+* faster to deploy;
+* easier to modify;
+* easier to automate;
+* more flexible.
+
+The module contrasts the traditional computing model with cloud specifically in this way. Traditional infrastructure requires space, staff, physical security, planning and capital expenditure, while cloud infrastructure can change more quickly and flexibly. 
+
+---
+
+# 8. “Undifferentiated heavy lifting”
+
+Page 9 says cloud can eliminate **undifferentiated heavy-lifting tasks**. 
+
+That phrase sounds like AWS hired a philosopher, but the idea is straightforward.
+
+QuickMart wants to sell products.
+
+Its competitive advantage probably does not come from:
+
+```text
+Replacing broken hard drives
+Installing rack equipment
+Maintaining cooling systems
+Running electrical infrastructure
+```
+
+Those things are necessary.
+
+But they do not make QuickMart a better retailer.
+
+AWS's argument is:
+
+> Spend more effort on what makes your business unique, and less effort maintaining generic infrastructure.
+
+---
+
+# Section 1B: Cloud service models
+
+# 9. IaaS, PaaS and SaaS
+
+The module introduces three cloud service models:
+
+```text
+IaaS
+PaaS
+SaaS
+```
+
+The central difference is:
+
+> **How much do you manage yourself?**
+
+Page 10 shows the spectrum from more control to less control. 
+
+The easiest analogy is food.
+
+---
+
+# 10. IaaS — Infrastructure as a Service
+
+Imagine renting a kitchen.
+
+The kitchen gives you:
+
+```text
+Building
+Gas
+Electricity
+Oven
+Fridge
+```
+
+But **you cook the food**.
+
+That is roughly IaaS.
+
+The cloud provider gives you infrastructure.
+
+You still manage many things yourself.
+
+Example later in AWS:
+
+```text
+Amazon EC2
+```
+
+With EC2, AWS provides the underlying infrastructure and virtual machine, but you still have substantial control over the operating system and configuration.
+
+Memory:
+
+```text
+IaaS
+= infrastructure provided
+= most control of the three
+```
+
+---
+
+# 11. PaaS — Platform as a Service
+
+Now imagine a restaurant kitchen where much more is already prepared.
+
+You mainly focus on:
+
+```text
+Your recipe
+Your application
+Your data
+```
+
+rather than building and maintaining the kitchen.
+
+That is PaaS.
+
+AWS examples you encounter later include services such as:
+
+```text
+AWS Elastic Beanstalk
+```
+
+The idea is:
+
+> “I want to deploy my application without spending as much effort managing the underlying infrastructure.”
+
+Memory:
+
+```text
+PaaS
+= focus more on the application
+= provider manages more underneath
+```
+
+---
+
+# 12. SaaS — Software as a Service
+
+Now imagine you do not cook at all.
+
+You just go to the restaurant and eat.
+
+The entire application is delivered to you.
+
+That is SaaS.
+
+Examples outside AWS might include services you simply use through a browser.
+
+You normally do not manage:
+
+```text
+Server
+Operating system
+Runtime
+Application infrastructure
+```
+
+You simply use the software.
+
+Memory:
+
+```text
+SaaS
+= finished software
+= least infrastructure control
+```
+
+---
+
+# 13. Service model spectrum
+
+The clean mental picture is:
+
+```text
+MORE CONTROL
+     ↓
+
+IaaS
+↓
+PaaS
+↓
+SaaS
+
+     ↓
+LESS CONTROL
+```
+
+But the other side of that is:
+
+```text
+MORE YOU MANAGE
+IaaS
+
+LESS YOU MANAGE
+SaaS
+```
+
+This becomes extremely important later in AWS security because **more control usually also means more responsibility**.
+
+---
+
+# 14. IaaS vs PaaS vs SaaS scenario thinking
+
+If a question says:
+
+> “The company wants maximum control over the operating system and virtual server.”
+
+Think:
+
+**IaaS**
+
+If it says:
+
+> “Developers want to focus on application code instead of managing the underlying infrastructure.”
+
+Think:
+
+**PaaS**
+
+If it says:
+
+> “Users simply access a finished application.”
+
+Think:
+
+**SaaS**
+
+---
+
+# Section 1C: Deployment models
+
+# 15. Cloud deployment models
+
+The module teaches three deployment models:
+
+```text
+Cloud
+Hybrid
+On-premises / private cloud
+```
+
+
+
+These answer a different question from IaaS/PaaS/SaaS.
+
+Service models ask:
+
+> **What level of service are you consuming?**
+
+Deployment models ask:
+
+> **Where does the computing environment live?**
+
+Students often mix those up.
+
+---
+
+# 16. Cloud deployment
+
+In a cloud model, workloads are deployed in a cloud environment such as AWS.
+
+Conceptually:
+
+```text
+Company
+   ↓
+Internet
+   ↓
+AWS Cloud
+```
+
+The company does not need to host all the underlying physical infrastructure itself.
+
+---
+
+# 17. On-premises / private cloud
+
+This means the organisation operates the infrastructure within its own environment.
+
+Conceptually:
+
+```text
+Company building
+│
+├── Servers
+├── Storage
+├── Network
+└── Private infrastructure
+```
+
+The organisation keeps more direct control but also carries much more infrastructure responsibility.
+
+---
+
+# 18. Hybrid deployment
+
+Hybrid means:
+
+> **Some workloads stay on-premises and some use the cloud.**
+
+Example:
+
+```text
+Company data center
+        ↕
+      Network
+        ↕
+     AWS Cloud
+```
+
+This is extremely common conceptually because organisations rarely wake up on Tuesday and teleport their entire IT estate into AWS by lunch.
+
+---
+
+# 19. When would hybrid make sense?
+
+Imagine a bank.
+
+It may have:
+
+```text
+Old internal systems
+Sensitive legacy databases
+Existing data center infrastructure
+```
+
+But it also wants:
+
+```text
+Cloud scalability
+New applications
+Cloud backups
+Analytics
+```
+
+So it uses both.
+
+That is hybrid.
+
+---
+
+# 20. Don't confuse service model and deployment model
+
+This distinction is exam-worthy.
+
+```text
+IaaS / PaaS / SaaS
+→ WHO manages WHAT
+
+Cloud / Hybrid / On-premises
+→ WHERE the environment exists
+```
+
+---
+
+# 21. AWS is not completely alien compared with traditional IT
+
+Page 12 gives a very useful comparison between traditional IT and AWS. 
+
+Traditional IT has:
+
+```text
+Firewalls
+Routers
+Servers
+Storage
+Databases
+Administrators
+```
+
+AWS has equivalent cloud concepts such as:
+
+```text
+Security groups
+Network ACLs
+Amazon VPC
+Amazon EC2
+Amazon EBS
+Amazon EFS
+Amazon S3
+Amazon RDS
+IAM
+```
+
+So cloud computing does not erase the ideas of networking, servers, storage and security.
+
+It changes **how those things are delivered and managed**.
+
+---
+
+# Section 2: Six advantages of cloud computing
+
+This is probably one of the most examinable parts of Module 1.
+
+The six advantages are:
+
+1. Trade capital expense for variable expense
+2. Benefit from massive economies of scale
+3. Stop guessing capacity
+4. Increase speed and agility
+5. Stop spending money running and maintaining data centers
+6. Go global in minutes 
+
+You should know what each one actually means, not just chant them like an AWS ritual.
+
+---
+
+# 22. Advantage 1 — Trade capital expense for variable expense
+
+Traditional IT often requires **capital expenditure**.
+
+Suppose QuickMart wants a server farm.
+
+Before earning anything, it might spend:
+
+```text
+RM500,000 servers
+RM100,000 networking
+RM100,000 storage
+RM50,000 installation
+```
+
+That is a major upfront investment.
+
+Cloud shifts toward **variable expense**.
+
+Instead of buying everything upfront:
+
+```text
+Use resources
+↓
+Pay based on consumption
+```
+
+The page 15 diagram contrasts investment based on forecasts with paying for what is consumed. 
+
+Memory:
+
+```text
+CAPEX
+= buy infrastructure upfront
+
+VARIABLE EXPENSE
+= pay as usage occurs
+```
+
+---
+
+# 23. Why this is useful
+
+Imagine QuickMart fails after six months.
+
+### On-premises
+
+It may still own:
+
+```text
+100 servers
+Network equipment
+Storage equipment
+```
+
+which it no longer needs.
+
+### Cloud
+
+It can stop resources and reduce future usage.
+
+So cloud decreases the need to gamble large amounts of money on uncertain future demand.
+
+---
+
+# 24. Advantage 2 — Massive economies of scale
+
+AWS serves huge numbers of customers.
+
+Because of that aggregate demand, AWS operates at a much larger scale than one ordinary company could.
+
+Page 16 says AWS can achieve economies of scale and pass savings to customers. 
+
+Think wholesale purchasing.
+
+A person buying:
+
+```text
+1 server
+```
+
+has little purchasing leverage.
+
+AWS operates enormous infrastructure.
+
+So its per-unit economics can be different.
+
+Memory:
+
+```text
+Huge AWS scale
+↓
+Lower unit economics
+↓
+Potential savings for customers
+```
+
+---
+
+# 25. Advantage 3 — Stop guessing capacity
+
+This one is particularly important.
+
+With traditional infrastructure, companies must forecast future demand.
+
+Suppose QuickMart predicts:
+
+```text
+Expected peak:
+10,000 users
+```
+
+If it prepares capacity for:
+
+```text
+20,000 users
+```
+
+it overestimates.
+
+Money is wasted.
+
+If it prepares for:
+
+```text
+5,000 users
+```
+
+it underestimates.
+
+Performance suffers.
+
+The slide on page 17 explicitly contrasts **overestimated capacity**, **underestimated capacity**, and **scaling on demand**. 
+
+---
+
+# 26. Cloud solution to capacity guessing
+
+Cloud allows capacity to scale more dynamically.
+
+Conceptually:
+
+```text
+Low demand
+→ fewer resources
+
+High demand
+→ more resources
+
+Demand falls
+→ reduce resources
+```
+
+So instead of guessing the theoretical maximum years in advance, the system can adapt more closely to real demand.
+
+---
+
+# 27. Advantage 4 — Increase speed and agility
+
+Traditional infrastructure:
+
+```text
+Need server
+↓
+Approval
+↓
+Purchase
+↓
+Delivery
+↓
+Installation
+↓
+Configuration
+
+Weeks
+```
+
+Cloud:
+
+```text
+Need server
+↓
+Launch
+
+Minutes
+```
+
+Page 18 literally contrasts **weeks** with **minutes**. 
+
+That speed matters because developers can experiment faster.
+
+---
+
+# 28. Why agility matters to business
+
+Suppose QuickMart wants to test a new recommendation engine.
+
+Traditional environment:
+
+> “Infrastructure will be ready in six weeks.”
+
+The idea may already be irrelevant by then.
+
+Cloud:
+
+> “Create the resources today.”
+
+That makes experimentation cheaper and faster.
+
+So agility is not just an IT benefit.
+
+It can become a **business advantage**.
+
+---
+
+# 29. Advantage 5 — Stop spending money running data centers
+
+A data center costs more than servers.
+
+Page 19 illustrates costs such as:
+
+```text
+Payroll
+Utilities
+Maintenance
+Landscaping
+Hardware
+```
+
+
+
+The idea is that organisations can redirect resources away from generic infrastructure operation and toward their actual business.
+
+For QuickMart:
+
+```text
+Less effort:
+"How do we cool this server room?"
+
+More effort:
+"How do we improve customer experience?"
+```
+
+That is the real business argument.
+
+---
+
+# 30. Advantage 6 — Go global in minutes
+
+Suppose QuickMart starts in Malaysia.
+
+Then it gets customers in:
+
+```text
+Europe
+United States
+Japan
+Australia
+```
+
+Traditional approach might require setting up international infrastructure.
+
+Cloud lets the company deploy workloads in other AWS geographical locations far more quickly.
+
+The page 20 diagram shows a world map and deployment across AWS Regions. 
+
+Memory:
+
+```text
+New geographic market
+↓
+Deploy resources closer to users
+↓
+Global reach faster
+```
+
+---
+
+# 31. The six advantages as one story
+
+Imagine QuickMart moves to AWS.
+
+### Before cloud
+
+```text
+Buy hardware upfront
+Guess future demand
+Wait weeks for servers
+Maintain data center
+Expand internationally slowly
+```
+
+### With cloud
+
+```text
+Pay based on consumption
+Use AWS economies of scale
+Scale according to demand
+Launch resources quickly
+Avoid much data-center heavy lifting
+Deploy globally faster
+```
+
+That single before/after story covers all six advantages.
+
+---
+
+# 32. Six advantages memory shortcut
+
+You can remember them as:
+
+```text
+MONEY
+SCALE
+CAPACITY
+SPEED
+DATA CENTER
+GLOBAL
+```
+
+Expanded:
+
+```text
+Money
+→ CapEx to variable expense
+
+Scale
+→ Economies of scale
+
+Capacity
+→ Stop guessing
+
+Speed
+→ Agility
+
+Data center
+→ Stop maintaining everything yourself
+
+Global
+→ Deploy worldwide quickly
+```
+
+---
+
+# Section 3: What is AWS?
+
+# 33. AWS in simple terms
+
+The module defines AWS as a **secure cloud platform** offering a broad set of global cloud-based products.
+
+It provides on-demand access to things such as:
+
+```text
+Compute
+Storage
+Networking
+Database
+Management tools
+```
+
+and AWS services are designed to work together like **building blocks**. 
+
+That building-block analogy is excellent.
+
+---
+
+# 34. AWS as LEGO
+
+Imagine AWS as a giant box of LEGO.
+
+You may choose:
+
+```text
+EC2 → Compute
+S3 → Storage
+RDS → Database
+VPC → Networking
+IAM → Security / access
+```
+
+You combine the pieces to build an application.
+
+AWS is not one enormous product.
+
+It is a collection of services.
+
+---
+
+# 35. Simple AWS architecture
+
+Page 26 shows a simple architecture consisting of:
+
+```text
+Users
+↓
+Amazon VPC
+↓
+Amazon EC2
+↓
+Amazon DynamoDB
+↓
+Amazon S3
+```
+
+The diagram groups them by categories:
+
+```text
+Networking → VPC
+Compute    → EC2
+Database   → DynamoDB
+Storage    → S3
+```
+
+
+
+This is worth understanding because later modules simply zoom in on each block.
+
+---
+
+# 36. Core categories you should recognise
+
+The slides list many categories, but for Cloud Foundations, some especially important ones are:
+
+```text
+Compute
+Storage
+Database
+Networking and Content Delivery
+Security, Identity and Compliance
+Management and Governance
+Cost Management
+```
+
+The module then lists the specific services covered later in the course. 
+
+---
+
+# 37. Important AWS service map
+
+A useful mental map:
+
+| Need                | Think         |
+| ------------------- | ------------- |
+| Virtual server      | EC2           |
+| Object storage      | S3            |
+| Block storage       | EBS           |
+| Shared file storage | EFS           |
+| Relational database | RDS           |
+| NoSQL database      | DynamoDB      |
+| Private network     | VPC           |
+| Permissions         | IAM           |
+| DNS                 | Route 53      |
+| Content delivery    | CloudFront    |
+| Monitoring          | CloudWatch    |
+| Audit activity      | CloudTrail    |
+| Cost analysis       | Cost Explorer |
+
+You will learn the details in later modules.
+
+Module 1 only wants you to understand that AWS has categories and services that work together.
+
+---
+
+# 38. Choosing an AWS service
+
+Page 27 gives a crucial rule:
+
+> The service selected depends on **business goals** and **technology requirements**. 
+
+There is no universally “best AWS service.”
+
+Example:
+
+> “Which is better: EC2 or Lambda?”
+
+That question is incomplete.
+
+It depends on the workload.
+
+It is like asking:
+
+> “Which is better: a truck or a motorcycle?”
+
+For transporting 20 tonnes?
+
+Truck.
+
+For slipping through Kuala Lumpur traffic?
+
+Probably not the truck.
+
+The requirement determines the service.
+
+---
+
+# 39. What is a web service?
+
+Page 23 defines a web service as software available over the internet that uses standard formats such as XML or JSON for API request-response interactions. 
+
+Think:
+
+```text
+Client
+   ↓ request
+Internet
+   ↓
+Web service
+   ↓ response
+Client
+```
+
+This is important because AWS services can be controlled through APIs rather than only through graphical screens.
+
+---
+
+# 40. Three ways to interact with AWS
+
+The module teaches three primary ways:
+
+```text
+AWS Management Console
+AWS CLI
+AWS SDKs
+```
+
+
+
+---
+
+# 41. AWS Management Console
+
+This is the graphical interface.
+
+Think:
+
+```text
+Browser
+↓
+Click buttons
+↓
+Configure AWS resources
+```
+
+Good for:
+
+```text
+Beginners
+Manual configuration
+Visual interaction
+```
+
+Memory:
+
+```text
+Console
+= GUI
+```
+
+---
+
+# 42. AWS CLI
+
+CLI means **Command Line Interface**.
+
+Instead of clicking:
+
+```text
+Create instance
+```
+
+you execute commands.
+
+This is useful for:
+
+```text
+Automation
+Scripts
+Repeatable tasks
+```
+
+Memory:
+
+```text
+CLI
+= commands/scripts
+```
+
+---
+
+# 43. AWS SDK
+
+SDK means **Software Development Kit**.
+
+This lets application code interact directly with AWS.
+
+Examples from the module include languages such as:
+
+```text
+Java
+Python
+```
+
+So your application can programmatically say:
+
+```text
+Store this file in S3
+Create a resource
+Read a database record
+```
+
+Memory:
+
+```text
+SDK
+= AWS from your application code
+```
+
+---
+
+# 44. Console vs CLI vs SDK
+
+Easy comparison:
+
+| Method             | Think        |
+| ------------------ | ------------ |
+| Management Console | Click        |
+| CLI                | Type command |
+| SDK                | Write code   |
+
+If a question says:
+
+> “A developer wants to automate AWS operations through Python code.”
+
+Think:
+
+**SDK**
+
+If it says:
+
+> “An administrator wants to execute AWS commands in scripts.”
+
+Think:
+
+**CLI**
+
+If it says:
+
+> “A user wants a graphical interface.”
+
+Think:
+
+**Management Console**
+
+---
+
+# Section 4: AWS Cloud Adoption Framework
+
+This is the part students often memorize badly.
+
+AWS CAF is easier if you understand the problem it is trying to solve.
+
+---
+
+# 45. Why does AWS CAF exist?
+
+Suppose QuickMart says:
+
+> “We are moving to AWS tomorrow.”
+
+The IT team may be ready.
+
+But what about:
+
+```text
+Finance?
+HR?
+Security?
+Management?
+Operations?
+Governance?
+Training?
+Policies?
+Business strategy?
+```
+
+Cloud adoption is not merely:
+
+> “Move the servers.”
+
+It affects the entire organisation.
+
+The module says AWS CAF provides guidance and best practices to help organisations build a comprehensive approach to cloud adoption. 
+
+---
+
+# 46. AWS CAF in one sentence
+
+**AWS CAF helps an organisation prepare for cloud adoption from both business and technical perspectives.**
+
+The module organises AWS CAF into **six perspectives**.
+
+---
+
+# 47. The six AWS CAF perspectives
+
+The version taught in this 2022 module uses:
+
+```text
+Business
+People
+Governance
+Platform
+Security
+Operations
+```
+
+
+
+The slide groups them into two broad sides.
+
+### Business-focused
+
+```text
+Business
+People
+Governance
+```
+
+### Technical-focused
+
+```text
+Platform
+Security
+Operations
+```
+
+That grouping is extremely useful.
+
+---
+
+# 48. AWS CAF as building a new city
+
+Imagine QuickMart is not just moving servers.
+
+It is building a new digital city.
+
+Different groups ask different questions.
+
+---
+
+# 49. Business perspective
+
+The **Business perspective** asks:
+
+> “Does this cloud investment actually help the business?”
+
+It includes things such as:
+
+```text
+IT finance
+IT strategy
+Benefits realization
+Business risk management
+```
+
+Stakeholders in the slide include business managers, finance managers, budget owners and strategy stakeholders. 
+
+Think:
+
+```text
+Money
+Business value
+Strategy
+Return
+Risk
+```
+
+Example:
+
+> “How will migrating to AWS improve profitability?”
+
+That is mainly **Business perspective**.
+
+---
+
+# 50. People perspective
+
+The **People perspective** asks:
+
+> “Do our employees have the skills and organisational structure needed for cloud?”
+
+It includes:
+
+```text
+Resource management
+Incentive management
+Career management
+Training management
+Organizational change management
+```
+
+
+
+Think:
+
+```text
+Employees
+Training
+Staffing
+Skills
+Culture
+Change
+```
+
+Example:
+
+> “Developers do not yet understand cloud technologies. We need training.”
+
+**People perspective**
+
+---
+
+# 51. Governance perspective
+
+The **Governance perspective** asks:
+
+> “How do we keep cloud adoption aligned with business strategy, projects, policies and risk?”
+
+It includes:
+
+```text
+Portfolio management
+Program/project management
+Business performance measurement
+License management
+```
+
+
+
+Think:
+
+```text
+Rules
+Oversight
+Projects
+Measurement
+Control
+Risk
+```
+
+Example:
+
+> “Who ensures cloud projects remain aligned with corporate goals?”
+
+**Governance perspective**
+
+---
+
+# 52. Platform perspective
+
+The **Platform perspective** focuses on the technical architecture.
+
+It includes:
+
+```text
+Compute provisioning
+Network provisioning
+Storage provisioning
+Database provisioning
+Systems and solution architecture
+Application development
+```
+
+
+
+Think:
+
+```text
+What do we actually build?
+```
+
+Example:
+
+> “What networking, compute, database and storage architecture should we design?”
+
+**Platform perspective**
+
+---
+
+# 53. Security perspective
+
+The **Security perspective** asks:
+
+> “How do we meet security objectives?”
+
+Capabilities include:
+
+```text
+Identity and access management
+Detective controls
+Infrastructure security
+Data protection
+Incident response
+```
+
+
+
+Think:
+
+```text
+Protect
+Detect
+Respond
+Control access
+Protect data
+```
+
+Example:
+
+> “How should employee access to AWS resources be controlled?”
+
+**Security perspective**
+
+---
+
+# 54. Operations perspective
+
+The **Operations perspective** asks:
+
+> “How will this environment be run every day after we build it?”
+
+It includes:
+
+```text
+Service monitoring
+Application performance monitoring
+Resource inventory management
+Release/change management
+Reporting and analytics
+Business continuity/disaster recovery
+IT service catalog
+```
+
+
+
+Think:
+
+```text
+Day-to-day running
+Monitoring
+Maintenance
+Recovery
+Changes
+```
+
+Example:
+
+> “How do we monitor applications and recover from failures?”
+
+**Operations perspective**
+
+---
+
+# 55. AWS CAF perspectives as six questions
+
+This is probably the easiest way to memorize them:
+
+```text
+BUSINESS
+→ Why are we moving?
+
+PEOPLE
+→ Who needs skills and change?
+
+GOVERNANCE
+→ What rules and oversight do we need?
+
+PLATFORM
+→ What will we build?
+
+SECURITY
+→ How will we protect it?
+
+OPERATIONS
+→ How will we run it?
+```
+
+If you remember those six questions, CAF becomes far easier than memorising dozens of bullet points.
+
+---
+
+# 56. CAF scenario practice
+
+### Scenario A
+
+> Finance wants to know whether cloud investment produces measurable business value.
+
+**Business**
+
+---
+
+### Scenario B
+
+> Staff need AWS training before migration.
+
+**People**
+
+---
+
+### Scenario C
+
+> Management wants cloud projects aligned with company strategy and controlled through proper project governance.
+
+**Governance**
+
+---
+
+### Scenario D
+
+> Architects are designing compute, storage, networking and databases.
+
+**Platform**
+
+---
+
+### Scenario E
+
+> The company needs identity controls, data protection and incident-response procedures.
+
+**Security**
+
+---
+
+### Scenario F
+
+> The organisation needs monitoring, change management and disaster recovery processes.
+
+**Operations**
+
+---
+
+# 57. Common exam traps
+
+## Trap 1 — Cloud means “everything is free”
+
+No.
+
+The module explicitly emphasizes **pay-as-you-go**, not “pay nothing.”
+
+---
+
+## Trap 2 — Cloud means no infrastructure exists
+
+Also no.
+
+AWS still owns physical infrastructure.
+
+The difference is that **you consume it as a service** rather than necessarily owning the hardware yourself.
+
+---
+
+## Trap 3 — Cloud automatically means SaaS
+
+No.
+
+Cloud services can be:
+
+```text
+IaaS
+PaaS
+SaaS
+```
+
+---
+
+## Trap 4 — Hybrid means using two AWS services
+
+No.
+
+Hybrid refers to using both:
+
+```text
+Cloud
++
+On-premises environment
+```
+
+---
+
+## Trap 5 — IaaS gives less control than SaaS
+
+Backwards.
+
+```text
+Most control → IaaS
+Least control → SaaS
+```
+
+---
+
+## Trap 6 — The six cloud advantages are all just “cheaper”
+
+No.
+
+Some are financial.
+
+Others are about:
+
+```text
+Speed
+Agility
+Capacity
+Global reach
+Operational focus
+```
+
+---
+
+## Trap 7 — “Stop guessing capacity” means capacity never needs planning
+
+Not quite.
+
+It means cloud allows capacity to adjust dynamically rather than requiring companies to lock in huge fixed physical capacity based solely on long-term guesses.
+
+---
+
+## Trap 8 — Go global means one server automatically serves the world with perfect latency
+
+No.
+
+The idea is that AWS provides infrastructure in multiple geographic locations, making global deployment much faster.
+
+---
+
+## Trap 9 — AWS CAF is a technical architecture diagram
+
+No.
+
+CAF is a framework for **organisational cloud adoption**.
+
+It includes business, people and governance—not just technology.
+
+---
+
+## Trap 10 — Platform and Operations are the same
+
+No.
+
+```text
+Platform
+→ design/build architecture
+
+Operations
+→ run/monitor/manage it
+```
+
+---
+
+## Trap 11 — Business and Governance are the same
+
+Not quite.
+
+```text
+Business
+→ business value, finance, strategy
+
+Governance
+→ oversight, alignment, projects, measurement
+```
+
+---
+
+# 58. The sample question in the module
+
+The module asks:
+
+> Why is AWS more economical than traditional data centers for applications with varying compute workloads?
+
+The correct answer is:
+
+> **Amazon EC2 instances can be launched on demand when needed.** 
+
+Why?
+
+Because the important keyword is:
+
+```text
+varying workloads
+```
+
+If workload changes, AWS allows capacity to follow demand more closely.
+
+The wrong answer saying:
+
+> “Run enough instances permanently for peak workload”
+
+would recreate the exact traditional overprovisioning problem cloud is supposed to solve.
+
+---
+
+# 59. Subjective answer — What is cloud computing?
+
+A good answer:
+
+> Cloud computing is the on-demand delivery of IT resources such as compute power, storage, databases and applications over the internet using pay-as-you-go pricing. Instead of purchasing and maintaining all physical infrastructure upfront, organisations can request cloud resources when required and adjust them according to changing demand.
+
+---
+
+# 60. Subjective answer — Traditional vs cloud computing
+
+> In traditional computing, infrastructure is treated mainly as physical hardware that must be purchased, installed, maintained and planned in advance. This can involve long procurement cycles, large upfront capital expenditure and capacity forecasting. In cloud computing, infrastructure can be treated more like software because resources can be created, changed and removed programmatically. This gives organisations greater flexibility, faster provisioning and the ability to scale resources according to actual demand.
+
+---
+
+# 61. Subjective answer — Six advantages
+
+> The six main advantages of cloud computing are trading capital expense for variable expense, benefiting from economies of scale, stopping the need to guess capacity, increasing speed and agility, reducing the burden of running and maintaining data centers, and gaining the ability to deploy globally more quickly. Together, these advantages allow organisations to align infrastructure more closely with actual demand while focusing more resources on business value.
+
+---
+
+# 62. Subjective answer — AWS CAF
+
+> The AWS Cloud Adoption Framework provides guidance and best practices to help organisations plan and manage successful cloud adoption. The framework recognises that cloud migration affects not only technology but the entire organisation. In the module, AWS CAF is divided into six perspectives: Business, People, Governance, Platform, Security and Operations. Business, People and Governance focus mainly on business capabilities, while Platform, Security and Operations focus mainly on technical capabilities.
+
+---
+
+# 63. Exam keyword map
+
+| Question mentions...                   | Think...                  |
+| -------------------------------------- | ------------------------- |
+| On-demand IT resources                 | Cloud computing           |
+| Pay only for consumption               | Variable expense          |
+| Large AWS purchasing/usage scale       | Economies of scale        |
+| Over/under provisioning                | Stop guessing capacity    |
+| Resources in minutes instead of weeks  | Speed and agility         |
+| Not maintaining physical facilities    | Stop running data centers |
+| Deploy closer to international users   | Go global                 |
+| Maximum control over infrastructure    | IaaS                      |
+| Focus mainly on application            | PaaS                      |
+| Finished software                      | SaaS                      |
+| Cloud + on-premises                    | Hybrid                    |
+| Click through AWS                      | Management Console        |
+| Commands/scripts                       | CLI                       |
+| Access AWS from application code       | SDK                       |
+| Finance/business value                 | CAF Business              |
+| Training/staffing                      | CAF People                |
+| Policies/project oversight             | CAF Governance            |
+| Architecture/compute/network/storage   | CAF Platform              |
+| IAM/data protection                    | CAF Security              |
+| Monitoring/recovery/day-to-day support | CAF Operations            |
+
+---
+
+# 64. Whole module as one continuous story
+
+QuickMart wants to launch online.
+
+### Traditional IT
+
+```text
+Buy servers
+↓
+Install infrastructure
+↓
+Guess capacity
+↓
+Maintain data center
+↓
+Expand slowly
+```
+
+Management discovers this is expensive and inflexible.
+
+So it investigates **cloud computing**.
+
+Cloud allows QuickMart to:
+
+```text
+Request resources on demand
+Access them via the internet
+Pay according to usage
+```
+
+Instead of treating infrastructure purely as physical hardware, the company can increasingly treat it as **software**.
+
+Then QuickMart decides what type of cloud service it needs:
+
+```text
+IaaS
+PaaS
+SaaS
+```
+
+and where the system will live:
+
+```text
+Cloud
+Hybrid
+On-premises
+```
+
+It chooses AWS, combining services like:
+
+```text
+VPC
+EC2
+DynamoDB
+S3
+```
+
+The company manages AWS through:
+
+```text
+Console
+CLI
+SDK
+```
+
+But moving to AWS is not merely an IT project.
+
+Finance asks:
+
+> “Does this make business sense?”
+
+HR asks:
+
+> “Do employees have the skills?”
+
+Management asks:
+
+> “How will this be governed?”
+
+Architects ask:
+
+> “What should we build?”
+
+Security asks:
+
+> “How do we protect it?”
+
+Operations asks:
+
+> “How do we run it every day?”
+
+Those six questions become the **six AWS CAF perspectives**.
+
+And that is essentially the entire Module 1 story.
+
+---
+
+# 65. Ultra-short revision sheet
+
+```text
+CLOUD COMPUTING
+───────────────
+On-demand IT resources
+Via internet
+Pay-as-you-go
+```
+
+```text
+SERVICE MODELS
+──────────────
+IaaS → most control
+PaaS → focus on application
+SaaS → use finished software
+```
+
+```text
+DEPLOYMENT MODELS
+─────────────────
+Cloud
+Hybrid
+On-premises/private cloud
+```
+
+```text
+6 CLOUD ADVANTAGES
+──────────────────
+1. CapEx → variable expense
+2. Economies of scale
+3. Stop guessing capacity
+4. Speed and agility
+5. Stop maintaining data centers
+6. Go global quickly
+```
+
+```text
+AWS INTERACTION
+───────────────
+Console → Click
+CLI     → Commands
+SDK     → Code
+```
+
+```text
+AWS CAF
+───────
+Business   → Why / value
+People     → Skills / training
+Governance → Rules / oversight
+Platform   → Build
+Security   → Protect
+Operations → Run
+```
+
+---
+
+# The single most important idea in Module 1
+
+Module 1 is really teaching one shift:
+
+```text
+OLD THINKING
+
+"How much hardware should we buy now
+for what we think we might need later?"
+```
+
+becomes:
+
+```text
+CLOUD THINKING
+
+"What resources do we need now,
+and how can we adjust them as requirements change?"
+```
+
+Everything else in the chapter—pay-as-you-go pricing, elasticity, agility, global reach, service models, and even AWS CAF—grows out of that change in thinking. 
+
+
+
+
+
+</details>
+
+<details>
+<summary><strong>Module 2: Cloud Economics and Billing — Intuitive and Narrative Explanation</strong></summary>
+
+# Module 2: Cloud Economics and Billing — Intuitive and Narrative Explanation
+
+This module is essentially the **finance department of AWS**.
+
+Modules such as Compute, Storage and Databases ask:
+
+> “Which technology should I use?”
+
+Module 2 asks:
+
+> **“What will it cost, how do I control that cost, how do I manage billing across accounts, and what happens when I need help?”**
+
+The module is divided into five main ideas:
+
+1. Fundamentals of AWS pricing  
+2. Total Cost of Ownership (TCO)  
+3. AWS Organizations  
+4. AWS Billing and Cost Management  
+5. AWS Technical Support fileciteturn14file0
+
+One important note: these slides are from **2022**. For your module/exam, learn the pricing, Free Tier and support-plan wording as presented in the slides. Some real-world AWS commercial details can change over time, so don't assume every number in an old slide is permanently current.
+
+---
+
+# 1. The entire module as one company story
+
+Imagine a company called **CloudMart**.
+
+CloudMart currently owns a small data centre.
+
+It has to pay for:
+
+```text
+Servers
+Storage
+Network equipment
+Electricity
+Cooling
+Building space
+Software licences
+IT administrators
+Maintenance
+```
+
+Management asks:
+
+> “Would moving to AWS be cheaper?”
+
+That sounds like a simple question.
+
+It isn't.
+
+If you compare:
+
+```text
+Price of AWS EC2
+vs
+Price of one physical server
+```
+
+you are missing half the story.
+
+CloudMart also needs to ask:
+
+```text
+What does the server cost to maintain?
+What does the data centre cost?
+How much are the administrators paid?
+How much electricity does it consume?
+What happens when we need more capacity?
+What happens when equipment becomes obsolete?
+```
+
+That leads us to **Total Cost of Ownership**.
+
+After CloudMart moves to AWS, new questions appear:
+
+```text
+How do we estimate AWS costs before deploying?
+How do we see what we are spending?
+How do we receive alerts before overspending?
+How do we manage 20 AWS accounts?
+Who do we contact when something goes wrong?
+```
+
+And that produces the rest of Module 2.
+
+So mentally, the module flows like this:
+
+```text
+HOW AWS CHARGES
+      ↓
+IS AWS CHEAPER THAN ON-PREMISES?
+      ↓
+ESTIMATE BEFORE BUILDING
+      ↓
+MANAGE MULTIPLE ACCOUNTS
+      ↓
+MONITOR ACTUAL SPENDING
+      ↓
+GET AWS SUPPORT WHEN NEEDED
+```
+
+---
+
+# Section 1: Fundamentals of Pricing
+
+# 2. The three fundamental AWS cost drivers
+
+Page 5 gives you one of the most important diagrams in the chapter.
+
+AWS costs can broadly be understood through three drivers:
+
+```text
+1. Compute
+2. Storage
+3. Data transfer
+```
+
+fileciteturn16file3
+
+Think of running a restaurant.
+
+You pay for:
+
+```text
+People cooking       → Compute
+Space holding food   → Storage
+Moving food around   → Data transfer
+```
+
+AWS is obviously more complicated than a restaurant, but the financial logic is surprisingly similar.
+
+---
+
+# 3. Compute cost
+
+**Compute** means processing power.
+
+Examples include services such as EC2.
+
+The module describes compute as being charged according to things such as:
+
+- how long it runs;
+- the type of instance used.
+
+Conceptually:
+
+```text
+Compute cost ≈
+Amount of compute
+×
+Time used
+```
+
+Suppose:
+
+```text
+Small server:
+RM-equivalent $0.02/hour
+
+Runs 10 hours
+→ $0.20
+```
+
+If it runs 100 hours:
+
+```text
+100 × $0.02
+= $2.00
+```
+
+The point is not that AWS servers magically become free.
+
+The point is that you can often pay according to **actual usage** rather than buying the physical server beforehand.
+
+---
+
+# 4. Storage cost
+
+Storage is generally based on how much data you keep.
+
+The module simplifies this as:
+
+```text
+Storage → typically charged per GB
+```
+
+Example:
+
+```text
+10 GB stored
+vs
+10 TB stored
+```
+
+Obviously, storing 10 TB generally costs more.
+
+But storage cost can also depend on the type of storage you choose.
+
+You encountered this later with:
+
+```text
+S3 Standard
+S3 Standard-IA
+Glacier
+EBS
+EFS
+```
+
+Different storage exists because paying premium prices for data you barely touch would be an imaginative way of wasting money.
+
+---
+
+# 5. Data-transfer cost
+
+The module's simplified rule is:
+
+```text
+Data IN  → generally no charge, with exceptions
+Data OUT → generally charged
+```
+
+fileciteturn16file3
+
+Think of AWS as a hotel.
+
+Getting your luggage **into** the hotel is often free.
+
+Shipping ten tonnes of luggage **out** across the world is where somebody eventually sends you a bill.
+
+For exam purposes, when you see:
+
+> “Large amounts of data transferred OUT of AWS”
+
+you should immediately think:
+
+> **Potential data-transfer cost.**
+
+---
+
+# 6. AWS pricing philosophy
+
+Page 6 reduces AWS's pricing philosophy to three ideas:
+
+```text
+Pay for what you use
+
+Pay less when you reserve
+
+Pay less when you use more
+and as AWS grows
+```
+
+fileciteturn15file0
+
+That is the backbone of this entire section.
+
+---
+
+# 7. Principle 1 — Pay for what you use
+
+Suppose CloudMart needs additional servers only during a three-day sales event.
+
+### Traditional approach
+
+CloudMart buys enough physical servers for peak demand.
+
+```text
+Normal demand:  ███
+Peak demand:    ██████████
+
+Physical capacity purchased:
+██████████
+```
+
+Most of the year:
+
+```text
+Used:      ███
+Unused:    ███████
+```
+
+But CloudMart already bought the hardware.
+
+The empty capacity does not politely refund itself.
+
+### AWS approach
+
+CloudMart can increase capacity when necessary and reduce it afterward.
+
+```text
+Normal:
+███
+
+Sale:
+██████████
+
+After sale:
+███
+```
+
+Page 7's diagram contrasts the fixed/committed nature of traditional infrastructure with AWS expenditure following actual usage. fileciteturn15file0
+
+This is why **elasticity is also an economic idea**, not merely a technical one.
+
+---
+
+# 8. No large upfront expense
+
+Traditional infrastructure might require:
+
+```text
+Day 1:
+Buy servers             $$
+Buy storage              $$
+Buy switches             $$
+Prepare data centre      $$
+Install everything       $$
+```
+
+Money is spent before the company even knows how successful the system will become.
+
+Cloud can instead look more like:
+
+```text
+Use resources
+↓
+Receive charge
+↓
+Scale according to demand
+```
+
+So the business avoids purchasing a large amount of infrastructure before it is actually needed.
+
+---
+
+# 9. Principle 2 — Pay less when you reserve
+
+Suppose CloudMart knows:
+
+> “This application will definitely run continuously for the next few years.”
+
+AWS can offer lower pricing in exchange for a longer commitment.
+
+The 2022 module explains this using **Reserved Instances (RIs)**.
+
+It gives three payment approaches:
+
+| RI payment option | Module's idea |
+|---|---|
+| No Upfront | Smaller discount |
+| Partial Upfront | Larger discount |
+| All Upfront | Largest discount |
+
+The slide states that RIs could provide savings of **up to 75%** in the course material. Treat that as the module's historical pricing statement rather than a timeless guarantee. fileciteturn15file0
+
+---
+
+# 10. Why does reservation produce a discount?
+
+Imagine renting an apartment.
+
+### Option A
+
+You tell the landlord:
+
+> “Maybe I'll stay tonight. Maybe not. No promises.”
+
+The landlord has uncertainty.
+
+### Option B
+
+You say:
+
+> “I'll commit for a longer period.”
+
+Now the landlord has predictable income.
+
+Cloud economics follows similar logic.
+
+```text
+More flexibility for customer
+→ Usually higher unit price
+
+More commitment from customer
+→ Potential discount
+```
+
+This creates an important exam pattern:
+
+```text
+Unpredictable workload
+→ pay-as-you-go flexibility
+
+Predictable long-term workload
+→ consider commitment/reservation
+```
+
+---
+
+# 11. Don't reserve something merely because it is cheaper
+
+A 40% discount on something you don't need is not a saving.
+
+Suppose:
+
+```text
+Large instance = $100/month
+Reserved discount = 40%
+
+Cost = $60/month
+```
+
+Wonderful.
+
+Except the application only needed:
+
+```text
+Small instance = $30/month
+```
+
+Then the “discounted” oversized instance still wastes:
+
+```text
+$60 - $30 = $30/month
+```
+
+This is why later AWS cost optimisation teaches:
+
+```text
+Right-size first
+Then consider commitment
+```
+
+Buying unnecessary capacity at a discount remains buying unnecessary capacity.
+
+---
+
+# 12. Principle 3 — Pay less by using more
+
+Page 9 introduces **volume-based discounts**.
+
+As usage increases, some services use tiered pricing so that the cost per unit may decrease.
+
+The module gives examples including:
+
+- Amazon S3;
+- Amazon EBS;
+- Amazon EFS. fileciteturn12file18
+
+Conceptually:
+
+```text
+First amount of usage
+→ Price A per GB
+
+Larger usage tier
+→ Lower effective price per GB
+```
+
+Do not interpret this as:
+
+> “Using more AWS always reduces your total bill.”
+
+If you store 1 PB rather than 10 GB, your total cost certainly does not become smaller through the spiritual power of volume discounts.
+
+The idea is:
+
+> **Your price per unit may fall at higher volumes.**
+
+---
+
+# 13. Economies of scale
+
+AWS operates enormous infrastructure.
+
+Because AWS buys and operates computing resources at massive scale, the module argues that AWS can lower its own unit costs and pass some of those efficiencies to customers.
+
+This is called an **economy of scale**.
+
+Imagine:
+
+```text
+Person A buys 1 server
+Company B buys 20 servers
+AWS buys enormous quantities of infrastructure
+```
+
+The purchasing and operating economics are completely different.
+
+Page 10 illustrates this principle and includes a historical claim about AWS price reductions through September 2019. fileciteturn14file17
+
+For your exam, remember the concept rather than memorising an obsolete count of historical price cuts:
+
+> **AWS's scale can reduce unit costs.**
+
+---
+
+# 14. Custom pricing
+
+Page 11 says custom pricing can be available for high-volume projects with unique requirements. fileciteturn14file17
+
+Imagine a tiny company using:
+
+```text
+2 EC2 instances
+100 GB storage
+```
+
+It probably uses published standard pricing.
+
+Now imagine a multinational company committing to enormous AWS usage.
+
+It may have commercial requirements that justify negotiated pricing.
+
+So:
+
+```text
+Ordinary usage
+→ Standard published pricing
+
+Very large / specialised usage
+→ Potential custom pricing
+```
+
+---
+
+# 15. AWS Free Tier
+
+The **2022 module** describes AWS Free Tier as a way for new users to gain hands-on experience and says it is free for one year for new customers in the version taught in these slides. fileciteturn15file0
+
+For your exam using this material, remember its purpose:
+
+> **Free Tier allows limited AWS usage so customers can learn and experiment without immediately paying normal full usage charges.**
+
+The dangerous misconception is:
+
+```text
+Free Tier ≠ everything in AWS is free.
+```
+
+Usage beyond eligible limits or use of non-covered resources can generate charges.
+
+---
+
+# 16. “Free service” does not always mean “free architecture”
+
+Page 13 gives examples of services described as having no separate charge in the module, including:
+
+- Amazon VPC;
+- Elastic Beanstalk;
+- Auto Scaling;
+- CloudFormation;
+- IAM.
+
+But it also warns that **other resources used by those services can still cost money**. fileciteturn15file0
+
+This distinction matters enormously.
+
+Consider Elastic Beanstalk.
+
+```text
+Elastic Beanstalk service
+        ↓ provisions
+EC2 instances
+Load balancer
+Storage
+Data transfer
+```
+
+You might not pay an extra “Beanstalk fee,” but you still pay for underlying billable resources.
+
+It's rather like a shopping assistant saying:
+
+> “My service is free.”
+
+and then handing you a trolley containing RM5,000 of products.
+
+The assistant may indeed be free. The trolley is not.
+
+---
+
+# 17. Section 1 exam summary
+
+The fundamental pricing logic is:
+
+```text
+AWS COST DRIVERS
+Compute
+Storage
+Data transfer
+
+AWS PRICING PHILOSOPHY
+Pay for what you use
+Pay less when you commit/reserve
+Pay less per unit at suitable volume tiers
+Benefit from economies of scale
+```
+
+And remember:
+
+```text
+Free AWS service
+≠
+Everything that service creates is free
+```
+
+---
+
+# Section 2: Total Cost of Ownership
+
+# 18. What is TCO?
+
+**Total Cost of Ownership (TCO)** is a financial estimate used to identify the **direct and indirect costs** of owning and operating a system.
+
+The module says TCO can help:
+
+- compare running infrastructure on-premises versus AWS;
+- build the financial case for moving to the cloud. fileciteturn13file5
+
+The important word is:
+
+> **TOTAL**
+
+Not:
+
+> “Price printed on the server box.”
+
+---
+
+# 19. The car analogy
+
+Suppose you buy a car for RM80,000.
+
+Is the total cost of owning that car RM80,000?
+
+Obviously not.
+
+You also pay for:
+
+```text
+Fuel
+Insurance
+Road tax
+Tyres
+Maintenance
+Repairs
+Parking
+Depreciation
+```
+
+A server works similarly.
+
+Buying a RM20,000 physical server does not mean:
+
+```text
+TCO = RM20,000
+```
+
+You also have to operate it.
+
+---
+
+# 20. The hidden costs of an on-premises server
+
+Page 18's TCO diagram groups costs into areas such as:
+
+```text
+Server costs
+Storage costs
+Network costs
+IT labour costs
+```
+
+and repeatedly includes facilities costs such as:
+
+```text
+Space
+Power
+Cooling
+```
+
+fileciteturn8file0
+
+This is one of the most important subjective-exam ideas in the chapter.
+
+---
+
+# 21. Server costs
+
+Running physical servers can require:
+
+```text
+Server hardware
+Rack chassis
+Power distribution units
+Top-of-rack switches
+Hardware maintenance
+Operating-system licences
+Virtualisation licences
+Administration
+Space
+Power
+Cooling
+```
+
+That RM20,000 server was becoming lonely, so naturally it brought an entire data centre with it.
+
+---
+
+# 22. Storage costs
+
+On-premises storage can include:
+
+```text
+Storage disks
+Storage arrays
+SAN equipment
+Fibre Channel switches
+Maintenance
+Storage administrators
+Space
+Power
+Cooling
+```
+
+Again, comparing:
+
+```text
+AWS storage price per GB
+vs
+price of one physical disk
+```
+
+is incomplete.
+
+---
+
+# 23. Network costs
+
+The module includes costs such as:
+
+```text
+LAN switches
+Load balancers
+Bandwidth
+Network administration
+Space
+Power
+Cooling
+```
+
+fileciteturn8file0
+
+The network does not construct itself out of professional enthusiasm.
+
+Someone buys it, configures it, monitors it and replaces it.
+
+---
+
+# 24. IT labour
+
+People must operate infrastructure.
+
+That can involve:
+
+```text
+Server administrators
+Storage administrators
+Network administrators
+Security staff
+Support engineers
+```
+
+TCO therefore includes the labour required to keep the environment functioning.
+
+This is why cloud cost comparisons that pretend employees, electricity and maintenance are somehow “free because we already have them” are financially dubious.
+
+---
+
+# 25. Facilities cost
+
+Physical infrastructure needs a physical location.
+
+Think:
+
+```text
+Building space
+Power
+Cooling
+Backup power
+Environmental systems
+```
+
+A cloud provider takes much of that physical infrastructure burden away from the customer.
+
+This does **not** mean AWS has no data-centre costs.
+
+It means those costs are built into AWS's service economics rather than the customer personally constructing the data centre.
+
+---
+
+# 26. On-premises versus AWS
+
+Page 16 contrasts traditional infrastructure with AWS Cloud.
+
+Traditional environments involve things such as:
+
+```text
+Equipment
+Administration
+Contracts
+Infrastructure cost
+```
+
+while AWS highlights:
+
+```text
+Scale up and down
+No large upfront infrastructure purchase
+Pay for usage
+Self-service infrastructure
+Improved agility / time to market
+```
+
+fileciteturn16file5
+
+This gives us an important insight:
+
+> Cloud economics is not only about whether one server is cheaper.
+
+It is also about **flexibility and business speed**.
+
+---
+
+# 27. Example: Black Friday
+
+Imagine a retailer normally needs:
+
+```text
+20 servers
+```
+
+For Black Friday it needs:
+
+```text
+100 servers
+```
+
+### On-premises approach
+
+It might purchase 100 servers.
+
+For most of the year:
+
+```text
+Required: 20
+Owned:    100
+
+Idle:      80
+```
+
+### Cloud approach
+
+```text
+Normal:
+20
+
+Black Friday:
+100
+
+After:
+20
+```
+
+That difference affects TCO because the company is not permanently owning peak capacity.
+
+---
+
+# 28. TCO isn't guaranteed to make AWS cheaper
+
+This is worth understanding because the slide includes an example showing extremely large savings.
+
+Page 19 presents a particular illustrative comparison with large annual and three-year savings. That is an **example case**, not a universal law saying:
+
+```text
+Move anything to AWS
+→ automatically save 96%
+```
+
+That conclusion would be spectacularly optimistic accounting.
+
+The real lesson is:
+
+```text
+Calculate ALL costs
+↓
+Compare the specific alternatives
+↓
+Then decide
+```
+
+fileciteturn8file0
+
+---
+
+# 29. TCO can include non-cost business benefits
+
+The TCO case study later in the module highlights outcomes involving:
+
+- resource optimisation;
+- security/compliance;
+- disaster recovery;
+- increased computing capacity;
+- faster provisioning;
+- faster service deployment;
+- continuous cost optimisation. fileciteturn16file2
+
+So the decision can be:
+
+```text
+Financial cost
++
+Operational efficiency
++
+Business agility
++
+Resilience
+```
+
+not merely:
+
+```text
+Which number is smaller?
+```
+
+---
+
+# 30. AWS Pricing Calculator
+
+Suppose CloudMart has decided:
+
+> “We might deploy 10 EC2 instances, storage and a database.”
+
+Before creating anything, it wants to know approximately what that architecture will cost.
+
+That is the purpose of the **AWS Pricing Calculator**.
+
+The module says it can be used to:
+
+- estimate monthly cost;
+- model solutions before building them;
+- explore the calculations behind an estimate;
+- compare relevant configurations and terms;
+- group services within an estimate. fileciteturn13file2
+
+---
+
+# 31. Calculator versus actual bill
+
+This distinction is easy to test.
+
+```text
+AWS Pricing Calculator
+→ BEFORE deployment
+→ Estimate
+
+AWS Billing tools
+→ AFTER / DURING usage
+→ Actual or accumulated spending data
+```
+
+Suppose:
+
+```text
+Pricing Calculator says:
+Estimated monthly cost = $120
+```
+
+That does not guarantee:
+
+```text
+Actual invoice = exactly $120
+```
+
+Real usage may differ.
+
+Perhaps:
+
+```text
+You ran more instances.
+You transferred more data.
+You stored more objects.
+You forgot to stop something.
+```
+
+The calculator predicts from your assumptions.
+
+The bill charges from reality.
+
+AWS infrastructure is unfortunately unable to bill based on the student's good intentions.
+
+---
+
+# 32. TCO versus Pricing Calculator
+
+These are related but different.
+
+| Tool/concept | Main question |
+|---|---|
+| **TCO** | Is the overall cost of AWS favourable compared with alternatives such as on-premises? |
+| **AWS Pricing Calculator** | What might my proposed AWS architecture cost? |
+
+Memory trick:
+
+```text
+TCO
+→ Compare worlds
+
+Pricing Calculator
+→ Estimate AWS
+```
+
+---
+
+# Section 3: AWS Organizations
+
+# 33. Why would a company have multiple AWS accounts?
+
+Imagine CloudMart grows.
+
+It now has:
+
+```text
+Production
+Development
+Testing
+Finance
+HR
+Security
+Research
+```
+
+Putting every workload, every team and every permission into one enormous AWS account can become messy.
+
+So the organisation might use several AWS accounts.
+
+Example:
+
+```text
+CloudMart
+├── Production AWS account
+├── Development AWS account
+├── Security AWS account
+├── Finance AWS account
+└── Testing AWS account
+```
+
+Now another problem appears:
+
+> “Who manages all these accounts?”
+
+Enter **AWS Organizations**.
+
+---
+
+# 34. What is AWS Organizations?
+
+AWS Organizations provides **central management of multiple AWS accounts**.
+
+The module highlights features including:
+
+- policy-based account management;
+- group-based account management;
+- APIs for automating account management;
+- consolidated billing. fileciteturn12file7
+
+Think of AWS Organizations as the company's **head office**.
+
+Individual AWS accounts are its branches.
+
+---
+
+# 35. Organizational Units
+
+Accounts can be grouped logically.
+
+Conceptually:
+
+```text
+CloudMart Organization
+│
+├── Production OU
+│   ├── Website account
+│   └── Database account
+│
+├── Development OU
+│   ├── Dev account
+│   └── Test account
+│
+└── Security OU
+    └── Security account
+```
+
+**OU** means **Organizational Unit**.
+
+An OU is useful because policies can be applied to a logical collection of accounts rather than manually treating every account independently.
+
+---
+
+# 36. School analogy for OUs
+
+Imagine a university.
+
+```text
+University
+├── Engineering Faculty
+│   ├── Computer Science
+│   └── Mechanical Engineering
+│
+└── Business Faculty
+    ├── Accounting
+    └── Finance
+```
+
+A rule applied to the Engineering Faculty may affect departments under it.
+
+AWS Organizations uses a similar hierarchy:
+
+```text
+Organization
+↓
+OU
+↓
+AWS accounts
+```
+
+---
+
+# 37. Consolidated billing
+
+One of the major economic features of AWS Organizations is **consolidated billing**.
+
+Without central billing:
+
+```text
+Account A → Bill A
+Account B → Bill B
+Account C → Bill C
+Account D → Bill D
+```
+
+With consolidated billing:
+
+```text
+Account A ┐
+Account B ├─→ Consolidated billing
+Account C ┤
+Account D ┘
+```
+
+The organisation gets centralized visibility into spending.
+
+This is especially useful when a finance team needs to understand:
+
+```text
+Total company AWS expenditure
+Cost by account
+Cost by department
+```
+
+---
+
+# 38. AWS Organizations versus IAM
+
+This is a common confusion.
+
+### AWS Organizations
+
+Think:
+
+> **Multiple AWS accounts.**
+
+### IAM
+
+Think:
+
+> **Users, roles and permissions.**
+
+So:
+
+```text
+Need to centrally manage 30 AWS accounts
+→ AWS Organizations
+
+Need to control what a developer can do
+inside an AWS account
+→ IAM
+```
+
+They can work together, but they solve different layers of the problem.
+
+---
+
+# 39. Service Control Policies
+
+AWS Organizations can use **Service Control Policies**, usually abbreviated **SCPs**, to impose organisation-level permission boundaries.
+
+Conceptually:
+
+```text
+Organization says:
+"No production account may use Service X."
+              ↓
+Individual account cannot simply ignore that rule
+```
+
+The most important distinction to remember is:
+
+```text
+SCP → Limits maximum permissions
+IAM → Grants/controls permissions for identities
+```
+
+So an SCP is more like the fence surrounding the property.
+
+IAM determines which doors a particular employee can actually open.
+
+---
+
+# 40. SCP versus IAM example
+
+Suppose:
+
+```text
+SCP permits S3
+```
+
+Does that automatically mean:
+
+```text
+Every user gets S3 access?
+```
+
+No.
+
+IAM must still grant the user permission.
+
+Conceptually:
+
+```text
+Allowed by Organization boundary
+AND
+Allowed by IAM
+=
+Effective access
+```
+
+This distinction becomes even more explicit in the security module, but it is useful here because otherwise “Organizations policies” and “IAM policies” start blending into the same grey AWS soup.
+
+---
+
+# 41. How AWS Organizations can be accessed
+
+The module shows AWS Organizations being accessible through mechanisms including:
+
+```text
+AWS Management Console
+AWS CLI
+AWS SDKs
+HTTPS Query API
+```
+
+fileciteturn6file6
+
+The point is that Organizations can be administered manually or programmatically.
+
+---
+
+# Section 4: AWS Billing and Cost Management
+
+# 42. Why cost-management tools exist
+
+Suppose CloudMart estimates:
+
+```text
+$5,000/month
+```
+
+After deployment, the company needs to answer different questions:
+
+```text
+How much have we actually spent?
+Which service costs the most?
+Which account caused the cost?
+Are costs increasing?
+Are we approaching our budget?
+Can we get detailed usage data?
+```
+
+One tool would become cluttered trying to solve all of those perfectly.
+
+So AWS provides several cost-management tools.
+
+The module specifically highlights:
+
+```text
+AWS Budgets
+AWS Cost Explorer
+AWS Cost and Usage Report
+```
+
+along with AWS Bills and the Billing Dashboard. fileciteturn14file0 fileciteturn17file0
+
+---
+
+# 43. The easiest way to remember all billing tools
+
+Think of running a household.
+
+| AWS tool | Household analogy |
+|---|---|
+| Billing Dashboard | Quick financial overview |
+| AWS Bills | Itemised utility bill |
+| Cost Explorer | Graphs showing spending patterns |
+| AWS Budgets | Monthly spending limit and warning |
+| Cost and Usage Report | Detailed transaction-level spreadsheet/report |
+
+This distinction is much more useful than memorising five definitions separately.
+
+---
+
+# 44. AWS Billing Dashboard
+
+The **AWS Billing Dashboard** provides a central place for viewing billing information.
+
+Think:
+
+```text
+"What is happening with my AWS spending?"
+```
+
+rather than:
+
+```text
+"Give me every individual usage record in raw detail."
+```
+
+Page 40 introduces the Billing Dashboard, and page 46 contains the recorded demonstration. fileciteturn17file11 fileciteturn17file1
+
+---
+
+# 45. AWS Bills
+
+Use the **Bills** area when you want to inspect the charges that make up the AWS bill.
+
+Think of your electricity invoice.
+
+The top might say:
+
+```text
+Total = RM300
+```
+
+But you might ask:
+
+```text
+Where did RM300 come from?
+```
+
+The itemisation explains it.
+
+Same idea:
+
+```text
+AWS total cost
+      ↓
+Which services?
+Which Regions?
+Which usage?
+```
+
+So the memory question is:
+
+> **“What was I charged for?” → AWS Bills**
+
+---
+
+# 46. AWS Cost Explorer
+
+**AWS Cost Explorer** helps analyse AWS costs and usage visually.
+
+Think:
+
+```text
+Bill:
+"You spent $500."
+
+Cost Explorer:
+"Here is how that spending changed over time
+and where it came from."
+```
+
+Useful questions include:
+
+```text
+Why did costs increase?
+Which service costs the most?
+How does this month compare with earlier periods?
+What happens when I filter by service/account?
+```
+
+The module lists Cost Explorer among its key cost-management tools. fileciteturn16file0
+
+Memory:
+
+```text
+Cost Explorer
+= investigate spending
+```
+
+---
+
+# 47. AWS Budgets
+
+**AWS Budgets** is about setting financial or usage targets and monitoring whether you are approaching them.
+
+Suppose:
+
+```text
+Monthly AWS budget = $1,000
+```
+
+You might configure warning thresholds.
+
+Conceptually:
+
+```text
+Spend reaches warning level
+        ↓
+Budget condition triggered
+        ↓
+Notification / action workflow
+```
+
+Memory:
+
+```text
+Budgets
+= "Warn me when spending approaches my limit."
+```
+
+---
+
+# 48. Budget does not mean AWS magically refuses to bill you
+
+A frequent conceptual error is:
+
+> “I set a $100 budget, so AWS physically cannot charge more than $100.”
+
+Do not assume that.
+
+A **budget is primarily a cost-control and monitoring mechanism**, not a magical force field surrounding the credit card.
+
+If resources continue running, they can continue consuming billable services.
+
+This is why monitoring matters.
+
+---
+
+# 49. AWS Cost and Usage Report
+
+The **AWS Cost and Usage Report** is for detailed cost and usage information.
+
+Think of it as:
+
+```text
+Billing Dashboard
+→ executive summary
+
+Cost and Usage Report
+→ accountant/data analyst wants the detailed records
+```
+
+The module identifies it as one of the three central cost-management tools. fileciteturn13file1
+
+It is useful when an organisation wants to perform detailed analysis, reporting or integration with its own systems.
+
+---
+
+# 50. Billing tools comparison
+
+| Question | Best match |
+|---|---|
+| “Give me a quick billing overview.” | Billing Dashboard |
+| “What charges make up my bill?” | AWS Bills |
+| “Show me cost trends and let me analyse them.” | Cost Explorer |
+| “Warn me when cost approaches a threshold.” | AWS Budgets |
+| “Give me detailed cost and usage data.” | Cost and Usage Report |
+| “What might this architecture cost before I build it?” | AWS Pricing Calculator |
+
+This table is worth learning almost verbatim conceptually.
+
+---
+
+# 51. Pricing Calculator versus Cost Explorer
+
+Another exam favourite:
+
+```text
+Pricing Calculator
+→ future/planned architecture
+→ estimate
+
+Cost Explorer
+→ existing AWS spending
+→ analyse
+```
+
+Scenario:
+
+> “A company wants to estimate the monthly cost of an architecture before deploying it.”
+
+**Answer:** AWS Pricing Calculator.
+
+Scenario:
+
+> “A company wants to understand why its AWS spending increased over the past several months.”
+
+**Answer:** AWS Cost Explorer.
+
+---
+
+# 52. Cost Explorer versus Budgets
+
+```text
+Cost Explorer:
+"What happened to my costs?"
+
+Budgets:
+"Tell me when my costs approach a target."
+```
+
+Explorer investigates.
+
+Budgets watches against limits.
+
+---
+
+# 53. Bills versus Cost and Usage Report
+
+```text
+Bills
+→ Human-readable billing breakdown
+
+Cost and Usage Report
+→ Detailed data for deep analysis/reporting
+```
+
+A manager asking:
+
+> “How much did EC2 cost?”
+
+may look at the bill.
+
+A finance-data team building its own analytical system may prefer detailed cost-and-usage reporting.
+
+---
+
+# Section 5: AWS Technical Support
+
+# 54. Why AWS Support exists
+
+Eventually, something goes wrong.
+
+CloudMart might experience:
+
+```text
+Configuration problem
+Production issue
+Architecture concern
+Service health problem
+Business-critical outage
+```
+
+Different organisations need different levels of assistance.
+
+A student experimenting with AWS does not need the same support arrangement as a bank running mission-critical payment systems.
+
+AWS therefore provides different support plans.
+
+The 2022 module describes AWS Support as covering experimentation, production usage and business-critical use. fileciteturn13file0
+
+---
+
+# 55. The four support plans in this module
+
+The **2022 module** teaches four plans:
+
+| Plan | Intended use in the module |
+|---|---|
+| **Basic** | Basic resources and account/service-health information |
+| **Developer** | Early development |
+| **Business** | Production workloads |
+| **Enterprise** | Business- and mission-critical workloads |
+
+fileciteturn14file3
+
+For your module exam, use these four because that is the model the slides teach.
+
+---
+
+# 56. Basic Support
+
+Think:
+
+> “I am using AWS, but I do not require a premium technical-support relationship.”
+
+The slide lists resources such as:
+
+- Resource Center;
+- Service Health Dashboard;
+- product FAQs;
+- discussion forums;
+- health-check support. fileciteturn14file3
+
+Exam clue:
+
+```text
+Basic/general support resources
+→ Basic Support
+```
+
+---
+
+# 57. Developer Support
+
+The module associates **Developer Support** with:
+
+> early development on AWS. fileciteturn14file3
+
+Example:
+
+```text
+Small development team
+Building/test-stage application
+Needs technical guidance
+Not yet mission-critical production
+```
+
+Think:
+
+```text
+Development
+→ Developer
+```
+
+AWS clearly spent several minutes ensuring that naming scheme would remain survivable in an exam.
+
+---
+
+# 58. Business Support
+
+The module associates **Business Support** with customers running **production workloads**. fileciteturn14file3
+
+The key word is:
+
+> **Production**
+
+Example:
+
+```text
+Company website
+Live ecommerce service
+Business application
+Real customers depend on it
+```
+
+Think:
+
+```text
+Production
+→ Business Support
+```
+
+---
+
+# 59. Enterprise Support
+
+The module associates **Enterprise Support** with:
+
+```text
+Business-critical workloads
+Mission-critical workloads
+```
+
+fileciteturn14file3
+
+Example:
+
+```text
+International payment system
+Critical hospital platform
+Core banking service
+Large enterprise application
+```
+
+The business impact of failure is much greater, so a higher level of proactive support becomes more valuable.
+
+---
+
+# 60. Support plans are about business impact
+
+The cleanest mental model is:
+
+```text
+Experiment / ordinary access
+        ↓
+Basic
+
+Early development
+        ↓
+Developer
+
+Production
+        ↓
+Business
+
+Mission-critical
+        ↓
+Enterprise
+```
+
+The more severe the business consequences of failure, the stronger the support relationship becomes.
+
+---
+
+# 61. Case severity and response
+
+Page 52 introduces **case severity and response times**.
+
+You do not need to invent complex logic here.
+
+The intuitive principle is:
+
+```text
+Minor issue
+→ lower urgency
+
+Production impaired
+→ higher urgency
+
+Business-critical system down
+→ highest urgency
+```
+
+Support level and issue severity influence the support response expectations.
+
+Do not memorise random response-time numbers unless your lecturer specifically requires the exact table, because those details are precisely the sort of commercial terms that change over time.
+
+---
+
+# 62. Technical Account Manager
+
+The module identifies a **Technical Account Manager (TAM)** with **proactive guidance**. fileciteturn13file0
+
+Think of the TAM as:
+
+> A technical advisor who understands the customer's AWS environment and helps them make better decisions proactively.
+
+The word to associate is:
+
+```text
+TAM
+→ Proactive technical guidance
+```
+
+Not:
+
+```text
+TAM
+→ ordinary automated monitoring service
+```
+
+---
+
+# 63. AWS Trusted Advisor
+
+The module associates **AWS Trusted Advisor** with **best-practice guidance**. fileciteturn13file0
+
+Think of it as an AWS consultant robot examining your environment and saying:
+
+```text
+"This could be improved."
+"This resource may be inefficient."
+"This configuration has a potential issue."
+```
+
+The module's own sample exam question asks which AWS service provides infrastructure **security optimisation recommendations**, and the answer is **AWS Trusted Advisor**. fileciteturn9file2
+
+Memory:
+
+```text
+Trusted Advisor
+→ Recommendations / best practices
+```
+
+---
+
+# 64. AWS Support Concierge
+
+The module associates **AWS Support Concierge** with **account assistance**. fileciteturn13file0
+
+Think:
+
+```text
+TAM
+→ Technical guidance
+
+Trusted Advisor
+→ Best-practice recommendations
+
+Support Concierge
+→ Account assistance
+```
+
+Those three are easy to mix up if you merely memorise names.
+
+---
+
+# 65. Support trio
+
+This is worth memorising:
+
+| AWS support feature | Think |
+|---|---|
+| **TAM** | Proactive technical guidance |
+| **Trusted Advisor** | Best-practice recommendations |
+| **Support Concierge** | Account assistance |
+
+---
+
+# 66. Common exam traps
+
+### Trap 1 — Pricing Calculator shows actual spending
+
+No.
+
+```text
+Pricing Calculator → estimate
+```
+
+---
+
+### Trap 2 — Cost Explorer estimates a planned architecture
+
+Wrong tool.
+
+```text
+Pricing Calculator → planning
+Cost Explorer → analyse spending
+```
+
+---
+
+### Trap 3 — AWS Budgets automatically means spending cannot exceed the budget
+
+No. Budgets help monitor and alert against targets.
+
+---
+
+### Trap 4 — TCO means only the purchase price of hardware
+
+No.
+
+TCO includes **direct and indirect costs**.
+
+Think:
+
+```text
+Hardware
+Storage
+Networking
+Facilities
+Maintenance
+Labour
+```
+
+---
+
+### Trap 5 — A free AWS management service means all underlying infrastructure is free
+
+No.
+
+Example:
+
+```text
+Elastic Beanstalk itself
+may have no separate service charge
+
+BUT
+
+EC2 + load balancer + storage
+can still incur charges
+```
+
+---
+
+### Trap 6 — AWS Organizations and IAM do the same thing
+
+No.
+
+```text
+Organizations → multiple AWS accounts
+IAM           → identities and permissions
+```
+
+---
+
+### Trap 7 — SCP directly gives a user permission
+
+No.
+
+Think:
+
+```text
+SCP → boundary
+IAM → actual identity permissions
+```
+
+---
+
+### Trap 8 — Cost Explorer and AWS Budgets are interchangeable
+
+No.
+
+```text
+Explorer → investigate
+Budget   → monitor against target
+```
+
+---
+
+### Trap 9 — Trusted Advisor is a human support engineer
+
+No.
+
+It is an AWS service that provides recommendations.
+
+---
+
+### Trap 10 — TAM means account-billing assistant
+
+No.
+
+```text
+TAM → Technical guidance
+Concierge → Account assistance
+```
+
+---
+
+### Trap 11 — Enterprise Support is meant mainly for someone experimenting with AWS
+
+No.
+
+The module positions Enterprise for **business- and mission-critical workloads**.
+
+---
+
+### Trap 12 — Data transfer into AWS is always charged
+
+The module's simplified pricing rule says inbound transfer generally has no charge, with exceptions, while outbound transfer is commonly where charges occur. fileciteturn16file3
+
+---
+
+# 67. Exam keyword guide
+
+| Question says... | Think... |
+|---|---|
+| Estimate AWS architecture before deployment | AWS Pricing Calculator |
+| Compare AWS versus on-premises financially | TCO |
+| Direct + indirect infrastructure costs | TCO |
+| Central management of multiple AWS accounts | AWS Organizations |
+| Group AWS accounts | Organizational Unit |
+| Consolidated billing | AWS Organizations |
+| Analyse historical spending | Cost Explorer |
+| Cost trends/visualisation | Cost Explorer |
+| Spending threshold / alert | AWS Budgets |
+| Detailed usage and cost data | Cost and Usage Report |
+| Itemised charges | AWS Bills |
+| Quick billing overview | Billing Dashboard |
+| Early development | Developer Support |
+| Production workloads | Business Support |
+| Mission-critical workload | Enterprise Support |
+| Proactive technical guidance | TAM |
+| Best-practice recommendations | Trusted Advisor |
+| Account assistance | Support Concierge |
+
+---
+
+# 68. Scenario practice
+
+## Scenario A
+
+> A company has not deployed its AWS architecture yet. It wants to estimate the monthly cost of EC2, storage and databases.
+
+**Answer: AWS Pricing Calculator**
+
+Why?
+
+Because the infrastructure does not exist yet.
+
+```text
+Before deployment
+→ Pricing Calculator
+```
+
+---
+
+## Scenario B
+
+> A company is considering closing its physical data centre and wants to compare all direct and indirect costs with AWS.
+
+**Answer: Total Cost of Ownership analysis**
+
+Because it must compare:
+
+```text
+Hardware
+Storage
+Network
+Facilities
+Labour
+Maintenance
+vs
+AWS
+```
+
+---
+
+## Scenario C
+
+> A company has 40 AWS accounts and wants centralized management and consolidated billing.
+
+**Answer: AWS Organizations**
+
+The words:
+
+```text
+multiple accounts
+centralized
+consolidated billing
+```
+
+are practically holding up a neon AWS Organizations sign.
+
+---
+
+## Scenario D
+
+> Finance wants to know why AWS expenditure has increased over the last several months.
+
+**Answer: AWS Cost Explorer**
+
+Because it needs to **analyse cost trends**.
+
+---
+
+## Scenario E
+
+> Management wants an alert when spending approaches the company's monthly target.
+
+**Answer: AWS Budgets**
+
+Because:
+
+```text
+Target + warning
+→ Budget
+```
+
+---
+
+## Scenario F
+
+> The finance team wants highly detailed AWS usage and cost information for its own reporting system.
+
+**Answer: AWS Cost and Usage Report**
+
+---
+
+## Scenario G
+
+> A developer is building an early-stage application and requires additional technical support.
+
+**Answer: Developer Support**
+
+According to the support model taught by this module.
+
+---
+
+## Scenario H
+
+> A company's mission-critical system runs on AWS and requires the strongest support relationship shown in the slides.
+
+**Answer: Enterprise Support**
+
+---
+
+## Scenario I
+
+> An organisation wants proactive technical guidance from AWS.
+
+**Answer: Technical Account Manager**
+
+---
+
+## Scenario J
+
+> A company wants AWS best-practice and security optimisation recommendations.
+
+**Answer: AWS Trusted Advisor**
+
+The module even uses this in its sample examination question. fileciteturn9file2
+
+---
+
+# 69. Subjective exam answer — AWS pricing philosophy
+
+A good answer would be:
+
+> AWS follows a consumption-based pricing philosophy in which customers generally pay for the resources they use instead of purchasing large amounts of infrastructure upfront. Major cost drivers include compute, storage and data transfer. Customers may also reduce unit costs through suitable commitment or reservation models, volume-based pricing and economies of scale. This allows organisations to align infrastructure expenditure more closely with actual workload requirements.
+
+---
+
+# 70. Subjective exam answer — Total Cost of Ownership
+
+> Total Cost of Ownership is a financial estimate that considers both direct and indirect costs of operating an IT system. It can be used to compare an on-premises environment with AWS and to build a business case for cloud migration. TCO should consider not only server hardware but also storage, networking, software, administration, maintenance, physical space, power, cooling and IT labour. Therefore, comparing only the purchase price of a physical server with an AWS service price would not provide a complete cost comparison.
+
+---
+
+# 71. Subjective exam answer — AWS Organizations
+
+> AWS Organizations enables an organisation to centrally manage multiple AWS accounts. Accounts can be grouped logically and controlled using organisation-level policies. AWS Organizations also supports consolidated billing, which gives the organisation centralized visibility over charges from its member accounts. This simplifies governance, account management and financial administration for organisations that operate many AWS accounts.
+
+---
+
+# 72. Subjective exam answer — Cost-management services
+
+> AWS provides several tools for monitoring and managing cloud expenditure. The Billing Dashboard provides a billing overview, while AWS Bills shows the charges that contribute to the bill. AWS Cost Explorer is used to analyse and visualise cost and usage patterns. AWS Budgets enables organisations to establish cost or usage targets and receive notifications when thresholds are approached. The AWS Cost and Usage Report provides detailed cost and usage information for deeper analysis and reporting.
+
+---
+
+# 73. Subjective exam answer — AWS Support
+
+> AWS provides different support plans according to the customer's workload and business requirements. In the module, Basic Support provides general support resources, Developer Support is intended for early development, Business Support is intended for production workloads, and Enterprise Support is intended for business- and mission-critical workloads. AWS support capabilities also include Technical Account Managers for proactive technical guidance, AWS Trusted Advisor for best-practice recommendations, and AWS Support Concierge for account assistance. fileciteturn13file0 fileciteturn14file3
+
+---
+
+# 74. The whole chapter as one decision map
+
+```text
+"I want to understand what AWS generally charges for."
+        ↓
+Compute + Storage + Data Transfer
+
+
+"I haven't built it yet. What might AWS cost?"
+        ↓
+AWS Pricing Calculator
+
+
+"Should we move from our data centre to AWS?"
+        ↓
+Total Cost of Ownership
+
+
+"We have many AWS accounts."
+        ↓
+AWS Organizations
+
+
+"I want a quick billing overview."
+        ↓
+Billing Dashboard
+
+
+"What exactly am I being charged for?"
+        ↓
+AWS Bills
+
+
+"Why have my costs changed?"
+        ↓
+AWS Cost Explorer
+
+
+"Warn me when spending approaches my target."
+        ↓
+AWS Budgets
+
+
+"I need detailed billing and usage data."
+        ↓
+AWS Cost and Usage Report
+
+
+"I need best-practice recommendations."
+        ↓
+AWS Trusted Advisor
+
+
+"I need proactive technical guidance."
+        ↓
+Technical Account Manager
+
+
+"I need account assistance."
+        ↓
+AWS Support Concierge
+```
+
+---
+
+# 75. Five distinctions you absolutely should know
+
+### 1. Pricing Calculator vs Cost Explorer
+
+```text
+Calculator = BEFORE
+Explorer   = AFTER / DURING
+```
+
+### 2. TCO vs AWS bill
+
+```text
+TCO  = entire ownership comparison
+Bill = AWS charges
+```
+
+### 3. Organizations vs IAM
+
+```text
+Organizations = Accounts
+IAM           = Identities
+```
+
+### 4. Cost Explorer vs Budgets
+
+```text
+Explorer = Analyse
+Budgets  = Alert against targets
+```
+
+### 5. TAM vs Trusted Advisor vs Concierge
+
+```text
+TAM             = Technical guidance
+Trusted Advisor = Recommendations
+Concierge       = Account assistance
+```
+
+If those five are clear, a large proportion of Module 2 becomes considerably less annoying.
+
+---
+
+# 76. Ultra-short memory sheet
+
+```text
+AWS PRICING
+───────────
+Compute
+Storage
+Data transfer
+
+Pay for what you use
+Pay less with suitable commitment
+Volume discounts
+Economies of scale
+```
+
+```text
+TCO
+───
+TOTAL ownership cost
+
+Server
+Storage
+Network
+IT labour
+Facilities
+Power
+Cooling
+Maintenance
+
+Use:
+Compare on-premises vs AWS
+```
+
+```text
+AWS PRICING CALCULATOR
+──────────────────────
+Estimate BEFORE building
+Model monthly AWS cost
+```
+
+```text
+AWS ORGANIZATIONS
+─────────────────
+Multiple AWS accounts
+Organizational Units
+Policies
+Consolidated billing
+```
+
+```text
+COST TOOLS
+──────────
+Billing Dashboard → Overview
+Bills             → Charges
+Cost Explorer     → Analyse
+Budgets           → Threshold / alert
+Cost & Usage Report → Detailed data
+```
+
+```text
+SUPPORT
+───────
+Basic      → General resources
+Developer  → Early development
+Business   → Production
+Enterprise → Mission-critical
+```
+
+```text
+SUPPORT FEATURES
+────────────────
+TAM             → Proactive technical guidance
+Trusted Advisor → Best-practice recommendations
+Concierge       → Account assistance
+```
+
+---
+
+# Module 2 in one paragraph
+
+**AWS Cloud Economics and Billing is about matching technology usage with financial control.** AWS costs are driven mainly by compute, storage and data transfer, with a philosophy centred on paying for actual use, obtaining lower prices through suitable commitments or volume, and benefiting from economies of scale. Total Cost of Ownership compares the complete direct and indirect costs of on-premises infrastructure with AWS rather than comparing hardware prices alone. The AWS Pricing Calculator estimates costs before deployment, while billing tools such as Bills, Cost Explorer, Budgets and the Cost and Usage Report help understand and control actual spending. AWS Organizations centrally manages multiple AWS accounts and supports consolidated billing. Finally, AWS Support provides different levels of assistance according to workload criticality, while TAMs provide proactive guidance, Trusted Advisor provides best-practice recommendations and Support Concierge provides account assistance. fileciteturn15file0
+
+
+
+
+
+
+
+
+
+
+
+
+
+</details>
 
 <details>
 <summary><strong>Module 3: AWS Global Infrastructure — Intuitive Explanation</strong></summary>
@@ -9493,2239 +13938,7038 @@ AWS provides several database services because transactional, NoSQL and analytic
 
 </details>
 
+
+
 <details>
-<summary><strong>Module 3 AWS-Style Objective Test Preparation</strong></summary>
+<summary><strong>Module 1: Cloud Concepts Overview — Subjective Exam Preparation</strong></summary>
 
-# Module 3 AWS-Style Objective Test Preparation
+For a **subjective exam**, you do not need to memorise every sentence in the slides. You need to be able to **define the concept, explain why it matters, and apply it to a scenario**.
 
-Module 3 has only two formal learning objectives:
+Chapter 1 mainly tests four areas:
 
-1. Differentiate **AWS Regions, Availability Zones, and edge locations**.
-2. Identify common **AWS services and their service categories**. 
-
-The test below uses original questions, but follows AWS’s official style: either **multiple choice** with one correct answer and three plausible distractors, or **multiple response** with two or more correct answers from at least five choices. AWS deliberately makes the wrong answers sound reasonable, because apparently knowing the answer was not enough; the alternatives must also attempt psychological warfare. ([AWS Documentation][1])
-
-## What AWS questions usually look like
-
-Expect wording such as:
-
-* “Which AWS service…?”
-* “Which component BEST meets these requirements?”
-* “A company wants to… Which solution should it use?”
-* “Which statement is correct?”
-* “Select TWO.”
-
-The questions generally test service recognition and the **best fit**, not obscure configuration commands. Official AWS practice sets are specifically designed to demonstrate this exam style. ([Amazon Web Services, Inc.][2])
+1. Cloud computing concepts and models
+2. Six advantages of cloud computing
+3. AWS services and ways to interact with AWS
+4. AWS Cloud Adoption Framework (AWS CAF) 
 
 ---
 
-# Part 1: What you must know before the test
+# 1. What is cloud computing?
 
-## Infrastructure hierarchy
+The safest exam definition is:
+
+> **Cloud computing is the on-demand delivery of compute power, databases, storage, applications, and other IT resources through the internet using pay-as-you-go pricing.**
+
+The three keywords are:
+
+```text
+On-demand
+Via the internet
+Pay-as-you-go
+```
+
+### What this means
+
+Instead of a company purchasing and maintaining physical infrastructure first, it can request resources when required.
+
+For example:
+
+```text
+Traditional:
+Need server
+→ Purchase
+→ Wait
+→ Install
+→ Configure
+
+Cloud:
+Need server
+→ Provision it on demand
+```
+
+### Good subjective answer
+
+> Cloud computing enables organisations to access IT resources such as compute, storage and databases on demand through the internet. Customers normally pay according to their usage instead of purchasing all infrastructure upfront. This makes the environment more flexible because resources can be provisioned and adjusted according to changing requirements.
+
+---
+
+# 2. Infrastructure as hardware vs infrastructure as software
+
+This is one of the conceptual points from Chapter 1.
+
+## Traditional model
+
+Infrastructure is treated as **hardware**.
+
+A company must:
+
+* purchase servers;
+* provide physical space;
+* provide physical security;
+* employ staff;
+* install equipment;
+* maintain equipment;
+* estimate future capacity.
+
+## Cloud model
+
+Infrastructure can be treated more like **software**.
+
+Resources can be:
+
+* created;
+* changed;
+* removed;
+* automated;
+* provisioned through commands or APIs.
+
+### Exam explanation
+
+> In traditional computing, infrastructure is mainly physical hardware that must be purchased and maintained. Cloud computing allows infrastructure to be treated more like software because resources can be created and modified programmatically. This makes cloud infrastructure more flexible and faster to change.
+
+A useful phrase from the module is that cloud helps reduce **undifferentiated heavy lifting**—routine infrastructure work that is necessary but does not directly differentiate the business. 
+
+---
+
+# 3. Cloud service models: IaaS, PaaS and SaaS
+
+This is highly likely to appear in theory or scenario form.
+
+The important idea is:
+
+> **The difference is how much of the IT environment the customer manages.**
+
+## IaaS — Infrastructure as a Service
+
+The customer gets infrastructure and retains the most control.
+
+Think:
+
+```text
+Provider supplies infrastructure.
+Customer manages more of the system.
+```
+
+Example from later AWS modules:
+
+* Amazon EC2
+
+### Use IaaS when:
+
+* operating-system control is required;
+* custom software must be installed;
+* the customer wants greater infrastructure control.
+
+### Subjective answer
+
+> Infrastructure as a Service provides basic computing infrastructure such as virtual machines, networking and storage. The customer retains greater control over the operating system, software and configuration, while the cloud provider manages the physical infrastructure.
+
+---
+
+## PaaS — Platform as a Service
+
+The provider manages more of the underlying environment.
+
+The customer focuses mainly on:
+
+* application code;
+* application data.
+
+Example later in the course:
+
+* AWS Elastic Beanstalk
+
+### Subjective answer
+
+> Platform as a Service provides a managed platform for developing and deploying applications. The provider manages more of the underlying infrastructure and operating environment, allowing developers to focus mainly on their application and data.
+
+---
+
+## SaaS — Software as a Service
+
+The customer simply uses the finished software.
+
+The provider manages almost everything underneath.
+
+### Subjective answer
+
+> Software as a Service provides a complete application that users access without managing the underlying infrastructure or platform. The provider manages the hardware, operating system, application and supporting environment.
+
+---
+
+# 4. IaaS vs PaaS vs SaaS
+
+Remember this direction:
+
+```text
+MORE CUSTOMER CONTROL
+
+IaaS
+ ↓
+PaaS
+ ↓
+SaaS
+
+LESS CUSTOMER CONTROL
+```
+
+The reverse is also true:
+
+```text
+MORE PROVIDER MANAGEMENT
+
+SaaS
+ ↓
+PaaS
+ ↓
+IaaS
+```
+
+### Scenario example
+
+> A company wants full control over the operating system of its virtual servers.
+
+**Answer: IaaS**
+
+Because the customer wants greater infrastructure control.
+
+---
+
+> Developers only want to upload application code and do not want to manage the underlying environment.
+
+**Answer: PaaS**
+
+---
+
+> Employees simply need to use a finished application through the internet.
+
+**Answer: SaaS**
+
+---
+
+# 5. Cloud deployment models
+
+Do not confuse **service model** with **deployment model**.
+
+```text
+IaaS / PaaS / SaaS
+= How the service is managed
+
+Cloud / Hybrid / On-premises
+= Where the infrastructure is deployed
+```
+
+The module teaches three deployment models. 
+
+---
+
+## Cloud
+
+The application is deployed in a cloud environment.
+
+```text
+Organisation
+    ↓
+Cloud provider
+```
+
+The organisation does not need to own all of the underlying infrastructure.
+
+---
+
+## On-premises / private cloud
+
+Infrastructure remains within the organisation's own environment.
+
+The organisation handles more of:
+
+* hardware;
+* networking;
+* physical security;
+* maintenance.
+
+---
+
+## Hybrid
+
+Hybrid combines:
+
+```text
+On-premises
++
+Cloud
+```
+
+### Example
+
+A bank keeps some existing systems in its own data centre while deploying new web applications on AWS.
+
+### Good answer
+
+> A hybrid deployment combines cloud infrastructure with an organisation's existing on-premises infrastructure. It is useful when some workloads must remain on-premises while other workloads benefit from cloud scalability and flexibility.
+
+---
+
+# 6. The six advantages of cloud computing
+
+This is probably the **single most important memorisation area** in Chapter 1.
+
+You need to know all six and be able to explain them.
+
+The module lists: 
+
+1. Trade capital expense for variable expense
+2. Benefit from massive economies of scale
+3. Stop guessing capacity
+4. Increase speed and agility
+5. Stop spending money running and maintaining data centers
+6. Go global in minutes
+
+---
+
+# 7. Advantage 1 — Trade capital expense for variable expense
+
+## Traditional
+
+A company purchases infrastructure before using it.
+
+Example:
+
+```text
+Buy servers
+Buy storage
+Buy networking
+Build data centre
+```
+
+This requires **capital expenditure**.
+
+## Cloud
+
+The organisation uses resources and pays based on consumption.
+
+This is closer to **variable expense**.
+
+### Good exam answer
+
+> Cloud computing allows organisations to replace large upfront capital investments in data centres and hardware with variable expenses. Instead of purchasing infrastructure based on forecasts, customers can consume cloud resources and pay according to actual usage.
+
+### Scenario clue
+
+If the question says:
+
+> “The company does not want to purchase expensive servers upfront.”
+
+Think:
+
+**Trade capital expense for variable expense.**
+
+---
+
+# 8. Advantage 2 — Massive economies of scale
+
+AWS combines demand from many customers.
+
+Because AWS operates at enormous scale, it can achieve lower per-unit operating costs.
+
+### Good answer
+
+> AWS benefits from economies of scale because it operates infrastructure for a large number of customers. The combined scale allows AWS to achieve cost efficiencies that an individual organisation may not achieve on its own, and some of these savings can be passed to customers.
+
+### Scenario clue
+
+> “Why can a large cloud provider potentially offer lower unit costs than a small company running its own data centre?”
+
+**Massive economies of scale.**
+
+---
+
+# 9. Advantage 3 — Stop guessing capacity
+
+Traditional organisations have to estimate future peak demand.
+
+There are two bad possibilities.
+
+## Overestimate
+
+```text
+Capacity purchased > actual demand
+```
+
+Result:
+
+* idle infrastructure;
+* wasted money.
+
+## Underestimate
+
+```text
+Capacity purchased < actual demand
+```
+
+Result:
+
+* poor performance;
+* insufficient capacity.
+
+Cloud allows resources to scale more closely with actual demand.
+
+### Good answer
+
+> Cloud computing reduces the need to predict maximum infrastructure capacity far in advance. Organisations can increase resources when demand rises and reduce them when demand falls. This reduces both overprovisioning and underprovisioning.
+
+### Scenario clue
+
+> “Traffic changes significantly during the year.”
+
+Think:
+
+**Stop guessing capacity.**
+
+This is also exactly the idea behind the module's sample exam question: EC2 is economical for varying workloads because instances can be launched on demand. 
+
+---
+
+# 10. Advantage 4 — Increase speed and agility
+
+Traditional:
+
+```text
+Request hardware
+↓
+Approve purchase
+↓
+Order
+↓
+Deliver
+↓
+Install
+
+Potentially weeks
+```
+
+Cloud:
+
+```text
+Request resource
+↓
+Launch
+
+Potentially minutes
+```
+
+### Good answer
+
+> Cloud computing increases speed and agility because resources can be provisioned much more quickly than physical infrastructure. This allows organisations to test ideas, develop applications and respond to business changes faster.
+
+### Scenario clue
+
+> “The development team currently waits several weeks for new servers.”
+
+Think:
+
+**Increase speed and agility.**
+
+---
+
+# 11. Advantage 5 — Stop spending money running and maintaining data centers
+
+Physical data centres require:
+
+* power;
+* cooling;
+* physical security;
+* staff;
+* maintenance;
+* building space;
+* hardware replacement.
+
+AWS manages the underlying cloud infrastructure.
+
+### Good answer
+
+> Cloud computing reduces the need for organisations to operate and maintain their own physical data centres. This allows staff and financial resources to be focused more on the organisation's business and customers rather than routine infrastructure maintenance.
+
+### Scenario clue
+
+> “The company wants IT staff to focus on customers instead of server maintenance.”
+
+Think:
+
+**Stop spending money running and maintaining data centers.**
+
+---
+
+# 12. Advantage 6 — Go global in minutes
+
+AWS has infrastructure in multiple geographic locations.
+
+A company can deploy resources closer to users in different parts of the world without constructing its own international data centres.
+
+### Good answer
+
+> AWS enables organisations to deploy applications in multiple geographic locations relatively quickly. This allows businesses to reach users around the world and place resources closer to customers without building their own global infrastructure.
+
+### Scenario clue
+
+> “A company wants to expand its application from Malaysia to Europe and the United States quickly.”
+
+Think:
+
+**Go global in minutes.**
+
+---
+
+# 13. Six advantages — rapid memory method
+
+Learn this:
+
+```text
+MONEY
+SCALE
+CAPACITY
+SPEED
+DATA CENTER
+GLOBAL
+```
+
+Then expand:
+
+| Keyword     | Advantage                    |
+| ----------- | ---------------------------- |
+| Money       | CapEx → variable expense     |
+| Scale       | Economies of scale           |
+| Capacity    | Stop guessing capacity       |
+| Speed       | Speed and agility            |
+| Data center | Stop maintaining it yourself |
+| Global      | Go global in minutes         |
+
+---
+
+# 14. What is AWS?
+
+The module describes AWS as a secure cloud platform offering a broad set of global cloud-based products called **services**. 
+
+AWS provides on-demand access to things such as:
+
+* compute;
+* storage;
+* databases;
+* networking;
+* security;
+* management tools.
+
+The important idea:
+
+> **AWS services work together like building blocks.**
+
+---
+
+# 15. AWS service categories
+
+For Chapter 1, don't waste time trying to memorise every icon on page 25.
+
+Know the major categories that appear throughout the course:
+
+| Category        | Examples                  |
+| --------------- | ------------------------- |
+| Compute         | EC2, Lambda               |
+| Storage         | S3, EBS, EFS              |
+| Database        | RDS, DynamoDB             |
+| Networking      | VPC, Route 53, CloudFront |
+| Security        | IAM, KMS, Shield          |
+| Management      | CloudWatch, CloudTrail    |
+| Cost Management | Budgets, Cost Explorer    |
+
+Chapter 1's point is simply:
+
+> AWS offers many services, and the correct service depends on the organisation's **business goals and technology requirements**.
+
+---
+
+# 16. Simple AWS solution architecture
+
+The module provides an example using:
+
+```text
+Users
+ ↓
+Amazon VPC
+ ↓
+Amazon EC2
+ ├── Amazon DynamoDB
+ └── Amazon S3
+```
+
+Interpret it like this:
+
+```text
+VPC      → Networking
+EC2      → Compute
+DynamoDB → Database
+S3       → Storage
+```
+
+A subjective question might ask you to explain why AWS uses several services together.
+
+Good answer:
+
+> AWS services are designed as building blocks. An application can combine networking, compute, database and storage services according to its requirements rather than relying on one service to perform every task.
+
+---
+
+# 17. Three ways to interact with AWS
+
+You must know these three:
+
+```text
+Management Console
+AWS CLI
+AWS SDK
+```
+
+---
+
+## AWS Management Console
+
+A graphical browser interface.
+
+Think:
+
+> **Click**
+
+### Answer
+
+> The AWS Management Console provides a graphical user interface that enables users to access and manage AWS services through a web browser.
+
+---
+
+## AWS CLI
+
+Command Line Interface.
+
+Think:
+
+> **Commands and scripts**
+
+### Answer
+
+> The AWS CLI enables users to interact with AWS services using commands and scripts, making it useful for automation and repeatable administrative tasks.
+
+---
+
+## AWS SDK
+
+Software Development Kit.
+
+Think:
+
+> **Application code**
+
+### Answer
+
+> AWS SDKs allow developers to access AWS services directly from programming languages such as Python or Java. They are useful when an application needs to interact programmatically with AWS resources.
+
+---
+
+# 18. Console vs CLI vs SDK
+
+```text
+Console → Click
+CLI     → Command
+SDK     → Code
+```
+
+Possible subjective scenario:
+
+> “A company needs to automatically create AWS resources through a shell script.”
+
+**CLI**
+
+> “A Python application must upload files automatically to S3.”
+
+**SDK**
+
+> “A beginner wants to configure AWS using a graphical interface.”
+
+**Management Console**
+
+---
+
+# 19. AWS Cloud Adoption Framework
+
+This section tends to look worse than it actually is.
+
+The important question is:
+
+> **What does an organisation need to think about before and during cloud adoption?**
+
+AWS CAF provides guidance and best practices to help organisations develop a structured approach to cloud adoption. 
+
+The module uses six perspectives:
+
+```text
+Business
+People
+Governance
+Platform
+Security
+Operations
+```
+
+---
+
+# 20. Two groups of AWS CAF perspectives
+
+The module groups them like this:
+
+## Business capabilities
+
+```text
+Business
+People
+Governance
+```
+
+## Technical capabilities
+
+```text
+Platform
+Security
+Operations
+```
+
+This division is worth remembering.
+
+---
+
+# 21. Business perspective
+
+Main question:
+
+> **Why are we moving to the cloud, and does it create business value?**
+
+Focuses on:
+
+* IT finance;
+* IT strategy;
+* benefits realization;
+* business risk management.
+
+Stakeholders include:
+
+* business managers;
+* finance managers;
+* budget owners;
+* strategy stakeholders.
+
+### Scenario
+
+> “Management wants to ensure AWS investment produces measurable business benefits.”
+
+**Business perspective**
+
+### Good answer
+
+> The Business perspective ensures that IT strategy and cloud investments align with business needs and produce measurable business outcomes. It focuses on areas such as IT finance, strategy, benefits realization and business risk.
+
+---
+
+# 22. People perspective
+
+Main question:
+
+> **Do our employees have the skills and organisational support to adopt cloud?**
+
+Focuses on:
+
+* staffing;
+* training;
+* career management;
+* incentives;
+* organisational change.
+
+Stakeholders include:
+
+* HR;
+* staffing managers;
+* people managers.
+
+### Scenario
+
+> “Employees require cloud training and new roles before migration.”
+
+**People perspective**
+
+### Good answer
+
+> The People perspective focuses on organisational skills, staffing, training and change management. Its purpose is to prepare employees and organisational structures for successful cloud adoption.
+
+---
+
+# 23. Governance perspective
+
+Main question:
+
+> **How do we control, measure and align the cloud programme with organisational goals?**
+
+Focuses on:
+
+* portfolio management;
+* project and programme management;
+* business performance measurement;
+* licence management.
+
+Stakeholders include:
+
+* CIO;
+* programme managers;
+* enterprise architects;
+* business analysts;
+* portfolio managers.
+
+### Scenario
+
+> “Management wants cloud projects to follow company strategy and be properly measured.”
+
+**Governance**
+
+### Good answer
+
+> The Governance perspective ensures that cloud initiatives, IT strategy and business goals remain aligned. It includes programme management, portfolio management, performance measurement and licence management to maximise business value and reduce business risk.
+
+---
+
+# 24. Platform perspective
+
+Main question:
+
+> **What technical architecture should we build?**
+
+Focuses on:
+
+* compute;
+* networking;
+* storage;
+* databases;
+* architecture;
+* application development.
+
+Stakeholders:
+
+* CTO;
+* IT managers;
+* solutions architects.
+
+### Scenario
+
+> “The organisation is deciding how EC2, networking, databases and storage should be designed.”
+
+**Platform perspective**
+
+### Good answer
+
+> The Platform perspective focuses on designing and implementing the target cloud architecture. It includes compute, network, storage and database provisioning as well as systems architecture and application development.
+
+---
+
+# 25. Security perspective
+
+Main question:
+
+> **How will we protect the cloud environment?**
+
+Focuses on:
+
+* identity and access management;
+* detective controls;
+* infrastructure security;
+* data protection;
+* incident response.
+
+Stakeholders:
+
+* CISO;
+* security managers;
+* security analysts.
+
+### Scenario
+
+> “The company needs access controls and an incident-response process.”
+
+**Security perspective**
+
+### Good answer
+
+> The Security perspective ensures that the organisation meets its security objectives. It focuses on identity and access management, infrastructure security, data protection, detection and incident response.
+
+---
+
+# 26. Operations perspective
+
+Main question:
+
+> **How will we run the cloud environment every day?**
+
+Focuses on:
+
+* service monitoring;
+* application performance;
+* inventory;
+* release/change management;
+* reporting;
+* business continuity;
+* disaster recovery;
+* service catalogue.
+
+Stakeholders:
+
+* IT operations managers;
+* support managers.
+
+### Scenario
+
+> “The organisation needs monitoring, change management and disaster recovery.”
+
+**Operations perspective**
+
+### Good answer
+
+> The Operations perspective focuses on the ongoing operation and support of cloud workloads. It includes monitoring, change management, resource management, reporting, business continuity and disaster recovery.
+
+---
+
+# 27. The easiest AWS CAF memory method
+
+Do not try to memorise the long capability lists first.
+
+Remember these six questions:
+
+```text
+BUSINESS
+Why are we doing it?
+
+PEOPLE
+Who needs skills and change?
+
+GOVERNANCE
+What rules and oversight are needed?
+
+PLATFORM
+What will we build?
+
+SECURITY
+How will we protect it?
+
+OPERATIONS
+How will we run it?
+```
+
+Then add detail if the question requires it.
+
+---
+
+# 28. CAF scenario table
+
+| Scenario                                        | CAF perspective |
+| ----------------------------------------------- | --------------- |
+| Cost, value and business strategy               | Business        |
+| Training and staffing                           | People          |
+| Policies, projects and organisational oversight | Governance      |
+| Compute/network/storage/database design         | Platform        |
+| Access control and data protection              | Security        |
+| Monitoring and disaster recovery                | Operations      |
+
+---
+
+# 29. Likely subjective question: “Explain the benefits of cloud computing.”
+
+A strong answer:
+
+> Cloud computing provides several advantages over traditional computing. First, organisations can trade large capital expenditure for variable expense by paying for resources according to usage. Second, cloud providers can achieve economies of scale. Third, organisations do not need to predict maximum capacity far in advance because resources can scale according to demand. Fourth, resources can be provisioned quickly, improving speed and agility. Fifth, organisations can reduce the burden of operating and maintaining physical data centres. Finally, cloud infrastructure enables organisations to deploy resources globally more quickly.
+
+That is enough for a good full-mark theoretical answer if supported by relevant scenario examples.
+
+---
+
+# 30. Likely subjective question: “Differentiate IaaS, PaaS and SaaS.”
+
+Answer in comparison form:
+
+> IaaS provides fundamental infrastructure such as virtual machines and gives customers the greatest control over the operating system and configuration. PaaS provides a managed application platform so developers can focus more on application code while the provider manages more of the infrastructure. SaaS provides a complete software application that users consume without managing the underlying platform or infrastructure. Therefore, customer control generally decreases from IaaS to PaaS to SaaS.
+
+---
+
+# 31. Likely subjective question: “Explain hybrid cloud.”
+
+> A hybrid deployment combines cloud infrastructure with an organisation's on-premises environment. Some applications or data remain on-premises while other workloads use cloud services. This approach can be useful when an organisation must retain certain existing or sensitive systems locally while benefiting from cloud scalability, flexibility and other cloud services.
+
+---
+
+# 32. Likely subjective question: “Explain AWS CAF.”
+
+A concise full answer:
+
+> The AWS Cloud Adoption Framework provides guidance and best practices that help organisations prepare for successful cloud adoption. It recognises that cloud adoption affects the whole organisation rather than only the IT department. In the module, AWS CAF consists of six perspectives: Business, People, Governance, Platform, Security and Operations. Business, People and Governance focus mainly on business capabilities, while Platform, Security and Operations focus mainly on technical capabilities.
+
+Then explain each perspective briefly if more marks are available.
+
+---
+
+# 33. How to answer a scenario question
+
+Do not just define the concept.
+
+Use this structure:
+
+**1. Identify the concept.**
+**2. Explain what it means.**
+**3. Connect it directly to the scenario.**
+
+Example:
+
+> A retailer experiences very high traffic only during holiday sales. Explain one advantage of cloud computing.
+
+Weak answer:
+
+> Cloud computing has elasticity.
+
+Better answer:
+
+> One relevant advantage is that the organisation can stop guessing capacity. In a traditional environment, the retailer might purchase enough servers for peak holiday traffic even though those servers would remain underused during the rest of the year. With cloud computing, resources can be increased when holiday demand rises and reduced afterward, which helps reduce overprovisioning and unnecessary cost.
+
+That **last sentence connecting to the scenario** is what often separates a decent subjective answer from somebody vomiting a definition onto the page and hoping the examiner is feeling charitable.
+
+---
+
+# 34. Common mistakes to avoid
+
+**Cloud ≠ free.** It is generally based on consumption.
+
+**Hybrid ≠ two cloud services.** It means cloud + on-premises.
+
+**IaaS/PaaS/SaaS ≠ deployment models.**
+
+**“Stop guessing capacity” ≠ no capacity planning whatsoever.** It means capacity can adjust more dynamically.
+
+**AWS CAF ≠ only technical architecture.** Half of its perspectives in this module are business-focused.
+
+**Platform ≠ Operations.**
+
+```text
+Platform → design/build
+Operations → run/manage
+```
+
+**Business ≠ Governance.**
+
+```text
+Business → value and strategy
+Governance → oversight and alignment
+```
+
+---
+
+# 35. What I would prioritise before the exam
+
+If you are short on time, know these extremely well:
+
+```text
+1. Cloud definition:
+   On-demand + internet + pay-as-you-go
+
+2. IaaS vs PaaS vs SaaS
+
+3. Cloud vs Hybrid vs On-premises
+
+4. Six cloud advantages
+
+5. Console vs CLI vs SDK
+
+6. AWS CAF:
+   Business
+   People
+   Governance
+   Platform
+   Security
+   Operations
+```
+
+Those six areas cover most of the meaningful theoretical content in Chapter 1. 
+
+---
+
+# Final 2-minute revision
+
+```text
+CLOUD COMPUTING
+On-demand IT resources
++ Internet
++ Pay-as-you-go
+```
+
+```text
+SERVICE MODELS
+IaaS → Infrastructure / most control
+PaaS → Platform / focus on application
+SaaS → Finished software / least control
+```
+
+```text
+DEPLOYMENT
+Cloud
+Hybrid = Cloud + On-premises
+On-premises/private
+```
+
+```text
+6 ADVANTAGES
+1. CapEx → Variable expense
+2. Economies of scale
+3. Stop guessing capacity
+4. Speed and agility
+5. Stop maintaining data centers
+6. Go global in minutes
+```
+
+```text
+AWS ACCESS
+Console → Click
+CLI → Command
+SDK → Code
+```
+
+```text
+CAF
+Business   → Value
+People     → Skills
+Governance → Rules
+Platform   → Build
+Security   → Protect
+Operations → Run
+```
+
+For a subjective paper, the most important skill is **not memorising longer definitions**. It is being able to see a scenario and recognise which of those concepts explains it, then give a two- or three-sentence justification.
+
+
+</details>
+
+
+
+<details>
+<summary><strong>Module 2: Cloud Economics and Billing — Subjective Exam Preparation</strong></summary>
+
+For a **subjective exam**, Module 2 is less about calculating random AWS prices and more about explaining **how AWS pricing works, how companies compare AWS with on-premises infrastructure, and which AWS tools solve different cost-management problems**.
+
+The module itself expects you to understand five areas: **fundamentals of pricing, Total Cost of Ownership, AWS Organizations, AWS Billing and Cost Management, and AWS Technical Support.** 
+
+The easiest way to think about the entire chapter is:
+
+```text
+How does AWS charge me?
+        ↓
+Would AWS actually be cheaper than owning infrastructure?
+        ↓
+What might my AWS architecture cost?
+        ↓
+How do I manage costs across many AWS accounts?
+        ↓
+How do I monitor the bill?
+        ↓
+What support do I get if something goes wrong?
+```
+
+---
+
+# 1. AWS pricing philosophy
+
+The first thing you should understand is that AWS does **not** have one universal price.
+
+Its pricing depends on the resources you actually consume.
+
+The module gives three fundamental AWS cost drivers:
+
+```text
+Compute
+Storage
+Data transfer
+```
+
+For compute, cost generally depends on things such as how long the resource runs and the type of compute resource. Storage is typically charged according to the amount stored, while data transfer commonly becomes chargeable when data is transferred outbound. The module states that inbound data transfer generally has no charge, with exceptions. 
+
+### Intuitive example
+
+Imagine you operate an online shop.
+
+Your AWS bill might consist of:
+
+```text
+EC2 servers running
+       ↓
+COMPUTE COST
+
+Images and files stored
+       ↓
+STORAGE COST
+
+Customers downloading content
+       ↓
+DATA TRANSFER COST
+```
+
+So if the examiner asks:
+
+> “What are the fundamental drivers of AWS cost?”
+
+Your answer should be:
+
+> The three fundamental cost drivers are compute, storage and data transfer. Compute cost depends on the computing resources and duration used, storage is normally based on the amount of data stored, and outbound data transfer may incur charges depending on the service and destination.
+
+---
+
+# 2. The three AWS pricing ideas
+
+The module presents three basic ways customers can reduce or control cost:
+
+```text
+Pay for what you use
+Pay less when you reserve
+Pay less when you use more
+```
+
+
+
+These are important because they explain the **AWS pricing philosophy**, rather than just one particular service.
+
+---
+
+# 3. Pay for what you use
+
+The idea is simple:
+
+> You pay for services that you consume instead of purchasing a large amount of infrastructure upfront.
+
+### Traditional model
+
+A company predicts that it might need 20 servers.
+
+So it buys:
+
+```text
+20 physical servers
+↓
+Pay now
+↓
+Use them later
+```
+
+Even if only 8 are normally needed, the company already owns all 20.
+
+### AWS model
+
+The company can consume resources according to actual requirements.
+
+```text
+Need more → use more
+Need less → use less
+```
+
+The module describes this as paying only for services consumed without large upfront expenses. 
+
+### Good subjective answer
+
+> AWS follows a consumption-based pricing approach where customers pay for the resources they use rather than making large upfront infrastructure purchases. This helps organisations align expenditure more closely with actual workload requirements and reduce the cost of unused capacity.
+
+---
+
+# 4. Pay less when you reserve
+
+The second idea is:
+
+> If the customer can commit to predictable usage, AWS may provide discounted pricing.
+
+The module explains this using **Reserved Instances** and gives three payment approaches:
+
+| Payment option in the module      | General idea     |
+| --------------------------------- | ---------------- |
+| No Upfront Reserved Instance      | Smaller discount |
+| Partial Upfront Reserved Instance | Larger discount  |
+| All Upfront Reserved Instance     | Largest discount |
+
+The slide states that Reserved Instances could provide savings of up to 75% in the pricing material used for this course. 
+
+The intuitive reason is commitment.
+
+```text
+No commitment
+→ Greater flexibility
+→ Usually higher unit price
+
+Longer commitment
+→ More predictable usage
+→ Potential discount
+```
+
+### Scenario
+
+> A company knows that a server will be required continuously for several years.
+
+A reservation can make more sense than repeatedly paying flexible On-Demand pricing.
+
+### Good subjective answer
+
+> AWS customers can reduce costs when they commit to predictable resource usage. Reserved pricing provides lower rates in exchange for a longer commitment, and the module shows that a greater upfront payment generally provides a larger discount.
+
+Do **not** write:
+
+> “Reserved is always cheaper therefore always use Reserved.”
+
+If the workload disappears after two months, congratulations, you obtained a discount on something you no longer need.
+
+---
+
+# 5. Pay less by using more
+
+AWS can also provide **volume-based or tiered pricing**.
+
+The module gives S3, EBS and EFS as examples where increasing usage can reduce the cost **per GB** under relevant tiered pricing structures. 
+
+Important distinction:
+
+```text
+Use more
+→ Price PER UNIT may decrease
+
+Does NOT mean
+→ Total bill must decrease
+```
+
+If you store 100 TB instead of 1 GB, your bill will not magically collapse out of gratitude.
+
+### Good answer
+
+> Some AWS services use tiered pricing, where the unit cost may decrease as the customer's usage increases. This creates volume-based savings while allowing customers to choose services and storage options appropriate to their requirements.
+
+---
+
+# 6. Economies of scale
+
+The module also explains that AWS's enormous combined customer usage allows it to achieve **economies of scale**.
+
+Meaning:
+
+```text
+AWS operates at enormous scale
+↓
+AWS can lower its own unit operating costs
+↓
+Some savings can be passed to customers
+```
+
+The slide contains historical examples of AWS price reductions, but for a subjective answer, the concept is much more important than memorising an old count of price changes. 
+
+### Good answer
+
+> AWS benefits from economies of scale because it operates infrastructure for many customers at very large scale. This enables AWS to achieve efficiencies that individual organisations may not achieve independently and potentially pass some of those savings to customers.
+
+---
+
+# 7. Free AWS service does not mean a free architecture
+
+The module gives examples of services that have no separate charge in the teaching material, including IAM, Amazon VPC, Auto Scaling, CloudFormation and Elastic Beanstalk. However, it explicitly warns that **other AWS services used with them can still incur charges**. 
+
+For example:
+
+```text
+Elastic Beanstalk
+→ No separate Beanstalk service charge in the module
+
+But it may provision:
+EC2
+Load balancer
+Storage
+etc.
+
+Those resources
+→ Can still cost money
+```
+
+This is a classic exam trap.
+
+### Subjective answer
+
+> Some AWS services do not have a separate service charge, but resources that those services create or use may still incur charges. Therefore, the absence of a direct service fee does not mean the complete architecture is free.
+
+---
+
+# 8. AWS Free Tier
+
+The 2022 module describes AWS Free Tier as allowing new customers to gain hands-on experience with eligible AWS services under limited free usage. 
+
+For the exam, understand the **concept**:
+
+```text
+Free Tier
+≠
+Every AWS service is unlimited and free
+```
+
+It only applies within eligible conditions and limits defined by the course material.
+
+---
+
+# 9. What is Total Cost of Ownership?
+
+This is probably the biggest theoretical idea in Module 2 after pricing.
+
+**Total Cost of Ownership, or TCO, is a financial estimate used to identify both the direct and indirect costs of a system.**
+
+The module says TCO is useful for comparing on-premises infrastructure with AWS and for building the financial business case for moving to the cloud. 
+
+The keyword is:
+
+> **TOTAL**
+
+---
+
+# 10. Why simply comparing server prices is wrong
+
+Imagine:
+
+```text
+Physical server = RM20,000
+AWS compute = RM15,000
+```
+
+Can you immediately conclude AWS is RM5,000 cheaper?
+
+No.
+
+The physical server also requires things like:
+
+```text
+Networking
+Storage
+Software licences
+Administrators
+Building space
+Power
+Cooling
+Maintenance
+```
+
+TCO exists because pretending electricity and IT staff are free makes for wonderfully optimistic accounting.
+
+---
+
+# 11. Four major TCO categories
+
+The module groups TCO considerations into four major categories. 
+
+| Category            | Examples from the module                                                    |
+| ------------------- | --------------------------------------------------------------------------- |
+| **Server costs**    | Servers, racks, PDUs, switches, OS and virtualisation licences, maintenance |
+| **Storage costs**   | Storage disks, SAN/FC equipment, storage administration                     |
+| **Network costs**   | LAN switches, load balancers, bandwidth, network administration             |
+| **IT labour costs** | Server, storage and network administration                                  |
+
+And across the infrastructure there are also **facility costs** such as:
+
+```text
+Space
+Power
+Cooling
+```
+
+So a good mental model is:
+
+```text
+TCO
+=
+Hardware
++ Software
++ Storage
++ Networking
++ Administration
++ Facilities
++ Maintenance
+```
+
+---
+
+# 12. Subjective answer — TCO
+
+> Total Cost of Ownership is a financial estimate that considers both the direct and indirect costs of operating an IT system. It can be used to compare an on-premises environment with AWS and to build a business case for cloud migration. A complete TCO analysis should consider server hardware, software licences, storage, networking, IT administration, maintenance, physical space, power and cooling rather than comparing only the purchase price of servers.
+
+That is a strong exam answer.
+
+---
+
+# 13. Hard benefits and soft benefits
+
+The module also distinguishes **hard benefits** from **soft benefits** when considering a move to AWS. 
+
+Hard benefits are easier to quantify financially, such as reduced spending on compute, storage, networking, hardware, software, operations, backup and disaster recovery.
+
+Soft benefits are less directly measured in RM or dollars but may still be valuable, such as:
+
+```text
+Higher developer productivity
+Improved customer satisfaction
+Greater business agility
+Faster response to opportunities
+Greater global reach
+```
+
+### Exam distinction
+
+```text
+Hard benefit
+→ directly measurable financial saving
+
+Soft benefit
+→ operational/business improvement
+```
+
+---
+
+# 14. TCO does NOT prove AWS is always cheaper
+
+The module gives an illustrative case where moving to AWS produced very large savings.
+
+Do not turn that into:
+
+> “AWS always saves 96%.”
+
+That would be spectacularly bad reasoning.
+
+TCO is used to **compare the specific alternatives**.
+
+A better answer is:
+
+> TCO helps an organisation identify whether cloud migration is financially attractive by comparing all relevant direct and indirect costs. The result depends on the organisation's workload, infrastructure and operating model.
+
+---
+
+# 15. AWS Pricing Calculator
+
+The next concept is much easier.
+
+The **AWS Pricing Calculator** is used **before deploying an architecture** to estimate its AWS cost.
+
+According to the module, it can be used to estimate monthly costs, model solutions before building them, explore the calculations behind an estimate, compare available instance types or contract terms, and organise services into estimate groups. 
+
+Memory:
+
+```text
+Pricing Calculator
+=
+"What MIGHT this cost?"
+```
+
+---
+
+# 16. Pricing Calculator vs TCO
+
+These are related but not interchangeable.
+
+| Tool/concept               | Question it answers                                                              |
+| -------------------------- | -------------------------------------------------------------------------------- |
+| **AWS Pricing Calculator** | What might this AWS solution cost?                                               |
+| **TCO**                    | How does the complete cost of AWS compare with alternatives such as on-premises? |
+
+### Scenario A
+
+> “We have not built the application yet and want to estimate its monthly EC2 and storage cost.”
+
+**AWS Pricing Calculator**
+
+### Scenario B
+
+> “Should we close our physical data centre and move to AWS?”
+
+**TCO analysis**
+
+---
+
+# 17. Pricing Calculator is an estimate, not the invoice
+
+Suppose your estimate says:
+
+```text
+Estimated monthly cost = $500
+```
+
+But after deployment:
+
+```text
+You use more compute
+You store more data
+You transfer more data
+```
+
+Then:
+
+```text
+Actual bill ≠ necessarily $500
+```
+
+The calculator works from the assumptions you enter.
+
+### Good answer
+
+> The AWS Pricing Calculator provides an estimated cost based on the selected AWS services and expected usage. It is useful for planning before deployment, but actual charges may differ if the real workload or resource usage differs from the assumptions in the estimate.
+
+---
+
+# 18. AWS Organizations
+
+Now imagine a large company has:
+
+```text
+Production AWS account
+Development AWS account
+Finance AWS account
+HR AWS account
+Security AWS account
+```
+
+Managing all of them independently becomes messy.
+
+**AWS Organizations** lets the company centrally organise and manage multiple AWS accounts.
+
+The module highlights four benefits:
+
+```text
+Policy-based account management
+Group-based account management
+APIs for automated account management
+Consolidated billing
+```
+
+
+
+---
+
+# 19. Organization, Root and Organizational Units
+
+The page 32 diagram shows AWS Organizations as a hierarchy:
+
+```text
+Organization
+     ↓
+    Root
+     ↓
+Organizational Units (OUs)
+     ↓
+AWS accounts
+```
+
+An **OU** is a logical group of accounts.
+
+For example:
+
+```text
+Organization
+├── Production OU
+│   ├── Website account
+│   └── Database account
+│
+└── Development OU
+    ├── Dev account
+    └── Test account
+```
+
+This allows the company to apply organisational controls to groups of accounts instead of manually managing every account separately.
+
+---
+
+# 20. Consolidated billing
+
+This is a major economic benefit of AWS Organizations.
+
+Without consolidated billing:
+
+```text
+Account A → Separate bill
+Account B → Separate bill
+Account C → Separate bill
+```
+
+With AWS Organizations:
+
+```text
+Account A ┐
+Account B ├→ Central billing view
+Account C ┘
+```
+
+### Good subjective answer
+
+> AWS Organizations enables organisations to centrally manage multiple AWS accounts and provides consolidated billing. This simplifies financial management because charges from member accounts can be viewed centrally while the organisation can still maintain separate accounts for different teams or workloads.
+
+---
+
+# 21. AWS Organizations and SCPs
+
+The module shows **Service Control Policies (SCPs)** as a mechanism used to control access to AWS services for accounts or groups of accounts within OUs. 
+
+The setup shown in the module is:
+
+```text
+Create Organization
+↓
+Create Organizational Units
+↓
+Create Service Control Policies
+↓
+Test restrictions
+```
+
+
+
+For Module 2, the important idea is:
+
+> AWS Organizations can be used not only for consolidated billing, but also for central account governance.
+
+---
+
+# 22. AWS Organizations vs IAM
+
+A simple distinction:
+
+```text
+AWS Organizations
+→ Manage multiple AWS accounts
+
+IAM
+→ Manage users, groups, roles and permissions
+```
+
+Do not write that Organizations replaces IAM.
+
+It doesn't.
+
+---
+
+# 23. AWS Billing and Cost Management
+
+Once an application is actually running, the question changes from:
+
+> “What might this cost?”
+
+to:
+
+> “What are we actually spending?”
+
+This section introduces the **Billing Dashboard, Bills, Cost Explorer, AWS Budgets, and Cost and Usage Report**. 
+
+The easiest memory model is:
+
+| Tool                  | Think                |
+| --------------------- | -------------------- |
+| Billing Dashboard     | Overview             |
+| Bills                 | Charges              |
+| Cost Explorer         | Analyse              |
+| AWS Budgets           | Track against target |
+| Cost and Usage Report | Detailed records     |
+
+---
+
+# 24. Billing Dashboard
+
+The dashboard shown on page 40 includes a **spend summary**, **month-to-date spending by service**, and a **forecast**.
+
+Think:
+
+```text
+Billing Dashboard
+=
+"Give me the financial overview."
+```
+
+It helps you quickly understand things such as:
+
+```text
+How much have we spent?
+Which services are costing money?
+What is the expected total?
+```
+
+---
+
+# 25. AWS Bills
+
+The monthly Bills page shows the charges contributing to the bill.
+
+Think of your telephone bill.
+
+```text
+Total = RM300
+```
+
+You then want to know:
+
+> “Where did RM300 come from?”
+
+Bills gives the breakdown.
+
+### Scenario
+
+> “The finance manager wants to inspect the individual AWS service charges for the month.”
+
+Think:
+
+**AWS Bills**
+
+---
+
+# 26. AWS Cost Explorer
+
+The module's Cost Explorer page shows historical monthly costs broken down by service.
+
+Think:
+
+> **Analyse cost patterns.**
+
+For example:
+
+```text
+August:    $1,500
+September: $2,100
+October:   $2,050
+```
+
+Then:
+
+> “Why did September cost more?”
+
+Cost Explorer helps investigate that.
+
+### Good answer
+
+> AWS Cost Explorer helps organisations analyse AWS cost and usage patterns. It provides visualisation of spending over time and can break costs down by categories such as AWS service, making it useful for identifying trends and understanding where expenditure is occurring.
+
+---
+
+# 27. AWS Budgets
+
+The page titled **Forecast and track costs** shows budget values together with:
+
+```text
+Current spending
+Forecasted spending
+Budgeted amount
+```
+
+So the memory is:
+
+```text
+AWS Budgets
+=
+"Are we within the target?"
+```
+
+### Scenario
+
+> “Management wants to monitor a monthly AWS target of $1,000.”
+
+Think:
+
+**AWS Budgets**
+
+A very important trap:
+
+> A budget is not the same thing as a magical wall that makes AWS unable to charge above the number.
+
+Its role in this module is to **track and monitor spending against budgets**.
+
+---
+
+# 28. Cost and Usage Report
+
+The module's reporting page shows very detailed line-item information such as:
+
+```text
+Product code
+Usage type
+Operation
+Availability Zone
+Usage amount
+Currency
+Line-item description
+```
+
+Think:
+
+```text
+Cost and Usage Report
+=
+"Give me the detailed data."
+```
+
+This is suitable for deeper analysis or organisational reporting.
+
+---
+
+# 29. The five billing tools as one story
+
+Suppose management asks five different questions.
+
+| Question                          | Tool                  |
+| --------------------------------- | --------------------- |
+| “Give me a quick overview.”       | Billing Dashboard     |
+| “What did AWS charge us for?”     | Bills                 |
+| “Why has cost changed over time?” | Cost Explorer         |
+| “Are we approaching our target?”  | AWS Budgets           |
+| “Give us detailed usage records.” | Cost and Usage Report |
+
+That table is far more useful than memorising five disconnected definitions.
+
+---
+
+# 30. Pricing Calculator vs Billing tools
+
+Another useful timeline:
+
+```text
+BEFORE BUILDING
+AWS Pricing Calculator
+→ Estimate
+
+AFTER / DURING USAGE
+Billing Dashboard
+Bills
+Cost Explorer
+Budgets
+Cost and Usage Report
+→ Monitor and analyse
+```
+
+This distinction is highly exam-worthy.
+
+---
+
+# 31. AWS Technical Support
+
+The final section explains that different customers require different support levels.
+
+Someone experimenting with AWS does not require the same support as a company whose entire payment system is down.
+
+The module teaches four support plans:
+
+| Support plan   | Intended use in the module               |
+| -------------- | ---------------------------------------- |
+| **Basic**      | General AWS resources                    |
+| **Developer**  | Early development                        |
+| **Business**   | Production workloads                     |
+| **Enterprise** | Business- and mission-critical workloads |
+
+
+
+For your exam, learn **this 2022 module's classification**.
+
+---
+
+# 32. Basic Support
+
+The module associates Basic Support with resources such as:
+
+```text
+Resource Center
+Service Health Dashboard
+Product FAQs
+Discussion forums
+Health-check support
+```
+
+Think:
+
+```text
+Basic
+→ General support resources
+```
+
+---
+
+# 33. Developer Support
+
+The module describes Developer Support as:
+
+> **Support for early development on AWS.**
+
+Scenario:
+
+> “A small development team is building its first AWS application.”
+
+Think:
+
+**Developer Support**
+
+---
+
+# 34. Business Support
+
+Business Support is aimed at customers running:
+
+> **Production workloads.**
+
+Scenario:
+
+> “An ecommerce website is live and real customers depend on it.”
+
+Think:
+
+**Business Support**
+
+---
+
+# 35. Enterprise Support
+
+Enterprise Support is aimed at:
+
+> **Business- and mission-critical workloads.**
+
+Scenario:
+
+> “Failure of the AWS workload would significantly disrupt the company's core business.”
+
+Think:
+
+**Enterprise Support**
+
+---
+
+# 36. Support response times in the module
+
+If your lecturer expects the exact table, the 2022 module shows:
+
+| Plan       |        Critical |          Urgent |            High |          Normal |             Low |
+| ---------- | --------------: | --------------: | --------------: | --------------: | --------------: |
+| Basic      | No case support | No case support | No case support | No case support | No case support |
+| Developer  |               — |               — |               — |       ≤12 hours |       ≤24 hours |
+| Business   |               — |         ≤1 hour |        ≤4 hours |       ≤12 hours |       ≤24 hours |
+| Enterprise |         ≤15 min |         ≤1 hour |        ≤4 hours |       ≤12 hours |       ≤24 hours |
+
+I would treat this as **lower priority than understanding which support plan fits which scenario**, unless your lecturer specifically likes asking exact response-time tables.
+
+---
+
+# 37. TAM, Trusted Advisor and Support Concierge
+
+These three are easy to mix up.
+
+The module defines them as: 
+
+| Feature                             | Main purpose       |
+| ----------------------------------- | ------------------ |
+| **Technical Account Manager (TAM)** | Proactive guidance |
+| **AWS Trusted Advisor**             | Best practices     |
+| **AWS Support Concierge**           | Account assistance |
+
+Memory:
+
+```text
+TAM
+→ Technical guidance
+
+Trusted Advisor
+→ Recommendations
+
+Concierge
+→ Account assistance
+```
+
+---
+
+# 38. Likely subjective question — Explain AWS pricing philosophy
+
+A strong answer:
+
+> AWS uses a consumption-based pricing philosophy where customers generally pay for the resources they use rather than purchasing large amounts of infrastructure upfront. The main cost drivers include compute, storage and data transfer. Customers may reduce unit costs through longer-term reservations, volume-based pricing and AWS economies of scale. This model allows organisations to align infrastructure expenditure more closely with actual usage.
+
+---
+
+# 39. Likely subjective question — Explain TCO
+
+> Total Cost of Ownership is a financial estimate used to identify both the direct and indirect costs of an IT system. It is useful when comparing an on-premises environment with AWS and when building a cloud-migration business case. TCO includes server, storage, network and IT labour costs as well as supporting costs such as software, maintenance, space, power and cooling.
+
+---
+
+# 40. Likely subjective question — Pricing Calculator vs Cost Explorer
+
+> AWS Pricing Calculator is used before deployment to estimate the expected cost of a proposed AWS solution based on assumed usage. AWS Cost Explorer is used after AWS resources are being consumed to analyse actual cost and usage patterns over time. Therefore, the Pricing Calculator supports planning, while Cost Explorer supports cost analysis.
+
+---
+
+# 41. Likely subjective question — Explain AWS Organizations
+
+> AWS Organizations enables central management of multiple AWS accounts. Accounts can be grouped into organizational units, policies can be applied centrally, and consolidated billing provides central visibility of account charges. This simplifies governance and financial management for organisations operating many AWS accounts.
+
+---
+
+# 42. Likely subjective question — Explain AWS cost-management tools
+
+> AWS provides several tools for managing cloud costs. The Billing Dashboard provides a high-level spending overview, while AWS Bills shows the charges contributing to the monthly bill. AWS Cost Explorer visualises and analyses cost trends. AWS Budgets tracks spending against defined targets and forecasts, while the AWS Cost and Usage Report provides detailed cost and usage records for deeper analysis.
+
+---
+
+# 43. Likely subjective question — Explain AWS support options
+
+> The module describes four AWS Support plans. Basic Support provides general support resources, Developer Support is designed for early development, Business Support is intended for production workloads, and Enterprise Support is intended for business- and mission-critical workloads. AWS also provides Technical Account Managers for proactive guidance, Trusted Advisor for best-practice recommendations, and Support Concierge for account assistance.
+
+---
+
+# 44. How to answer scenario questions
+
+Use this structure:
+
+```text
+1. Name the concept/tool.
+2. Explain what it does.
+3. Connect it to the scenario.
+```
+
+Example:
+
+> A company has 20 AWS accounts and wants one central billing structure.
+
+Weak answer:
+
+> AWS Organizations.
+
+Better answer:
+
+> The company should use AWS Organizations because it provides central management of multiple AWS accounts and supports consolidated billing. This would allow the company to keep separate accounts for different teams while giving finance central visibility over AWS charges.
+
+That second answer actually earns subjective marks because it proves you understand **why**.
+
+---
+
+# 45. High-priority scenario clues
+
+| If the question says...        | Think...              |
+| ------------------------------ | --------------------- |
+| Compute + storage + transfer   | AWS cost drivers      |
+| Predictable long-term use      | Reserve / commitment  |
+| Higher usage, lower unit price | Volume pricing        |
+| AWS vs physical data centre    | TCO                   |
+| Direct + indirect costs        | TCO                   |
+| Before deployment              | Pricing Calculator    |
+| Multiple AWS accounts          | AWS Organizations     |
+| Consolidated billing           | AWS Organizations     |
+| Quick spending overview        | Billing Dashboard     |
+| Monthly service charges        | Bills                 |
+| Historical cost trend          | Cost Explorer         |
+| Budget target / forecast       | AWS Budgets           |
+| Detailed usage records         | Cost and Usage Report |
+| Early development              | Developer Support     |
+| Production                     | Business Support      |
+| Mission-critical               | Enterprise Support    |
+| Proactive guidance             | TAM                   |
+| Best-practice recommendations  | Trusted Advisor       |
+| Account assistance             | Support Concierge     |
+
+---
+
+# 46. Common mistakes to avoid
+
+**Pricing Calculator ≠ actual bill.**
+
+```text
+Calculator → Estimate
+Bill → Actual charges
+```
+
+**TCO ≠ server purchase price only.**
+
+```text
+TCO → Direct + indirect costs
+```
+
+**Cost Explorer ≠ AWS Budgets.**
+
+```text
+Cost Explorer → Analyse
+Budgets → Track against target
+```
+
+**AWS Organizations ≠ IAM.**
+
+```text
+Organizations → Accounts
+IAM → Identities and permissions
+```
+
+**Free service ≠ free architecture.**
+
+The service may use other resources that are chargeable.
+
+**Reserved pricing ≠ automatically the best option.**
+
+It depends on predictable usage.
+
+**Enterprise Support ≠ “the most expensive therefore always best.”**
+
+It is intended for business- and mission-critical use in the module.
+
+---
+
+# 47. What I would prioritise before the subjective exam
+
+If time is short, master these six relationships:
+
+```text
+AWS COST
+Compute + Storage + Data transfer
+
+TCO
+On-premises total cost vs AWS
+
+Pricing Calculator
+Estimate BEFORE deployment
+
+Organizations
+Multiple accounts + consolidated billing
+
+COST TOOLS
+Dashboard → Overview
+Bills → Charges
+Explorer → Analyse
+Budgets → Track target
+CUR → Detailed records
+
+SUPPORT
+Developer → Development
+Business → Production
+Enterprise → Mission-critical
+```
+
+   
+
+# Final 2-minute revision
+
+```text
+PRICING PHILOSOPHY
+──────────────────
+Pay for what you use
+Pay less when you reserve
+Pay less per unit with suitable volume
+
+Main cost drivers:
+Compute
+Storage
+Data transfer
+```
+
+```text
+TCO
+───
+Direct + indirect costs
+
+Server
+Storage
+Network
+IT labour
+Space
+Power
+Cooling
+Maintenance
+```
+
+```text
+PLANNING
+────────
+Pricing Calculator
+→ "What might this cost?"
+```
+
+```text
+AWS ORGANIZATIONS
+─────────────────
+Multiple accounts
+OUs
+Central policies
+Consolidated billing
+```
+
+```text
+BILLING
+───────
+Dashboard → Overview
+Bills → Charges
+Explorer → Analyse
+Budgets → Target
+Cost & Usage Report → Detail
+```
+
+```text
+SUPPORT
+───────
+Basic → General
+Developer → Early development
+Business → Production
+Enterprise → Mission-critical
+
+TAM → Guidance
+Trusted Advisor → Best practices
+Concierge → Account assistance
+```
+
+The central idea of Module 2 is that **cloud economics is not simply “AWS is cheap.”** It is about matching cost to actual consumption, comparing the *total* cost of alternatives, estimating before deployment, monitoring spending after deployment, and selecting the level of governance and support appropriate to the business.
+
+</details>
+
+
+<details>
+<summary><strong>Module 3: AWS Global Infrastructure Overview — Subjective Exam Preparation</strong></summary>
+
+# Module 3: AWS Global Infrastructure Overview — Subjective Exam Preparation
+
+For a **subjective exam**, Module 3 is considerably more focused than Modules 1 and 2. The module has only two formal objectives:
+
+1. Differentiate **AWS Regions, Availability Zones, and edge locations**.
+2. Identify **AWS services and their service categories**. 
+
+So I would concentrate most of your effort on understanding the infrastructure hierarchy, why we use multiple Availability Zones, how a Region is selected, and recognising which AWS services belong to which category.
+
+The whole chapter can be pictured as:
 
 ```text
 AWS Global Infrastructure
-└── AWS Region
-    ├── Availability Zone
-    │   ├── Data centre
-    │   └── Data centre
-    └── Availability Zone
-        └── Data centre
+│
+├── AWS Region
+│   ├── Availability Zone
+│   │   ├── Data center
+│   │   └── Data center
+│   │
+│   └── Availability Zone
+│       └── Data center
+│
+└── Points of Presence
+    ├── Edge locations
+    └── Regional edge caches
+```
+
+---
+
+# 1. What is AWS Global Infrastructure?
+
+AWS Global Infrastructure is the worldwide physical and networking infrastructure that AWS uses to provide cloud services.
+
+The module describes it as being designed to provide:
+
+* flexibility;
+* reliability;
+* scalability;
+* security;
+* high-quality global network performance. 
+
+For the subjective exam, however, the important thing is understanding **how that infrastructure is divided**.
+
+Think of AWS as a worldwide company.
+
+```text
+World
+↓
+Different geographical areas
+↓
+Different isolated locations
+↓
+Physical data centers
+```
+
+AWS gives names to those levels:
+
+```text
+Geographical area
+→ Region
+
+Isolated location within Region
+→ Availability Zone
+
+Physical building
+→ Data center
+```
+
+---
+
+# 2. AWS Region
+
+An **AWS Region is a geographical area**.
+
+A Region normally contains multiple Availability Zones. The module also states that communication between Regions uses AWS backbone network infrastructure, while **data replication between Regions is controlled by the customer**. 
+
+Think of a Region as a **city or major geographical area**.
+
+For example:
+
+```text
+AWS
+└── Region
+    ├── Availability Zone A
+    ├── Availability Zone B
+    └── Availability Zone C
+```
+
+The crucial point is:
+
+> **A Region is NOT one data center.**
+
+A Region is the larger geographical area containing multiple Availability Zones.
+
+---
+
+# 3. Why does AWS have multiple Regions?
+
+Different customers have different requirements.
+
+A Malaysian organisation might care about:
+
+* where its data is legally permitted to reside;
+* how far its users are from AWS;
+* whether the AWS services it needs are available there;
+* how much those services cost in that Region.
+
+That leads to one of the most important subjective topics in this module.
+
+---
+
+# 4. How to choose an AWS Region
+
+The module gives **four factors** for selecting a Region:
+
+1. Data governance and legal requirements
+2. Proximity to customers / latency
+3. Services available in the Region
+4. Costs, which can vary by Region 
+
+I would remember these as:
+
+```text
+C → Compliance
+L → Latency
+A → Availability of services
+C → Cost
+```
+
+Or simply ask:
+
+> **Legal? Distance? Service? Price?**
+
+---
+
+# 5. Factor 1 — Data governance and legal requirements
+
+Suppose a government organisation has a rule:
+
+> Customer data must remain within a particular geographical jurisdiction.
+
+Even if another Region is:
+
+* cheaper;
+* faster;
+* technically better;
+
+the organisation may still need to choose the legally compliant Region.
+
+### Good subjective answer
+
+> Data governance and legal requirements are important when selecting an AWS Region because regulations may require an organisation to store or process data in a particular geographic location. Therefore, an organisation must ensure that its selected Region satisfies relevant legal and compliance requirements.
+
+### Scenario clue
+
+> “The company is legally required to keep customer data within a particular country.”
+
+Think:
+
+**Data governance / legal requirements**
+
+Not “choose the closest Region because latency is lower.” Breaking the law slightly faster is not much of an optimisation.
+
+---
+
+# 6. Factor 2 — Proximity to customers
+
+Distance can affect **latency**.
+
+Latency means delay.
+
+If most users are very far from the application's Region:
+
+```text
+User
+↓
+Long network distance
+↓
+Application
+```
+
+the response may take longer.
+
+Placing resources closer to customers can reduce latency.
+
+### Good answer
+
+> Customer proximity should be considered when selecting a Region because a Region closer to users can reduce network latency and improve application response time.
+
+### Scenario clue
+
+> “A company wants to reduce response time experienced by customers.”
+
+Think:
+
+**Choose a Region closer to the customers.**
+
+---
+
+# 7. Factor 3 — Service availability
+
+Not every AWS service or feature is necessarily available in every Region.
+
+Therefore:
+
+```text
+Need Service X
+↓
+Check whether Region supports Service X
+↓
+Then select suitable Region
+```
+
+### Good answer
+
+> Organisations must verify that the AWS services required by their application are available in the selected Region. A geographically suitable Region would still be inappropriate if it does not provide a required service.
+
+---
+
+# 8. Factor 4 — Cost
+
+AWS service prices may vary between Regions.
+
+So organisations can consider the cost of running their workload in different Regions.
+
+### Good answer
+
+> AWS pricing may vary between Regions, so organisations should also evaluate the cost of running their required services in each suitable Region after considering requirements such as compliance, latency and service availability.
+
+Notice that cost isn't automatically the first consideration.
+
+If one Region costs $5 less but violates the company's legal requirements, that $5 saving is unlikely to impress the regulator.
+
+---
+
+# 9. Full subjective answer — Selecting a Region
+
+If you get:
+
+> **Explain the factors that should be considered when choosing an AWS Region.**
+
+You can write:
+
+> An organisation should consider four main factors when selecting an AWS Region. First, data governance and legal requirements must be considered because some data may be required to remain within a particular geographical location. Second, proximity to customers affects latency, so resources closer to users may improve response times. Third, the organisation must ensure that all required AWS services are available in the selected Region. Finally, AWS service costs may vary between Regions, so pricing should also be evaluated.
+
+That is a strong full answer directly aligned with the module.
+
+---
+
+# 10. Availability Zone
+
+An **Availability Zone**, usually shortened to **AZ**, is a fully isolated partition of AWS infrastructure within a Region.
+
+The module states that:
+
+* each Region contains multiple AZs;
+* AZs consist of discrete data centers;
+* they are designed for fault isolation;
+* AZs connect to one another through high-speed private networking;
+* AWS recommends replicating data and resources across AZs for resiliency. 
+
+Think:
+
+```text
+Region
+├── AZ A
+├── AZ B
+└── AZ C
+```
+
+Each AZ is separated so that a problem affecting one location does not necessarily affect the others.
+
+---
+
+# 11. Why Availability Zones matter
+
+Imagine an online shop running only in:
+
+```text
+Availability Zone A
+└── Web server
+```
+
+If AZ A has a major failure:
+
+```text
+AZ A unavailable
+↓
+Application unavailable
+```
+
+Now imagine:
+
+```text
+Region
+├── AZ A → Application server
+└── AZ B → Application server
+```
+
+If one AZ fails:
+
+```text
+AZ A ✕
+AZ B ✓
+```
+
+the second location can continue supporting the workload, depending on how the application has been designed.
+
+So the main idea is:
+
+> **Multiple AZs reduce dependence on one physical location.**
+
+---
+
+# 12. Good subjective answer — Availability Zone
+
+> An Availability Zone is an isolated partition of AWS infrastructure within an AWS Region and consists of one or more discrete data centers. Availability Zones are physically separated for fault isolation but are connected using high-speed private networking. Deploying resources across multiple Availability Zones improves resiliency because an application is less dependent on one physical location.
+
+---
+
+# 13. Multiple servers ≠ automatically Multi-AZ
+
+Suppose:
+
+```text
+AZ A
+├── Server 1
+└── Server 2
+```
+
+You have two servers.
+
+Does this protect against **AZ failure**?
+
+No.
+
+Both servers still depend on AZ A.
+
+To protect against an AZ-level failure:
+
+```text
+AZ A
+└── Server 1
+
+AZ B
+└── Server 2
+```
+
+This distinction is worth remembering.
+
+---
+
+# 14. Data center
+
+A **data center** is the actual physical facility where:
+
+* data resides;
+* data processing occurs.
+
+The module states that each data center has redundant:
+
+* power;
+* networking;
+* connectivity;
+
+and is housed in a separate facility. 
+
+The hierarchy is therefore:
+
+```text
+REGION
+  ↓
+AVAILABILITY ZONE
+  ↓
+DATA CENTER
+```
+
+Not:
+
+```text
+Region = data center
+```
+
+That is one of the easiest ways to lose marks unnecessarily.
+
+---
+
+# 15. Region vs AZ vs data center
+
+| Component             | Meaning                                           |
+| --------------------- | ------------------------------------------------- |
+| **Region**            | Geographical area                                 |
+| **Availability Zone** | Isolated infrastructure partition within a Region |
+| **Data center**       | Physical facility containing the infrastructure   |
+
+Memory:
+
+```text
+Region → Area
+AZ → Isolated location
+Data center → Physical building
+```
+
+---
+
+# 16. Edge locations
+
+The next infrastructure component is very different.
+
+An **edge location** is primarily used to place content closer to users.
+
+It is associated in this module with **Amazon CloudFront**, AWS's Content Delivery Network.
+
+Page 11 explains that AWS Points of Presence include edge locations and Regional edge caches and that CloudFront uses them to deliver content to end users with reduced latency. 
+
+---
+
+# 17. Why edge locations exist
+
+Suppose the original website content is far away from the customer.
+
+Without caching:
+
+```text
+Malaysian user
+↓
+Long network journey
+↓
+Original server
+↓
+Image returned
+```
+
+If the same image is cached closer to the customer:
+
+```text
+Malaysian user
+↓
+Nearby edge location
+↓
+Cached image returned
+```
+
+The content does not need to travel from the distant origin every time.
+
+The result:
+
+> **Reduced latency.**
+
+---
+
+# 18. Edge location vs Availability Zone
+
+This is a major confusion.
+
+An **Availability Zone** exists primarily to provide isolated infrastructure inside a Region.
+
+An **edge location** exists primarily to deliver cached content closer to users.
+
+```text
+Availability Zone
+→ Run infrastructure
+→ Fault isolation
+
+Edge location
+→ Cache/deliver content
+→ Lower latency
+```
+
+Do not write:
+
+> “An edge location is another Availability Zone closer to users.”
+
+It isn't.
+
+---
+
+# 19. Regional edge cache
+
+The module also introduces **Regional edge caches**.
+
+They are part of AWS Points of Presence and are used for content that is accessed less frequently. 
+
+Conceptually:
+
+```text
+User
+ ↓
+Edge location
+ ↓
+Regional edge cache
+ ↓
+Original content
+```
+
+Think of the Regional edge cache as a larger intermediate cache between the normal edge location and the origin.
+
+For most subjective questions, however, the more important concept is:
+
+```text
+Edge location
+→ Content close to user
+
+CloudFront
+→ Uses edge locations
+```
+
+---
+
+# 20. Points of Presence
+
+AWS **Points of Presence** consist of:
+
+```text
+Edge locations
++
+Regional edge caches
+```
+
+The module explicitly separates these from Regions and Availability Zones. 
+
+So:
+
+```text
+AWS GLOBAL INFRASTRUCTURE
+
+Regions
+└── Availability Zones
+    └── Data centers
 
 Points of Presence
 ├── Edge locations
 └── Regional edge caches
 ```
 
-| Component               | Meaning                                                                  | Main exam clue                                       |
-| ----------------------- | ------------------------------------------------------------------------ | ---------------------------------------------------- |
-| **Region**              | A geographical area containing multiple AZs                              | Compliance, location, service availability and price |
-| **Availability Zone**   | An isolated infrastructure partition containing one or more data centres | Fault isolation and resilience                       |
-| **Data centre**         | Physical facility containing servers and networking equipment            | Where processing and storage physically occur        |
-| **Edge location**       | Site that caches and delivers content close to users                     | CloudFront and low latency                           |
-| **Regional edge cache** | Larger cache between edge locations and the origin                       | Less frequently accessed content                     |
+---
 
-AWS recommends using multiple Availability Zones to improve resilience. Cross-Region data replication is controlled by the customer rather than automatically happening merely because AWS owns a large map. 
+# 21. Good subjective answer — Edge location
 
-## Selecting an AWS Region
+> An edge location is part of AWS's global Points of Presence and is used by services such as Amazon CloudFront to cache and deliver content closer to end users. By serving cached content from a nearby location instead of repeatedly retrieving it from a distant origin, edge locations can reduce latency and improve application performance.
 
-Remember **CLAS**:
+---
 
-| Letter | Factor                                |
-| ------ | ------------------------------------- |
-| **C**  | Compliance and data governance        |
-| **L**  | Latency and customer proximity        |
-| **A**  | Availability of required AWS services |
-| **S**  | Service cost in that Region           |
+# 22. Region vs AZ vs edge location
 
-The closest Region is not always the correct one. Regulations come first; a slightly faster illegal architecture remains illegal.
+This is probably **the most important comparison in the entire module**.
 
-## Infrastructure characteristics
+| Component             | Main meaning                          | Main reason                |
+| --------------------- | ------------------------------------- | -------------------------- |
+| **Region**            | Geographical area                     | Choose geographic location |
+| **Availability Zone** | Isolated infrastructure within Region | Resilience/fault isolation |
+| **Edge location**     | Content-delivery point near users     | Reduce latency             |
 
-| Term                  | Meaning                                                    |
-| --------------------- | ---------------------------------------------------------- |
-| **Elasticity**        | Automatically adjusts capacity according to current demand |
-| **Scalability**       | Can grow to accommodate increasing demand                  |
-| **Fault tolerance**   | Continues operating even when a component fails            |
-| **High availability** | Minimises downtime and maintains operational performance   |
-
-## Resource scope
+Memory:
 
 ```text
-VPC       → Regional
-Subnet    → One Availability Zone
-EC2       → Regional service
-Lambda    → Regional service
-IAM       → Global service
-Route 53  → Global service
+REGION
+→ Where?
+
+AZ
+→ Survive failure?
+
+EDGE
+→ Faster delivery?
 ```
 
-## Service-category map
-
-| Category                              | Services shown in Module 3                                                                                        |
-| ------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
-| **Compute**                           | EC2, EC2 Auto Scaling, ECS, EKS, Fargate, Lambda, Elastic Beanstalk                                               |
-| **Storage**                           | S3, S3 Glacier, EBS, EFS                                                                                          |
-| **Database**                          | RDS, Aurora, DynamoDB, Redshift                                                                                   |
-| **Networking and Content Delivery**   | VPC, Elastic Load Balancing, Direct Connect, VPN, Transit Gateway, Route 53, CloudFront                           |
-| **Security, Identity and Compliance** | IAM, Organizations, Cognito, KMS, Shield, Artifact                                                                |
-| **Cost Management**                   | AWS Budgets, Cost Explorer, Cost and Usage Report                                                                 |
-| **Management and Governance**         | Management Console, CLI, CloudWatch, CloudTrail, Config, Trusted Advisor, Well-Architected Tool, AWS Auto Scaling |
-
-These are the category groupings shown in the module.       
+If you can answer those three questions, you understand the core of Module 3.
 
 ---
 
-# Part 2: Module 3 Mock Test
+# 23. Infrastructure features
 
-**Questions:** 30
-**Suggested time:** 35 minutes
-**Instructions:** Choose one answer unless the question says **Select TWO**.
-
----
-
-## Infrastructure questions
-
-### 1. Which AWS global infrastructure component is a geographical area that contains multiple Availability Zones?
-
-A. An edge location
-B. An AWS Region
-C. A data centre
-D. A Regional edge cache
-
----
-
-### 2. A government agency is legally required to keep its data within a particular country. Which factor should receive the highest priority when selecting an AWS Region?
-
-A. Number of edge locations
-B. Data governance and legal requirements
-C. Number of EC2 instance types
-D. Distance from the nearest data centre
-
----
-
-### 3. A company wants to reduce the response time experienced by most of its customers. Which Region-selection factor is MOST relevant?
-
-A. The physical size of the Region
-B. The number of IAM users
-C. Proximity to the customers
-D. The number of security groups
-
----
-
-### 4. Which statement BEST describes an Availability Zone?
-
-A. A geographical area that contains several Regions
-B. A content-caching site located near end users
-C. An isolated infrastructure partition containing one or more data centres
-D. A global network that resolves domain names
-
----
-
-### 5. A company wants its application to remain available if one AWS data-centre location fails. Which approach should it use?
-
-A. Deploy resources across multiple Availability Zones
-B. Place all resources in one large EC2 instance
-C. Use a single edge location
-D. Create multiple IAM users
-
----
-
-### 6. Who controls whether customer data is replicated from one AWS Region to another?
-
-A. Amazon CloudFront
-B. The Availability Zone
-C. AWS Support
-D. The customer
-
----
-
-### 7. Which AWS infrastructure component is the physical facility where data resides and processing occurs?
-
-A. AWS Region
-B. Data centre
-C. Edge location
-D. VPC
-
----
-
-### 8. Which component does Amazon CloudFront primarily use to deliver cached content with lower latency?
-
-A. IAM groups
-B. Availability Zones
-C. Edge locations
-D. Security groups
-
----
-
-### 9. CloudFront content is requested infrequently and is no longer stored at the nearest edge location. Which component can retain the content between the edge location and the origin?
-
-A. Availability Zone
-B. Regional edge cache
-C. Internet gateway
-D. VPC
-
----
-
-### 10. Which components form AWS Points of Presence? **Select TWO.**
-
-A. Edge locations
-B. Availability Zones
-C. AWS Regions
-D. Regional edge caches
-E. Data centres
-
----
-
-## Infrastructure characteristic questions
-
-### 11. An application automatically increases capacity during a sale and decreases capacity after the sale ends. Which infrastructure characteristic does this demonstrate?
-
-A. Durability
-B. Elasticity
-C. Compliance
-D. Fault isolation
-
----
-
-### 12. A system can expand from supporting 10,000 users to supporting one million users. Which characteristic does this demonstrate?
-
-A. High availability
-B. Data sovereignty
-C. Fault tolerance
-D. Scalability
-
----
-
-### 13. A system continues operating correctly after one of its components fails. Which characteristic does this describe?
-
-A. Fault tolerance
-B. Elasticity
-C. Latency
-D. Governance
-
----
-
-### 14. A company wants to maintain a high level of operational performance while minimising downtime. Which characteristic is the company seeking?
-
-A. Horizontal scaling
-B. Regional caching
-C. High availability
-D. Data replication
-
----
-
-## AWS resource-scope questions
-
-### 15. At which infrastructure level does an Amazon VPC exist?
-
-A. Data-centre level
-B. Region level
-C. Edge-location level
-D. Global level
-
----
-
-### 16. At which infrastructure level does a subnet exist?
-
-A. Across all AWS Regions
-B. Across several Availability Zones
-C. Within one Availability Zone
-D. Within one edge location
-
----
-
-### 17. Which AWS services are global rather than Regional? **Select TWO.**
-
-A. Amazon EC2
-B. AWS Identity and Access Management
-C. AWS Lambda
-D. Amazon Route 53
-E. Amazon VPC
-
----
-
-### 18. Which AWS services are Regional? **Select TWO.**
-
-A. AWS Identity and Access Management
-B. Amazon EC2
-C. Amazon Route 53
-D. AWS Lambda
-E. AWS Organizations
-
----
-
-## Service-category questions
-
-### 19. Which service belongs to the **Compute** service category?
-
-A. Amazon S3
-B. Amazon Elastic Container Service
-C. Amazon RDS
-D. Amazon CloudFront
-
----
-
-### 20. Which service belongs to the **Storage** service category?
-
-A. Amazon EFS
-B. AWS Lambda
-C. Amazon Route 53
-D. Amazon DynamoDB
-
----
-
-### 21. Which service belongs to the **Database** service category?
-
-A. Amazon VPC
-B. AWS Shield
-C. Amazon EBS
-D. Amazon Redshift
-
----
-
-### 22. Which service belongs to the **Networking and Content Delivery** category?
-
-A. Amazon Aurora
-B. AWS Budgets
-C. AWS Direct Connect
-D. AWS CloudTrail
-
----
-
-### 23. Which service belongs to the **Security, Identity and Compliance** category?
-
-A. Amazon EC2
-B. AWS Key Management Service
-C. Amazon EFS
-D. AWS Cost Explorer
-
----
-
-### 24. Which service belongs to the **Cost Management** category?
-
-A. AWS Cost Explorer
-B. AWS Config
-C. Amazon Cognito
-D. AWS Lambda
-
----
-
-### 25. Which service belongs to the **Management and Governance** category?
-
-A. Amazon DynamoDB
-B. Amazon CloudFront
-C. AWS KMS
-D. AWS CloudTrail
-
----
-
-### 26. Which services belong to the **Compute** category? **Select TWO.**
-
-A. AWS Lambda
-B. Amazon S3
-C. AWS Fargate
-D. Amazon DynamoDB
-E. Amazon Route 53
-
----
-
-### 27. Which services belong to the **Storage** category? **Select TWO.**
-
-A. Amazon Aurora
-B. Amazon EBS
-C. Amazon VPC
-D. AWS Shield
-E. Amazon S3 Glacier
-
----
-
-### 28. Which services belong to the **Database** category? **Select TWO.**
-
-A. Amazon Aurora
-B. Amazon CloudFront
-C. AWS Config
-D. Amazon DynamoDB
-E. AWS Budgets
-
----
-
-### 29. Which services belong to the **Security, Identity and Compliance** category? **Select TWO.**
-
-A. Amazon Redshift
-B. Amazon Cognito
-C. Amazon EFS
-D. Elastic Load Balancing
-E. AWS Artifact
-
----
-
-### 30. Which services belong to the **Management and Governance** category? **Select TWO.**
-
-A. Amazon CloudWatch
-B. Amazon RDS
-C. Amazon Route 53
-D. AWS Trusted Advisor
-E. Amazon S3
-
----
-
-# Stop here before checking the answers
-
-<details>
-<summary><strong>Open answer key and explanations</strong></summary>
-
-## Answer key
-
-|  Q |  Answer  | Why                                                                                                 |
-| -: | :------: | --------------------------------------------------------------------------------------------------- |
-|  1 |   **B**  | A Region is a geographical area containing multiple AZs.                                            |
-|  2 |   **B**  | Compliance and legal requirements override convenience or latency.                                  |
-|  3 |   **C**  | Placing resources closer to customers generally reduces latency.                                    |
-|  4 |   **C**  | An AZ is an isolated infrastructure partition containing discrete data centres.                     |
-|  5 |   **A**  | Multiple AZs protect against failure affecting one location.                                        |
-|  6 |   **D**  | Customers decide whether their data is replicated across Regions.                                   |
-|  7 |   **B**  | Data centres are the physical facilities where storage and processing occur.                        |
-|  8 |   **C**  | CloudFront uses edge locations to cache content near users.                                         |
-|  9 |   **B**  | Regional edge caches retain less frequently accessed content between edge locations and the origin. |
-| 10 | **A, D** | Points of Presence include edge locations and Regional edge caches.                                 |
-| 11 |   **B**  | Elasticity means dynamically increasing and decreasing capacity.                                    |
-| 12 |   **D**  | Scalability is the ability to accommodate growth.                                                   |
-| 13 |   **A**  | Fault tolerance means continuing to operate despite a failure.                                      |
-| 14 |   **C**  | High availability aims to minimise downtime.                                                        |
-| 15 |   **B**  | A VPC belongs to one AWS Region.                                                                    |
-| 16 |   **C**  | A subnet exists within one Availability Zone.                                                       |
-| 17 | **B, D** | IAM and Route 53 are global services.                                                               |
-| 18 | **B, D** | EC2 and Lambda resources are created within selected Regions.                                       |
-| 19 |   **B**  | ECS is a compute service for containerised workloads.                                               |
-| 20 |   **A**  | EFS is managed file storage.                                                                        |
-| 21 |   **D**  | Redshift is a database and data-warehouse service.                                                  |
-| 22 |   **C**  | Direct Connect is a networking service.                                                             |
-| 23 |   **B**  | KMS manages encryption keys and belongs to security.                                                |
-| 24 |   **A**  | Cost Explorer is used to examine AWS spending and usage.                                            |
-| 25 |   **D**  | CloudTrail is grouped under management and governance.                                              |
-| 26 | **A, C** | Lambda and Fargate are compute services.                                                            |
-| 27 | **B, E** | EBS and S3 Glacier are storage services.                                                            |
-| 28 | **A, D** | Aurora and DynamoDB are database services.                                                          |
-| 29 | **B, E** | Cognito and Artifact belong to security, identity and compliance.                                   |
-| 30 | **A, D** | CloudWatch and Trusted Advisor belong to management and governance.                                 |
-
-</details>
-
----
-
-# Score interpretation
-
-|        Score | Readiness                                                                   |
-| -----------: | --------------------------------------------------------------------------- |
-|    **27–30** | Strongly prepared                                                           |
-|    **23–26** | Nearly ready; revise the mistakes                                           |
-|    **18–22** | Core knowledge exists, but AWS distractors are still working                |
-| **Below 18** | Review the infrastructure hierarchy and service categories before retesting |
-
-## The five most dangerous exam confusions
+The module also introduces four related characteristics:
 
 ```text
-Region ≠ Availability Zone
-Availability Zone ≠ data centre
-Multi-AZ ≠ Multi-Region
-Edge location ≠ Availability Zone
-Elasticity ≠ scalability
+Elasticity
+Scalability
+Fault tolerance
+High availability
 ```
 
-And for category questions:
+These terms sound similar if they are memorised badly, which is presumably why AWS put all four on the same slide.
+
+---
+
+# 24. Elasticity
+
+**Elasticity** means dynamically adapting capacity according to current demand. 
+
+Example:
 
 ```text
-CloudFront → Networking and Content Delivery
-CloudTrail → Management and Governance
+Morning:
+2 servers
+
+Sale starts:
+10 servers
+
+Sale ends:
+2 servers
+```
+
+Capacity goes **up and down**.
+
+### Good answer
+
+> Elasticity is the ability of infrastructure to dynamically adjust capacity according to changes in demand. Resources can be added when demand increases and reduced when demand decreases.
+
+### Scenario clue
+
+> “Automatically increases during peak demand and decreases afterward.”
+
+**Elasticity**
+
+---
+
+# 25. Scalability
+
+**Scalability** means the infrastructure can adapt to accommodate growth. 
+
+Example:
+
+```text
+Year 1 → 10,000 customers
+Year 3 → 100,000 customers
+Year 5 → 1,000,000 customers
+```
+
+The architecture can continue growing.
+
+### Good answer
+
+> Scalability is the ability of a system to increase its capacity so that it can accommodate growth in workload or users.
+
+---
+
+# 26. Elasticity vs scalability
+
+This distinction matters.
+
+```text
+SCALABILITY
+→ Can the system grow?
+
+ELASTICITY
+→ Can capacity expand AND contract with changing demand?
+```
+
+A scalable application can become larger.
+
+An elastic application dynamically adjusts to demand.
+
+### Example
+
+Company grows permanently from:
+
+```text
+10,000 → 1,000,000 users
+```
+
+Think **scalability**.
+
+Traffic rises at lunchtime and falls at night:
+
+```text
+2 → 10 → 2 servers
+```
+
+Think **elasticity**.
+
+---
+
+# 27. Fault tolerance
+
+The module defines **fault tolerance** as the ability to continue operating properly when a failure occurs, supported by built-in redundancy. 
+
+Example:
+
+```text
+Server A fails ✕
+
+Server B continues ✓
+```
+
+### Good answer
+
+> Fault tolerance is the ability of a system to continue operating properly even when one of its components fails. It usually depends on redundant components so that another component can continue the workload.
+
+---
+
+# 28. High availability
+
+**High availability** aims to maintain a high level of operational performance while minimising downtime. 
+
+Think:
+
+```text
+High availability
+=
+Keep service available
++
+Minimise downtime
+```
+
+Using resources across multiple Availability Zones is one way of supporting high availability.
+
+### Good answer
+
+> High availability refers to designing a system to maintain a high level of operational performance while minimising downtime. AWS architectures can improve availability by avoiding dependence on a single infrastructure location, for example by deploying resources across multiple Availability Zones.
+
+---
+
+# 29. Fault tolerance vs high availability
+
+A useful subjective distinction:
+
+```text
+Fault tolerance
+→ Continue despite failure
+
+High availability
+→ Minimise downtime
+```
+
+They are related, but not identical.
+
+If a system is fault tolerant, the goal is for failure of a component not to stop the service.
+
+With high availability, the goal is to keep downtime as low as possible.
+
+---
+
+# 30. All four infrastructure terms
+
+| Term                  | Think                   |
+| --------------------- | ----------------------- |
+| **Elasticity**        | Up AND down with demand |
+| **Scalability**       | Grow                    |
+| **Fault tolerance**   | Survive failure         |
+| **High availability** | Minimise downtime       |
+
+Memorise:
+
+```text
+Elasticity → Adjust
+Scalability → Grow
+Fault tolerance → Survive
+High availability → Stay available
+```
+
+---
+
+# 31. Regional vs global resources
+
+The Management Console activity in Module 3 specifically asks students to distinguish Regional and global services and to identify the scope of VPCs and subnets. 
+
+For the examples used in that activity:
+
+```text
+Amazon EC2 → Regional
+AWS Lambda → Regional
+
+IAM → Global
+Route 53 → Global
+```
+
+Also:
+
+```text
+VPC → Region level
+Subnet → Availability Zone level
+```
+
+---
+
+# 32. VPC and subnet scope
+
+You do not need Module 5's networking details yet.
+
+For Module 3, just know:
+
+```text
+Region
+└── VPC
+    ├── Subnet in AZ A
+    └── Subnet in AZ B
+```
+
+Therefore:
+
+> **A VPC exists at the Region level.**
+
+> **A subnet exists at the Availability Zone level.** 
+
+---
+
+# 33. Section 2 — AWS service categories
+
+The second half of Module 3 is largely a **classification exercise**.
+
+The module is not yet asking you to explain the detailed configuration of every service. Later modules do that.
+
+For Module 3, the important skill is:
+
+> **Recognise what category a service belongs to.**
+
+The categories presented include:
+
+```text
+Compute
+Storage
+Database
+Networking and Content Delivery
+Security, Identity, and Compliance
+AWS Cost Management
+Management and Governance
+```
+
+  
+
+---
+
+# 34. Compute category
+
+Think:
+
+> **Run applications and processing.**
+
+Important examples shown across the course/module category material include:
+
+```text
+Amazon EC2
+Amazon EC2 Auto Scaling
+Amazon ECS
+Amazon EKS
+AWS Fargate
+AWS Lambda
+AWS Elastic Beanstalk
+```
+
+For Module 3, don't waste time writing a miniature dissertation on each one.
+
+If a question asks:
+
+> “Which category does AWS Lambda belong to?”
+
+Answer:
+
+**Compute**
+
+---
+
+# 35. Storage category
+
+The Module 3 slide explicitly groups:
+
+```text
+Amazon EBS
+Amazon EFS
+Amazon S3
+Amazon S3 Glacier
+```
+
+under storage. 
+
+Memory:
+
+```text
+EBS
+EFS
+S3
+Glacier
+→ STORAGE
+```
+
+---
+
+# 36. Database category
+
+The module groups:
+
+```text
+Amazon RDS
+Amazon Aurora
+Amazon DynamoDB
+Amazon Redshift
+```
+
+under Database. 
+
+Memory:
+
+```text
+RDS
+Aurora
+DynamoDB
+Redshift
+→ DATABASE
+```
+
+---
+
+# 37. Networking and Content Delivery
+
+The module groups these services together:
+
+```text
+Amazon VPC
+Elastic Load Balancing
+AWS Direct Connect
+AWS VPN
+AWS Transit Gateway
+Amazon Route 53
+Amazon CloudFront
+```
+
+
+
+For Module 3:
+
+```text
+VPC
+Route 53
+CloudFront
+Direct Connect
+etc.
+→ NETWORKING AND CONTENT DELIVERY
+```
+
+---
+
+# 38. Security, Identity and Compliance
+
+The module groups:
+
+```text
+AWS IAM
+AWS Organizations
+Amazon Cognito
+AWS Artifact
+AWS KMS
+AWS Shield
+```
+
+under **Security, Identity, and Compliance**. 
+
+Memory:
+
+```text
+IAM
+Organizations
+Cognito
+KMS
+Shield
+Artifact
+→ SECURITY
+```
+
+---
+
+# 39. AWS Cost Management
+
+The module groups:
+
+```text
+AWS Cost and Usage Report
+AWS Budgets
+AWS Cost Explorer
+```
+
+under **AWS Cost Management**. 
+
+This one should already look familiar from Module 2.
+
+```text
+Budgets
+Cost Explorer
+Cost and Usage Report
+→ COST MANAGEMENT
+```
+
+---
+
+# 40. Management and Governance
+
+The module groups services/tools such as:
+
+```text
+AWS Management Console
+AWS Config
+Amazon CloudWatch
+AWS Auto Scaling
+AWS CLI
+AWS Trusted Advisor
+AWS Well-Architected Tool
+AWS CloudTrail
+```
+
+under **Management and Governance**. 
+
+The most dangerous category confusions tend to be:
+
+```text
 CloudWatch → Management and Governance
+CloudTrail → Management and Governance
+Trusted Advisor → Management and Governance
+
 Cost Explorer → Cost Management
+
+CloudFront → Networking and Content Delivery
+
 Artifact → Security, Identity and Compliance
 ```
 
-Reply with an answer string such as `1B, 2B, 3C...`, and I’ll grade it without revealing the answers first.
+---
 
-[1]: https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02.html "AWS Certified Cloud Practitioner (CLF-C02) - AWS Certified Cloud Practitioner"
-[2]: https://aws.amazon.com/certification/certification-prep/ "Prepare for your AWS Certification Exam | Training and Certification | AWS"
+# 41. Service-category table to memorise
+
+| Category                            | High-priority examples                                                                             |
+| ----------------------------------- | -------------------------------------------------------------------------------------------------- |
+| **Compute**                         | EC2, Lambda, ECS, EKS, Fargate, Elastic Beanstalk                                                  |
+| **Storage**                         | S3, S3 Glacier, EBS, EFS                                                                           |
+| **Database**                        | RDS, Aurora, DynamoDB, Redshift                                                                    |
+| **Networking & Content Delivery**   | VPC, ELB, Direct Connect, VPN, Transit Gateway, Route 53, CloudFront                               |
+| **Security, Identity & Compliance** | IAM, Organizations, Cognito, KMS, Shield, Artifact                                                 |
+| **Cost Management**                 | Budgets, Cost Explorer, Cost and Usage Report                                                      |
+| **Management & Governance**         | Console, CLI, CloudWatch, CloudTrail, Config, Trusted Advisor, Well-Architected Tool, Auto Scaling |
+
+For subjective questions, explain the category's **purpose**, then provide examples.
 
 ---
+
+# 42. Likely subjective question — Explain AWS Global Infrastructure
+
+A good answer:
+
+> AWS Global Infrastructure is designed to provide a flexible, reliable, scalable and secure cloud environment. It is organised into geographical AWS Regions, each of which contains multiple isolated Availability Zones consisting of data centers. Availability Zones are physically separated to support fault isolation and resiliency. AWS also operates Points of Presence, including edge locations and Regional edge caches, which are used by services such as Amazon CloudFront to deliver cached content closer to users and reduce latency.
+
+---
+
+# 43. Likely subjective question — Region vs Availability Zone vs edge location
+
+> An AWS Region is a geographical area that normally contains multiple Availability Zones. An Availability Zone is an isolated infrastructure partition within a Region and consists of discrete data centers, making it useful for fault isolation and resiliency. An edge location is different because it is part of AWS Points of Presence and is used to cache and deliver content closer to end users, primarily to reduce latency.
+
+---
+
+# 44. Likely subjective question — Why deploy across multiple AZs?
+
+> Deploying resources across multiple Availability Zones improves resiliency because the application is not dependent on only one isolated infrastructure location. If one Availability Zone becomes unavailable, resources in another Availability Zone can continue supporting the application, provided the workload has been designed appropriately.
+
+---
+
+# 45. Likely subjective question — Explain edge locations
+
+> Edge locations are AWS Points of Presence positioned closer to end users. Amazon CloudFront uses edge locations to cache and deliver content so that users do not always need to retrieve the content from a distant origin. This reduces network latency and improves content-delivery performance.
+
+---
+
+# 46. Likely subjective question — Differentiate elasticity and scalability
+
+> Scalability is the ability of an infrastructure to grow so that it can accommodate increasing demand. Elasticity is the ability to dynamically adjust capacity according to current demand, including both increasing and decreasing resources. Therefore, scalability focuses on the ability to grow, while elasticity focuses on dynamically matching capacity to workload changes.
+
+---
+
+# 47. Likely subjective question — Fault tolerance vs high availability
+
+> Fault tolerance refers to the ability of a system to continue operating properly even when a component fails, usually through redundant components. High availability focuses on maintaining a high level of operational performance while minimising downtime. Both improve reliability, but fault tolerance emphasises continued operation after failure whereas high availability emphasises keeping downtime low.
+
+---
+
+# 48. How to answer a scenario question
+
+As with Modules 1 and 2:
+
+```text
+1. Identify the concept.
+2. Explain it.
+3. Connect it to the scenario.
+```
+
+Example:
+
+> An ecommerce company runs its application entirely in one Availability Zone. Management is concerned that failure of the location could make the website unavailable. Recommend an improvement.
+
+Weak:
+
+> Use multiple Availability Zones.
+
+Better:
+
+> The company should distribute its application resources across multiple Availability Zones. Availability Zones are physically isolated infrastructure partitions within a Region, so using more than one AZ reduces dependence on a single location. If one Availability Zone fails, resources in another AZ can continue supporting the workload, improving resiliency and availability.
+
+The second answer tells the examiner that you actually know *why* the answer works.
+
+---
+
+# 49. High-priority scenario clues
+
+| If the question says...                 | Think...                               |
+| --------------------------------------- | -------------------------------------- |
+| Geographical AWS area                   | Region                                 |
+| Multiple AZs                            | Region                                 |
+| Isolated infrastructure                 | Availability Zone                      |
+| Protect against location/AZ failure     | Multiple AZs                           |
+| Physical AWS facility                   | Data center                            |
+| Content closer to users                 | Edge location                          |
+| CloudFront caching                      | Edge location                          |
+| Less frequently accessed cached content | Regional edge cache                    |
+| Legal/data residency                    | Region selection: governance           |
+| Reduce customer latency                 | Region selection: proximity            |
+| Required AWS service not available      | Region selection: service availability |
+| Different price by location             | Region selection: cost                 |
+| Capacity rises and falls                | Elasticity                             |
+| System grows substantially              | Scalability                            |
+| Continue after failure                  | Fault tolerance                        |
+| Minimise downtime                       | High availability                      |
+| VPC scope                               | Region                                 |
+| Subnet scope                            | Availability Zone                      |
+| IAM / Route 53                          | Global services in module activity     |
+| EC2 / Lambda                            | Regional services in module activity   |
+
+---
+
+# 50. Common mistakes to avoid
+
+**Region ≠ Availability Zone.**
+
+```text
+Region
+contains
+Availability Zones
+```
+
+**Availability Zone ≠ data center.**
+
+An AZ consists of discrete data centers.
+
+**Edge location ≠ Availability Zone.**
+
+```text
+AZ → Infrastructure / resilience
+Edge → Content delivery / latency
+```
+
+**Two servers in one AZ ≠ Multi-AZ.**
+
+Both still depend on the same AZ.
+
+**Multiple AZs ≠ multiple Regions.**
+
+```text
+Multi-AZ
+→ Several isolated locations inside one Region
+
+Multi-Region
+→ Several geographical Regions
+```
+
+**Closest Region ≠ automatically the best Region.**
+
+Compliance, service availability and cost also matter.
+
+**Elasticity ≠ scalability.**
+
+```text
+Elasticity → Up and down
+Scalability → Grow
+```
+
+**CloudFront ≠ an Availability Zone.**
+
+CloudFront uses edge infrastructure to deliver content.
+
+---
+
+# 51. What I would prioritise for the subjective exam
+
+If time is short, master these **five things**:
+
+```text
+1. Region vs AZ vs data center vs edge location
+
+2. Region-selection factors
+   - Legal/governance
+   - Customer proximity
+   - Service availability
+   - Cost
+
+3. Why multiple AZs improve resilience
+
+4. Elasticity vs scalability
+   Fault tolerance vs high availability
+
+5. AWS service categories
+```
+
+That covers almost the entire intellectual substance of Module 3 because the module itself only has two formal objectives. 
+
+# Final 2-minute revision
+
+```text
+AWS INFRASTRUCTURE
+──────────────────
+Region
+→ Geographical area
+
+Availability Zone
+→ Isolated infrastructure inside Region
+
+Data center
+→ Physical facility
+
+Edge location
+→ Cached content near users
+
+Regional edge cache
+→ Intermediate cache for less-frequent content
+```
+
+```text
+CHOOSE A REGION
+───────────────
+Compliance / legal
+Latency / customer proximity
+Available AWS services
+Cost
+```
+
+```text
+RESILIENCE
+──────────
+Multiple AZs
+→ Reduce dependence on one location
+```
+
+```text
+INFRASTRUCTURE FEATURES
+───────────────────────
+Elasticity
+→ Adjust up/down
+
+Scalability
+→ Grow
+
+Fault tolerance
+→ Continue after failure
+
+High availability
+→ Minimise downtime
+```
+
+```text
+RESOURCE SCOPE
+──────────────
+VPC → Region
+Subnet → Availability Zone
+
+EC2 / Lambda → Regional
+IAM / Route 53 → Global
+```
+
+```text
+SERVICE CATEGORIES
+──────────────────
+EC2 / Lambda → Compute
+S3 / EBS / EFS → Storage
+RDS / DynamoDB → Database
+VPC / Route 53 / CloudFront → Networking
+IAM / KMS / Shield → Security
+Budgets / Cost Explorer → Cost Management
+CloudWatch / CloudTrail → Management & Governance
+```
+
+The **single most important mental model** for Module 3 is:
+
+```text
+REGION
+→ Where should my workload be geographically?
+
+AVAILABILITY ZONE
+→ How do I reduce dependence on one location?
+
+EDGE LOCATION
+→ How do I deliver content closer to users?
+```
+
+If those three distinctions are completely clear, the most confusing part of Module 3 is already dealt with. 
 
 </details>
 
+
 <details>
-<summary><strong>Module 4: AWS Cloud Security — AWS-Style Objective Test Preparation</strong></summary>
+<summary><strong> Module 4: AWS Cloud Security — Subjective Exam Preparation </strong></summary>
 
-# Module 4: AWS Cloud Security — AWS-Style Objective Test Preparation
+For a **subjective exam**, Module 4 is one of the chapters where simply memorising service names is not enough. You need to understand **who is responsible for security, how AWS permissions work, how accounts are protected, how data is encrypted, and which services support security and compliance**.
 
-The current AWS Certified Cloud Practitioner exam uses:
+The module expects you to recognise eight areas: the shared responsibility model, AWS vs customer responsibilities, IAM users/groups/roles, IAM credentials, securing a new AWS account, IAM users and groups, securing AWS data, and AWS compliance programs. 
 
-* **Multiple choice:** one correct answer and three distractors.
-* **Multiple response:** two or more correct answers from at least five options.
+The chapter can be remembered as one security story:
 
-AWS describes distractors as plausible answers that candidates with incomplete knowledge might select. Security and Compliance currently represents **30% of scored CLF-C02 content**, so AWS takes this topic rather seriously. ([AWS Documentation][1])
-
-This test stays within the eight objectives of **AWS Academy Cloud Foundations Module 4** rather than adding unrelated security services from the broader certification syllabus. 
-
----
-
-# 1. What Module 4 expects you to know
-
-The module objectives are to recognise:
-
-1. The AWS shared responsibility model.
-2. AWS and customer responsibilities.
-3. IAM users, groups and roles.
-4. IAM security credentials.
-5. Steps for securing a new AWS account.
-6. How IAM users and groups operate.
-7. How AWS data is secured.
-8. AWS compliance programs. 
+```text
+WHO protects what?
+        ↓
+WHO can access AWS?
+        ↓
+WHAT are they allowed to do?
+        ↓
+HOW do we protect the account?
+        ↓
+HOW do we protect data?
+        ↓
+HOW do we check security and compliance?
+```
 
 ---
 
-# 2. High-priority concepts before attempting the test
+# 1. The most important concept: Shared Responsibility Model
 
-## Shared responsibility
+The central security rule is:
 
 ```text
 AWS      → Security OF the cloud
 Customer → Security IN the cloud
 ```
 
-| AWS generally manages                 | Customer generally manages     |
-| ------------------------------------- | ------------------------------ |
-| Physical data centres                 | Customer data                  |
-| Physical servers                      | IAM permissions                |
-| AWS networking infrastructure         | EC2 guest operating system     |
-| Virtualisation layer                  | EC2 operating-system patches   |
-| Isolation between customers           | Security groups                |
-| Hardware disposal                     | Application configuration      |
-| Underlying AWS service infrastructure | S3 bucket access configuration |
+The diagram on page 5 divides responsibility exactly this way. AWS protects the underlying infrastructure, while the customer protects what they configure and place inside AWS. 
 
-The customer's responsibility changes according to the service. EC2 gives the customer more control and therefore more security work; managed services such as RDS and Lambda move more infrastructure responsibility to AWS. 
+An easy analogy is renting an office.
 
-## IAM essentials
+The building owner is responsible for:
 
 ```text
-IAM user   → Long-term identity
-IAM group  → Collection of users
-IAM policy → Permission document
-IAM role   → Assumable permissions with temporary credentials
+Physical building
+Power
+Elevators
+Building security
+Structural maintenance
 ```
 
-Permission evaluation:
+But the tenant is responsible for:
 
 ```text
-Explicit Deny > Explicit Allow > Implicit Deny
+Who receives office keys
+What files are stored
+Employee access
+Computer configuration
+Locking the office
 ```
 
-IAM follows implicit deny by default, and AWS recommends least privilege.
+AWS works similarly.
 
-## Account-security sequence
+---
+
+# 2. AWS responsibility: Security **of** the cloud
+
+According to the module, AWS is responsible for areas such as:
+
+* physical security of data centres;
+* hardware and software infrastructure;
+* network infrastructure;
+* virtualisation infrastructure;
+* instance isolation;
+* storage decommissioning;
+* infrastructure access logging and auditing. 
+
+So if something belongs to the **underlying AWS infrastructure**, it is generally AWS's responsibility.
+
+### Good subjective answer
+
+> Under the AWS Shared Responsibility Model, AWS is responsible for security **of the cloud**. This includes protecting the physical data centres, hardware, networking infrastructure, virtualisation layer and the underlying infrastructure that supports AWS services. AWS also provides isolation between customers and manages physical infrastructure security.
+
+---
+
+# 3. Customer responsibility: Security **in** the cloud
+
+The module places responsibility on the customer for things such as:
+
+* customer data;
+* applications;
+* IAM permissions;
+* EC2 operating-system patches;
+* passwords;
+* security groups;
+* host firewalls;
+* network configuration;
+* account management;
+* user login and permission settings. 
+
+So if the question is about something the customer **configures**, that is usually customer responsibility.
+
+### Good answer
+
+> The customer is responsible for security **in the cloud**. This includes protecting customer data, configuring IAM access, securing applications, managing EC2 guest operating systems, applying patches, configuring security groups and managing user permissions.
+
+---
+
+# 4. AWS vs customer — quick decision rule
+
+Ask:
 
 ```text
-Protect root user
+Is it physical or underlying AWS infrastructure?
+→ AWS
+
+Is it customer data, configuration, identities or software?
+→ Customer
+```
+
+Examples:
+
+| Question                        | Responsibility |
+| ------------------------------- | -------------- |
+| Physical data-centre security   | AWS            |
+| Virtualisation infrastructure   | AWS            |
+| Isolation between AWS customers | AWS            |
+| EC2 guest OS patching           | Customer       |
+| EC2 security-group rules        | Customer       |
+| S3 bucket permissions           | Customer       |
+| IAM users and permissions       | Customer       |
+| Application configuration       | Customer       |
+
+---
+
+# 5. Responsibility changes depending on the service
+
+This is important.
+
+The module explains that the amount of security work the customer performs changes according to whether the service behaves more like **IaaS, PaaS or SaaS**. 
+
+Think:
+
+```text
+More customer control
+→ More customer security responsibility
+
+More AWS management
+→ More AWS security responsibility
+```
+
+---
+
+# 6. IaaS security responsibility
+
+For Infrastructure as a Service, such as EC2, the customer manages more.
+
+The module gives examples including:
+
+```text
+Amazon EC2
+Amazon EBS
+Amazon VPC
+```
+
+The customer may need to manage:
+
+```text
+Guest operating system
+Patches
+Network settings
+Firewall/security groups
+Applications
+Access control
+```
+
+### Scenario
+
+> An EC2 instance is running an outdated Linux operating system.
+
+Who is responsible?
+
+**Customer.**
+
+Because the customer manages the EC2 guest operating system.
+
+---
+
+# 7. PaaS security responsibility
+
+The module gives examples such as:
+
+```text
+Amazon RDS
+AWS Elastic Beanstalk
+AWS Lambda
+```
+
+AWS manages more of the underlying platform.
+
+For example, with a managed database service, AWS may handle more of:
+
+```text
+Operating system
+Database patching
+Underlying infrastructure
+Recovery mechanisms
+```
+
+while the customer focuses more on:
+
+```text
+Data
+Users
+Permissions
+Application code
+```
+
+### Important comparison
+
+If Oracle runs on:
+
+```text
+EC2
+→ Customer handles Oracle and OS patching
+```
+
+If Oracle runs through:
+
+```text
+Amazon RDS
+→ AWS manages more of the platform and patching
+```
+
+The module explicitly uses this kind of distinction in its shared responsibility activity. 
+
+---
+
+# 8. Likely subjective question — Shared responsibility
+
+> Explain the AWS Shared Responsibility Model.
+
+A strong answer:
+
+> The AWS Shared Responsibility Model divides security responsibilities between AWS and the customer. AWS is responsible for security **of the cloud**, which includes the physical data centres, hardware, networking and virtualisation infrastructure. The customer is responsible for security **in the cloud**, including customer data, IAM permissions, applications, operating-system configuration, security groups and network settings. The exact division of responsibility depends on the AWS service being used because customers manage more when using IaaS services such as EC2 and less when using more managed services.
+
+---
+
+# 9. AWS Identity and Access Management
+
+The next huge topic is **IAM**.
+
+IAM is used to control access to AWS resources.
+
+The module describes IAM as providing fine-grained control over:
+
+```text
+Who can access a resource
+Which resources they can access
+What they can do
+How they can access them
+```
+
+IAM is also described as a no-cost AWS account feature. 
+
+The easiest way to think about IAM is:
+
+> **Who are you, and what are you allowed to do?**
+
+---
+
+# 10. Authentication vs authorisation
+
+These two words are easy to confuse.
+
+## Authentication
+
+Asks:
+
+> **Who are you?**
+
+Examples:
+
+```text
+Username + password
+Access key
+MFA code
+```
+
+## Authorisation
+
+Asks:
+
+> **What are you allowed to do?**
+
+Examples:
+
+```text
+Can read S3
+Can start EC2
+Cannot terminate EC2
+```
+
+Memory:
+
+```text
+Authentication → Identity
+Authorisation  → Permission
+```
+
+---
+
+# 11. IAM user
+
+An **IAM user** represents a person or application that can authenticate to an AWS account. 
+
+A user may receive:
+
+```text
+Console login credentials
+or
+Programmatic credentials
+```
+
+Think of an IAM user as:
+
+> **A named identity.**
+
+Example:
+
+```text
+Aisyah
+Developer01
+FinanceUser
+```
+
+---
+
+# 12. IAM group
+
+An **IAM group** is a collection of IAM users that need the same permissions. 
+
+Example:
+
+```text
+Developers group
+├── Ali
+├── Sarah
+└── Mei
+```
+
+Instead of attaching the same policy separately to all three users:
+
+```text
+Policy
+↓
+Developers group
+↓
+All users inherit permissions
+```
+
+Important:
+
+```text
+Groups contain users
+Users can belong to multiple groups
+Groups do NOT contain other groups
+```
+
+---
+
+# 13. IAM policy
+
+An **IAM policy** is the document that defines permissions.
+
+The module explains that policies support fine-grained access and may be:
+
+```text
+Identity-based
+Resource-based
+```
+
+
+
+A policy defines things such as:
+
+```text
+Effect → Allow or Deny
+Action → What may be done
+Resource → What resource it applies to
+```
+
+Conceptually:
+
+```text
+Allow
+s3:GetObject
+on
+ProjectBucket
+```
+
+means:
+
+> Allow reading objects from that bucket.
+
+---
+
+# 14. Identity-based vs resource-based policy
+
+## Identity-based policy
+
+Attached to:
+
+```text
+IAM user
+IAM group
+IAM role
+```
+
+It answers:
+
+> **What may this identity do?**
+
+## Resource-based policy
+
+Attached directly to a resource.
+
+Example:
+
+```text
+S3 bucket policy
+```
+
+It answers:
+
+> **Who can access this resource and what may they do?**
+
+The module explicitly distinguishes these two policy types. 
+
+---
+
+# 15. IAM role
+
+An **IAM role** provides a set of permissions for making AWS service requests. 
+
+The key idea is:
+
+> A role is **assumed**, rather than permanently tied to one user.
+
+Roles can be used by:
+
+```text
+AWS services
+Users
+Applications
+Other AWS accounts
+```
+
+and commonly provide **temporary credentials**.
+
+Example:
+
+```text
+EC2
+↓ assumes role
+IAM role
+↓ grants
+Permission to read S3
+```
+
+This is safer than embedding permanent credentials in the application.
+
+---
+
+# 16. User vs group vs policy vs role
+
+Memorise this:
+
+| IAM component | Think                 |
+| ------------- | --------------------- |
+| **User**      | Identity              |
+| **Group**     | Collection of users   |
+| **Policy**    | Permission rules      |
+| **Role**      | Assumable permissions |
+
+Or even shorter:
+
+```text
+User   → Who
+Group  → Team
+Policy → Rules
+Role   → Temporary job
+```
+
+---
+
+# 17. IAM security credentials
+
+The module separates console access from programmatic access.
+
+## Console access
+
+Authentication can use:
+
+```text
+12-digit AWS Account ID or alias
+IAM username
+Password
+MFA code if enabled
+```
+
+## Programmatic access
+
+The module shows credentials including:
+
+```text
+Access key ID
+Secret access key
+```
+
+used for AWS CLI and SDK access. 
+
+---
+
+# 18. Multi-factor authentication
+
+**MFA** adds another authentication factor.
+
+Instead of only:
+
+```text
+Username
++
+Password
+```
+
+it requires:
+
+```text
+Username
++
+Password
++
+Authentication code
+```
+
+The module states that MFA increases security because a password alone is no longer enough. 
+
+### Good answer
+
+> Multi-factor authentication improves account security by requiring an additional authentication code in addition to the username and password. Therefore, possession of a password alone is insufficient to access the account.
+
+---
+
+# 19. IAM permission evaluation
+
+This is one of the most important exam rules in Module 4.
+
+By default:
+
+> **All permissions are implicitly denied.**
+
+If a policy explicitly allows something, it may become allowed.
+
+If a policy explicitly denies something:
+
+> **The explicit deny wins.**
+
+The module's IAM policy example makes this rule very clear. 
+
+Memory:
+
+```text
+Explicit Deny
+>
+Explicit Allow
+>
+Implicit Deny
+```
+
+---
+
+# 20. Example of permission evaluation
+
+Suppose:
+
+```text
+Policy A:
+Allow S3 access
+```
+
+and another policy says:
+
+```text
+Policy B:
+Deny s3:DeleteObject
+```
+
+The user may be able to read S3 objects, but cannot delete them.
+
+Why?
+
+Because:
+
+```text
+Explicit Deny wins
+```
+
+---
+
+# 21. Principle of least privilege
+
+The module identifies **least privilege** as an IAM best practice. 
+
+It means:
+
+> Give a user only the permissions necessary to perform their job.
+
+Example:
+
+A developer only needs to view EC2 instances.
+
+Bad approach:
+
+```text
+AdministratorAccess
+```
+
+Better approach:
+
+```text
+Only required EC2 read permissions
+```
+
+### Good answer
+
+> The principle of least privilege means granting users or roles only the minimum permissions required to complete their tasks. This reduces the potential impact of mistakes, compromised credentials or misuse.
+
+---
+
+# 22. Likely subjective question — IAM components
+
+> Differentiate IAM users, groups, policies and roles.
+
+Strong answer:
+
+> An IAM user represents an individual person or application that can authenticate to AWS. An IAM group is a collection of users that require similar permissions. An IAM policy is a permission document that defines which AWS actions and resources are allowed or denied. An IAM role contains permissions that can be assumed temporarily by users, applications or AWS services rather than being permanently associated with one identity.
+
+---
+
+# 23. Securing a new AWS account
+
+A newly created AWS account begins with a **root user**.
+
+The root user has extremely powerful access.
+
+Therefore, it should not be used for everyday administration.
+
+The module recommends creating an administrative IAM identity for routine work and protecting root access carefully. 
+
+---
+
+# 24. Root user vs IAM user
+
+Think:
+
+```text
+Root user
+→ Master key
+
+IAM user
+→ Normal employee key
+```
+
+The root user can perform highly sensitive account tasks.
+
+The module includes examples such as changing the AWS Support plan. 
+
+### Exam rule
+
+> Do not use the root user for ordinary daily tasks.
+
+---
+
+# 25. Account-security steps
+
+A useful sequence based on the module is:
+
+```text
+Protect root credentials
+↓
+Create administrative IAM identity
 ↓
 Enable MFA
 ↓
-Create individual IAM users
+Create individual identities
 ↓
-Use groups and least privilege
+Use groups and policies
 ↓
-Use roles instead of shared credentials
+Apply least privilege
 ↓
-Configure password policy
+Use roles where appropriate
 ↓
-Monitor with CloudTrail
+Monitor account activity
 ```
 
-## Security-service map
-
-| Requirement                        | Service                |
-| ---------------------------------- | ---------------------- |
-| Manage several AWS accounts        | AWS Organizations      |
-| Set maximum account permissions    | Service control policy |
-| Manage encryption keys             | AWS KMS                |
-| Authenticate application customers | Amazon Cognito         |
-| DDoS protection                    | AWS Shield             |
-| Record API activity                | AWS CloudTrail         |
-| Evaluate resource configurations   | AWS Config             |
-| Retrieve AWS compliance reports    | AWS Artifact           |
+The exact order is less important than understanding the logic.
 
 ---
 
-# 3. Module 4 Mock Test
+# 26. Individual users instead of shared accounts
 
-**Questions:** 40
-**Suggested time:** 45 minutes
-**Instructions:** Select one answer unless the question says **Select TWO**.
-
----
-
-## Shared responsibility model
-
-### 1. Which statement BEST describes the AWS shared responsibility model?
-
-A. AWS is responsible for all security controls when a customer uses AWS
-B. Customers are responsible only for physical security
-C. AWS secures the cloud infrastructure, while customers secure their workloads and configurations
-D. AWS and the customer are equally responsible for every individual security control
-
----
-
-### 2. Which task is the responsibility of AWS?
-
-A. Configuring an EC2 security group
-B. Patching the operating system of an EC2 instance
-C. Protecting the physical AWS data centre
-D. Creating IAM password policies
-
----
-
-### 3. A company launches a Linux EC2 instance. Who is responsible for applying security patches to its guest operating system?
-
-A. AWS
-B. The customer
-C. The Linux distributor only
-D. AWS Support
-
----
-
-### 4. A company stores files in an Amazon S3 bucket. Who is responsible for configuring the bucket's access permissions?
-
-A. AWS
-B. The customer
-C. The internet service provider
-D. The AWS data-centre operator
-
----
-
-### 5. Which task is AWS responsible for when a customer uses Amazon EC2?
-
-A. Installing customer applications
-B. Protecting the virtualisation infrastructure
-C. Managing the customer's passwords
-D. Configuring the customer's host firewall
-
----
-
-### 6. A company runs Oracle directly on an EC2 instance. Who is responsible for installing Oracle database patches?
-
-A. AWS
-B. Oracle automatically
-C. The customer
-D. The Availability Zone
-
----
-
-### 7. A company runs Oracle using Amazon RDS. Who generally manages the database software patches?
-
-A. The customer
-B. AWS
-C. The company's internet provider
-D. The IAM administrator
-
----
-
-### 8. Which responsibilities belong to the customer when using EC2? **Select TWO.**
-
-A. Physical security of AWS servers
-B. EC2 guest operating-system patches
-C. Virtualisation infrastructure
-D. Security-group configuration
-E. Disposal of physical storage devices
-
----
-
-### 9. Which responsibilities belong to AWS? **Select TWO.**
-
-A. Configuring customer IAM policies
-B. Protecting AWS physical facilities
-C. Maintaining the underlying network infrastructure
-D. Selecting the customer's encryption settings
-E. Protecting customer access keys
-
----
-
-### 10. Why does a customer generally have more security responsibility with an IaaS service than with a managed platform service?
-
-A. IaaS services do not use physical security
-B. IaaS gives the customer more control over the operating system and configuration
-C. Managed services cannot process confidential data
-D. IaaS services do not use the shared responsibility model
-
----
-
-### 11. Which service gives the customer the greatest responsibility for operating-system configuration?
-
-A. AWS Lambda
-B. Amazon RDS
-C. Amazon EC2
-D. AWS Shield
-
----
-
-### 12. Which services are examples of managed platform services in Module 4? **Select TWO.**
-
-A. Amazon EC2
-B. Amazon EBS
-C. Amazon RDS
-D. AWS Lambda
-E. Amazon VPC
-
----
-
-## IAM identities and credentials
-
-### 13. Which IAM component represents a person or application that can authenticate with an AWS account?
-
-A. IAM policy
-B. IAM user
-C. IAM group
-D. Service control policy
-
----
-
-### 14. A company wants to assign the same permissions to 25 developers. Which IAM component should the company use?
-
-A. IAM group
-B. IAM access key
-C. AWS Organizations
-D. Resource-based policy attached separately to every EC2 instance
-
----
-
-### 15. What is the purpose of an IAM policy?
-
-A. To store application data
-B. To define permissions to AWS actions and resources
-C. To create a physical network connection
-D. To encrypt all AWS traffic automatically
-
----
-
-### 16. Which statement BEST describes an IAM role?
-
-A. A permanent password shared by a department
-B. A collection of IAM users
-C. An assumable IAM identity that provides temporary credentials
-D. An AWS account's root identity
-
----
-
-### 17. An application running on EC2 must access an S3 bucket. Which solution follows AWS best practices?
-
-A. Store the root-user password in the application
-B. Embed a permanent IAM user's secret key in the code
-C. Attach an IAM role with the required S3 permissions to the EC2 instance
-D. Make the S3 bucket public
-
----
-
-### 18. Which credentials are traditionally associated with IAM programmatic access?
-
-A. Account ID and password
-B. Access key ID and secret access key
-C. Security-group ID and subnet ID
-D. Private IP address and public IP address
-
----
-
-### 19. Which information can be used by an IAM user to access the AWS Management Console?
-
-A. Account ID or alias, IAM username and password
-B. Access key ID only
-C. Security-group name and private key
-D. VPC ID and account number only
-
----
-
-### 20. What additional information does MFA require in addition to normal sign-in credentials?
-
-A. An AWS Region
-B. A unique authentication code or security-device response
-C. A new IAM policy
-D. A public IP address
-
----
-
-### 21. Which statement describes authentication?
-
-A. Determining which S3 actions a user can perform
-B. Confirming the identity of a user or application
-C. Encrypting stored information
-D. Recording AWS API activity
-
----
-
-### 22. Which statement describes authorisation?
-
-A. Proving a user's identity
-B. Determining which actions an authenticated identity may perform
-C. Creating an authentication code
-D. Recording the user's password in CloudTrail
-
----
-
-## IAM policy evaluation
-
-### 23. An IAM user has no policies attached. What access does the user have by default?
-
-A. Full access
-B. Read-only access
-C. No access because requests are implicitly denied
-D. Access to services in the user's Region only
-
----
-
-### 24. One policy allows an IAM user to delete an S3 object. Another policy explicitly denies the same action. What is the final result?
-
-A. The action is allowed because one policy grants permission
-B. The action is denied because explicit deny overrides allow
-C. The policies cancel each other, so AWS asks the administrator
-D. The most recently attached policy wins
-
----
-
-### 25. Which permission has the highest priority during IAM policy evaluation?
-
-A. Implicit deny
-B. Explicit allow
-C. Explicit deny
-D. Group membership
-
----
-
-### 26. What does the principle of least privilege require?
-
-A. Give every user administrator access temporarily
-B. Give identities only the permissions necessary to perform their work
-C. Use only the root user for sensitive actions
-D. Prevent users from belonging to groups
-
----
-
-### 27. An IAM policy is attached to an IAM role. What type of policy is this?
-
-A. Resource-based policy
-B. Identity-based policy
-C. Network policy
-D. Service control policy
-
----
-
-### 28. A policy is attached directly to an S3 bucket and specifies who may access the bucket. What type of policy is this?
-
-A. Identity-based policy
-B. Password policy
-C. Resource-based policy
-D. Billing policy
-
----
-
-### 29. Which statements about IAM groups are correct? **Select TWO.**
-
-A. Groups can contain IAM users
-B. Groups can contain other groups
-C. A user can belong to multiple groups
-D. Every IAM user automatically belongs to a default group
-E. Groups provide temporary security credentials
-
----
-
-### 30. Which statements about IAM roles are correct? **Select TWO.**
-
-A. A role must be permanently associated with one person
-B. A role can be assumed by an AWS service
-C. A role provides temporary security credentials
-D. A role is a collection of IAM users
-E. A role must contain a console password
-
----
-
-# Securing a new AWS account
-
-### 31. Which action should a company take FIRST to reduce routine use of the AWS account root user?
-
-A. Share the root password with administrators
-B. Create an administrative IAM identity for everyday administration
-C. Delete the root user
-D. Disable all AWS Regions
-
----
-
-### 32. Which task normally requires the AWS account root user according to the module?
-
-A. Starting an EC2 instance
-B. Uploading an object to S3
-C. Changing the AWS Support plan
-D. Creating a standard IAM group
-
----
-
-### 33. Which actions are recommended for protecting an AWS account? **Select TWO.**
-
-A. Create one shared IAM user for the whole team
-B. Enable MFA for the root user
-C. Keep active root-user access keys for convenience
-D. Create individual IAM identities
-E. Give all users full administrator access
-
----
-
-### 34. Which AWS service records user activity and API requests in an AWS account?
-
-A. AWS Artifact
-B. AWS CloudTrail
-C. AWS Shield
-D. Amazon Cognito
-
----
-
-### 35. A security administrator needs to determine who changed an S3 bucket policy. Which service should the administrator use?
-
-A. AWS CloudTrail
-B. Amazon Cognito
-C. AWS KMS
-D. AWS Artifact
-
----
-
-### 36. What is the purpose of the AWS Cost and Usage Report in the account-security steps discussed in the module?
-
-A. It prevents all unexpected charges
-B. It provides detailed information about resource usage and estimated charges
-C. It replaces IAM permissions
-D. It encrypts billing data
-
----
-
-## Securing accounts and applications
-
-### 37. A company wants to centrally manage multiple AWS accounts and group them into organisational units. Which service should it use?
-
-A. Amazon Cognito
-B. AWS Organizations
-C. AWS Shield
-D. AWS Artifact
-
----
-
-### 38. What is the purpose of a service control policy?
-
-A. To grant users permissions directly
-B. To store temporary IAM credentials
-C. To define the maximum available permissions for accounts in an organisation
-D. To encrypt resources across every AWS account
-
----
-
-### 39. An SCP allows the use of Amazon S3, but an IAM user has not been granted S3 permission. Can the user access S3?
-
-A. Yes, because the SCP grants access
-B. Yes, because S3 is allowed at the organisation level
-C. No, because an SCP does not grant permissions
-D. No, because SCPs apply only to the root user
-
----
-
-### 40. Which AWS service enables a company to create and manage encryption keys?
-
-A. AWS KMS
-B. AWS Shield
-C. Amazon Cognito
-D. AWS Artifact
-
----
-
-### 41. A web application needs sign-up, sign-in and access control for millions of customer accounts. Which service should be used?
-
-A. IAM groups
-B. Amazon Cognito
-C. AWS Organizations
-D. AWS Config
-
----
-
-### 42. Which service helps protect an AWS application against distributed denial-of-service attacks?
-
-A. AWS Artifact
-B. AWS Shield
-C. AWS Config
-D. AWS KMS
-
----
-
-### 43. Which statements about AWS Shield are correct? **Select TWO.**
-
-A. It manages application-user passwords
-B. It provides DDoS protection
-C. Shield Standard is available without an additional charge
-D. It evaluates resource configurations
-E. It provides compliance reports
-
----
-
-## Data protection and compliance
-
-### 44. Which description refers to encryption at rest?
-
-A. Encrypting information while it moves between a browser and a web server
-B. Encrypting information stored on physical media
-C. Encrypting an IAM username before login
-D. Encrypting only CloudTrail logs
-
----
-
-### 45. Which technology is commonly used to protect data in transit?
-
-A. TLS
-B. IAM group
-C. SCP
-D. AWS Artifact
-
----
-
-### 46. A user connects securely to a website through HTTPS. What is being protected?
-
-A. Data at rest only
-B. Data moving across the network
-C. Physical storage hardware
-D. IAM group membership
-
----
-
-### 47. Which AWS services can integrate with AWS KMS for encryption at rest according to the module? **Select TWO.**
-
-A. Amazon EBS
-B. Amazon EFS
-C. Amazon Route 53
-D. AWS Organizations
-E. AWS Shield
-
----
-
-### 48. A company wants to reduce the risk that an S3 bucket is accidentally made public. Which feature should it use?
-
-A. Amazon S3 Block Public Access
-B. AWS Shield Advanced
-C. AWS Organizations consolidated billing
-D. Amazon Cognito user pools
-
----
-
-### 49. Which access-control mechanism is described in the module as a legacy S3 mechanism?
-
-A. IAM role
-B. S3 access control list
-C. S3 Block Public Access
-D. Bucket policy
-
----
-
-### 50. Which AWS service continuously records resource configurations, evaluates them against desired configurations and maintains configuration history?
-
-A. AWS CloudTrail
-B. AWS Config
-C. AWS Artifact
-D. AWS Shield
-
----
-
-### 51. Which AWS service provides access to reports such as ISO certifications, PCI reports and SOC reports?
-
-A. AWS KMS
-B. Amazon Cognito
-C. AWS Artifact
-D. AWS Organizations
-
----
-
-### 52. Which statement about AWS compliance is correct?
-
-A. Every workload becomes compliant merely by running on AWS
-B. AWS provides compliance information and controls, while customers must configure workloads according to their requirements
-C. AWS Artifact automatically changes non-compliant resources
-D. AWS Config provides legal certification for the customer
-
----
-
-# Stop before opening the answers
-
-<details>
-<summary><strong>Open answer key and explanations</strong></summary>
-
-## Answer key
-
-|  Q |  Answer  | Explanation                                                                                |
-| -: | :------: | ------------------------------------------------------------------------------------------ |
-|  1 |   **C**  | AWS secures the underlying cloud; the customer secures workloads, data and configurations. |
-|  2 |   **C**  | AWS protects the physical data centres.                                                    |
-|  3 |   **B**  | The customer patches the guest OS on EC2.                                                  |
-|  4 |   **B**  | Customers configure access to their S3 buckets.                                            |
-|  5 |   **B**  | AWS maintains the virtualisation layer.                                                    |
-|  6 |   **C**  | A database on EC2 is customer-managed above the infrastructure layer.                      |
-|  7 |   **B**  | RDS is managed, so AWS handles database software patching.                                 |
-|  8 | **B, D** | EC2 OS patching and security-group rules belong to the customer.                           |
-|  9 | **B, C** | AWS secures physical facilities and underlying network infrastructure.                     |
-| 10 |   **B**  | More customer control means more customer security responsibility.                         |
-| 11 |   **C**  | EC2 gives the customer guest-OS control.                                                   |
-| 12 | **C, D** | RDS and Lambda are managed platform examples in the module.                                |
-
-The shared-responsibility distinctions are shown in the module's responsibility model and IaaS/PaaS comparisons. 
-
-|  Q | Answer | Explanation                                                                                    |
-| -: | :----: | ---------------------------------------------------------------------------------------------- |
-| 13 |  **B** | An IAM user can represent a person or application.                                             |
-| 14 |  **A** | Groups simplify assigning identical permissions to several users.                              |
-| 15 |  **B** | Policies define permitted or denied actions and resources.                                     |
-| 16 |  **C** | A role is assumable and supplies temporary credentials.                                        |
-| 17 |  **C** | An EC2 role avoids permanent credentials in application code.                                  |
-| 18 |  **B** | Programmatic access traditionally uses an access key ID and secret access key.                 |
-| 19 |  **A** | Console access uses the account ID or alias, IAM username and password, plus MFA when enabled. |
-| 20 |  **B** | MFA adds a separate authentication code or device response.                                    |
-| 21 |  **B** | Authentication verifies identity.                                                              |
-| 22 |  **B** | Authorisation determines permitted actions.                                                    |
-
-|  Q |  Answer  | Explanation                                                                            |
-| -: | :------: | -------------------------------------------------------------------------------------- |
-| 23 |   **C**  | Permissions begin as implicitly denied.                                                |
-| 24 |   **B**  | Explicit deny overrides explicit allow.                                                |
-| 25 |   **C**  | Explicit deny has the highest priority.                                                |
-| 26 |   **B**  | Least privilege provides only the access required.                                     |
-| 27 |   **B**  | A policy attached to a user, group or role is identity-based.                          |
-| 28 |   **C**  | A policy attached directly to a resource is resource-based.                            |
-| 29 | **A, C** | Groups contain users, and users can belong to several groups. Groups cannot be nested. |
-| 30 | **B, C** | Services can assume roles, and roles provide temporary credentials.                    |
-
-|  Q |  Answer  | Explanation                                                            |
-| -: | :------: | ---------------------------------------------------------------------- |
-| 31 |   **B**  | Create an administrative IAM identity, then avoid routine root use.    |
-| 32 |   **C**  | Changing the AWS Support plan is listed as a root-user task.           |
-| 33 | **B, D** | Protect root with MFA and create individual IAM identities.            |
-| 34 |   **B**  | CloudTrail records API activity.                                       |
-| 35 |   **A**  | CloudTrail can identify who changed the bucket policy.                 |
-| 36 |   **B**  | The Cost and Usage Report provides usage and estimated-charge details. |
-
-|  Q |  Answer  | Explanation                                                                                |
-| -: | :------: | ------------------------------------------------------------------------------------------ |
-| 37 |   **B**  | Organizations centrally manages multiple accounts and OUs.                                 |
-| 38 |   **C**  | SCPs define maximum available permissions.                                                 |
-| 39 |   **C**  | An SCP limits permissions but never grants them. IAM must still allow access.              |
-| 40 |   **A**  | KMS creates and manages encryption keys.                                                   |
-| 41 |   **B**  | Cognito provides customer sign-up, sign-in and application access control.                 |
-| 42 |   **B**  | Shield protects against DDoS attacks.                                                      |
-| 43 | **B, C** | Shield provides DDoS protection, and Shield Standard is available at no additional charge. |
-
-|  Q |  Answer  | Explanation                                                                    |
-| -: | :------: | ------------------------------------------------------------------------------ |
-| 44 |   **B**  | At-rest data is stored physically on media.                                    |
-| 45 |   **A**  | TLS protects network communication.                                            |
-| 46 |   **B**  | HTTPS protects data in transit.                                                |
-| 47 | **A, B** | EBS and EFS are among the KMS-supported examples in the module.                |
-| 48 |   **A**  | S3 Block Public Access helps prevent unintended public access.                 |
-| 49 |   **B**  | ACLs are described as a legacy S3 access-control mechanism.                    |
-| 50 |   **B**  | Config evaluates and records resource configurations.                          |
-| 51 |   **C**  | Artifact provides compliance reports and agreements.                           |
-| 52 |   **B**  | AWS compliance does not remove the customer's own compliance responsibilities. |
-
-</details>
-
----
-
-# 4. Score interpretation
-
-|        Score | Readiness                                                                          |
-| -----------: | ---------------------------------------------------------------------------------- |
-|    **47–52** | Strongly prepared                                                                  |
-|    **41–46** | Nearly ready; revise specific mistakes                                             |
-|    **33–40** | Basic understanding is present, but the distractors are still earning their salary |
-| **Below 33** | Review shared responsibility and IAM before retesting                              |
-
----
-
-# 5. The most dangerous exam confusions
-
-## Multi-factor authentication versus permissions
+Do not create:
 
 ```text
-MFA → Helps prove identity
-IAM policy → Determines permitted actions
+username: ITTeam
+password: sharedpassword123
 ```
 
-MFA does not give a user permission to access S3.
+for ten employees.
 
-## IAM role versus IAM group
+Why?
+
+Because then:
 
 ```text
-Group → Collection of users
-Role  → Assumable permissions with temporary credentials
+Who performed the action?
+→ Nobody knows precisely
 ```
 
-A role is not a group with a more impressive name.
+Individual identities improve:
 
-## SCP versus IAM policy
+* accountability;
+* auditing;
+* access removal;
+* permission management.
 
-```text
-SCP        → Maximum permissions available
-IAM policy → Actual permissions granted
-```
-
-SCPs do not grant access.
-
-## CloudTrail versus Config versus Artifact
-
-```text
-CloudTrail → Who performed an action?
-Config     → How was the resource configured?
-Artifact   → Where are AWS compliance reports?
-```
-
-## Multi-AZ security responsibility trap
-
-Using multiple Availability Zones may improve availability, but customers must still configure their workload to use them. AWS owns resilient infrastructure; it does not redesign a single-AZ customer application out of sympathy.
+This is an important security principle for subjective explanation.
 
 ---
 
-# 6. Final rapid-revision sheet
+# 27. AWS CloudTrail
+
+**AWS CloudTrail** records user activity and API requests in an AWS account.
+
+The key question it answers is:
+
+> **Who did what?**
+
+Example:
+
+> “Who changed the S3 bucket policy?”
+
+Use:
+
+**CloudTrail**
+
+The module specifically uses account-activity recording as a security control. 
+
+Memory:
+
+```text
+CloudTrail
+→ Activity trail
+→ Who performed the API action?
+```
+
+---
+
+# 28. AWS Organizations and service control policies
+
+The module's securing-accounts material also introduces centrally managing multiple AWS accounts.
+
+Think:
+
+```text
+AWS Organizations
+→ Manage multiple AWS accounts
+```
+
+A **Service Control Policy**, or SCP, can set organisation-level permission boundaries.
+
+The key distinction:
+
+```text
+SCP
+→ Limits what can be permitted
+
+IAM
+→ Grants permissions to identities
+```
+
+So:
+
+> An SCP does not automatically grant access.
+
+If the SCP allows something but IAM does not:
+
+```text
+Still denied
+```
+
+---
+
+# 29. Security services you should recognise
+
+Module 4 includes several services that solve very different problems.
+
+| Requirement                     | AWS service       |
+| ------------------------------- | ----------------- |
+| Manage encryption keys          | AWS KMS           |
+| Authenticate application users  | Amazon Cognito    |
+| DDoS protection                 | AWS Shield        |
+| Record API activity             | AWS CloudTrail    |
+| Manage multiple accounts        | AWS Organizations |
+| Evaluate resource configuration | AWS Config        |
+| Access compliance reports       | AWS Artifact      |
+
+These distinctions are very exam-friendly because the service names themselves are not especially helpful.
+
+---
+
+# 30. AWS Key Management Service
+
+**AWS KMS** is used to create and manage encryption keys.
+
+Think:
+
+```text
+Data
+↓ encryption key
+Encrypted data
+```
+
+KMS helps control access to and usage of encryption keys.
+
+### Scenario
+
+> “The company needs central management of encryption keys.”
+
+**AWS KMS**
+
+---
+
+# 31. Amazon Cognito
+
+**Amazon Cognito** is used for authentication and access control for users of applications.
+
+Think:
+
+```text
+Customer signs up
+↓
+Customer signs in
+↓
+Application authenticates customer
+```
+
+This is different from IAM.
+
+```text
+IAM
+→ AWS administrators, identities and services
+
+Cognito
+→ End users of applications
+```
+
+### Scenario
+
+> “Millions of customers need to sign into a mobile application.”
+
+**Amazon Cognito**
+
+---
+
+# 32. AWS Shield
+
+**AWS Shield** helps protect applications against **Distributed Denial-of-Service (DDoS)** attacks.
+
+A DDoS attack attempts to overwhelm a service with large amounts of traffic.
+
+```text
+Huge malicious traffic
+↓
+Application
+↓
+Potential disruption
+```
+
+The module distinguishes Shield Standard and Shield Advanced, with Shield Standard available without an additional charge in the teaching material. 
+
+### Scenario
+
+> “The company wants protection against DDoS attacks.”
+
+**AWS Shield**
+
+---
+
+# 33. Protecting data: at rest vs in transit
+
+This is another major subjective topic.
+
+Data exists in two important states:
+
+```text
+Data at rest
+Data in transit
+```
+
+
+
+---
+
+# 34. Encryption at rest
+
+**Data at rest** means stored data.
+
+Examples:
+
+```text
+Object stored in S3
+File stored in EFS
+Data stored in EBS
+Database record stored in RDS
+```
+
+The purpose of encryption is to make the stored information unreadable without the appropriate encryption key.
+
+Think:
+
+```text
+Stored data
+→ Encrypt
+→ Ciphertext
+```
+
+AWS KMS can help manage encryption keys.
+
+---
+
+# 35. Encryption in transit
+
+**Data in transit** means data moving across a network.
+
+Examples:
+
+```text
+Browser → Website
+EC2 → EFS
+Application → Database
+On-premises → S3
+```
+
+The module mentions protections such as:
+
+```text
+TLS
+HTTPS
+Certificates
+```
+
+
+
+Memory:
+
+```text
+At rest
+→ Stored
+
+In transit
+→ Moving
+```
+
+---
+
+# 36. At-rest vs in-transit answer
+
+> Encryption at rest protects data while it is stored on media such as EBS, S3 or database storage. Encryption in transit protects data while it is moving across a network, for example between a browser and a web application, and commonly uses technologies such as TLS or HTTPS. Both forms of encryption are required because protecting stored data does not automatically protect network traffic.
+
+---
+
+# 37. Securing Amazon S3
+
+The module discusses protecting S3 access through several mechanisms, including:
+
+* S3 Block Public Access;
+* IAM policies;
+* bucket policies;
+* encryption;
+* access control lists. 
+
+The most intuitive distinction:
+
+```text
+IAM policy
+→ Permission attached to identity
+
+Bucket policy
+→ Permission attached to bucket
+
+Block Public Access
+→ Helps prevent unintended public access
+```
+
+---
+
+# 38. S3 Block Public Access
+
+If the question says:
+
+> “The company wants to prevent an S3 bucket from accidentally becoming public.”
+
+Think:
+
+**S3 Block Public Access**
+
+This is a classic scenario clue. 
+
+---
+
+# 39. Compliance does not mean AWS does everything for you
+
+The compliance section is easy to misunderstand.
+
+AWS can provide:
+
+```text
+Compliance programs
+Security controls
+Audit information
+Certifications
+Reports
+```
+
+But the customer must still configure its workload appropriately.
+
+Running something on AWS does **not automatically make the workload compliant**.
+
+That would be convenient, but unfortunately auditors have yet to accept “it's in the cloud” as an entire compliance strategy.
+
+---
+
+# 40. AWS compliance program categories
+
+The module groups AWS compliance programs into three broad categories:
+
+1. **Certifications and attestations**
+2. **Laws, regulations and privacy**
+3. **Alignments and frameworks** 
+
+Examples in the module include ISO certifications, GDPR, HIPAA and industry security frameworks.
+
+For the subjective exam, understand the purpose:
+
+> AWS provides information about its policies, processes and controls so customers can assess how AWS supports their own compliance obligations.
+
+---
+
+# 41. AWS Config
+
+**AWS Config** is used to:
+
+* assess AWS resource configurations;
+* audit configurations;
+* evaluate them;
+* monitor configuration changes;
+* compare actual configuration against desired configuration;
+* maintain configuration history. 
+
+The simplest question it answers is:
+
+> **How is this AWS resource configured?**
+
+Example:
+
+```text
+Required:
+S3 bucket must be encrypted
+
+AWS Config:
+Checks actual configuration
+↓
+Compliant / non-compliant
+```
+
+---
+
+# 42. AWS Artifact
+
+**AWS Artifact** provides access to AWS security and compliance reports and agreements.
+
+The module mentions examples such as:
+
+```text
+AWS ISO certifications
+PCI reports
+SOC reports
+```
+
+
+
+Memory:
+
+```text
+Artifact
+→ Compliance documents
+```
+
+Not:
+
+```text
+Artifact
+→ Automatically fixes compliance
+```
+
+It provides evidence and reports.
+
+---
+
+# 43. AWS Config vs Artifact vs CloudTrail
+
+This comparison is very useful:
+
+| Service          | Main question                         |
+| ---------------- | ------------------------------------- |
+| **CloudTrail**   | Who did what?                         |
+| **AWS Config**   | How is the resource configured?       |
+| **AWS Artifact** | Where are the AWS compliance reports? |
+
+Scenario:
+
+> “Who changed the S3 policy?”
+
+**CloudTrail**
+
+> “Is this S3 bucket currently configured according to our rule?”
+
+**AWS Config**
+
+> “Auditor wants AWS SOC report.”
+
+**AWS Artifact**
+
+---
+
+# 44. Likely subjective question — Explain IAM
+
+A good full answer:
+
+> AWS Identity and Access Management is used to control access to AWS resources. IAM supports authentication and authorisation by defining identities and permissions. IAM users represent people or applications, IAM groups collect users with similar permissions, IAM policies define allowed or denied actions, and IAM roles provide permissions that can be temporarily assumed. IAM follows implicit deny by default, explicit deny overrides allow, and AWS recommends the principle of least privilege.
+
+---
+
+# 45. Likely subjective question — Explain how to secure a new AWS account
+
+> A new AWS account should be secured by protecting the root user and avoiding its use for routine administration. An administrative IAM identity should be created for normal tasks, and multi-factor authentication should be enabled, particularly for privileged identities. Individual IAM identities should be created instead of sharing accounts, strong password policies should be used, permissions should follow least privilege, roles should be used where appropriate, and account activity should be monitored using AWS CloudTrail.
+
+---
+
+# 46. Likely subjective question — Explain encryption at rest and in transit
+
+> Encryption at rest protects stored data, such as information stored in S3, EBS or databases. Encryption in transit protects data while it is travelling over a network, such as between a browser and a web server. AWS services can use encryption keys managed through AWS KMS for stored data, while protocols such as TLS and HTTPS are used to protect data in transit.
+
+---
+
+# 47. Likely subjective question — Explain AWS Config and AWS Artifact
+
+> AWS Config is used to assess, audit and evaluate AWS resource configurations. It can record configuration changes and compare actual configurations with desired configurations, which supports security analysis and compliance auditing. AWS Artifact is different because it provides access to AWS security and compliance reports and agreements, such as ISO, PCI and SOC documentation.
+
+---
+
+# 48. Scenario-answering method
+
+As with the earlier modules, use:
+
+```text
+1. Identify the concept/service.
+2. Explain what it does.
+3. Connect it to the scenario.
+```
+
+Example:
+
+> A company finds that an employee may have modified an S3 bucket policy. Management wants to know which user made the change.
+
+Weak answer:
+
+> AWS CloudTrail.
+
+Better answer:
+
+> The company should use AWS CloudTrail because CloudTrail records user activity and API requests made in an AWS account. It can therefore help identify which identity changed the S3 bucket policy and when the action occurred.
+
+The second answer proves understanding instead of merely throwing a service name at the examiner and hoping for mercy.
+
+---
+
+# 49. High-priority scenario clues
+
+| If the question says...         | Think...                     |
+| ------------------------------- | ---------------------------- |
+| Physical AWS infrastructure     | AWS responsibility           |
+| EC2 guest OS patching           | Customer responsibility      |
+| Security group configuration    | Customer responsibility      |
+| Shared security duties          | Shared Responsibility Model  |
+| Identity                        | IAM user                     |
+| Users with same permissions     | IAM group                    |
+| Permission document             | IAM policy                   |
+| Temporary assumable permissions | IAM role                     |
+| Extra login factor              | MFA                          |
+| Minimum permissions             | Least privilege              |
+| Conflicting allow and deny      | Explicit Deny wins           |
+| Root access                     | Protect it / don't use daily |
+| Who changed resource?           | CloudTrail                   |
+| Multiple AWS accounts           | AWS Organizations            |
+| Encryption keys                 | AWS KMS                      |
+| Application users               | Amazon Cognito               |
+| DDoS                            | AWS Shield                   |
+| Stored data                     | Encryption at rest           |
+| Network traffic                 | Encryption in transit / TLS  |
+| Prevent public S3 access        | S3 Block Public Access       |
+| Check configuration             | AWS Config                   |
+| Compliance reports              | AWS Artifact                 |
+
+---
+
+# 50. Common mistakes to avoid
+
+**AWS secures everything because it is cloud-hosted.**
+Wrong.
+
+```text
+AWS → OF the cloud
+Customer → IN the cloud
+```
+
+**AWS patches every EC2 guest OS.**
+Wrong. The customer handles EC2 guest OS patching.
+
+**IAM role = IAM group.**
+Wrong.
+
+```text
+Group → users
+Role → assumable permissions
+```
+
+**Authentication = authorisation.**
+Wrong.
+
+```text
+Authentication → Who?
+Authorisation → What can they do?
+```
+
+**Explicit Allow beats Explicit Deny.**
+Wrong.
+
+```text
+Explicit Deny wins.
+```
+
+**Least privilege means giving Admin access temporarily.**
+No. It means giving only required permissions.
+
+**SCP grants permissions.**
+No. It limits possible permissions.
+
+**Cognito manages AWS administrators.**
+Usually wrong in this module. IAM handles AWS identities; Cognito handles application users.
+
+**KMS encrypts network traffic by itself.**
+Not the idea. KMS manages encryption keys; TLS/HTTPS protects data in transit.
+
+**Artifact automatically makes an application compliant.**
+No. Artifact provides reports and agreements.
+
+---
+
+# 51. What I would prioritise before the subjective exam
+
+If time is short, master these:
+
+```text
+1. Shared responsibility
+   AWS → OF
+   Customer → IN
+
+2. IAM
+   User
+   Group
+   Policy
+   Role
+
+3. Permission logic
+   Explicit Deny > Allow > Implicit Deny
+   Least privilege
+
+4. Account protection
+   Protect root
+   MFA
+   Individual identities
+   CloudTrail
+
+5. Security services
+   Organizations
+   KMS
+   Cognito
+   Shield
+
+6. Data protection
+   At rest
+   In transit
+
+7. Compliance
+   Config
+   Artifact
+```
+
+These map directly to the module objectives. 
+
+---
+
+# Final 2-minute revision
 
 ```text
 SHARED RESPONSIBILITY
+─────────────────────
+AWS
+→ Security OF the cloud
 
-AWS:
-- Physical facilities
-- Hardware
-- AWS networking
-- Virtualisation
-- Customer isolation
-
-Customer:
-- Data
-- IAM
-- EC2 guest OS
-- Applications
-- Security groups
-- S3 permissions
-- Encryption choices
+Customer
+→ Security IN the cloud
 ```
 
 ```text
 IAM
-
-User   → Long-term identity
-Group  → Users with common permissions
-Policy → JSON permissions
+───
+User   → Identity
+Group  → Users with same permissions
+Policy → Permission document
 Role   → Temporary assumable permissions
-
-Explicit Deny > Explicit Allow > Implicit Deny
 ```
 
 ```text
-NEW ACCOUNT
+PERMISSION RULE
+───────────────
+Explicit Deny
+>
+Explicit Allow
+>
+Implicit Deny
 
-1. Avoid routine root use
-2. Remove root access keys
-3. Enable MFA
-4. Create individual IAM identities
-5. Use groups
-6. Apply least privilege
-7. Use roles
-8. Configure password policy
-9. Monitor with CloudTrail
+Best practice:
+Least privilege
+```
+
+```text
+ACCOUNT SECURITY
+────────────────
+Protect root
+Enable MFA
+Create individual identities
+Use groups/policies
+Use roles
+Monitor with CloudTrail
 ```
 
 ```text
 SECURITY SERVICES
-
+─────────────────
 Organizations → Multiple accounts
-SCP           → Maximum permission boundary
 KMS           → Encryption keys
-Cognito       → Application users
+Cognito       → Application-user authentication
 Shield        → DDoS protection
-CloudTrail    → API activity
-Config        → Resource configurations
-Artifact      → Compliance reports
+CloudTrail    → Who did what?
 ```
 
 ```text
 DATA SECURITY
+─────────────
+At rest
+→ Stored data
+→ Encryption / KMS
 
-At rest    → Stored data; encryption and KMS
-In transit → Moving data; TLS and HTTPS
-
-S3 controls:
-- Block Public Access
-- IAM policies
-- Bucket policies
-- ACLs
-- Encryption
+In transit
+→ Moving data
+→ TLS / HTTPS
 ```
 
-Send your answers in a format such as `1C, 2C, 3B...`, and I’ll grade them without using the answer key as a participation trophy.
+```text
+COMPLIANCE
+──────────
+AWS Config
+→ How is the resource configured?
 
-[1]: https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02.html "AWS Certified Cloud Practitioner (CLF-C02) - AWS Certified Cloud Practitioner"
+AWS Artifact
+→ Compliance reports and agreements
+```
 
----
+The **single most important mental model** for Module 4 is:
+
+```text
+AWS builds and secures the cloud infrastructure.
+
+The customer decides who gets access,
+what is configured,
+what data is stored,
+and how that data is protected.
+```
+
+Everything else in Module 4—IAM, MFA, least privilege, KMS, CloudTrail, Config and Artifact—is basically a tool for carrying out the customer's side of that responsibility. 
 
 </details>
 
 <details>
-<summary><strong>Module 5: Networking and Content Delivery — AWS-Style Objective Test Preparation</strong></summary>
+<summary><strong> Module 5: Networking and Content Delivery — Subjective Exam Preparation</strong></summary>
 
-# Module 5: Networking and Content Delivery — AWS-Style Objective Test Preparation
+For a **subjective exam**, Module 5 is mainly about being able to look at a network scenario and explain:
 
-AWS certification questions use two formats:
+* **where resources should be placed**;
+* **how traffic reaches them**;
+* **how private resources reach the internet safely**;
+* **how networks connect to each other**;
+* **how network traffic is secured**;
+* **how users are routed to an application**;
+* **how content is delivered with lower latency**.
 
-* **Multiple choice:** one correct answer and three plausible distractors.
-* **Multiple response:** two or more correct answers from five or more choices.
+The module itself is organised into six topics: networking basics, Amazon VPC, VPC networking, VPC security, Amazon Route 53, and Amazon CloudFront. 
 
-AWS deliberately makes distractors plausible, so questions usually test the **best solution**, not merely whether a statement sounds technically possible. ([AWS Documentation][1])
+The whole chapter can be reduced to one flow:
 
-This mock test stays within the objectives of **AWS Academy Cloud Foundations Module 5**: networking basics, Amazon VPC, VPC architecture and connectivity, security groups, Route 53 and CloudFront. 
+```text
+IP addresses tell us WHERE devices are
+        ↓
+VPC creates our AWS network
+        ↓
+Subnets divide the network
+        ↓
+Route tables decide WHERE traffic goes
+        ↓
+Gateways/connectivity provide paths
+        ↓
+Security groups/NACLs decide WHAT traffic is allowed
+        ↓
+Route 53 tells users WHERE the application is
+        ↓
+CloudFront brings content CLOSER to users
+```
 
 ---
 
-# 1. What to know before attempting the test
+# 1. Networking basics: what is a network?
 
-## Core network structure
+A **network** is a collection of devices that communicate with each other.
+
+The diagram on page 5 shows two subnets connected through a router:
+
+```text
+Devices
+  │
+Subnet 1
+  │
+Router
+  │
+Subnet 2
+  │
+Devices
+```
+
+The three basic ideas are:
+
+```text
+IP address → identifies a device
+Subnet     → divides a network
+Router     → directs traffic between networks
+```
+
+
+
+For most subjective questions, you do not need to turn into a network engineer. You just need enough networking knowledge to understand how AWS VPC works.
+
+---
+
+# 2. IP address
+
+An **IP address** identifies a network device.
+
+Example:
+
+```text
+192.0.2.10
+```
+
+The module introduces:
+
+```text
+IPv4 → 32 bits
+IPv6 → 128 bits
+```
+
+
+
+For this module, most of the VPC examples use IPv4.
+
+### Subjective answer
+
+> An IP address uniquely identifies a device or network interface so that network traffic can be sent to the correct destination. IPv4 uses 32-bit addresses, while IPv6 uses 128-bit addresses and provides a much larger address space.
+
+---
+
+# 3. CIDR notation
+
+AWS networks are commonly defined using **Classless Inter-Domain Routing**, or **CIDR**.
+
+Example:
+
+```text
+192.0.2.0/24
+```
+
+The `/24` means that the first 24 bits are fixed as the **network portion**.
+
+The remaining bits identify hosts.
+
+Page 8 illustrates this division directly. 
+
+A useful rule:
+
+```text
+Smaller CIDR prefix number
+→ More available addresses
+
+Larger CIDR prefix number
+→ Fewer available addresses
+```
+
+For example:
+
+```text
+/16 → larger network
+/24 → smaller network
+/28 → much smaller network
+```
+
+---
+
+# 4. Important CIDR sizes from the module
+
+When creating a VPC, the module states that:
+
+```text
+Largest IPv4 CIDR block → /16
+Smallest IPv4 CIDR block → /28
+```
+
+and subnet CIDR blocks **cannot overlap**. 
+
+Example:
+
+```text
+VPC: 10.0.0.0/16
+
+Possible subnets:
+10.0.1.0/24
+10.0.2.0/24
+```
+
+But overlapping address ranges would create a problem.
+
+---
+
+# 5. AWS reserves five addresses in each IPv4 subnet
+
+The page 14 diagram is particularly exam-friendly.
+
+For:
+
+```text
+10.0.0.0/24
+```
+
+there are theoretically:
+
+```text
+256 total addresses
+```
+
+but AWS reserves five addresses:
+
+```text
+10.0.0.0   → Network address
+10.0.0.1   → Internal communication
+10.0.0.2   → DNS resolution
+10.0.0.3   → Future use
+10.0.0.255 → Network broadcast address
+```
+
+Therefore:
+
+```text
+256 - 5 = 251 usable addresses
+```
+
+
+
+### Possible calculation question
+
+> A subnet uses `/24`. How many IPv4 addresses are available for AWS resources?
+
+**251 usable addresses** according to this module.
+
+---
+
+# 6. OSI model
+
+The module introduces the seven-layer OSI model:
+
+| Layer          | Main idea                  |
+| -------------- | -------------------------- |
+| 7 Application  | Application network access |
+| 6 Presentation | Data format/encryption     |
+| 5 Session      | Manages sessions           |
+| 4 Transport    | Host-to-host communication |
+| 3 Network      | Routing and IP             |
+| 2 Data Link    | Local network / MAC        |
+| 1 Physical     | Signals and bits           |
+
+Important protocols shown include:
+
+```text
+Layer 7 → HTTP(S), FTP
+Layer 4 → TCP, UDP
+Layer 3 → IP
+Layer 2 → MAC
+```
+
+
+
+For subjective prep, I would **not prioritise memorising every protocol** unless your lecturer specifically likes OSI questions.
+
+The most relevant layers for this AWS module are:
+
+```text
+Layer 3 → IP / routing
+Layer 4 → TCP / UDP
+Layer 7 → HTTP / HTTPS
+```
+
+---
+
+# 7. Amazon VPC — the central concept
+
+**Amazon Virtual Private Cloud (VPC)** enables you to create a logically isolated section of AWS where you define your own virtual network.
+
+The module states that you control:
+
+* IP address ranges;
+* subnets;
+* route tables;
+* network gateways;
+* network configuration;
+* multiple layers of security. 
+
+The simplest analogy:
+
+```text
+AWS Cloud → Country
+
+Your VPC → Your private city
+
+Subnet → Neighbourhood
+
+Route table → Road signs
+
+Gateway → City entrance/exit
+```
+
+---
+
+# 8. Good subjective answer — Amazon VPC
+
+> Amazon VPC enables an organisation to create a logically isolated virtual network within the AWS Cloud. The customer can define the IP address range, create subnets, configure route tables and network gateways, and apply multiple layers of security. This allows the organisation to customise its AWS network according to application requirements.
+
+---
+
+# 9. VPC versus subnet
+
+This is essential.
+
+The module states:
+
+```text
+VPC
+→ Belongs to one AWS Region
+→ Can span multiple Availability Zones
+
+Subnet
+→ Part of a VPC
+→ Belongs to exactly one Availability Zone
+```
+
+
+
+Visualise it:
 
 ```text
 AWS Region
+│
 └── VPC
-    ├── Public subnet in AZ A
-    │   └── Public-facing resources
-    └── Private subnet in AZ B
-        └── Internal resources
+    ├── Subnet A → Availability Zone A
+    └── Subnet B → Availability Zone B
 ```
 
-* A **VPC** belongs to one Region but can span multiple Availability Zones.
-* A **subnet** belongs to exactly one Availability Zone.
-* A **route table** determines where subnet traffic is directed.
-* A public subnet has a route to an **internet gateway**.
-* A private resource can initiate outbound internet access through a **NAT gateway**. 
+---
 
-## High-priority comparisons
+# 10. Public versus private subnet
 
-| Requirement                                        | Correct component |
-| -------------------------------------------------- | ----------------- |
-| Direct public internet connectivity                | Internet gateway  |
-| Outbound internet from a private subnet            | NAT gateway       |
-| Private access to supported AWS services           | VPC endpoint      |
-| Connect two VPCs directly                          | VPC peering       |
-| Encrypted on-premises connection over the internet | Site-to-Site VPN  |
-| Dedicated connection to AWS                        | Direct Connect    |
-| Centrally connect many VPCs and networks           | Transit Gateway   |
-
-## Security controls
-
-| Security group                       | Network ACL                        |
-| ------------------------------------ | ---------------------------------- |
-| Instance or ENI level                | Subnet level                       |
-| Stateful                             | Stateless                          |
-| Allow rules only                     | Allow and deny rules               |
-| Automatically permits return traffic | Return traffic needs its own rule  |
-| Evaluates all applicable rules       | Lowest-numbered matching rule wins |
-
-## Route 53 versus CloudFront
+The module classifies subnets as:
 
 ```text
-Route 53  → Finds the destination
-CloudFront → Delivers content closer to users
+Public
+Private
 ```
 
-* Route 53 is AWS’s scalable DNS service.
-* CloudFront is AWS’s content delivery network.
-* CloudFront uses edge locations and Regional edge caches to reduce latency.
+The difference is not the subnet's name.
 
----
+The important factor is its **routing**.
 
-# 2. Module 5 Mock Test
+A **public subnet** has a route to an **internet gateway**.
 
-**Questions:** 50
-**Suggested time:** 55 minutes
-**Instructions:** Choose one answer unless the question says **Select TWO**.
+A private subnet does not have a direct route to the internet gateway.
 
----
-
-## Networking basics
-
-### 1. What is the primary purpose of a router?
-
-A. To store website files
-B. To forward traffic between networks
-C. To assign IAM permissions
-D. To encrypt stored data
-
----
-
-### 2. How many bits are used in an IPv4 address?
-
-A. 16 bits
-B. 32 bits
-C. 64 bits
-D. 128 bits
-
----
-
-### 3. How many bits are used in an IPv6 address?
-
-A. 32 bits
-B. 48 bits
-C. 64 bits
-D. 128 bits
-
----
-
-### 4. What does the `/24` in `192.0.2.0/24` represent?
-
-A. The network contains 24 devices
-B. The first 24 bits identify the network
-C. The final 24 bits identify hosts
-D. The network supports only IPv6 traffic
-
----
-
-### 5. Which CIDR block contains the largest number of addresses?
-
-A. `/16`
-B. `/20`
-C. `/24`
-D. `/28`
-
----
-
-### 6. At which OSI layer do TCP and UDP operate?
-
-A. Application layer
-B. Transport layer
-C. Network layer
-D. Data-link layer
-
----
-
-### 7. Which OSI layer handles routing and packet forwarding using IP addresses?
-
-A. Physical layer
-B. Data-link layer
-C. Network layer
-D. Presentation layer
-
----
-
-### 8. Which protocol provides reliable, ordered delivery?
-
-A. UDP
-B. IP
-C. TCP
-D. MAC
-
----
-
-## Amazon VPC and subnets
-
-### 9. Which AWS service enables a company to create a logically isolated virtual network?
-
-A. Amazon CloudFront
-B. Amazon Route 53
-C. Amazon VPC
-D. AWS Direct Connect
-
----
-
-### 10. Which statement correctly describes an Amazon VPC?
-
-A. It spans every AWS Region automatically
-B. It belongs to one Region and can span multiple Availability Zones
-C. It belongs to one Availability Zone only
-D. It is an edge-location resource
-
----
-
-### 11. Which statement correctly describes a subnet?
-
-A. It can span multiple Regions
-B. It can span multiple Availability Zones
-C. It belongs to one Availability Zone
-D. It exists outside a VPC
-
----
-
-### 12. A company creates two subnets in the same VPC. Which condition must be satisfied?
-
-A. Their CIDR blocks must overlap
-B. Their CIDR blocks must not overlap
-C. They must exist in the same Availability Zone
-D. They must use public IPv4 addresses
-
----
-
-### 13. According to the module, what is the largest IPv4 CIDR block that can initially be assigned to a VPC?
-
-A. `/8`
-B. `/12`
-C. `/16`
-D. `/24`
-
----
-
-### 14. According to the module, what is the smallest IPv4 CIDR block that can be assigned to a VPC?
-
-A. `/16`
-B. `/24`
-C. `/28`
-D. `/32`
-
----
-
-### 15. A subnet has the CIDR block `10.0.1.0/24`. How many IPv4 addresses are usable by resources after AWS reserves five addresses?
-
-A. 251
-B. 252
-C. 254
-D. 256
-
----
-
-### 16. Which addresses does AWS reserve in every IPv4 subnet? **Select TWO.**
-
-A. The network address
-B. Every even-numbered address
-C. The VPC router address
-D. Every address ending in `.10`
-E. Every private IP address
-
----
-
-### 17. A company requires a persistent public IPv4 address that can be remapped to another instance. Which resource should it use?
-
-A. A private IP address
-B. An Elastic IP address
-C. A subnet CIDR block
-D. A Route 53 health check
-
----
-
-### 18. Which component acts as a virtual network card for an EC2 instance?
-
-A. Internet gateway
-B. Route table
-C. Elastic network interface
-D. NAT gateway
-
----
-
-### 19. Which statements about an elastic network interface are correct? **Select TWO.**
-
-A. It can be attached to an EC2 instance
-B. It can contain a private IPv4 address
-C. It replaces the VPC’s internet gateway
-D. It automatically creates a new Availability Zone
-E. It is a physical network cable
-
----
-
-### 20. What information does a route contain?
-
-A. A username and password
-B. A source and security group
-C. A destination and target
-D. An Availability Zone and Region
-
----
-
-### 21. What is the purpose of the built-in local route in a VPC route table?
-
-A. To route traffic to the public internet
-B. To enable communication within the VPC
-C. To connect the VPC to an on-premises network
-D. To cache content at an edge location
-
----
-
-### 22. Which statement about route tables is correct?
-
-A. A subnet can use several route tables simultaneously
-B. Every subnet must be associated with a route table
-C. Route tables contain IAM permissions
-D. The local route should normally be deleted
-
----
-
-## VPC internet connectivity
-
-### 23. Which VPC component connects a VPC directly to the internet?
-
-A. NAT gateway
-B. Internet gateway
-C. Virtual private gateway
-D. Transit Gateway
-
----
-
-### 24. Which route commonly makes a subnet public?
-
-A. `10.0.0.0/16 → local`
-B. `0.0.0.0/0 → internet gateway`
-C. `0.0.0.0/0 → network ACL`
-D. `10.0.0.0/16 → security group`
-
----
-
-### 25. An EC2 instance must communicate directly with the internet. In addition to appropriate security rules, which configurations are needed? **Select TWO.**
-
-A. A public IPv4 address
-B. A route to an internet gateway
-C. A route to an S3 gateway endpoint
-D. A private-only DNS record
-E. A network ACL that denies all traffic
-
----
-
-### 26. A private EC2 instance must download operating-system updates from the internet without accepting unsolicited inbound internet connections. Which service should be used?
-
-A. Internet gateway directly attached to the instance
-B. NAT gateway
-C. VPC peering
-D. Route 53
-
----
-
-### 27. In which subnet should a NAT gateway normally be deployed?
-
-A. A public subnet
-B. A private subnet with no internet route
-C. A subnet in a different VPC
-D. An edge-location subnet
-
----
-
-### 28. Which route should a private subnet commonly use for outbound internet access?
-
-A. `0.0.0.0/0 → NAT gateway`
-B. `0.0.0.0/0 → local`
-C. `10.0.0.0/16 → internet gateway`
-D. `0.0.0.0/0 → security group`
-
----
-
-## Connecting VPCs and external networks
-
-### 29. A company wants to privately connect two VPCs directly. Which solution should it use?
-
-A. Amazon CloudFront
-B. VPC peering
-C. Amazon Route 53
-D. NAT gateway
-
----
-
-### 30. Which restrictions apply to VPC peering? **Select TWO.**
-
-A. The VPC CIDR ranges cannot overlap
-B. VPC peering is transitive
-C. Transitive peering is not supported
-D. The VPCs must belong to the same Availability Zone
-E. Peering can connect only public subnets
-
----
-
-### 31. VPC A is peered with VPC B, and VPC B is peered with VPC C. What additional configuration is needed for VPC A to communicate with VPC C?
-
-A. Nothing; peering is automatically transitive
-B. A direct connection between VPC A and VPC C
-C. A new security group in VPC B only
-D. An edge location between the VPCs
-
----
-
-### 32. A company requires an encrypted connection from its on-premises network to AWS over the public internet. Which solution should it use?
-
-A. AWS Direct Connect
-B. AWS Site-to-Site VPN
-C. Amazon CloudFront
-D. VPC sharing
-
----
-
-### 33. Which components are involved in a Site-to-Site VPN connection? **Select TWO.**
-
-A. Customer gateway
-B. Regional edge cache
-C. Virtual private gateway
-D. NAT gateway
-E. CloudFront origin
-
----
-
-### 34. A company requires a dedicated network connection from its data centre to AWS with more consistent performance than an internet-based connection. Which service should it use?
-
-A. AWS Direct Connect
-B. AWS Site-to-Site VPN only
-C. Amazon Route 53
-D. Internet gateway
-
----
-
-### 35. Which statement correctly compares Site-to-Site VPN and Direct Connect?
-
-A. Both always use the ordinary public internet
-B. VPN uses an encrypted internet connection, while Direct Connect provides dedicated connectivity
-C. Direct Connect is a DNS service
-D. VPN is used only between two VPCs
-
----
-
-### 36. A private EC2 instance needs to access Amazon S3 without using a public IP address, NAT gateway or internet gateway. Which solution should be used?
-
-A. VPC endpoint
-B. Internet gateway
-C. Elastic IP address
-D. VPC peering
-
----
-
-### 37. Which AWS services support gateway VPC endpoints in the module? **Select TWO.**
-
-A. Amazon S3
-B. Amazon DynamoDB
-C. Amazon EC2
-D. Amazon Route 53
-E. Amazon CloudFront
-
----
-
-### 38. A company must centrally connect dozens of VPCs, VPN connections and on-premises networks. Which service is the BEST fit?
-
-A. A separate internet gateway for every connection
-B. AWS Transit Gateway
-C. Amazon CloudFront
-D. One long chain of VPC peering connections
-
----
-
-### 39. What is the main benefit of VPC sharing?
-
-A. It allows several accounts to launch resources into centrally managed shared subnets
-B. It automatically makes every subnet public
-C. It replaces IAM and AWS Organizations
-D. It replicates EC2 instances between Regions
-
----
-
-## VPC security
-
-### 40. At which level does a security group operate?
-
-A. Region level
-B. Subnet level
-C. Instance or network-interface level
-D. Edge-location level
-
----
-
-### 41. Which statement about security-group rules is correct?
-
-A. They support explicit allow and deny rules
-B. They support allow rules only
-C. They operate only at the subnet level
-D. They are evaluated by rule number
-
----
-
-### 42. What does it mean that security groups are stateful?
-
-A. They remember allowed connections and automatically permit return traffic
-B. They store the state of EC2 data volumes
-C. They require separate inbound and outbound return rules
-D. They deny all traffic permanently
-
----
-
-### 43. A security-group inbound rule permits HTTPS traffic to an EC2 instance. What is required for the response traffic?
-
-A. A separate outbound security-group rule is always required
-B. The response is automatically allowed because the security group is stateful
-C. A separate VPC must be created
-D. A network ACL must be deleted
-
----
-
-### 44. At which level does a network ACL operate?
-
-A. Individual IAM-user level
-B. Instance level
-C. Subnet level
-D. AWS-account level
-
----
-
-### 45. Which statements about network ACLs are correct? **Select TWO.**
-
-A. They are stateless
-B. They support allow and deny rules
-C. They automatically allow all return traffic
-D. They operate only on individual EC2 instances
-E. They contain IAM policies
-
----
-
-### 46. How are network ACL rules evaluated?
-
-A. The highest-numbered rule always wins
-B. All rules are combined equally
-C. Rules are evaluated from the lowest number until a match is found
-D. The newest rule is evaluated first
-
----
-
-### 47. A network ACL permits an inbound request. What must be done to permit the response?
-
-A. Nothing, because network ACLs are stateful
-B. Add an appropriate outbound rule
-C. Attach an IAM role
-D. Create an Elastic IP address
-
----
-
-### 48. Which security control should be used to explicitly block traffic from a known malicious IP range at the subnet boundary?
-
-A. Security group
-B. Network ACL
-C. IAM group
-D. Route 53 weighted routing
-
----
-
-## Amazon Route 53 and CloudFront
-
-### 49. What is the primary function of Amazon Route 53?
-
-A. To provide managed block storage
-B. To translate domain names into IP addresses and route users
-C. To cache website content
-D. To create private EC2 instances
-
----
-
-### 50. What is the primary function of Amazon CloudFront?
-
-A. To create VPC route tables
-B. To deliver cached content through locations closer to users
-C. To assign private IP addresses
-D. To provide a dedicated connection to AWS
-
----
-
-### 51. A company wants to direct 90% of DNS traffic to version A and 10% to version B. Which Route 53 routing policy should it use?
-
-A. Weighted routing
-B. Failover routing
-C. Latency-based routing
-D. Simple routing
-
----
-
-### 52. A global company wants users to be routed to the AWS Region that provides the lowest network delay. Which Route 53 policy should it use?
-
-A. Geolocation routing
-B. Latency-based routing
-C. Weighted routing
-D. Simple routing
-
----
-
-### 53. A company wants Malaysian users to reach one application and European users to reach another based on geographic origin. Which policy should it use?
-
-A. Failover routing
-B. Weighted routing
-C. Geolocation routing
-D. Multivalue answer routing
-
----
-
-### 54. A company wants Route 53 to send users to a backup website when the primary website becomes unhealthy. Which configuration should it use?
-
-A. Weighted routing without health checks
-B. Failover routing with health checks
-C. Simple routing with a NAT gateway
-D. Geolocation routing with an Elastic IP
-
----
-
-### 55. Which service can register domain names, perform DNS resolution and support health checks?
-
-A. Amazon Route 53
-B. Amazon CloudFront
-C. AWS Transit Gateway
-D. Amazon VPC
-
----
-
-### 56. What is a CloudFront origin?
-
-A. The original location from which CloudFront retrieves content
-B. The user’s nearest DNS resolver
-C. A security-group rule
-D. A CIDR block assigned to an edge location
-
----
-
-### 57. A user requests an image that is already stored at the nearest CloudFront edge location. What occurs?
-
-A. A cache hit
-B. A cache miss
-C. A DNS failover
-D. VPC peering
-
----
-
-### 58. A requested object is not available at the edge location. What can CloudFront do?
-
-A. Permanently reject the request
-B. Retrieve the object from a Regional edge cache or origin
-C. Create a new VPC
-D. Convert the object into an Elastic IP address
-
----
-
-### 59. What is the purpose of a Regional edge cache?
-
-A. To host EC2 instances
-B. To retain less frequently accessed content between edge locations and the origin
-C. To create private subnets
-D. To replace Route 53
-
----
-
-### 60. Which benefits are associated with CloudFront? **Select TWO.**
-
-A. Lower content-delivery latency
-B. Reduced load on the origin server
-C. Automatic creation of VPC subnets
-D. Dedicated physical connectivity to AWS
-E. Operating-system patch management
-
----
-
-# Stop before checking the answers
-
-<details>
-<summary><strong>Open answer key and explanations</strong></summary>
-
-## Questions 1–8: Networking basics
-
-|  Q | Answer | Explanation                                                            |
-| -: | :----: | ---------------------------------------------------------------------- |
-|  1 |  **B** | Routers forward traffic between networks or subnets.                   |
-|  2 |  **B** | IPv4 addresses contain 32 bits.                                        |
-|  3 |  **D** | IPv6 addresses contain 128 bits.                                       |
-|  4 |  **B** | `/24` means the first 24 bits are fixed as the routing prefix.         |
-|  5 |  **A** | A smaller prefix leaves more host bits, so `/16` is larger than `/28`. |
-|  6 |  **B** | TCP and UDP operate at OSI Layer 4, the transport layer.               |
-|  7 |  **C** | IP routing and packet forwarding occur at the network layer.           |
-|  8 |  **C** | TCP provides reliable, ordered delivery.                               |
-
----
-
-## Questions 9–22: VPC fundamentals
-
-|  Q |  Answer  | Explanation                                                                                   |
-| -: | :------: | --------------------------------------------------------------------------------------------- |
-|  9 |   **C**  | Amazon VPC creates a logically isolated virtual network.                                      |
-| 10 |   **B**  | A VPC belongs to one Region but can span several AZs.                                         |
-| 11 |   **C**  | Each subnet exists in one Availability Zone.                                                  |
-| 12 |   **B**  | Subnet address ranges cannot overlap.                                                         |
-| 13 |   **C**  | The largest VPC IPv4 block stated in the module is `/16`.                                     |
-| 14 |   **C**  | The smallest VPC IPv4 block stated in the module is `/28`.                                    |
-| 15 |   **A**  | A `/24` contains 256 addresses; AWS reserves five, leaving 251.                               |
-| 16 | **A, C** | AWS reserves the network address and VPC-router address, among five total reserved addresses. |
-| 17 |   **B**  | An Elastic IP is persistent and can be remapped.                                              |
-| 18 |   **C**  | An ENI acts as a virtual network interface.                                                   |
-| 19 | **A, B** | An ENI can attach to an instance and carry private IP information.                            |
-| 20 |   **C**  | Each route identifies a destination and target.                                               |
-| 21 |   **B**  | The local route supports communication inside the VPC.                                        |
-| 22 |   **B**  | Every subnet must be associated with one route table.                                         |
-
-The module’s diagrams place the VPC at the Region level, subnets within individual Availability Zones and route tables at the centre of traffic control. 
-
----
-
-## Questions 23–39: VPC connectivity
-
-|  Q |  Answer  | Explanation                                                                            |
-| -: | :------: | -------------------------------------------------------------------------------------- |
-| 23 |   **B**  | An internet gateway connects a VPC to the internet.                                    |
-| 24 |   **B**  | A default route targeting an internet gateway makes internet routing possible.         |
-| 25 | **A, B** | Direct connectivity requires a public address and a route to the internet gateway.     |
-| 26 |   **B**  | A NAT gateway provides outbound internet access for private resources.                 |
-| 27 |   **A**  | A NAT gateway must be in a public subnet so it can reach the internet gateway.         |
-| 28 |   **A**  | The private subnet sends default outbound traffic to the NAT gateway.                  |
-| 29 |   **B**  | VPC peering privately connects two VPCs.                                               |
-| 30 | **A, C** | Peered VPCs cannot have overlapping IP ranges, and peering is non-transitive.          |
-| 31 |   **B**  | A direct A-to-C connection or another routing solution is required.                    |
-| 32 |   **B**  | Site-to-Site VPN creates encrypted connectivity over the public internet.              |
-| 33 | **A, C** | It uses a customer gateway and a virtual private gateway.                              |
-| 34 |   **A**  | Direct Connect provides dedicated network connectivity.                                |
-| 35 |   **B**  | VPN uses encrypted internet tunnels; Direct Connect provides a dedicated path.         |
-| 36 |   **A**  | A VPC endpoint enables private access to supported AWS services.                       |
-| 37 | **A, B** | Gateway endpoints are used for S3 and DynamoDB.                                        |
-| 38 |   **B**  | Transit Gateway provides a central networking hub.                                     |
-| 39 |   **A**  | VPC sharing lets participant accounts deploy resources into centrally managed subnets. |
-
-The module lists internet gateways, NAT gateways, endpoints, peering, sharing, VPN, Direct Connect and Transit Gateway as its major VPC networking options.
-
----
-
-## Questions 40–48: VPC security
-
-|  Q |  Answer  | Explanation                                                             |
-| -: | :------: | ----------------------------------------------------------------------- |
-| 40 |   **C**  | Security groups protect instances and network interfaces.               |
-| 41 |   **B**  | Security groups contain allow rules, not explicit deny rules.           |
-| 42 |   **A**  | Stateful controls remember connections and permit response traffic.     |
-| 43 |   **B**  | Return traffic is automatically allowed.                                |
-| 44 |   **C**  | Network ACLs operate at the subnet boundary.                            |
-| 45 | **A, B** | Network ACLs are stateless and support both allow and deny rules.       |
-| 46 |   **C**  | The lowest-numbered matching rule is applied first.                     |
-| 47 |   **B**  | Stateless ACLs require a suitable outbound response rule.               |
-| 48 |   **B**  | A network ACL can explicitly deny the malicious source at subnet level. |
-
----
-
-## Questions 49–60: Route 53 and CloudFront
-
-|  Q |  Answer  | Explanation                                                                  |
-| -: | :------: | ---------------------------------------------------------------------------- |
-| 49 |   **B**  | Route 53 provides DNS resolution and traffic routing.                        |
-| 50 |   **B**  | CloudFront is a CDN that serves content closer to users.                     |
-| 51 |   **A**  | Weighted routing divides traffic according to assigned percentages.          |
-| 52 |   **B**  | Latency-based routing chooses the lowest-latency destination.                |
-| 53 |   **C**  | Geolocation routing uses the user’s geographic location.                     |
-| 54 |   **B**  | Failover routing and health checks redirect traffic when the primary fails.  |
-| 55 |   **A**  | Route 53 provides domain registration, DNS and health-check capabilities.    |
-| 56 |   **A**  | The origin is the original source of the content.                            |
-| 57 |   **A**  | Finding the content in the edge cache is a cache hit.                        |
-| 58 |   **B**  | CloudFront requests missing content from a larger cache or the origin.       |
-| 59 |   **B**  | Regional edge caches retain less popular content closer than the origin.     |
-| 60 | **A, B** | Caching reduces user latency and the number of requests reaching the origin. |
-
-</details>
-
----
-
-# 3. Score interpretation
-
-|        Score | Readiness                                                                       |
-| -----------: | ------------------------------------------------------------------------------- |
-|    **54–60** | Strongly prepared                                                               |
-|    **47–53** | Nearly ready; revise the specific mistakes                                      |
-|    **38–46** | Core understanding exists, but AWS distractors are still winning too often      |
-| **Below 38** | Review VPC routing, security groups versus ACLs, and Route 53 versus CloudFront |
-
----
-
-# 4. The most dangerous exam confusions
-
-## Public subnet versus public instance
-
-A public subnet has a route to an internet gateway.
-
-An instance inside it still normally needs:
+Conceptually:
 
 ```text
-Public IPv4 address
+Public subnet
+→ Can contain internet-facing resources
+
+Private subnet
+→ Used for resources that should not be directly internet-accessible
+```
+
+---
+
+# 11. Example architecture
+
+Suppose you have:
+
+* a public website;
+* a backend database.
+
+A sensible design is:
+
+```text
+Internet
+   ↓
+Public subnet
+└── Web server
+      ↓
+Private subnet
+└── Database
+```
+
+Why?
+
+Because customers need access to the web server.
+
+They have no legitimate reason to communicate directly with the database.
+
+That distinction becomes one of the main design requirements in the module's VPC activity. 
+
+---
+
+# 12. Route table
+
+A **route table** contains rules that determine where network traffic is directed.
+
+Each route contains:
+
+```text
+Destination
 +
-Security permission
+Target
+```
+
+Example from page 17:
+
+```text
+Destination: 10.0.0.0/16
+Target: local
+```
+
+Every VPC route table contains a built-in **local route**, which allows resources inside the VPC to communicate with one another. That local route cannot be deleted. 
+
+---
+
+# 13. Route-table analogy
+
+Imagine driving.
+
+You reach a road sign saying:
+
+```text
+City Centre → Straight
+Airport     → Left
+Highway     → Right
+```
+
+A route table does essentially the same thing for packets.
+
+Example:
+
+```text
+10.0.0.0/16 → local
+
+0.0.0.0/0 → internet gateway
+```
+
+Meaning:
+
+```text
+Traffic for this VPC
+→ Keep local
+
+Traffic for anywhere else
+→ Send toward internet gateway
+```
+
+---
+
+# 14. `0.0.0.0/0`
+
+This appears repeatedly in the module.
+
+You should recognise:
+
+```text
+0.0.0.0/0
+```
+
+as representing **all IPv4 destinations**.
+
+So:
+
+```text
+0.0.0.0/0 → Internet Gateway
+```
+
+basically means:
+
+> Traffic that does not match a more specific internal route can be sent toward the internet.
+
+---
+
+# 15. Internet gateway
+
+An **internet gateway** provides connectivity between a VPC and the internet.
+
+Page 20 shows a public subnet whose route table contains:
+
+```text
+10.0.0.0/16 → local
+
+0.0.0.0/0 → Internet gateway
+```
+
+
+
+Think:
+
+```text
+VPC
+↓
+Internet Gateway
+↓
+Internet
+```
+
+---
+
+# 16. Public internet access requires more than an internet gateway
+
+A common mistake is:
+
+> “Attach an internet gateway and every EC2 instance becomes public.”
+
+No.
+
+For a resource such as an EC2 instance to communicate directly with the internet, the architecture generally needs appropriate:
+
+```text
+Public IP
 +
-Internet-gateway route
+Route to internet gateway
++
+Security rules
 ```
 
-Merely placing something in a public subnet does not ceremonially expose it to the internet.
+The route provides the path.
+
+The public address identifies the resource externally.
+
+The security control determines whether the traffic is allowed.
 
 ---
 
-## Internet gateway versus NAT gateway
+# 17. NAT gateway
+
+This is one of the most important scenario services.
+
+A **NAT gateway** allows resources in a private subnet to initiate connections to the internet without making those resources directly accessible from the internet.
+
+Example:
+
+> A private database needs to download software patches.
+
+You do **not** want:
 
 ```text
-Internet gateway → Direct public connectivity
-NAT gateway      → Outbound connectivity for private resources
+Internet
+↔
+Database directly
 ```
 
-The NAT gateway belongs in a public subnet, while the private subnet routes traffic to it.
+Instead:
+
+```text
+Private server
+     ↓
+NAT gateway
+     ↓
+Internet gateway
+     ↓
+Internet
+```
+
+Page 21 shows the private subnet sending `0.0.0.0/0` traffic to the NAT gateway, while the public subnet routes internet traffic to the internet gateway. 
 
 ---
 
-## Security group versus network ACL
+# 18. Internet gateway vs NAT gateway
+
+Memorise this distinction:
 
 ```text
-Security group:
-- Instance level
-- Stateful
-- Allow only
+Internet Gateway
+→ Direct internet connectivity for public resources
 
-Network ACL:
-- Subnet level
-- Stateless
-- Allow and deny
+NAT Gateway
+→ Outbound internet access for private resources
+```
+
+Scenario:
+
+> “The EC2 instance must be accessible directly by customers.”
+
+Think:
+
+**Public subnet + internet gateway**
+
+Scenario:
+
+> “The private database must download updates but remain inaccessible from the public internet.”
+
+Think:
+
+**NAT gateway**
+
+---
+
+# 19. Elastic IP address
+
+The module distinguishes between:
+
+* an automatically assigned public IPv4 address;
+* an **Elastic IP address**.
+
+An Elastic IP:
+
+* is associated with the AWS account;
+* can be allocated and remapped;
+* may involve additional cost. 
+
+Think:
+
+```text
+Normal public IP
+→ May be dynamically assigned
+
+Elastic IP
+→ Stable public address controlled by customer
 ```
 
 ---
 
-## VPC peering versus Transit Gateway
+# 20. Elastic Network Interface
+
+An **Elastic Network Interface (ENI)** is a virtual network interface.
+
+The module states that it can:
+
+* be attached to an instance;
+* be detached and attached to another instance;
+* carry its network attributes with it. 
+
+Think:
 
 ```text
-Few direct VPC connections → VPC peering
-Many VPCs and networks     → Transit Gateway
+EC2 instance
+└── Virtual network card
+    ├── Private IP
+    └── Network attributes
 ```
 
-Peering is non-transitive. A peering chain is not a network architecture; it is a future apology to whoever must maintain it.
+For subjective exams, this is lower priority than VPC, routes and gateways.
 
 ---
 
-## Route 53 versus CloudFront
+# 21. VPC networking options
 
-```text
-Route 53  → Resolves and routes
-CloudFront → Caches and delivers
-```
+The module's Section 3 summary lists eight VPC networking options:
 
-Route 53 tells users where to go. CloudFront reduces how far content must travel.
+1. Internet gateway
+2. NAT gateway
+3. VPC endpoint
+4. VPC peering
+5. VPC sharing
+6. AWS Site-to-Site VPN
+7. AWS Direct Connect
+8. AWS Transit Gateway 
+
+You do not need to explain all eight equally deeply, but you should recognise the scenario each solves.
 
 ---
 
-# 5. Rapid revision sheet
+# 22. VPC peering
+
+**VPC peering** creates private connectivity between two VPCs.
+
+Conceptually:
 
 ```text
-NETWORK BASICS
+VPC A
+ ↕
+Peering connection
+ ↕
+VPC B
+```
 
-IPv4 → 32 bits
-IPv6 → 128 bits
-CIDR → Number of fixed network bits
-TCP  → Reliable
-UDP  → Faster, no delivery guarantee
+The VPCs can then communicate using private IP addresses when routing is configured appropriately.
+
+### Important restriction
+
+Peering is **not transitive**.
+
+If:
+
+```text
+VPC A ↔ VPC B
+VPC B ↔ VPC C
+```
+
+that does not automatically mean:
+
+```text
+VPC A ↔ VPC C
+```
+
+---
+
+# 23. Good answer — VPC peering
+
+> VPC peering provides private network connectivity between two VPCs. Resources in the peered VPCs can communicate using private IP addresses when the appropriate routes are configured. However, VPC peering is not transitive, so one VPC cannot automatically use another VPC as an intermediate path to a third VPC.
+
+---
+
+# 24. VPC sharing
+
+VPC sharing enables multiple AWS accounts to deploy resources into centrally managed shared subnets.
+
+The main idea is:
+
+```text
+One account
+→ Manages network
+
+Other accounts
+→ Deploy resources into shared subnets
+```
+
+This allows central network governance while still keeping workloads distributed across accounts. 
+
+---
+
+# 25. AWS Site-to-Site VPN
+
+**Site-to-Site VPN** connects an organisation's on-premises network to AWS through an encrypted VPN connection over the internet.
+
+Conceptually:
+
+```text
+Company data centre
+       ↓
+Customer gateway
+       ↓
+Encrypted internet tunnel
+       ↓
+AWS VPC
+```
+
+### Best scenario clue
+
+> “Securely connect an existing office/data centre to AWS over the internet.”
+
+Think:
+
+**Site-to-Site VPN**
+
+---
+
+# 26. AWS Direct Connect
+
+**AWS Direct Connect** provides a dedicated network connection between an organisation and AWS.
+
+The important contrast is:
+
+```text
+Site-to-Site VPN
+→ Encrypted connection using internet
+
+Direct Connect
+→ Dedicated network connection
+```
+
+The module's scenario preparation associates Direct Connect with more consistent network connectivity than an ordinary internet-based connection. 
+
+---
+
+# 27. Site-to-Site VPN vs Direct Connect
+
+| Site-to-Site VPN                        | Direct Connect                      |
+| --------------------------------------- | ----------------------------------- |
+| Uses internet path                      | Dedicated connection                |
+| Encrypted tunnel                        | Dedicated network connectivity      |
+| Faster/easier to establish conceptually | More enterprise-oriented setup      |
+| Internet performance may vary           | More consistent network performance |
+
+### Scenario clue
+
+> “The company needs a dedicated network path between its data centre and AWS.”
+
+**Direct Connect**
+
+> “The company needs an encrypted connection over the internet.”
+
+**Site-to-Site VPN**
+
+---
+
+# 28. VPC endpoint
+
+A **VPC endpoint** provides private access from a VPC to supported AWS services without requiring:
+
+* a public IP;
+* a NAT gateway;
+* an internet gateway.
+
+Scenario from the module preparation:
+
+> A private EC2 instance must access Amazon S3 without using public internet connectivity.
+
+Answer:
+
+**VPC endpoint**. 
+
+---
+
+# 29. Gateway endpoints
+
+The module identifies gateway VPC endpoints for:
+
+```text
+Amazon S3
+Amazon DynamoDB
+```
+
+
+
+Subjective answer:
+
+> A VPC endpoint enables private communication between a VPC and supported AWS services without sending the traffic through a public internet path. This is useful when private resources need access to services such as S3 or DynamoDB without using a public IP address or NAT gateway.
+
+---
+
+# 30. AWS Transit Gateway
+
+When only two VPCs need to communicate, VPC peering is manageable.
+
+Now imagine:
+
+```text
+20 VPCs
+5 VPN connections
+On-premises networks
+Direct Connect
+```
+
+Trying to create pairwise connections everywhere becomes a networking plate of spaghetti.
+
+The diagram on page 27 shows AWS Transit Gateway replacing many individual connections with a central hub. 
+
+Think:
+
+```text
+       VPC A
+         |
+VPC B — Transit Gateway — VPC C
+         |
+      VPN / on-prem
+```
+
+---
+
+# 31. Good answer — Transit Gateway
+
+> AWS Transit Gateway acts as a central networking hub that can connect multiple VPCs, VPN connections and other networks. It simplifies network architecture when an organisation has many separate networks because each network can connect to the central transit gateway instead of requiring a large number of individual peer-to-peer connections.
+
+---
+
+# 32. Choosing the connectivity option
+
+| Requirement                              | Best match       |
+| ---------------------------------------- | ---------------- |
+| Public internet connectivity             | Internet gateway |
+| Private resources need outbound internet | NAT gateway      |
+| Private access to S3/DynamoDB            | VPC endpoint     |
+| Connect two VPCs                         | VPC peering      |
+| Multiple accounts use same network       | VPC sharing      |
+| On-prem → AWS encrypted over internet    | Site-to-Site VPN |
+| Dedicated on-prem → AWS connection       | Direct Connect   |
+| Centrally connect many networks          | Transit Gateway  |
+
+This table is extremely valuable for scenario questions.
+
+---
+
+# 33. VPC security
+
+The module focuses on two network firewalls:
+
+```text
+Security group
+Network ACL
+```
+
+These are similar enough to confuse students and different enough to cost marks.
+
+The Section 4 takeaway explicitly says both can be used as firewall options for a VPC architecture. 
+
+---
+
+# 34. Security group
+
+A **security group** acts as a virtual firewall for an instance or network interface.
+
+Think:
+
+```text
+Security group
+→ Protects individual resources
+```
+
+It controls things such as:
+
+```text
+Protocol
+Port
+Source
+Destination
+```
+
+Example:
+
+```text
+TCP port 443
+Source: Anywhere
+→ Allow HTTPS to web server
+```
+
+---
+
+# 35. Security groups use allow rules
+
+A security group supports:
+
+```text
+ALLOW
+```
+
+rules.
+
+It does **not** contain explicit deny rules in this module.
+
+Traffic that is not allowed is implicitly blocked.
+
+
+
+Example:
+
+```text
+Allow HTTPS
+Allow SSH from company address
+
+Everything else
+→ Not allowed
+```
+
+---
+
+# 36. Security groups are stateful
+
+This is perhaps the most important security-group property.
+
+**Stateful** means that if traffic is allowed in one direction as part of an established connection, the response traffic is automatically permitted.
+
+Example:
+
+```text
+User → HTTPS → Web server
+```
+
+If inbound HTTPS is allowed:
+
+```text
+Web server → Response → User
+```
+
+is automatically permitted as response traffic.
+
+You do not need a separate rule specifically for that response. 
+
+---
+
+# 37. Network ACL
+
+A **Network Access Control List (NACL)** protects traffic at the **subnet level**.
+
+Think:
+
+```text
+Security group → individual instance/network interface
+Network ACL    → entire subnet
+```
+
+
+
+---
+
+# 38. Network ACL supports allow AND deny
+
+Unlike security groups, network ACLs support:
+
+```text
+ALLOW
+DENY
+```
+
+This means they can explicitly block traffic from specific address ranges.
+
+Scenario:
+
+> “Block traffic from a known malicious IP range at the subnet boundary.”
+
+Think:
+
+**Network ACL**. 
+
+---
+
+# 39. Network ACL rules use numbers
+
+NACL rules are evaluated from the **lowest rule number upward** until a matching rule is found.
+
+Example:
+
+```text
+100 → Allow HTTPS
+110 → Deny malicious IP
+120 → Allow SSH
+```
+
+Rule 100 is evaluated before 110.
+
+The first matching rule wins. 
+
+---
+
+# 40. Network ACLs are stateless
+
+A network ACL is **stateless**.
+
+That means it does not remember the connection.
+
+If inbound traffic is allowed, the appropriate return traffic must also be permitted by an outbound rule.
+
+```text
+Inbound request → Checked
+
+Outbound response → Checked again
+```
+
+
+
+---
+
+# 41. Security group vs Network ACL
+
+This is arguably the **most important comparison in Module 5**.
+
+| Feature          | Security Group               | Network ACL                |
+| ---------------- | ---------------------------- | -------------------------- |
+| Protection level | Instance / network interface | Subnet                     |
+| Rules            | Allow only                   | Allow and deny             |
+| Stateful?        | Yes                          | No                         |
+| Return traffic   | Automatically allowed        | Must be explicitly allowed |
+| Rule evaluation  | Rules collectively apply     | Lowest-numbered match wins |
+
+Memory:
+
+```text
+SECURITY GROUP
+→ Instance
+→ Stateful
+→ Allow only
+
+NETWORK ACL
+→ Subnet
+→ Stateless
+→ Allow + Deny
+```
+
+---
+
+# 42. Likely subjective question — Security group vs NACL
+
+> A security group is a virtual firewall that operates at the instance or network-interface level and contains allow rules. It is stateful, meaning that return traffic for an allowed connection is automatically permitted. A network ACL operates at the subnet level and supports both allow and deny rules. Network ACLs are stateless, so inbound and outbound traffic must be permitted separately, and their rules are evaluated in numerical order until a match is found.
+
+That is a strong full-mark comparison.
+
+---
+
+# 43. Designing the module's VPC scenario
+
+The module gives a scenario involving:
+
+* a public website;
+* a private backend database;
+* separate subnets;
+* internet access for database patching;
+* high availability;
+* at least one custom firewall layer. 
+
+A logical design is:
+
+```text
+                 Internet
+                    │
+            Internet Gateway
+                    │
+        ┌───────────┴───────────┐
+        │                       │
+     AZ A                     AZ B
+        │                       │
+ Public subnet A          Public subnet B
+ Web/app server           Web/app server
+        │                       │
+ Private subnet A         Private subnet B
+ Database                 Database/standby
+```
+
+For private-server outbound access:
+
+```text
+Private subnet
+     ↓
+NAT gateway in public side
+     ↓
+Internet gateway
+```
+
+And use:
+
+```text
+Security groups
+and/or
+Network ACLs
+```
+
+for firewall protection.
+
+---
+
+# 44. How to justify that architecture
+
+For a subjective answer, don't merely draw boxes.
+
+Explain the reasoning:
+
+> The web server should be placed in a public subnet because customers need to reach it from the internet. The database should be placed in a private subnet so it is not directly internet-accessible. A NAT gateway can allow the private database or backend server to initiate outbound internet connections for updates while remaining private. Resources can be distributed across multiple Availability Zones for high availability, while security groups or network ACLs provide firewall protection.
+
+That justification is what gets marks.
+
+---
+
+# 45. Amazon Route 53
+
+**Amazon Route 53** is a highly available and scalable **Domain Name System (DNS)** service.
+
+Its fundamental job is:
+
+```text
+Human-readable domain name
+↓
+Numeric IP address / destination
+```
+
+Example:
+
+```text
+www.example.com
+↓
+Route 53
+↓
+Application destination
+```
+
+The module also covers routing policies, multi-Region routing and DNS failover. 
+
+---
+
+# 46. DNS analogy
+
+Think of a phone contact list.
+
+You remember:
+
+```text
+"Mum"
+```
+
+not:
+
+```text
++60-12-1234567
+```
+
+Your phone translates the meaningful name into the number.
+
+DNS does something similar:
+
+```text
+www.company.com
+→ IP address
+```
+
+---
+
+# 47. Route 53 functions
+
+For Module 5, remember that Route 53 can support things such as:
+
+* DNS resolution;
+* domain registration;
+* routing policies;
+* health checks;
+* failover;
+* multi-Region architectures. 
+
+---
+
+# 48. Route 53 routing policies
+
+The module includes several routing approaches.
+
+The most exam-relevant are:
+
+```text
+Simple
+Weighted
+Latency-based
+Geolocation
+Failover
+Multivalue
+```
+
+The key is not memorising the names. It is matching each one to the scenario.
+
+---
+
+# 49. Simple routing
+
+Use **simple routing** for basic DNS routing when no specialised routing logic is required.
+
+Think:
+
+```text
+One ordinary destination
+→ Simple
+```
+
+---
+
+# 50. Weighted routing
+
+Weighted routing distributes traffic according to specified proportions.
+
+Example:
+
+```text
+Version A → 90%
+Version B → 10%
+```
+
+Use cases:
+
+* testing a new version;
+* gradual rollout;
+* splitting traffic.
+
+Scenario:
+
+> “Send 90% of customers to server A and 10% to server B.”
+
+**Weighted routing**. 
+
+---
+
+# 51. Latency-based routing
+
+Latency-based routing sends users toward the AWS Region that provides the lowest network latency.
+
+Example:
+
+```text
+Asian user
+→ whichever Region provides lower latency
+
+European user
+→ whichever Region provides lower latency
+```
+
+Scenario clue:
+
+> “Route each user to the Region with the best network response time.”
+
+**Latency-based routing**. 
+
+---
+
+# 52. Geolocation routing
+
+Geolocation routing uses the user's geographic location.
+
+Example:
+
+```text
+Malaysia → Malaysian/Asian application
+Europe   → European application
+```
+
+Scenario:
+
+> “European customers should see one website while Malaysian customers see another.”
+
+**Geolocation routing**. 
+
+---
+
+# 53. Failover routing
+
+Failover routing is used when you have:
+
+```text
+Primary
++
+Backup
+```
+
+Route 53 health checks can determine whether the primary application is healthy.
+
+If not:
+
+```text
+Primary unhealthy
+↓
+Route users to backup
+```
+
+Page 53 specifically describes Route 53 DNS failover using backup/failover scenarios, multi-Region architectures and health checks. 
+
+---
+
+# 54. Good subjective answer — Route 53 failover
+
+> Amazon Route 53 can improve application availability by using DNS failover and health checks. Route 53 monitors the health of the primary application endpoint and normally directs users to it. If the primary endpoint becomes unhealthy, Route 53 can direct users to a configured backup endpoint, which reduces the impact of the failure.
+
+---
+
+# 55. Route 53 routing quick map
+
+| Requirement                  | Routing policy |
+| ---------------------------- | -------------- |
+| Basic routing                | Simple         |
+| 90% / 10% traffic split      | Weighted       |
+| Lowest network delay         | Latency-based  |
+| User's geographical location | Geolocation    |
+| Primary → backup on failure  | Failover       |
+
+That is sufficient for most scenario questions.
+
+---
+
+# 56. Multi-Region architecture
+
+The module notes that a multi-Region deployment can improve application performance for a global audience. 
+
+Conceptually:
+
+```text
+Users in Asia
+→ Asia Region
+
+Users in Europe
+→ European Region
+```
+
+Route 53 can help direct users appropriately.
+
+Benefits can include:
+
+* lower latency;
+* better global performance;
+* higher availability when designed appropriately.
+
+---
+
+# 57. Amazon CloudFront
+
+**Amazon CloudFront** is AWS's **Content Delivery Network (CDN)**.
+
+Its job is to cache and deliver content using infrastructure closer to users.
+
+Think:
+
+```text
+Route 53
+→ Finds WHERE to go
+
+CloudFront
+→ Brings CONTENT closer
+```
+
+This distinction is essential.
+
+---
+
+# 58. Why CloudFront exists
+
+Suppose your origin server is far away.
+
+Without CloudFront:
+
+```text
+User
+↓
+Long distance
+↓
+Origin
+```
+
+Every request goes all the way back to the origin.
+
+With CloudFront:
+
+```text
+User
+↓
+Nearby edge location
+↓
+Cached content
+```
+
+The result is:
+
+* lower latency;
+* faster delivery;
+* less load on the origin.
+
+The module's CloudFront section and study material emphasise these benefits.  
+
+---
+
+# 59. CloudFront origin
+
+The **origin** is the original source of the content.
+
+Possible origins in the module material include resources such as:
+
+```text
+Amazon S3
+EC2
+Elastic Load Balancing
+Other web servers
+```
+
+Conceptually:
+
+```text
+Origin
+↓
+CloudFront
+↓
+Edge locations
+↓
+Users
+```
+
+---
+
+# 60. Cache hit
+
+A **cache hit** occurs when the requested content already exists at the edge location.
+
+```text
+User asks for image
+↓
+Image already at edge
+↓
+Return image immediately
+```
+
+No origin request is necessary for that request.
+
+---
+
+# 61. Cache miss
+
+A **cache miss** means the requested object is not available at that edge cache.
+
+Conceptually:
+
+```text
+User
+↓
+Edge location
+↓
+Regional edge cache
+↓
+Origin
+```
+
+The content is retrieved and can then be cached for subsequent requests. 
+
+---
+
+# 62. Edge location vs Regional edge cache
+
+```text
+Edge location
+→ Close to users
+→ Popular cached content
+
+Regional edge cache
+→ Larger intermediate cache
+→ Between edge and origin
+```
+
+The Regional edge cache can keep less frequently requested content from having to travel all the way back to the origin each time.
+
+---
+
+# 63. Route 53 vs CloudFront
+
+This is another important comparison.
+
+| Route 53                  | CloudFront                      |
+| ------------------------- | ------------------------------- |
+| DNS service               | CDN                             |
+| Resolves domain names     | Caches content                  |
+| Selects destination       | Delivers content close to users |
+| Supports routing policies | Uses edge infrastructure        |
+| Supports DNS failover     | Reduces latency/origin load     |
+
+Memory:
+
+```text
+Route 53
+→ WHERE?
+
+CloudFront
+→ CONTENT FASTER
+```
+
+---
+
+# 64. Likely subjective question — Explain Amazon VPC
+
+> Amazon VPC allows an organisation to create a logically isolated virtual network in AWS. A VPC belongs to one AWS Region and can span multiple Availability Zones. The organisation defines its IP address range, creates subnets, configures route tables and gateways, and applies security controls. Public subnets can be used for internet-facing resources while private subnets can isolate internal resources such as databases.
+
+---
+
+# 65. Likely subjective question — Public vs private subnet
+
+> A public subnet is a subnet whose routing provides connectivity to an internet gateway, making it suitable for resources that need direct internet connectivity, such as public web servers. A private subnet does not provide direct internet-gateway access and is suitable for internal resources such as databases. Private resources can still initiate outbound internet access through a NAT gateway when necessary.
+
+---
+
+# 66. Likely subjective question — Internet gateway vs NAT gateway
+
+> An internet gateway connects a VPC to the internet and is used by resources that require direct internet connectivity. A NAT gateway is used when resources in a private subnet need to initiate outbound internet connections while remaining inaccessible from unsolicited inbound internet traffic. Therefore, an internet gateway supports public connectivity, whereas a NAT gateway preserves the private nature of backend resources.
+
+---
+
+# 67. Likely subjective question — VPN vs Direct Connect
+
+> AWS Site-to-Site VPN provides an encrypted connection between an on-premises network and AWS over the internet. AWS Direct Connect provides dedicated network connectivity between the organisation and AWS and is suitable when more consistent network performance is required. Therefore, VPN emphasises secure internet-based connectivity, while Direct Connect provides a dedicated network path.
+
+---
+
+# 68. Likely subjective question — Explain Route 53
+
+> Amazon Route 53 is a highly available and scalable DNS service that translates domain names into network destinations. It supports several routing policies, including weighted, latency-based, geolocation and failover routing. Route 53 can also perform health checks and direct users to backup endpoints when a primary endpoint becomes unhealthy, improving availability.
+
+---
+
+# 69. Likely subjective question — Explain CloudFront
+
+> Amazon CloudFront is AWS's Content Delivery Network. It caches content at edge locations closer to end users so that requests do not always need to reach the original content source. This reduces network latency, improves content-delivery performance and reduces the workload on the origin server.
+
+---
+
+# 70. How to answer a VPC design scenario
+
+Use this method:
+
+### Step 1 — Identify what must be public
+
+Example:
+
+```text
+Web server
+→ Customers need access
+→ Public subnet
+```
+
+### Step 2 — Identify what must stay private
+
+```text
+Database
+→ Private subnet
+```
+
+### Step 3 — Decide internet path
+
+```text
+Public resource
+→ Internet gateway
+
+Private resource needing outbound updates
+→ NAT gateway
+```
+
+### Step 4 — Add high availability
+
+```text
+Resources across multiple Availability Zones
+```
+
+### Step 5 — Add security
+
+```text
+Security groups
+and/or
+Network ACLs
+```
+
+That gives you a structured subjective answer instead of randomly drawing AWS icons until the page resembles a conspiracy board.
+
+---
+
+# 71. High-priority scenario clues
+
+| If the question says...                        | Think...         |
+| ---------------------------------------------- | ---------------- |
+| Isolated AWS network                           | VPC              |
+| Divide VPC                                     | Subnet           |
+| Resource internet-facing                       | Public subnet    |
+| Backend database                               | Private subnet   |
+| Direct public internet connectivity            | Internet gateway |
+| Private server needs outbound internet         | NAT gateway      |
+| Private access to S3/DynamoDB                  | VPC endpoint     |
+| Connect two VPCs                               | VPC peering      |
+| Share subnets across accounts                  | VPC sharing      |
+| Encrypted on-premises connection over internet | Site-to-Site VPN |
+| Dedicated on-premises connection               | Direct Connect   |
+| Many VPCs/networks centrally connected         | Transit Gateway  |
+| Individual instance firewall                   | Security group   |
+| Subnet firewall                                | Network ACL      |
+| Stateful                                       | Security group   |
+| Stateless                                      | Network ACL      |
+| Explicit deny network traffic                  | Network ACL      |
+| Domain name → IP                               | Route 53         |
+| 90/10 traffic                                  | Weighted         |
+| Lowest latency                                 | Latency-based    |
+| Geographic origin                              | Geolocation      |
+| Primary/backup                                 | Failover         |
+| Cache content near users                       | CloudFront       |
+| Original content source                        | Origin           |
+| Object already at edge                         | Cache hit        |
+
+---
+
+# 72. Common mistakes to avoid
+
+**A VPC spans multiple Regions.**
+Wrong.
+
+```text
+VPC → One Region
+```
+
+---
+
+**A subnet spans several Availability Zones.**
+Wrong.
+
+```text
+Subnet → One AZ
+```
+
+---
+
+**A subnet is public because it has a public-sounding name.**
+Wrong.
+
+Routing determines whether it has internet-gateway connectivity.
+
+---
+
+**Internet gateway = NAT gateway.**
+Wrong.
+
+```text
+IGW → Public/direct internet
+NAT → Private outbound internet
+```
+
+---
+
+**NAT gateway allows internet users to directly reach the private server.**
+Wrong.
+
+Its purpose here is outbound connectivity for private resources.
+
+---
+
+**VPC peering is transitive.**
+Wrong.
+
+```text
+A ↔ B
+B ↔ C
+
+does not automatically mean
+
+A ↔ C
+```
+
+---
+
+**Security groups contain deny rules.**
+Wrong.
+
+They use allow rules.
+
+---
+
+**Security groups are stateless.**
+Wrong.
+
+They are stateful.
+
+---
+
+**Network ACLs are stateful.**
+Wrong.
+
+They are stateless.
+
+---
+
+**Network ACL protects an individual EC2 instance.**
+Not in this model.
+
+```text
+NACL → subnet
+Security Group → instance/ENI
+```
+
+---
+
+**Route 53 caches website files.**
+Wrong.
+
+```text
+Route 53 → DNS/routing
+CloudFront → caching/content delivery
+```
+
+---
+
+**CloudFront is where the original content must live.**
+Wrong.
+
+CloudFront retrieves from an **origin** and caches copies closer to users.
+
+---
+
+# 73. What I would prioritise for the subjective exam
+
+If time is short, learn these **seven things extremely well**:
+
+```text
+1. VPC vs subnet
+   VPC → Region
+   Subnet → AZ
+
+2. Public vs private subnet
+
+3. Internet Gateway vs NAT Gateway
+
+4. VPC connectivity options
+   Endpoint
+   Peering
+   VPN
+   Direct Connect
+   Transit Gateway
+
+5. Security Group vs Network ACL
+
+6. Route 53 routing
+   Weighted
+   Latency
+   Geolocation
+   Failover
+
+7. CloudFront
+   CDN
+   Edge location
+   Cache
+   Origin
+```
+
+These align closely with the module's objectives and section summaries.  
+
+# Final 2-minute revision
+
+```text
+NETWORK
+───────
+IP address → Identifies device
+CIDR       → Address range
+Subnet     → Divides network
+Route      → Chooses path
 ```
 
 ```text
 VPC
+───
+One Region
+Can span multiple AZs
 
-VPC    → One Region
-Subnet → One Availability Zone
-Route  → Destination + target
-Local route → Internal VPC traffic
+Subnet
+→ One Availability Zone
+
+Public subnet
+→ Internet-facing
+
+Private subnet
+→ Internal resources
 ```
 
 ```text
 CONNECTIVITY
+────────────
+Internet Gateway
+→ Public internet
 
-Internet gateway → Public internet
-NAT gateway      → Private outbound internet
-VPC endpoint     → Private AWS-service access
-Peering          → Direct VPC-to-VPC
-VPN              → Encrypted internet connection
-Direct Connect   → Dedicated connection
-Transit Gateway  → Central network hub
+NAT Gateway
+→ Private outbound internet
+
+VPC Endpoint
+→ Private access to AWS service
+
+VPC Peering
+→ Two VPCs
+
+Site-to-Site VPN
+→ Encrypted internet tunnel
+
+Direct Connect
+→ Dedicated connection
+
+Transit Gateway
+→ Central network hub
 ```
 
 ```text
-SECURITY
-
-Security group:
-- Instance/ENI
-- Stateful
-- Allow only
-
-Network ACL:
-- Subnet
-- Stateless
-- Allow and deny
-- Lowest rule number wins
+SECURITY GROUP
+──────────────
+Instance / ENI
+Stateful
+Allow only
+Return traffic automatic
 ```
 
 ```text
-CONTENT DELIVERY
-
-Route 53:
-- DNS
-- Routing policies
-- Health checks
-- Failover
-
-CloudFront:
-- CDN
-- Edge locations
-- Regional edge caches
-- Lower latency
-- Reduced origin load
+NETWORK ACL
+───────────
+Subnet
+Stateless
+Allow + Deny
+Lowest-numbered matching rule wins
+Return traffic requires rules
 ```
 
-Send your answers as `1B, 2B, 3D...`, and I’ll grade them while separating genuine misunderstandings from questions where AWS merely disguised the obvious answer in corporate vocabulary.
+```text
+ROUTE 53
+────────
+DNS
 
-[1]: https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02.html?utm_source=chatgpt.com "AWS Certified Cloud Practitioner (CLF-C02) - AWS Certified Cloud Practitioner"
+Weighted
+→ Percentage
 
+Latency-based
+→ Lowest latency
 
----
+Geolocation
+→ User location
+
+Failover
+→ Primary + backup
+```
+
+```text
+CLOUDFRONT
+──────────
+CDN
+Edge locations
+Regional edge caches
+Origin
+Cache hit / miss
+
+Main purpose:
+Lower latency
+Reduce origin load
+```
+
+The **single most important mental model** in Module 5 is:
+
+```text
+VPC
+→ Build the network
+
+SUBNETS
+→ Divide the network
+
+ROUTES + GATEWAYS
+→ Move traffic
+
+SECURITY GROUPS + NACLs
+→ Control traffic
+
+ROUTE 53
+→ Tell users where to go
+
+CLOUDFRONT
+→ Deliver the content faster
+```
+
+Once that chain makes sense, Module 5 stops looking like twenty unrelated AWS networking terms and becomes one network architecture story.
 
 </details>
 
 <details>
-<summary><strong>Module 6: Compute — AWS-Style Objective Test Preparation</strong></summary>
+<summary><strong>Module 6: Compute — Subjective Exam Preparation</strong></summary>
 
-# Module 6: Compute — AWS-Style Objective Test Preparation
+For a **subjective exam**, Module 6 is mainly testing whether you can look at a workload and decide:
 
-The current AWS Certified Cloud Practitioner exam uses:
+> **How should this application run in AWS, and how much infrastructure should the customer manage?**
 
-* **Multiple choice:** one correct response and three plausible distractors.
-* **Multiple response:** two or more correct responses from at least five options.
+The module covers six areas: compute services overview, Amazon EC2, EC2 cost optimisation, container services, AWS Lambda, and AWS Elastic Beanstalk. 
 
-AWS states that distractors are deliberately written as plausible choices for candidates with incomplete knowledge. In other words, the test rarely asks whether a service *could* work; it asks which service **best** matches the requirement. ([AWS Documentation][1])
+The whole module can be understood as this spectrum:
 
-This mock test follows the uploaded Module 6 objectives: compute-service selection, Amazon EC2, EC2 cost optimisation, containers, AWS Lambda and AWS Elastic Beanstalk. 
+```text
+MORE INFRASTRUCTURE CONTROL
+        ↓
+Amazon EC2
+        ↓
+Containers on EC2
+        ↓
+AWS Fargate
+        ↓
+Elastic Beanstalk / Lambda
+        ↓
+LESS INFRASTRUCTURE MANAGEMENT
+```
+
+The important skill is **choosing the right compute model for the scenario**, not simply memorising definitions.
 
 ---
 
-# 1. What to know before attempting the test
+# 1. Start with the compute-service map
 
-## Compute-service selection
+The easiest way to separate the services is:
 
-| Requirement                                              | Best starting service |
-| -------------------------------------------------------- | --------------------- |
-| Full control over a virtual machine and operating system | Amazon EC2            |
-| Run short code in response to events                     | AWS Lambda            |
-| Deploy a standard web application quickly                | AWS Elastic Beanstalk |
-| AWS-native container orchestration                       | Amazon ECS            |
-| Kubernetes on AWS                                        | Amazon EKS            |
-| Run containers without managing servers                  | AWS Fargate           |
-| Store container images                                   | Amazon ECR            |
+| Requirement                                   | Think                 |
+| --------------------------------------------- | --------------------- |
+| Full virtual-machine and OS control           | **Amazon EC2**        |
+| Package application into containers           | **Containers**        |
+| AWS-native container orchestration            | **Amazon ECS**        |
+| Kubernetes on AWS                             | **Amazon EKS**        |
+| Run containers without managing servers       | **AWS Fargate**       |
+| Store container images                        | **Amazon ECR**        |
+| Run code only when an event happens           | **AWS Lambda**        |
+| Upload a normal web app and let AWS deploy it | **Elastic Beanstalk** |
+
+ 
+
+Think:
 
 ```text
-More infrastructure control                         Less infrastructure work
+Need a SERVER?
+→ EC2
 
-EC2 → ECS on EC2 → Fargate → Elastic Beanstalk/Lambda
+Need a CONTAINER?
+→ ECS / EKS
+
+Need container compute WITHOUT managing servers?
+→ Fargate
+
+Need a FUNCTION?
+→ Lambda
+
+Need to deploy a WEB APPLICATION easily?
+→ Elastic Beanstalk
 ```
 
-The correct service depends on the application design, usage pattern and how much infrastructure the customer wants to manage. 
+---
 
-## EC2 launch decisions
+# 2. What is Amazon EC2?
+
+**Amazon Elastic Compute Cloud (EC2)** provides virtual machines in AWS.
+
+The module states that EC2 lets you run Windows or Linux virtual machines and gives you control over the guest operating system. EC2 instances are launched from Amazon Machine Images into a VPC. 
+
+Think of EC2 as:
+
+> **Renting a computer in AWS.**
+
+You decide things such as:
+
+```text
+Operating system
+CPU
+Memory
+Storage
+Network
+Software
+Security
+```
+
+### Good subjective answer
+
+> Amazon EC2 is an AWS compute service that provides resizable virtual machines called instances. Customers can choose the operating system, instance type, networking, storage and security settings and have control over the guest operating system. EC2 is suitable when an organisation requires flexible virtual-machine computing and greater control over the underlying software environment.
+
+---
+
+# 3. When should you use EC2?
+
+Use EC2 when the scenario says things like:
+
+* full operating-system control;
+* install custom software;
+* run a traditional server application;
+* configure the environment manually;
+* need a web, application, game, mail or file server.
+
+A scenario might say:
+
+> “The company needs administrator access to the operating system and must install custom software.”
+
+Think:
+
+**Amazon EC2**
+
+Not Lambda or Beanstalk.
+
+---
+
+# 4. EC2 vs a managed service
+
+One activity in the module compares running SQL Server on:
+
+```text
+Amazon EC2
+vs
+Amazon RDS
+```
+
+With EC2, the customer manages more:
+
+```text
+Operating system
+Database installation
+Patching
+Backups
+High availability
+Configuration
+```
+
+With RDS, AWS manages more of those tasks. 
+
+The central trade-off is:
+
+```text
+EC2
+→ More control
+→ More responsibility
+
+Managed service
+→ Less control
+→ Less administration
+```
+
+### Good exam explanation
+
+> Amazon EC2 provides greater control because the customer manages the operating system and installed applications. A managed service reduces administrative responsibility because AWS manages more of the underlying environment. Therefore, EC2 is appropriate when customisation and operating-system control are required, whereas a managed service is preferable when the organisation wants to reduce infrastructure-management tasks.
+
+---
+
+# 5. The nine EC2 launch decisions
+
+The module teaches **nine key choices** when launching an EC2 instance:
 
 ```text
 1. AMI
@@ -11739,3139 +20983,5624 @@ The correct service depends on the application design, usage pattern and how muc
 9. Key pair
 ```
 
-## EC2 pricing
 
-| Workload                                      | Pricing model      |
-| --------------------------------------------- | ------------------ |
-| Short-term or unpredictable                   | On-Demand          |
-| Predictable and long-running                  | Reserved Instances |
-| Flexible and interruption-tolerant            | Spot Instances     |
-| Licensing or physical-server requirements     | Dedicated Host     |
-| Dedicated hardware without host-level control | Dedicated Instance |
 
-## Container-service map
+You should understand what each one controls.
+
+---
+
+# 6. AMI — Amazon Machine Image
+
+An **AMI** is a template used to create an EC2 instance.
+
+It may contain:
+
+* Windows or Linux;
+* preinstalled software;
+* configuration.
+
+Think:
 
 ```text
-Docker  → Packages and runs containers
-ECR     → Stores container images
-ECS     → AWS-native container orchestration
-EKS     → Kubernetes orchestration on AWS
-Fargate → Serverless compute for containers
+AMI
+= Blueprint
+
+EC2 instance
+= Actual building created from blueprint
 ```
 
-## Lambda versus Elastic Beanstalk
+### Subjective answer
 
-| AWS Lambda                            | Elastic Beanstalk                          |
-| ------------------------------------- | ------------------------------------------ |
-| Function-based                        | Application-based                          |
-| Event-driven                          | Web-application environment                |
-| Runs only when invoked                | Environment remains deployed               |
-| No server management                  | AWS provisions underlying resources        |
-| Maximum runtime in module: 15 minutes | Suitable for conventional web applications |
+> An Amazon Machine Image is a template used to launch EC2 instances. It contains an operating system and may also contain preinstalled software and configuration. Using an AMI allows organisations to launch multiple instances with a consistent starting environment.
 
 ---
 
-# 2. Module 6 Mock Test
+# 7. AMI is not the running server
 
-**Questions:** 60
-**Suggested time:** 65 minutes
-**Instructions:** Select one answer unless the question says **Select TWO**.
-
----
-
-## Compute-service overview
-
-### 1. A company requires complete control over the operating system and installed software of a cloud-based virtual machine. Which AWS service should it use?
-
-A. AWS Lambda
-B. Amazon EC2
-C. AWS Fargate
-D. AWS Elastic Beanstalk
-
----
-
-### 2. A company needs code to run automatically whenever a file is uploaded to Amazon S3. The company does not want to manage servers. Which service is the BEST fit?
-
-A. Amazon EC2
-B. Amazon EKS
-C. AWS Lambda
-D. Amazon ECR
-
----
-
-### 3. A development team wants to upload its web-application code while AWS handles provisioning, deployment, load balancing and scaling. Which service should it use?
-
-A. AWS Elastic Beanstalk
-B. Amazon ECR
-C. Amazon EC2 Instance Store
-D. Amazon ECS on EC2
-
----
-
-### 4. Which services are associated with container-based computing? **Select TWO.**
-
-A. Amazon ECS
-B. Amazon Route 53
-C. Amazon EKS
-D. Amazon RDS
-E. Amazon CloudFront
-
----
-
-### 5. Which AWS service provides a managed registry for storing container images?
-
-A. Amazon ECR
-B. Amazon ECS
-C. Amazon EKS
-D. AWS Lambda
-
----
-
-### 6. A company already uses Kubernetes and wants to run Kubernetes-compatible workloads on AWS. Which service should it use?
-
-A. AWS Elastic Beanstalk
-B. Amazon EKS
-C. Amazon ECR
-D. Amazon EC2 Auto Scaling
-
----
-
-### 7. Which factors should a company consider when choosing an AWS compute service? **Select TWO.**
-
-A. Application design
-B. The colour of the AWS service icon
-C. Workload usage patterns
-D. The number of IAM groups in the account
-E. The number of CloudFront edge locations
-
----
-
-## Amazon EC2 concepts and launch configuration
-
-### 8. What is an Amazon Machine Image?
-
-A. A running EC2 instance
-B. A template used to launch EC2 instances
-C. A physical server dedicated to one customer
-D. A security rule attached to an instance
-
----
-
-### 9. Which are valid sources of AMIs in the EC2 launch process? **Select TWO.**
-
-A. Quick Start AMIs
-B. Route 53 health checks
-C. AWS Marketplace AMIs
-D. Network ACLs
-E. IAM groups
-
----
-
-### 10. A company configures an EC2 instance with its required operating system, security tools and application software. It wants to launch identical instances later. What should it do?
-
-A. Capture the configured instance as a custom AMI
-B. Create a new security group for every launch
-C. Convert the instance into an Elastic IP address
-D. Store the instance metadata in Route 53
-
----
-
-### 11. What does an EC2 instance type primarily determine?
-
-A. The user's IAM permissions
-B. CPU, memory, storage options and network performance
-C. The selected AWS Support plan
-D. The number of Availability Zones in a Region
-
----
-
-### 12. In the instance type name `t3.large`, what does `large` represent?
-
-A. The AWS Region
-B. The operating-system version
-C. The instance size
-D. The storage encryption type
-
----
-
-### 13. Which EC2 instance category is intended for CPU-intensive processing?
-
-A. Compute optimised
-B. Memory optimised
-C. Storage optimised
-D. General purpose only
-
----
-
-### 14. Which instance category is most appropriate for a large in-memory database?
-
-A. Accelerated computing
-B. Memory optimised
-C. General purpose
-D. Storage optimised
-
----
-
-### 15. A machine-learning workload requires specialised hardware such as GPUs. Which instance category is the BEST fit?
-
-A. General purpose
-B. Memory optimised
-C. Accelerated computing
-D. Storage optimised
-
----
-
-### 16. Which settings determine where an EC2 instance is deployed? **Select TWO.**
-
-A. VPC
-B. Subnet
-C. IAM group
-D. AWS Artifact report
-E. S3 lifecycle policy
-
----
-
-### 17. An application on an EC2 instance needs permission to read objects from an S3 bucket. Which solution follows AWS best practices?
-
-A. Store the root user's password on the EC2 instance
-B. Attach an IAM role with the required S3 permissions
-C. Open port 22 in the security group
-D. Make the S3 bucket public
-
----
-
-### 18. What is EC2 user data commonly used for?
-
-A. Defining an instance's physical location
-B. Running an initial configuration script when the instance launches
-C. Creating AWS account users
-D. Recording API activity
-
----
-
-### 19. A company needs persistent block storage for an EC2 operating-system volume. Which storage should it use?
-
-A. Amazon EBS
-B. EC2 Instance Store
-C. Amazon CloudFront
-D. Amazon ECR
-
----
-
-### 20. Which storage option is appropriate for temporary data that can be recreated if the instance is stopped or terminated?
-
-A. Amazon EBS
-B. Amazon S3 Glacier
-C. EC2 Instance Store
-D. Amazon EFS
-
----
-
-### 21. What is the purpose of EC2 tags?
-
-A. To define inbound network ports
-B. To attach key-value metadata to resources
-C. To replace IAM policies
-D. To create operating systems
-
----
-
-### 22. Which EC2 configuration controls allowed inbound and outbound network traffic?
-
-A. IAM role
-B. Security group
-C. AMI
-D. User data
-
----
-
-### 23. What is the main purpose of an EC2 key pair?
-
-A. To distribute application traffic
-B. To provide secure administrative access to an instance
-C. To automatically scale instances
-D. To store container images
-
----
-
-### 24. Which launch decisions are primarily related to EC2 security? **Select TWO.**
-
-A. Security group
-B. Key pair
-C. Instance generation
-D. Tag value
-E. AMI description
-
----
-
-### 25. Which EC2 instances can be stopped according to the module?
-
-A. Only instances backed by Amazon EBS
-B. Only instances using Instance Store
-C. Only Spot Instances
-D. Every EC2 instance regardless of storage
-
----
-
-### 26. What happens when an EBS-backed EC2 instance is stopped?
-
-A. The instance is permanently deleted
-B. Its EBS data can remain available for a later start
-C. The instance becomes an AMI automatically
-D. Its security groups are deleted
-
----
-
-### 27. Which action permanently removes an EC2 instance so that it cannot simply be started again?
-
-A. Reboot
-B. Stop
-C. Hibernate
-D. Terminate
-
----
-
-### 28. An EC2 instance is rebooted. Which statement is correct?
-
-A. It must be launched from a new AMI
-B. It restarts and returns to the running state
-C. Its EBS volumes are always deleted
-D. It becomes a Reserved Instance
-
----
-
-### 29. An EC2 instance uses an automatically assigned public IPv4 address. What can happen when the instance is stopped and started?
-
-A. The public IPv4 address may change
-B. The private IPv4 address must change
-C. The instance type always changes
-D. The security group is deleted
-
----
-
-### 30. A company requires a persistent public IPv4 address for an EC2 instance. Which resource should it use?
-
-A. Instance metadata
-B. Elastic IP address
-C. User data
-D. AMI
-
----
-
-### 31. An application needs to determine the ID and Availability Zone of the EC2 instance on which it is running. What should it use?
-
-A. Instance metadata
-B. AWS Artifact
-C. An S3 lifecycle rule
-D. Amazon ECR
-
----
-
-### 32. Which AWS service collects metrics such as EC2 CPU utilisation and network activity?
-
-A. AWS CloudTrail
-B. Amazon CloudWatch
-C. Amazon Cognito
-D. AWS Artifact
-
----
-
-### 33. According to the module, how often does basic EC2 monitoring provide metrics?
-
-A. Every second
-B. Every minute
-C. Every five minutes
-D. Every hour
-
----
-
-### 34. According to the module, how often can detailed EC2 monitoring provide metrics?
-
-A. Every minute
-B. Every five minutes
-C. Every 15 minutes
-D. Once per day
-
----
-
-## EC2 pricing and cost optimisation
-
-### 35. A company needs an EC2 instance for a temporary workload with unpredictable usage. It does not want a long-term commitment. Which pricing model should it use?
-
-A. Reserved Instances
-B. On-Demand Instances
-C. Dedicated Hosts
-D. Scheduled Reserved Instances
-
----
-
-### 36. A company expects to run a stable production workload continuously for three years. Which pricing model can provide a discount in exchange for commitment?
-
-A. Spot Instances
-B. On-Demand Instances
-C. Reserved Instances
-D. Instance Store pricing
-
----
-
-### 37. A batch-processing job can be interrupted and restarted later. The company wants the lowest possible compute price. Which pricing model is the BEST fit?
-
-A. Spot Instances
-B. Dedicated Hosts
-C. On-Demand Instances
-D. Scheduled Reserved Instances
-
----
-
-### 38. Which workload is LEAST suitable for Spot Instances?
-
-A. Fault-tolerant batch processing
-B. Flexible data analysis
-C. A single critical database that cannot tolerate interruption
-D. Image rendering that can resume later
-
----
-
-### 39. A company has software licences that are bound to a physical server. Which EC2 purchasing option is the BEST fit?
-
-A. Spot Instance
-B. Dedicated Host
-C. On-Demand Instance
-D. Fargate task
-
----
-
-### 40. Which statement correctly compares Dedicated Instances and Dedicated Hosts?
-
-A. Dedicated Hosts provide an entire physical server, while Dedicated Instances run on hardware dedicated to one customer
-B. Dedicated Instances are serverless, while Dedicated Hosts are virtual machines
-C. Dedicated Hosts are used only for Lambda
-D. They are identical services with different names
-
----
-
-### 41. A workload runs every Monday from 8:00 a.m. until 5:00 p.m. and requires reserved capacity on that recurring schedule. Which option from the module is designed for this pattern?
-
-A. Spot Instances
-B. Scheduled Reserved Instances
-C. Elastic IP addresses
-D. General Purpose Instances
-
----
-
-### 42. A company has a predictable baseline workload but sometimes receives unexpected traffic. Which pricing combination is sensible? **Select TWO.**
-
-A. Reserved Instances for baseline demand
-B. On-Demand Instances for unexpected demand
-C. Dedicated Hosts for every temporary request
-D. Spot Instances for a non-interruptible payment database
-E. Terminated instances for baseline demand
-
----
-
-### 43. An EC2 instance has 16 vCPUs but averages only 3% CPU utilisation. Which cost-optimisation action should the company consider first?
-
-A. Move to a larger instance
-B. Right-size to a smaller instance
-C. Purchase a Dedicated Host immediately
-D. Increase the EBS volume size
-
----
-
-### 44. A development server is not required during nights and weekends. Which cost-optimisation approach should be used?
-
-A. Leave it running for convenience
-B. Stop it when it is not needed
-C. Convert it into an edge location
-D. Replace its security group
-
----
-
-### 45. Which are pillars of EC2 cost optimisation in the module? **Select TWO.**
-
-A. Right-size resources
-B. Increase elasticity
-C. Use the root user
-D. Increase the number of unused volumes
-E. Store permanent credentials in code
-
----
-
-### 46. Which action supports storage cost optimisation?
-
-A. Retain every unattached volume permanently
-B. Delete unused volumes and unnecessary snapshots
-C. Use the most expensive volume type for every workload
-D. Store temporary cache data only on Provisioned IOPS volumes
-
----
-
-## Container services
-
-### 47. What does a container commonly package?
-
-A. Application code and its dependencies
-B. A complete AWS Region
-C. Physical server hardware
-D. IAM account credentials only
-
----
-
-### 48. Which statement correctly compares containers and virtual machines?
-
-A. Every container requires a complete guest operating system
-B. Containers generally share the host operating-system kernel
-C. Virtual machines cannot run applications
-D. Containers are always larger than virtual machines
-
----
-
-### 49. What is Docker primarily used for?
-
-A. Building, packaging and running containers
-B. Resolving domain names
-C. Managing encryption keys
-D. Providing block storage
-
----
-
-### 50. What is the difference between a container image and a container?
-
-A. An image is a running workload, while a container is a template
-B. An image is a template, while a container is a running instance of that image
-C. They are unrelated AWS services
-D. A container image is an IAM policy
-
----
-
-### 51. Why is container orchestration needed?
-
-A. To coordinate deployment, scaling and replacement of many containers
-B. To replace all application code
-C. To provide physical data-centre security
-D. To register internet domains
-
----
-
-### 52. Which AWS service provides AWS-native orchestration for Docker containers?
-
-A. Amazon ECS
-B. Amazon ECR
-C. Amazon S3
-D. Amazon Route 53
-
----
-
-### 53. A company wants to run ECS containers while retaining control of the underlying EC2 instances. Which launch approach should it use?
-
-A. ECS backed by Amazon EC2
-B. ECS backed by CloudFront
-C. AWS Lambda
-D. Amazon ECR only
-
----
-
-### 54. A company wants to run containers without provisioning or managing the underlying servers. Which service should it use?
-
-A. Amazon ECR
-B. AWS Fargate
-C. Amazon Machine Images
-D. EC2 Instance Store
-
----
-
-### 55. What is Kubernetes?
-
-A. Open-source container-orchestration software
-B. An EC2 purchasing model
-C. A block-storage service
-D. A DNS service
-
----
-
-### 56. Which tasks can Kubernetes automate? **Select TWO.**
-
-A. Container provisioning
-B. Container scaling
-C. Domain registration
-D. Physical data-centre cooling
-E. AWS account billing
-
----
-
-### 57. Which AWS service enables customers to run Kubernetes on AWS?
-
-A. Amazon ECS
-B. Amazon EKS
-C. Amazon ECR
-D. AWS Elastic Beanstalk
-
----
-
-### 58. What is the primary purpose of Amazon ECR?
-
-A. Run Kubernetes clusters
-B. Store, manage and deploy container images
-C. Execute Lambda functions
-D. Automatically patch EC2 operating systems
-
----
-
-## AWS Lambda
-
-### 59. What does “serverless” mean in the context of AWS Lambda?
-
-A. No physical servers exist
-B. AWS manages the underlying servers for the customer
-C. The function cannot access other AWS services
-D. The function runs permanently
-
----
-
-### 60. Which services can act as Lambda event sources? **Select TWO.**
-
-A. Amazon S3
-B. Amazon SQS
-C. EC2 key pairs
-D. Dedicated Hosts
-E. EBS snapshots only
-
----
-
-### 61. A Lambda function must write a generated thumbnail to an S3 bucket. What grants the function permission to perform this action?
-
-A. Lambda execution role
-B. Security group only
-C. Container image tag
-D. Elastic IP address
-
----
-
-### 62. A company wants to automatically stop development EC2 instances every night. Which solution from the module is appropriate?
-
-A. A scheduled event that invokes a Lambda function
-B. An S3 bucket policy
-C. An Elastic IP address
-D. A Dedicated Host
-
----
-
-### 63. According to the module, what is the maximum execution time for one Lambda invocation?
-
-A. 1 minute
-B. 5 minutes
-C. 15 minutes
-D. Unlimited
-
----
-
-### 64. According to the module, what is the maximum memory allocation for one Lambda function?
-
-A. 512 MB
-B. 1,024 MB
-C. 5,120 MB
-D. 10,240 MB
-
----
-
-### 65. Which benefits are associated with AWS Lambda? **Select TWO.**
-
-A. Automatic scaling
-B. Built-in fault tolerance
-C. Required operating-system patching by the customer
-D. Permanently running virtual machines
-E. Full physical-host control
-
----
-
-## AWS Elastic Beanstalk
-
-### 66. Which workload is the BEST fit for AWS Elastic Beanstalk?
-
-A. A standard web application that developers want to deploy quickly
-B. A physical-server licensing workload
-C. A container-image registry
-D. A function that runs for three seconds after an S3 upload
-
----
-
-### 67. Which tasks can Elastic Beanstalk automatically handle? **Select TWO.**
-
-A. Infrastructure provisioning
-B. Load balancing
-C. Creating IAM users for every application customer
-D. Building AWS Regions
-E. Replacing DNS with an EC2 key pair
-
----
-
-### 68. What does the customer primarily manage when using Elastic Beanstalk?
-
-A. Application code
-B. Physical host hardware
-C. AWS global networking
-D. Data-centre power
-
----
-
-### 69. Which application platforms are supported by Elastic Beanstalk according to the module? **Select TWO.**
-
-A. Python
-B. Node.js
-C. Route 53
-D. DynamoDB Query
-E. Network ACL
-
----
-
-### 70. How is AWS Elastic Beanstalk priced?
-
-A. A fixed licence fee is charged for every application
-B. There is no additional Beanstalk service charge; customers pay for underlying AWS resources
-C. It is free, including all EC2 instances and load balancers
-D. It is charged only according to the number of IAM users
-
----
-
-# Stop before opening the answers
-
-<details>
-<summary><strong>Open answer key and explanations</strong></summary>
-
-## Questions 1–7: Compute-service selection
-
-|  Q |  Answer  | Explanation                                                                  |
-| -: | :------: | ---------------------------------------------------------------------------- |
-|  1 |   **B**  | EC2 provides virtual machines and guest-OS control.                          |
-|  2 |   **C**  | Lambda is serverless and can run in response to events such as an S3 upload. |
-|  3 |   **A**  | Elastic Beanstalk deploys and manages web-application environments.          |
-|  4 | **A, C** | ECS and EKS are container-orchestration services.                            |
-|  5 |   **A**  | ECR is the managed container-image registry.                                 |
-|  6 |   **B**  | EKS runs Kubernetes-compatible workloads on AWS.                             |
-|  7 | **A, C** | Application design and usage patterns affect the correct compute choice.     |
-
-The module categorises EC2 as virtual-machine IaaS, Lambda as function-based serverless compute, ECS/EKS/Fargate/ECR as container services and Elastic Beanstalk as a web-application PaaS. 
-
----
-
-## Questions 8–34: Amazon EC2
-
-|  Q |  Answer  | Explanation                                                                     |
-| -: | :------: | ------------------------------------------------------------------------------- |
-|  8 |   **B**  | An AMI is the template used to create an instance.                              |
-|  9 | **A, C** | Quick Start and AWS Marketplace are AMI sources.                                |
-| 10 |   **A**  | A configured instance can be captured as a reusable custom AMI.                 |
-| 11 |   **B**  | Instance type controls compute, memory, storage options and network capability. |
-| 12 |   **C**  | `large` identifies the size.                                                    |
-| 13 |   **A**  | Compute-optimised instances suit CPU-heavy workloads.                           |
-| 14 |   **B**  | Memory-optimised instances suit large in-memory workloads.                      |
-| 15 |   **C**  | Accelerated-computing instances provide specialised hardware such as GPUs.      |
-| 16 | **A, B** | The VPC and subnet determine network placement.                                 |
-| 17 |   **B**  | An IAM role supplies temporary AWS service permissions.                         |
-| 18 |   **B**  | User data commonly runs an initial launch script.                               |
-| 19 |   **A**  | EBS provides persistent block storage.                                          |
-| 20 |   **C**  | Instance Store is appropriate for temporary, recreatable data.                  |
-| 21 |   **B**  | Tags are key-value metadata used for organisation and automation.               |
-| 22 |   **B**  | Security groups control allowed network traffic.                                |
-| 23 |   **B**  | A key pair supports secure administrative login.                                |
-| 24 | **A, B** | Security groups and key pairs are direct security-related launch choices.       |
-| 25 |   **A**  | The module states that only EBS-backed instances can be stopped.                |
-| 26 |   **B**  | Stopping preserves the EBS-backed instance for a later start.                   |
-| 27 |   **D**  | Termination permanently removes the instance.                                   |
-| 28 |   **B**  | Reboot restarts the instance and returns it to running.                         |
-| 29 |   **A**  | An automatically assigned public IPv4 address may change after stop/start.      |
-| 30 |   **B**  | An Elastic IP provides a persistent, remappable public address.                 |
-| 31 |   **A**  | Instance metadata exposes information about the running instance.               |
-| 32 |   **B**  | CloudWatch collects EC2 metrics.                                                |
-| 33 |   **C**  | Basic monitoring uses five-minute intervals in the module.                      |
-| 34 |   **A**  | Detailed monitoring uses one-minute intervals in the module.                    |
-
-The module’s launch process covers AMIs, instance types, networking, IAM roles, user data, storage, tags, security groups and key pairs. It also distinguishes stop, reboot and termination and identifies CloudWatch as the EC2 metrics service.
-
----
-
-## Questions 35–46: EC2 pricing and optimisation
-
-|  Q |  Answer  | Explanation                                                                                                                        |
-| -: | :------: | ---------------------------------------------------------------------------------------------------------------------------------- |
-| 35 |   **B**  | On-Demand provides flexibility without long-term commitment.                                                                       |
-| 36 |   **C**  | Reserved Instances suit stable usage over one- or three-year terms.                                                                |
-| 37 |   **A**  | Spot is suitable for flexible, interruption-tolerant processing.                                                                   |
-| 38 |   **C**  | A non-interruptible critical database is unsuitable for Spot.                                                                      |
-| 39 |   **B**  | Dedicated Hosts expose dedicated physical-server capacity for licensing needs.                                                     |
-| 40 |   **A**  | A Dedicated Host is an entire physical host; Dedicated Instances use single-customer hardware without the same host-level control. |
-| 41 |   **B**  | Scheduled Reserved Instances cover recurring scheduled capacity in the module.                                                     |
-| 42 | **A, B** | Reserved can cover baseline usage, while On-Demand covers unpredictable peaks.                                                     |
-| 43 |   **B**  | Right-sizing reduces wasted compute capacity.                                                                                      |
-| 44 |   **B**  | Stopping unused environments increases elasticity and reduces wasted running time.                                                 |
-| 45 | **A, B** | Right-sizing and elasticity are two of the four pillars.                                                                           |
-| 46 |   **B**  | Removing unused storage and snapshots reduces unnecessary cost.                                                                    |
-
-The four cost-optimisation pillars are right-sizing, increasing elasticity, choosing the optimal pricing model and optimising storage choices.
-
----
-
-## Questions 47–58: Containers
-
-|  Q |  Answer  | Explanation                                                                     |
-| -: | :------: | ------------------------------------------------------------------------------- |
-| 47 |   **A**  | A container packages application code, libraries and dependencies.              |
-| 48 |   **B**  | Containers share the host OS kernel and are lighter than full virtual machines. |
-| 49 |   **A**  | Docker builds, packages and runs containers.                                    |
-| 50 |   **B**  | The image is the template; the container is its running instance.               |
-| 51 |   **A**  | Orchestration manages deployment, scaling, networking and replacement.          |
-| 52 |   **A**  | ECS is AWS-native container orchestration.                                      |
-| 53 |   **A**  | ECS on EC2 provides greater control over the underlying servers.                |
-| 54 |   **B**  | Fargate runs containers without customers managing the servers.                 |
-| 55 |   **A**  | Kubernetes is open-source container-orchestration software.                     |
-| 56 | **A, B** | Kubernetes automates provisioning and scaling, among other container tasks.     |
-| 57 |   **B**  | EKS is managed Kubernetes on AWS.                                               |
-| 58 |   **B**  | ECR stores and manages container images.                                        |
-
-The module distinguishes ECS on EC2 from ECS on Fargate and describes EKS as Kubernetes on AWS and ECR as the image registry.
-
----
-
-## Questions 59–65: AWS Lambda
-
-|  Q |  Answer  | Explanation                                                      |
-| -: | :------: | ---------------------------------------------------------------- |
-| 59 |   **B**  | Servers still exist, but AWS provisions and manages them.        |
-| 60 | **A, B** | S3 and SQS can invoke Lambda functions.                          |
-| 61 |   **A**  | The execution role authorises the function to call AWS services. |
-| 62 |   **A**  | A scheduled event can trigger Lambda to start or stop instances. |
-| 63 |   **C**  | The module gives a maximum execution time of 15 minutes.         |
-| 64 |   **D**  | The module gives a maximum memory allocation of 10,240 MB.       |
-| 65 | **A, B** | Lambda provides automatic scaling and built-in fault tolerance.  |
-
-Lambda runs code only when invoked by an event or direct request, uses execution roles for AWS permissions and integrates with services such as S3, DynamoDB, SNS, SQS and API Gateway.
-
----
-
-## Questions 66–70: AWS Elastic Beanstalk
-
-|  Q |  Answer  | Explanation                                                                       |
-| -: | :------: | --------------------------------------------------------------------------------- |
-| 66 |   **A**  | Beanstalk is intended for quickly deploying conventional web applications.        |
-| 67 | **A, B** | It can provision infrastructure and configure load balancing.                     |
-| 68 |   **A**  | The customer mainly manages the application code.                                 |
-| 69 | **A, B** | Python and Node.js are supported platforms.                                       |
-| 70 |   **B**  | Beanstalk has no additional service charge; underlying resources remain billable. |
-
-Elastic Beanstalk can handle provisioning, deployment, load balancing, Auto Scaling, health monitoring, logging and debugging for supported web platforms. 
-
-</details>
-
----
-
-# 3. Score interpretation
-
-There are **70 questions**, including multiple-response questions.
-
-|        Score | Readiness                                                              |
-| -----------: | ---------------------------------------------------------------------- |
-|    **63–70** | Strongly prepared                                                      |
-|    **55–62** | Nearly ready; revise isolated weaknesses                               |
-|    **44–54** | Core knowledge exists, but similar services are still getting mixed up |
-| **Below 44** | Review EC2 launch decisions, pricing and container-service roles       |
-
-For multiple-response questions, count the answer as correct only when **all required choices** are selected and no incorrect choice is added. AWS is not known for awarding marks because the candidate was spiritually close.
-
----
-
-# 4. The most dangerous exam confusions
-
-## AMI versus EC2 instance
+Do not confuse:
 
 ```text
-AMI          → Template
-EC2 instance → Running virtual machine created from the template
+AMI
+→ Template
+
+EC2 instance
+→ Running virtual machine
+```
+
+Scenario:
+
+> “The company wants to launch 20 identical web servers.”
+
+One sensible method is:
+
+```text
+Configure one environment
+↓
+Create AMI
+↓
+Launch multiple EC2 instances
 ```
 
 ---
 
-## IAM role versus security group
+# 8. EC2 instance type
+
+The **instance type** determines the hardware resources available to the EC2 instance.
+
+The module highlights:
 
 ```text
-IAM role      → Permissions to call AWS services
-Security group → Allowed network traffic
+CPU
+Memory
+Storage
+Network performance
 ```
 
-Giving an EC2 instance S3 permission does not open a network port. Opening port 443 does not grant permission to read S3.
+
+
+Common categories in the module include:
+
+```text
+General purpose
+Compute optimised
+Memory optimised
+Storage optimised
+Accelerated computing
+```
 
 ---
 
-## User data versus custom AMI
+# 9. Choosing an instance category
+
+### General purpose
+
+Balanced CPU and memory.
+
+Think:
+
+> ordinary web/application workload.
+
+### Compute optimised
+
+More processing power.
+
+Think:
+
+> CPU-intensive calculation.
+
+### Memory optimised
+
+More RAM.
+
+Think:
+
+> in-memory database.
+
+### Storage optimised
+
+High storage performance.
+
+Think:
+
+> large storage-intensive workload.
+
+### Accelerated computing
+
+Special hardware such as accelerators.
+
+Think:
+
+> machine learning or graphics.
+
+---
+
+# 10. Instance-name example
+
+The module gives an example such as:
 
 ```text
-Custom AMI → Prebuilt operating system and software configuration
-User data  → Script that customises the instance during launch
+t3.large
+```
+
+Interpret it as:
+
+```text
+t     → Family
+3     → Generation
+large → Size
+```
+
+The important exam concept is not memorising every instance family.
+
+It is understanding:
+
+> **The instance type should match the workload.**
+
+---
+
+# 11. Network settings
+
+When launching EC2, you choose where it will run.
+
+Think:
+
+```text
+VPC
+↓
+Subnet
+↓
+EC2 instance
+```
+
+Network configuration can determine things such as whether the instance:
+
+* is in a public or private subnet;
+* receives a public address;
+* can communicate with other resources.
+
+For detailed subnet/gateway concepts, that links directly back to Module 5.
+
+---
+
+# 12. IAM role for EC2
+
+An **IAM role** gives an EC2 instance permission to access other AWS services.
+
+Example:
+
+```text
+EC2 application
+↓
+IAM role
+↓
+Amazon S3
+```
+
+Suppose the application needs to read files from S3.
+
+Instead of placing permanent AWS credentials inside the application, an IAM role can grant the required permissions.
+
+### Important distinction
+
+```text
+IAM role
+→ AWS permissions
+
+Security group
+→ Network traffic
+```
+
+Do not mix them up.
+
+---
+
+# 13. User data
+
+**User data** allows a script to run when an instance is first launched.
+
+The module specifically identifies user data as a way to provide a script that runs the first time the instance launches. 
+
+Example:
+
+```text
+Launch EC2
+↓
+User-data script executes
+↓
+Install web server
+↓
+Download application
+↓
+Start service
+```
+
+### Subjective answer
+
+> EC2 user data allows a startup script to be provided when an instance is launched. It can automate initial configuration tasks such as installing software, downloading application files or starting services, reducing the need for manual configuration.
+
+---
+
+# 14. EC2 storage
+
+The module introduces storage choices for EC2.
+
+The two important concepts are:
+
+```text
+Amazon EBS
+EC2 Instance Store
+```
+
+## Amazon EBS
+
+Persistent block storage.
+
+```text
+Stop instance
+↓
+EBS data can remain
+```
+
+## Instance Store
+
+Temporary local storage.
+
+Suitable for data that can be recreated.
+
+```text
+Temporary/cache data
+→ Instance Store
+```
+
+The later Storage module explains these in more detail.
+
+---
+
+# 15. Tags
+
+A **tag** is key-value metadata attached to an AWS resource.
+
+Example:
+
+```text
+Name = WebServer01
+Department = Finance
+Environment = Production
+```
+
+Tags can help with:
+
+* organisation;
+* filtering;
+* automation;
+* cost allocation.
+
+Think:
+
+```text
+Tag
+→ Label the resource
 ```
 
 ---
 
-## EBS versus Instance Store
+# 16. Security groups
+
+A **security group** is a set of firewall rules controlling traffic to an EC2 instance.
+
+The module says rules specify things such as:
 
 ```text
-EBS            → Persistent block storage
-Instance Store → Temporary storage tied to the host
+Source
+Port
+Protocol
+```
+
+
+
+Example:
+
+```text
+TCP 443
+Source: Anywhere
+→ Allow HTTPS
+```
+
+For administration:
+
+```text
+TCP 22
+Source: Company IP
+→ Allow SSH
+```
+
+### Good subjective answer
+
+> A security group acts as a virtual firewall for an EC2 instance. It controls allowed network traffic based on criteria such as protocol, port and source address. Security groups should be configured so that only necessary traffic is permitted.
+
+---
+
+# 17. Key pair
+
+A **key pair** supports secure administrative access to EC2.
+
+The module says:
+
+```text
+AWS stores → Public key
+Customer stores → Private key
+```
+
+For Linux, the private key can be used for SSH access. For Windows, it can be used to obtain the administrator password. 
+
+Memory:
+
+```text
+Security group
+→ Who can reach the server over the network?
+
+Key pair
+→ How do I securely log into the server?
 ```
 
 ---
 
-## Stop versus terminate
+# 18. EC2 lifecycle
+
+An EC2 instance can move through states such as:
 
 ```text
-Stop      → Can be started again
+AMI
+↓
+Pending
+↓
+Running
+```
+
+From running, it may be:
+
+```text
+Rebooted
+Stopped
+Hibernated
+Terminated
+```
+
+The module emphasises that only **EBS-backed instances** can be stopped. 
+
+---
+
+# 19. Reboot vs stop vs terminate
+
+This is very likely to appear in a subjective or scenario question.
+
+| Action        | Meaning                                      |
+| ------------- | -------------------------------------------- |
+| **Reboot**    | Restart the instance                         |
+| **Stop**      | Shut it down temporarily; it can start again |
+| **Terminate** | Permanently remove the instance              |
+
+Memory:
+
+```text
+Reboot
+→ Restart
+
+Stop
+→ Turn off temporarily
+
+Terminate
+→ Delete
+```
+
+---
+
+# 20. Stop vs terminate
+
+Suppose a development server is not needed overnight.
+
+You might:
+
+```text
+STOP
+```
+
+because it is needed again tomorrow.
+
+If the server is permanently no longer required:
+
+```text
+TERMINATE
+```
+
+Do not write:
+
+> “Stop means delete the EC2 instance.”
+
+That is incorrect.
+
+---
+
+# 21. Public IP after stop/start
+
+The module's lifecycle material teaches that an automatically assigned public IPv4 address may change after an instance is stopped and started.
+
+If a persistent public address is required:
+
+> **Use an Elastic IP address.** 
+
+So:
+
+```text
+Temporary automatic public IP
+→ May change
+
+Persistent public IPv4
+→ Elastic IP
+```
+
+---
+
+# 22. Instance metadata
+
+An EC2 instance can obtain information about itself through **instance metadata**.
+
+For example:
+
+```text
+Instance ID
+Availability Zone
+IP information
+```
+
+Think:
+
+> “What does this instance know about itself?”
+
+→ **Instance metadata**
+
+This is usually lower priority than AMI, user data, lifecycle and pricing, but it can appear as a distinction.
+
+---
+
+# 23. Amazon CloudWatch for EC2
+
+**Amazon CloudWatch** captures and reviews EC2 metrics. The module specifically mentions it in the EC2 section summary. 
+
+Examples include:
+
+```text
+CPU utilisation
+Network traffic
+Disk operations
+Status checks
+```
+
+The teaching material distinguishes:
+
+```text
+Basic monitoring → 5-minute interval
+Detailed monitoring → 1-minute interval
+```
+
+
+
+The important subjective idea is:
+
+> **CloudWatch helps you understand whether EC2 resources are healthy and appropriately sized.**
+
+---
+
+# 24. EC2 pricing models
+
+The module introduces:
+
+```text
+On-Demand Instances
+Reserved Instances
+Spot Instances
+Dedicated Instances
+Dedicated Hosts
+Scheduled Reserved Instances
+```
+
+
+
+The best way to learn them is by workload pattern.
+
+---
+
+# 25. On-Demand Instances
+
+On-Demand means:
+
+* no long-term commitment;
+* pay according to usage;
+* flexible.
+
+Best suited to:
+
+```text
+Short-term
+Unpredictable
+Changing workloads
+```
+
+### Scenario
+
+> “A startup does not know how long it will need the server.”
+
+**On-Demand**
+
+### Subjective answer
+
+> On-Demand Instances allow customers to use EC2 without a long-term commitment and pay according to usage. They are suitable for short-term, unpredictable or changing workloads where flexibility is more important than long-term discounts.
+
+---
+
+# 26. Reserved Instances
+
+The module describes Reserved Instances as providing discounted EC2 pricing in exchange for a **1-year or 3-year commitment**. 
+
+Best suited to:
+
+```text
+Stable
+Predictable
+Long-running workloads
+```
+
+### Scenario
+
+> “A production application will run continuously for three years.”
+
+Think:
+
+**Reserved Instances**
+
+### Subjective answer
+
+> Reserved Instances are suitable for predictable workloads that are expected to run for a long period. Customers commit for a one-year or three-year term and can receive discounted pricing compared with flexible On-Demand usage.
+
+---
+
+# 27. Spot Instances
+
+Spot Instances use spare AWS capacity at significantly lower prices, but the module states they can be interrupted by AWS with a **2-minute notification**. 
+
+Best for:
+
+```text
+Batch processing
+Rendering
+Flexible workloads
+Fault-tolerant jobs
+Jobs that can restart
+```
+
+Bad fit:
+
+```text
+Critical non-interruptible database
+```
+
+### Subjective answer
+
+> Spot Instances provide access to unused EC2 capacity at potentially much lower cost. However, AWS can interrupt the instance, so Spot is most appropriate for flexible and fault-tolerant workloads such as batch processing rather than applications that cannot tolerate interruption.
+
+---
+
+# 28. Dedicated Instance vs Dedicated Host
+
+These sound similar but are different.
+
+## Dedicated Instance
+
+The EC2 instance runs on hardware dedicated to a **single customer**.
+
+## Dedicated Host
+
+The customer receives an entire physical server dedicated to their use.
+
+The module associates Dedicated Hosts with benefits such as licensing and regulatory/compliance requirements. 
+
+Memory:
+
+```text
+Dedicated Instance
+→ Dedicated hardware
+
+Dedicated Host
+→ Entire physical host
+```
+
+---
+
+# 29. Scheduled Reserved Instances
+
+In the module, Scheduled Reserved Instances are designed for recurring schedules.
+
+Example:
+
+```text
+Every Monday
+8 AM – 5 PM
+```
+
+and you need reserved capacity on that repeating schedule.
+
+Think:
+
+**Scheduled Reserved Instance**. 
+
+For the subjective exam, this is probably lower priority than On-Demand, Reserved and Spot.
+
+---
+
+# 30. Pricing-model decision table
+
+| Workload                       | Best fit in module          |
+| ------------------------------ | --------------------------- |
+| Uncertain / temporary          | On-Demand                   |
+| Predictable / continuous       | Reserved                    |
+| Flexible / interruptible       | Spot                        |
+| Physical licensing requirement | Dedicated Host              |
+| Single-customer hardware       | Dedicated Instance          |
+| Fixed recurring schedule       | Scheduled Reserved Instance |
+
+Memory:
+
+```text
+Uncertain → On-Demand
+Predictable → Reserved
+Interruptible → Spot
+Physical host requirement → Dedicated Host
+```
+
+---
+
+# 31. Four pillars of EC2 cost optimisation
+
+The module gives four pillars:
+
+```text
+1. Right-size
+2. Increase elasticity
+3. Use the optimal pricing model
+4. Optimise storage choices
+```
+
+
+
+This is very likely to be useful for a subjective question.
+
+---
+
+# 32. Pillar 1 — Right-size
+
+**Right-sizing** means matching resources to actual workload requirements.
+
+Consider:
+
+```text
+CPU
+Memory
+Storage
+Network throughput
+```
+
+The module recommends using CloudWatch metrics to identify idle or over-sized instances and says:
+
+> **Right-size, then reserve.** 
+
+Example:
+
+```text
+16 vCPU instance
+Average CPU utilisation = 3%
+
+Possible improvement:
+Move to smaller instance
+```
+
+### Good answer
+
+> Right-sizing means selecting an EC2 instance that matches the actual CPU, memory, storage and networking requirements of the workload. CloudWatch metrics can be used to identify underutilised instances. Reducing an unnecessarily large instance can lower cost without reducing required application performance.
+
+---
+
+# 33. Pillar 2 — Increase elasticity
+
+The module recommends stopping or hibernating EBS-backed instances when they are not required and using automatic scaling to match resource usage with demand. 
+
+Example:
+
+```text
+Development server required:
+8 AM – 6 PM
+
+At night:
+Stop it
+```
+
+Or:
+
+```text
+Low demand
+→ fewer instances
+
+High demand
+→ more instances
+```
+
+### Subjective answer
+
+> Increasing elasticity means adjusting compute capacity according to actual demand and avoiding running unnecessary resources. For example, development instances can be stopped when not in use, and automatic scaling can increase or decrease capacity according to workload demand.
+
+---
+
+# 34. Pillar 3 — Optimal pricing model
+
+Do not use the same pricing model blindly for everything.
+
+The module gives examples such as:
+
+```text
+Variable workload
+→ On-Demand + Spot
+
+Predictable workload
+→ Reserved
+
+Serverless possibility
+→ Consider Lambda
+```
+
+
+
+You can even combine models:
+
+```text
+Predictable baseline
+→ Reserved
+
+Unexpected peak
+→ On-Demand
+
+Interruptible batch work
+→ Spot
+```
+
+### Good answer
+
+> Cost can be optimised by selecting pricing models according to workload behaviour. Predictable baseline workloads can use Reserved Instances, unpredictable workloads can use On-Demand Instances, and interruption-tolerant workloads can use Spot Instances. Different pricing models can also be combined within the same architecture.
+
+---
+
+# 35. Pillar 4 — Optimise storage choices
+
+The module recommends:
+
+* resizing EBS volumes;
+* selecting appropriate EBS volume types;
+* deleting unnecessary snapshots;
+* considering lower-cost storage where performance allows;
+* using S3 storage options and lifecycle policies where appropriate. 
+
+The important idea:
+
+> Do not pay for more storage performance or capacity than the application requires.
+
+### Good answer
+
+> Storage optimisation involves matching storage performance and capacity to application requirements. Organisations can resize EBS volumes, select more appropriate volume types, remove unnecessary snapshots and move suitable data to lower-cost storage services or lifecycle tiers.
+
+---
+
+# 36. Cost optimisation is continuous
+
+The module explicitly says:
+
+> **Cost optimisation is an ongoing process.**
+
+Recommendations include:
+
+* use cost-allocation tags;
+* define metrics;
+* set targets;
+* review regularly;
+* assign responsibility for optimisation. 
+
+So a strong subjective answer should avoid implying:
+
+> “Optimise the architecture once and then forget it forever.”
+
+Usage changes over time.
+
+---
+
+# 37. Containers
+
+A **container** packages an application together with what it needs to run.
+
+Think:
+
+```text
+Application code
++
+Libraries
++
+Dependencies
+=
+Container
+```
+
+The main benefit is consistency.
+
+```text
+Developer laptop
+Test
+Production
+```
+
+can all run the same packaged application.
+
+---
+
+# 38. Container vs virtual machine
+
+A virtual machine includes a complete guest operating system.
+
+A container shares the underlying OS environment and packages the application and its dependencies.
+
+Conceptually:
+
+```text
+VIRTUAL MACHINE
+
+App
+Libraries
+Guest OS
+────────
+Hypervisor
+
+
+CONTAINER
+
+App
+Libraries
+────────
+Shared OS
+```
+
+Therefore, containers are generally:
+
+* lighter;
+* faster to start;
+* more portable.
+
+For the module, the important concept is not low-level container internals; it is knowing how AWS runs and manages them.
+
+---
+
+# 39. Docker
+
+The module introduces Docker in the container section.
+
+Think:
+
+```text
+Docker image
+→ Packaged application template
+
+Container
+→ Running instance of that image
+```
+
+This is similar to:
+
+```text
+AMI
+→ EC2 instance
+```
+
+in concept.
+
+---
+
+# 40. Container orchestration
+
+If you have one container, manual management is simple.
+
+If you have:
+
+```text
+500 containers
+across
+50 servers
+```
+
+you need help with:
+
+```text
+Where each container runs
+Scaling
+Networking
+Load distribution
+Replacement after failure
+```
+
+That is **container orchestration**.
+
+---
+
+# 41. Amazon ECS
+
+**Amazon Elastic Container Service (ECS)** is AWS's container orchestration service.
+
+It helps run and manage containers across compute capacity.
+
+Think:
+
+```text
+Containers
+↓
+Amazon ECS decides where/how to run them
+↓
+EC2 or Fargate provides compute
+```
+
+The module's ECS cluster slide focuses heavily on whether the customer wants to manage the underlying cluster. 
+
+---
+
+# 42. ECS on EC2 vs ECS on Fargate
+
+This distinction is important.
+
+## ECS backed by EC2
+
+The customer manages:
+
+```text
+EC2 infrastructure
+Operating environment
+Capacity
+```
+
+Benefit:
+
+> more control.
+
+## ECS backed by Fargate
+
+AWS manages the underlying server infrastructure.
+
+Customer focuses more on:
+
+```text
+Containers
+Applications
+CPU/memory requirements
+```
+
+The module summarises:
+
+```text
+Want to manage ECS cluster infrastructure?
+→ ECS on EC2
+
+Don't want to manage servers?
+→ ECS on Fargate
+```
+
+
+
+---
+
+# 43. AWS Fargate
+
+**AWS Fargate** provides serverless compute for containers.
+
+“Serverless” does **not** mean servers disappear.
+
+It means:
+
+> The customer does not provision and manage the underlying servers.
+
+### Scenario
+
+> “The company wants to run containers but does not want to manage EC2 instances.”
+
+**AWS Fargate**
+
+### Good answer
+
+> AWS Fargate enables organisations to run containers without managing the underlying EC2 servers. Customers define their container and compute requirements while AWS manages the infrastructure used to run the containers, reducing administrative overhead.
+
+---
+
+# 44. Kubernetes
+
+The module defines Kubernetes as open-source software for **container orchestration**.
+
+It automates:
+
+```text
+Container provisioning
+Networking
+Load distribution
+Scaling
+```
+
+and can be used both on-premises and in the cloud. 
+
+Think:
+
+```text
+Docker
+→ Runs containers
+
+Kubernetes
+→ Manages many containers/nodes
+```
+
+---
+
+# 45. Amazon EKS
+
+**Amazon Elastic Kubernetes Service (EKS)** enables Kubernetes to run on AWS.
+
+The module says it is Kubernetes-conformant and compatible with Kubernetes tools and add-ons. 
+
+### Scenario
+
+> “The company already uses Kubernetes and wants to migrate those workloads to AWS.”
+
+Think:
+
+**Amazon EKS**
+
+### Good answer
+
+> Amazon EKS is AWS's managed Kubernetes service. It enables organisations to run Kubernetes-based container workloads on AWS while remaining compatible with Kubernetes tools and workloads, making it suitable for organisations that already use Kubernetes.
+
+---
+
+# 46. ECS vs EKS
+
+This distinction is essential:
+
+```text
+ECS
+→ AWS-native container orchestration
+
+EKS
+→ Kubernetes on AWS
+```
+
+Scenario:
+
+> “No Kubernetes requirement; company wants AWS's own managed container orchestrator.”
+
+**ECS**
+
+Scenario:
+
+> “Must use Kubernetes.”
+
+**EKS**
+
+---
+
+# 47. Amazon ECR
+
+**Amazon Elastic Container Registry (ECR)** is a managed Docker container registry for storing, managing and deploying container images. 
+
+Think:
+
+```text
+ECR
+→ Store images
+
+ECS / EKS
+→ Orchestrate containers
+
+EC2 / Fargate
+→ Provide compute
+```
+
+This is an extremely useful service map.
+
+---
+
+# 48. Container-service map
+
+```text
+Docker
+→ Build/package containers
+
+ECR
+→ Store container images
+
+ECS
+→ AWS-native orchestration
+
+EKS
+→ Kubernetes orchestration
+
+Fargate
+→ Run containers without managing servers
+```
+
+If you learn only one container diagram, learn that one.
+
+---
+
+# 49. AWS Lambda
+
+**AWS Lambda** is a serverless compute service for running code in response to events or schedules.
+
+Conceptually:
+
+```text
+Event occurs
+↓
+Lambda function runs
+↓
+Work finishes
+```
+
+The customer does not provision EC2 servers for the function.
+
+The module lists benefits including:
+
+* multiple programming languages;
+* automated administration;
+* built-in fault tolerance;
+* function orchestration;
+* pay-per-use pricing. 
+
+---
+
+# 50. Event-driven computing
+
+Lambda is particularly useful when code should run **because something happened**.
+
+Example:
+
+```text
+Image uploaded to S3
+↓
+Lambda triggered
+↓
+Resize image
+↓
+Save thumbnail
+```
+
+Or:
+
+```text
+Scheduled time
+↓
+Lambda
+↓
+Stop development EC2 instances
+```
+
+The module includes the schedule-based EC2 automation example. 
+
+---
+
+# 51. Lambda execution role
+
+A Lambda function may need permission to access other AWS services.
+
+Example:
+
+```text
+Lambda
+↓
+Needs to stop EC2
+```
+
+The Lambda function uses an **execution role** granting the required permissions.
+
+Important distinction:
+
+```text
+Event source
+→ Tells Lambda WHEN to run
+
+Execution role
+→ Tells Lambda WHAT AWS actions it may perform
+```
+
+---
+
+# 52. Lambda use cases
+
+Think Lambda when the scenario involves:
+
+```text
+File processing
+Automation
+Scheduled task
+Notifications
+Event-driven code
+Small API logic
+Data transformation
+```
+
+and the organisation does not want to manage servers.
+
+---
+
+# 53. Lambda limits in the module
+
+The **2022 course material** states:
+
+```text
+Maximum execution time → 15 minutes
+Maximum memory → 10,240 MB
+```
+
+
+
+For your exam based on these slides, those are the values to use.
+
+Therefore, if the scenario says:
+
+> “A single task must run continuously for six hours.”
+
+Lambda is probably not the intended answer.
+
+---
+
+# 54. Good subjective answer — Lambda
+
+> AWS Lambda is a serverless compute service that runs code in response to events or schedules. AWS manages the underlying infrastructure, scaling and administration, while the customer focuses on the function code. Lambda is well suited to short, event-driven tasks such as file processing, automation and scheduled actions because the customer does not need to provision continuously running servers.
+
+---
+
+# 55. EC2 vs Lambda
+
+| EC2                              | Lambda                          |
+| -------------------------------- | ------------------------------- |
+| Virtual machine                  | Function                        |
+| Customer manages OS              | AWS manages infrastructure      |
+| Can run continuously             | Runs when triggered             |
+| Greater control                  | Less administration             |
+| Pay for running compute          | Pay based on function usage     |
+| Suitable for traditional servers | Suitable for event-driven tasks |
+
+Memory:
+
+```text
+Need a COMPUTER
+→ EC2
+
+Need CODE to run when something happens
+→ Lambda
+```
+
+---
+
+# 56. AWS Elastic Beanstalk
+
+**AWS Elastic Beanstalk** simplifies deployment of web applications.
+
+The module says it automatically handles:
+
+```text
+Infrastructure provisioning
+Configuration
+Deployment
+Load balancing
+Automatic scaling
+Health monitoring
+Analysis/debugging
+Logging
+```
+
+
+
+The customer mainly uploads the application code.
+
+---
+
+# 57. Elastic Beanstalk workflow
+
+Think:
+
+```text
+Developer writes application
+↓
+Uploads code to Elastic Beanstalk
+↓
+Beanstalk provisions environment
+↓
+Deploys application
+↓
+Handles load balancing/scaling/monitoring
+```
+
+The module supports platforms such as:
+
+```text
+Java
+.NET
+PHP
+Node.js
+Python
+Ruby
+Go
+Docker
+```
+
+
+
+---
+
+# 58. Elastic Beanstalk responsibility model
+
+The page 81 diagram essentially shows:
+
+```text
+YOU MANAGE
+→ Application code
+
+AWS MANAGES MORE OF:
+→ HTTP server
+→ Application server
+→ Language interpreter/platform
+→ Operating system
+→ Host
+```
+
+
+
+This is why Beanstalk is considered a more managed application platform.
+
+---
+
+# 59. Elastic Beanstalk pricing
+
+The module states:
+
+> **There is no additional charge for Elastic Beanstalk itself.**
+
+You pay for the underlying AWS resources it uses. 
+
+For example:
+
+```text
+Elastic Beanstalk
+↓ may provision
+EC2
+Load balancer
+Storage
+Other AWS resources
+```
+
+Those underlying resources can still be billed.
+
+So:
+
+```text
+No separate Beanstalk fee
+≠
+Application is completely free
+```
+
+---
+
+# 60. Benefits of Elastic Beanstalk
+
+The module summarises benefits as:
+
+```text
+Fast and simple to start
+Developer productivity
+Difficult to outgrow
+Complete resource control
+```
+
+
+
+The important subjective idea is:
+
+> It provides easy application deployment without completely hiding the underlying AWS resources.
+
+---
+
+# 61. Good subjective answer — Elastic Beanstalk
+
+> AWS Elastic Beanstalk is a managed service that simplifies deployment of web applications. Developers upload their application code, while Elastic Beanstalk handles tasks such as infrastructure provisioning, deployment, load balancing, automatic scaling, health monitoring and logging. It supports several common application platforms and allows developers to focus more on application development while still retaining access to the underlying AWS resources.
+
+---
+
+# 62. EC2 vs Elastic Beanstalk
+
+| EC2                                             | Elastic Beanstalk                                     |
+| ----------------------------------------------- | ----------------------------------------------------- |
+| Build/manage server environment yourself        | Upload application and let service deploy environment |
+| Greater infrastructure control                  | Less infrastructure work                              |
+| Customer configures more                        | AWS automates more                                    |
+| Suitable for unusual/custom server environments | Suitable for common web applications                  |
+
+Scenario:
+
+> “The developer needs root-level OS customisation.”
+
+**EC2**
+
+Scenario:
+
+> “The developer wants to upload Python web code and let AWS handle scaling and load balancing.”
+
+**Elastic Beanstalk**
+
+---
+
+# 63. Lambda vs Elastic Beanstalk
+
+This distinction is very exam-friendly.
+
+| Lambda               | Elastic Beanstalk             |
+| -------------------- | ----------------------------- |
+| Function-based       | Application-based             |
+| Event driven         | Web application environment   |
+| Runs when triggered  | Application remains deployed  |
+| Serverless functions | Managed platform              |
+| Short tasks          | Conventional web applications |
+
+Think:
+
+```text
+"Run this function when an image arrives."
+→ Lambda
+
+"Deploy my Python web application."
+→ Elastic Beanstalk
+```
+
+The module's sample exam question specifically asks which AWS service can quickly deploy applications using programming languages such as .NET and Java; the answer is **Elastic Beanstalk**. 
+
+---
+
+# 64. The big compute comparison
+
+| Requirement                          | Best starting answer |
+| ------------------------------------ | -------------------- |
+| Full OS control                      | EC2                  |
+| AWS-native containers                | ECS                  |
+| Kubernetes                           | EKS                  |
+| Containers without server management | Fargate              |
+| Store container images               | ECR                  |
+| Event-driven function                | Lambda               |
+| Managed conventional web app         | Elastic Beanstalk    |
+
+This is probably the most useful table for scenario questions.
+
+---
+
+# 65. Likely subjective question — Explain Amazon EC2
+
+> Amazon EC2 is a compute service that provides virtual machines in the AWS Cloud. Customers launch EC2 instances from AMIs and can select the instance type, networking, IAM role, storage, security groups and key pair according to their requirements. EC2 gives the customer control over the guest operating system, making it suitable for workloads that require server customisation and traditional virtual-machine computing.
+
+---
+
+# 66. Likely subjective question — Explain the EC2 launch decisions
+
+A strong answer:
+
+> When launching an EC2 instance, the customer must make several configuration decisions. The AMI determines the operating-system and starting software environment, while the instance type determines CPU, memory, storage and network capability. Network settings determine where the instance runs, an IAM role grants AWS permissions, user data can automate startup configuration, storage provides persistent or temporary data capacity, tags organise the resource, security groups control network traffic, and the key pair provides secure administrative access.
+
+That paragraph efficiently covers all nine.
+
+---
+
+# 67. Likely subjective question — Explain EC2 pricing models
+
+> Amazon EC2 provides several pricing models for different usage patterns. On-Demand Instances provide flexibility with no long-term commitment and are suited to unpredictable workloads. Reserved Instances provide discounted pricing in exchange for a one-year or three-year commitment and are suited to predictable workloads. Spot Instances can provide substantial cost savings but can be interrupted by AWS, making them suitable for flexible and fault-tolerant workloads. Dedicated Hosts provide an entire physical server and can support licensing or compliance requirements.
+
+---
+
+# 68. Likely subjective question — Explain the four cost-optimisation pillars
+
+> The four EC2 cost-optimisation pillars are right-sizing, increasing elasticity, selecting the optimal pricing model and optimising storage choices. Right-sizing matches instance resources to actual CPU, memory, storage and network needs. Elasticity reduces cost by using resources only when required. The pricing model should match workload behaviour, such as Reserved Instances for predictable workloads and Spot for interruption-tolerant tasks. Storage should also be sized and selected according to actual performance requirements, with unnecessary volumes or snapshots removed.
+
+---
+
+# 69. Likely subjective question — Containers vs VMs
+
+> A virtual machine includes a complete guest operating system for each VM, while containers package applications and their dependencies while sharing more of the underlying operating-system environment. As a result, containers are generally lighter and faster to start. Container orchestration services such as Amazon ECS or Amazon EKS can then manage many containers across compute resources.
+
+---
+
+# 70. Likely subjective question — ECS, EKS, Fargate and ECR
+
+> Amazon ECS is AWS's container orchestration service, while Amazon EKS enables organisations to run Kubernetes on AWS. AWS Fargate provides compute for containers without requiring customers to manage the underlying servers. Amazon ECR is different because it is a managed registry used to store and manage container images. Therefore, ECR stores the images, ECS or EKS orchestrates the containers, and EC2 or Fargate provides the compute capacity where they run.
+
+That answer is extremely useful because it separates four easily confused services.
+
+---
+
+# 71. How to answer a compute scenario
+
+Use this approach:
+
+```text
+1. Identify what is being run.
+2. Determine how much control is required.
+3. Determine whether servers should be managed.
+4. Match the service.
+5. Justify why alternatives are less appropriate.
+```
+
+Example:
+
+> A company needs code to resize an image whenever a file is uploaded to S3. The task only runs for a few seconds, and the company does not want to manage servers.
+
+Weak answer:
+
+> AWS Lambda.
+
+Better answer:
+
+> AWS Lambda is the most appropriate service because it runs code in response to events without requiring the customer to provision servers. The S3 upload can trigger the Lambda function, which can resize the image and finish after processing. EC2 would require a continuously managed virtual machine even though the task only runs when an image is uploaded.
+
+That is the type of justification subjective exams reward.
+
+---
+
+# 72. Scenario practice
+
+### Scenario A
+
+> A company needs complete control over Linux and must install specialised software.
+
+**EC2**
+
+Because EC2 gives guest-OS control.
+
+---
+
+### Scenario B
+
+> The server is required continuously for three years.
+
+**Reserved Instances**
+
+Because usage is predictable and long term.
+
+---
+
+### Scenario C
+
+> A video-rendering job can stop and resume later, and cost is the priority.
+
+**Spot Instances**
+
+Because the workload tolerates interruption.
+
+---
+
+### Scenario D
+
+> A company needs to run containers but does not want to manage EC2 servers.
+
+**AWS Fargate**
+
+---
+
+### Scenario E
+
+> A company already uses Kubernetes.
+
+**Amazon EKS**
+
+---
+
+### Scenario F
+
+> Developers need somewhere to store container images.
+
+**Amazon ECR**
+
+---
+
+### Scenario G
+
+> A file upload should automatically trigger five seconds of processing.
+
+**AWS Lambda**
+
+---
+
+### Scenario H
+
+> Developers want to upload a Java web application while AWS handles infrastructure, scaling and load balancing.
+
+**Elastic Beanstalk**
+
+---
+
+### Scenario I
+
+> An EC2 instance averages 4% CPU utilisation.
+
+**Right-size the instance**
+
+---
+
+### Scenario J
+
+> A development EC2 instance is unused every night.
+
+**Stop/hibernate it when unused to increase elasticity.**
+
+---
+
+# 73. High-priority scenario clues
+
+| If the question says...             | Think...            |
+| ----------------------------------- | ------------------- |
+| Virtual machine                     | EC2                 |
+| Full OS control                     | EC2                 |
+| Instance template                   | AMI                 |
+| CPU/RAM/network specification       | Instance type       |
+| Startup automation                  | User data           |
+| AWS permission for EC2              | IAM role            |
+| Network firewall                    | Security group      |
+| Secure EC2 login                    | Key pair            |
+| Persistent public IPv4              | Elastic IP          |
+| Instance performance metrics        | CloudWatch          |
+| Temporarily turn server off         | Stop                |
+| Permanently remove server           | Terminate           |
+| Unpredictable workload              | On-Demand           |
+| Predictable workload                | Reserved            |
+| Interruptible workload              | Spot                |
+| Physical server licensing           | Dedicated Host      |
+| Underutilised EC2                   | Right-size          |
+| Stop unused servers                 | Increase elasticity |
+| Containers                          | ECS/EKS             |
+| Kubernetes                          | EKS                 |
+| No server management for containers | Fargate             |
+| Store Docker images                 | ECR                 |
+| Event-driven code                   | Lambda              |
+| Upload normal web app               | Elastic Beanstalk   |
+
+---
+
+# 74. Common mistakes to avoid
+
+**AMI = EC2 instance.**
+Wrong.
+
+```text
+AMI → Template
+EC2 instance → Running VM
+```
+
+**Instance type determines operating system.**
+Wrong.
+
+```text
+AMI → OS/software
+Instance type → CPU/RAM/network/resources
+```
+
+**IAM role controls network ports.**
+Wrong.
+
+```text
+IAM role → AWS permissions
+Security group → Network access
+```
+
+**User data = stored application data.**
+Wrong.
+
+User data is primarily a startup script/configuration mechanism in this module.
+
+**Stop = terminate.**
+Wrong.
+
+```text
+Stop → Can restart
 Terminate → Permanently removed
 ```
 
----
+**Spot Instances are best for critical non-interruptible systems.**
+Wrong.
 
-## On-Demand versus Reserved versus Spot
+They can be interrupted.
+
+**Reserved Instances are always best because they are cheaper.**
+Wrong.
+
+They only make sense when the usage is predictable enough to justify commitment.
+
+**ECR runs containers.**
+Wrong.
 
 ```text
-Unpredictable → On-Demand
-Predictable   → Reserved
-Interruptible → Spot
-Licensing     → Dedicated Host
+ECR → Stores images
+ECS/EKS → Orchestrates
+EC2/Fargate → Runs compute
 ```
 
----
+**Fargate replaces ECS.**
+Wrong.
 
-## ECS versus EKS versus ECR versus Fargate
+Fargate can provide compute for containers managed through services such as ECS.
+
+**ECS = Kubernetes.**
+Wrong.
 
 ```text
-ECS     → AWS-native orchestration
-EKS     → Kubernetes orchestration
-ECR     → Container-image storage
-Fargate → Compute without server management
+ECS → AWS-native
+EKS → Kubernetes
 ```
 
-ECR does not run containers. Apparently a warehouse and a delivery vehicle are still different things.
+**Lambda means there are physically no servers.**
+Wrong.
+
+AWS manages the servers; the customer does not provision them.
+
+**Lambda is a normal continuously running server.**
+Wrong.
+
+It is function-based, event-driven compute.
+
+**Elastic Beanstalk means everything is free.**
+Wrong.
+
+The module says there is no additional Beanstalk charge, but underlying AWS resources are still billed. 
 
 ---
 
-## Lambda versus Elastic Beanstalk
+# 75. What I would prioritise before the subjective exam
+
+If time is short, master these **seven areas**:
 
 ```text
-Small event-driven function → Lambda
-Conventional web application → Elastic Beanstalk
+1. EC2 basics
+   AMI
+   Instance type
+   User data
+   IAM role
+   Security group
+   Key pair
+
+2. EC2 lifecycle
+   Reboot
+   Stop
+   Terminate
+
+3. EC2 pricing
+   On-Demand
+   Reserved
+   Spot
+   Dedicated Host
+
+4. Cost optimisation
+   Right-size
+   Elasticity
+   Pricing model
+   Storage
+
+5. Containers
+   ECS
+   EKS
+   Fargate
+   ECR
+
+6. Lambda
+   Event-driven
+   Serverless
+   Execution role
+
+7. Elastic Beanstalk
+   Web application deployment
+   Provisioning
+   Scaling
+   Load balancing
 ```
 
-Lambda runs when triggered. Beanstalk deploys a continuously available application environment.
+These correspond closely to the formal Module 6 objectives. 
 
----
-
-# 5. Rapid revision sheet
+# Final 2-minute revision
 
 ```text
-AMAZON EC2
+COMPUTE CHOICE
+──────────────
+Full VM control
+→ EC2
 
-- Virtual machines
-- Full guest-OS control
-- Launched from AMIs
-- Instance type determines resources
-- Security group controls traffic
-- IAM role grants service permissions
-- User data runs launch scripts
-- Key pair supports secure login
+Container orchestration
+→ ECS
+
+Kubernetes
+→ EKS
+
+Containers without servers
+→ Fargate
+
+Store container images
+→ ECR
+
+Event-driven function
+→ Lambda
+
+Managed web application
+→ Elastic Beanstalk
+```
+
+```text
+EC2 LAUNCH
+──────────
+AMI
+→ OS/template
+
+Instance type
+→ CPU/RAM/network
+
+IAM role
+→ AWS permissions
+
+User data
+→ Startup script
+
+Storage
+→ Data
+
+Tags
+→ Labels
+
+Security group
+→ Network firewall
+
+Key pair
+→ Secure login
 ```
 
 ```text
 EC2 LIFECYCLE
+─────────────
+Reboot
+→ Restart
 
-Reboot    → Restart
-Stop      → Shut down and retain EBS-backed instance
-Start     → Return stopped instance to running
-Terminate → Permanently remove
+Stop
+→ Temporary shutdown
+
+Terminate
+→ Permanent removal
+
+Persistent public IP
+→ Elastic IP
 ```
 
 ```text
 EC2 PRICING
+───────────
+On-Demand
+→ Unpredictable
 
-On-Demand     → Flexible
-Reserved      → Predictable long-term
-Spot          → Flexible and interruptible
-Dedicated Host → Licensing and compliance
+Reserved
+→ Predictable
+
+Spot
+→ Interruptible
+
+Dedicated Host
+→ Physical host/licensing
 ```
 
 ```text
 COST OPTIMISATION
-
+─────────────────
 1. Right-size
 2. Increase elasticity
-3. Choose the correct pricing model
+3. Optimal pricing model
 4. Optimise storage
 ```
 
 ```text
 CONTAINERS
+──────────
+Docker
+→ Package application
 
-Docker  → Package and run
-ECS     → AWS orchestration
-EKS     → Kubernetes
-ECR     → Store images
-Fargate → Run without managing servers
+ECR
+→ Store images
+
+ECS
+→ AWS-native orchestration
+
+EKS
+→ Kubernetes
+
+Fargate
+→ Serverless container compute
 ```
 
 ```text
-AWS LAMBDA
+LAMBDA
+──────
+Event occurs
+↓
+Function runs
+↓
+Function finishes
 
-- Serverless functions
-- Event-driven
-- Execution role
-- Automatic scaling
-- Built-in fault tolerance
-- Maximum runtime: 15 minutes
-- Maximum memory in module: 10,240 MB
+No server provisioning
+Pay per use
+15-minute maximum runtime in module
 ```
 
 ```text
 ELASTIC BEANSTALK
-
-- Deploy web applications
-- Upload application code
-- AWS provisions infrastructure
-- Load balancing
-- Automatic scaling
-- Health monitoring
-- Pay for underlying resources
+─────────────────
+Upload web-app code
+↓
+AWS provisions infrastructure
+↓
+Deployment
+Load balancing
+Scaling
+Monitoring
 ```
 
-[1]: https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02.html?utm_source=chatgpt.com "AWS Certified Cloud Practitioner (CLF-C02) - AWS Certified Cloud Practitioner"
+The **single most important mental model** for Module 6 is:
 
----
+```text
+EC2
+→ "Give me the SERVER and let me control it."
+
+CONTAINERS
+→ "Package my APPLICATION consistently."
+
+FARGATE
+→ "Run my CONTAINERS without me managing servers."
+
+LAMBDA
+→ "Run this CODE when something happens."
+
+ELASTIC BEANSTALK
+→ "Deploy my WEB APPLICATION and manage much of the environment for me."
+```
+
+Once you can distinguish those five ideas and justify them from a scenario, most of the difficult subjective questions in Module 6 become much easier. 
 
 </details>
 
+
 <details>
-<summary><strong>Module 7: Storage — AWS-Style Objective Test Preparation</strong></summary>
+<summary><strong>Module 7: Storage — Subjective Exam Preparation</strong></summary>
 
-# Module 7: Storage — AWS-Style Objective Test Preparation
+For a **subjective exam**, Module 7 is mainly testing whether you can look at a storage requirement and decide:
 
-The current AWS Certified Cloud Practitioner exam uses:
+> **What kind of storage does this workload need, and which AWS storage service fits that behaviour best?**
 
-* **Multiple choice:** one correct response and three plausible distractors.
-* **Multiple response:** two or more correct responses from at least five options.
+The module focuses on four services:
 
-AWS describes distractors as believable options that someone with incomplete knowledge might select. Questions therefore usually ask for the service that **best** satisfies a scenario, not every service that could theoretically be forced into working. ([AWS Documentation][1])
+```text
+Amazon EBS        → Block storage
+Amazon S3         → Object storage
+Amazon EFS        → Shared file storage
+Amazon S3 Glacier → Long-term archival storage
+```
 
-This test stays within the uploaded Module 7 objectives: storage types, Amazon EBS, Amazon S3, Amazon EFS, Amazon S3 Glacier and choosing between them. 
+Its objectives specifically include identifying storage types, explaining the functionality of EBS, S3, EFS and S3 Glacier, and differentiating between them. 
+
+The entire chapter can be remembered as:
+
+```text
+Need a virtual disk?
+→ EBS
+
+Need to store complete objects/files?
+→ S3
+
+Need several Linux servers to share the same files?
+→ EFS
+
+Need cheap long-term archives?
+→ S3 Glacier
+```
 
 ---
 
-# 1. What to know before attempting the test
+# 1. First understand the three main storage models
 
-## Storage-type comparison
-
-| Storage type                | How data is organised                            | AWS service       |
-| --------------------------- | ------------------------------------------------ | ----------------- |
-| **Block storage**           | Data divided into blocks; behaves like a disk    | Amazon EBS        |
-| **Object storage**          | Complete objects stored with keys and metadata   | Amazon S3         |
-| **File storage**            | Files and folders accessed through a file system | Amazon EFS        |
-| **Archival object storage** | Rarely accessed long-term objects                | Amazon S3 Glacier |
+Before memorising AWS services, understand **how the data is stored**.
 
 ```text
-Need a virtual hard disk?   → EBS
-Need scalable objects?      → S3
-Need a shared file system?  → EFS
-Need long-term archives?    → S3 Glacier
+Block storage  → Amazon EBS
+Object storage → Amazon S3
+File storage   → Amazon EFS
+
+Archival object storage → Amazon S3 Glacier
 ```
 
-The module’s block-versus-object example explains that changing one character in a large file requires updating only the relevant block with block storage, while object storage treats the entire object as one unit. 
+This is probably the most important distinction in the module.
 
-## Amazon EBS volume selection
+---
 
-| Requirement                              | EBS volume type          |
-| ---------------------------------------- | ------------------------ |
-| Most ordinary workloads and boot volumes | General Purpose SSD      |
-| Sustained high IOPS and large databases  | Provisioned IOPS SSD     |
-| Big data, logs and sequential streaming  | Throughput-Optimised HDD |
-| Infrequently accessed, low-cost HDD data | Cold HDD                 |
+# 2. Block storage
+
+**Block storage** divides data into small blocks.
+
+The operating system can treat the storage like a disk.
+
+Suppose there is a 1 GB file and you change one character.
+
+With block storage:
 
 ```text
-IOPS       → Number of storage operations
-Throughput → Amount of data transferred
+1 GB file
+↓
+Locate the affected block
+↓
+Change that block
 ```
 
-Throughput-Optimised HDD and Cold HDD cannot be used as boot volumes in the module. 
+The module's page 7 diagram explicitly contrasts this with object storage: block storage can update the relevant piece rather than replacing the whole object. 
 
-## Amazon S3 storage-class selection
+### Typical uses
 
-| Requirement                            | Storage class           |
-| -------------------------------------- | ----------------------- |
-| Frequently accessed objects            | S3 Standard             |
-| Unknown or changing access patterns    | S3 Intelligent-Tiering  |
-| Infrequent access but rapid retrieval  | S3 Standard-IA          |
-| Infrequent, recreatable data in one AZ | S3 One Zone-IA          |
-| Long-term archival                     | S3 Glacier              |
-| Lowest-cost deep archival              | S3 Glacier Deep Archive |
+Think:
 
-The module lists all six of these storage classes. 
+* operating-system disks;
+* database disks;
+* applications that frequently modify data;
+* EC2 boot volumes.
 
-## Amazon EFS architecture
+AWS service:
+
+> **Amazon EBS**
+
+---
+
+# 3. Object storage
+
+With **object storage**, a file is stored as an object rather than as a series of directly editable disk blocks.
+
+Conceptually:
 
 ```text
-EC2 instance A ─┐
-EC2 instance B ─┼── Amazon EFS
-EC2 instance C ─┘
+Object
+├── Data
+├── Metadata
+└── Unique key
 ```
 
-EFS:
+If the object changes, the object is generally replaced as a complete object in the model taught by the module.
 
-* provides shared file storage;
+Typical examples:
+
+```text
+photo.jpg
+video.mp4
+report.pdf
+backup.zip
+```
+
+AWS service:
+
+> **Amazon S3**
+
+---
+
+# 4. File storage
+
+**File storage** behaves more like a shared network folder.
+
+It presents:
+
+```text
+/folder
+   /subfolder
+      file.txt
+      report.pdf
+```
+
+Several computers can access the same files through a file-system protocol.
+
+AWS service:
+
+> **Amazon EFS**
+
+---
+
+# 5. The easiest storage-type comparison
+
+| Requirement             | Storage type    | AWS service |
+| ----------------------- | --------------- | ----------- |
+| Disk attached to EC2    | Block           | EBS         |
+| Photos, videos, backups | Object          | S3          |
+| Shared Linux folder     | File            | EFS         |
+| Long-term rare archive  | Archival object | S3 Glacier  |
+
+This table alone answers a surprising number of scenario questions.
+
+---
+
+# Section 1 — Amazon EBS
+
+# 6. What is Amazon EBS?
+
+**Amazon Elastic Block Store (EBS)** provides block-level storage volumes that can be attached to Amazon EC2 instances.
+
+The module says EBS volumes are:
+
+* block-level storage;
+* automatically replicated within their Availability Zone;
+* usable for EC2 boot volumes;
+* suitable for file systems;
+* suitable for database hosts;
+* suitable for enterprise applications. 
+
+Think:
+
+> **EBS = virtual hard disk for EC2.**
+
+---
+
+# 7. Good subjective answer — Amazon EBS
+
+> Amazon EBS provides persistent block-level storage volumes for Amazon EC2 instances. An EBS volume behaves similarly to a virtual hard disk and can be used for operating-system boot volumes, databases, file systems and enterprise applications. EBS volumes are replicated within their Availability Zone and can be backed up using snapshots.
+
+---
+
+# 8. EBS persists independently of EC2
+
+One very important property:
+
+> **An EBS volume persists independently from the EC2 instance.**
+
+The module states that EBS volumes persist independently and are billed based on the amount of storage provisioned. 
+
+So:
+
+```text
+EC2 instance stops
+↓
+EBS volume remains
+↓
+Instance starts again
+↓
+Data can still be there
+```
+
+This links back to Module 6:
+
+```text
+EBS → Persistent
+Instance Store → Ephemeral
+```
+
+---
+
+# 9. EBS is Availability-Zone based
+
+An EBS volume belongs to an Availability Zone.
+
+Think:
+
+```text
+Availability Zone A
+├── EC2 instance
+└── EBS volume
+```
+
+This is why EBS is different from services like S3, where data is redundantly stored across facilities in a Region.
+
+A common exam trap is assuming an EBS volume itself is a multi-AZ shared disk.
+
+It is not.
+
+---
+
+# 10. EBS volume types
+
+The module divides EBS into four main types:
+
+```text
+SSD
+├── General Purpose
+└── Provisioned IOPS
+
+HDD
+├── Throughput-Optimized
+└── Cold
+```
+
+
+
+For a subjective exam, choosing among these four is more important than memorising the old numeric limits shown in the 2022 slides.
+
+---
+
+# 11. General Purpose SSD
+
+The module describes **General Purpose SSD** as recommended for most workloads.
+
+Typical examples include:
+
+* system boot volumes;
+* virtual desktops;
+* low-latency interactive applications;
+* development;
+* testing. 
+
+Think:
+
+```text
+Ordinary workload
+→ General Purpose SSD
+```
+
+### Scenario
+
+> “A company needs a normal boot disk for a web server.”
+
+Answer:
+
+**General Purpose SSD**
+
+---
+
+# 12. Provisioned IOPS SSD
+
+Use **Provisioned IOPS SSD** when the workload requires high and consistent I/O performance.
+
+The module associates it with:
+
+* critical business applications;
+* sustained IOPS;
+* large database workloads. 
+
+Think:
+
+```text
+High-performance database
+→ Provisioned IOPS SSD
+```
+
+### Good answer
+
+> Provisioned IOPS SSD is intended for critical workloads that require consistently high input/output operations, such as large databases or business-critical applications. The required IOPS performance can be provisioned according to workload needs.
+
+---
+
+# 13. What is IOPS?
+
+**IOPS** means:
+
+> **Input/output operations per second.**
+
+It measures:
+
+```text
+How many storage operations
+can be completed each second?
+```
+
+Think of a database performing:
+
+```text
+Read customer
+Update balance
+Write order
+Read inventory
+Write transaction
+```
+
+Many small operations mean IOPS matters.
+
+---
+
+# 14. Throughput
+
+**Throughput** asks:
+
+> **How much data can move per second?**
+
+Imagine reading one enormous log file.
+
+```text
+500 GB log
+↓
+Sequentially stream data
+```
+
+The concern is less about thousands of tiny operations and more about how much data can pass through the storage.
+
+Memory:
+
+```text
+IOPS
+→ How many operations?
+
+Throughput
+→ How much data?
+```
+
+This distinction is highly useful for choosing EBS types.
+
+---
+
+# 15. Throughput-Optimized HDD
+
+The module associates **Throughput-Optimized HDD** with:
+
+* streaming workloads;
+* big data;
+* data warehouses;
+* log processing;
+* consistent high throughput at low cost.
+
+It cannot be used as a boot volume in the module. 
+
+Think:
+
+```text
+Large sequential data
+→ Throughput-Optimized HDD
+```
+
+### Scenario
+
+> “A company processes very large log files sequentially.”
+
+Answer:
+
+**Throughput-Optimized HDD**
+
+---
+
+# 16. Cold HDD
+
+**Cold HDD** is intended for large volumes of infrequently accessed data where low storage cost matters.
+
+The module also says it cannot be used as a boot volume. 
+
+Think:
+
+```text
+Rarely accessed
++
+Large HDD workload
++
+Lowest EBS storage cost important
+→ Cold HDD
+```
+
+Do not confuse this with Glacier.
+
+```text
+Cold HDD → Still an EBS disk
+Glacier  → Archive object storage
+```
+
+---
+
+# 17. EBS volume type decision table
+
+| Requirement                             | EBS type                 |
+| --------------------------------------- | ------------------------ |
+| Most workloads / boot volume            | General Purpose SSD      |
+| Critical high-IOPS database             | Provisioned IOPS SSD     |
+| Big data / logs / sequential throughput | Throughput-Optimized HDD |
+| Rarely accessed low-cost HDD data       | Cold HDD                 |
+
+Memory:
+
+```text
+Normal       → General Purpose
+Database     → Provisioned IOPS
+Big streams  → Throughput-Optimized
+Cold data    → Cold HDD
+```
+
+---
+
+# 18. EBS snapshots
+
+An **EBS snapshot** is a **point-in-time backup** of an EBS volume.
+
+The module says snapshots can be used to recreate a new volume later. 
+
+Think:
+
+```text
+EBS volume
+↓
+Snapshot
+↓
+Point-in-time backup
+↓
+Create new EBS volume later
+```
+
+### Analogy
+
+An EBS volume is the room.
+
+The snapshot is a photograph of the room.
+
+The photo tells you what the room looked like at that moment.
+
+It is not the room itself.
+
+---
+
+# 19. Snapshot vs volume
+
+This is a very common confusion:
+
+```text
+EBS volume
+→ Active storage used by EC2
+
+EBS snapshot
+→ Point-in-time backup
+```
+
+### Subjective answer
+
+> An EBS volume is active block storage that can be attached to an EC2 instance. An EBS snapshot is a point-in-time backup of that volume that can later be used to create a new EBS volume.
+
+---
+
+# 20. EBS encryption
+
+The module identifies encryption as an EBS feature and states that encrypted EBS volumes do not carry an additional encryption charge in the course material. 
+
+For subjective purposes:
+
+> Encryption protects data stored on the volume from unauthorised access when the proper key or permissions are not available.
+
+You do not need to overcomplicate this if the question is specifically from Module 7.
+
+---
+
+# 21. EBS elasticity
+
+EBS storage can be changed as requirements change.
+
+The module says EBS supports:
+
+```text
+Increase capacity
+Change to another volume type
+```
+
+
+
+Example:
+
+```text
+100 GB General Purpose SSD
+↓ workload changes
+Increase capacity
+or
+Change storage type
+```
+
+This is why the service includes the word **Elastic**.
+
+---
+
+# 22. EBS pricing
+
+The module explains that EBS charges can depend on:
+
+* provisioned storage;
+* provisioned IOPS for relevant volume types;
+* snapshots;
+* cross-Region outbound transfer. 
+
+The key exam principle:
+
+> EBS volume cost is based on **provisioned capacity**, not merely the amount of data you happened to write.
+
+Example:
+
+```text
+Provisioned:
+500 GB
+
+Used:
+100 GB
+```
+
+The provisioned amount still matters for billing.
+
+---
+
+# Section 2 — Amazon S3
+
+# 23. What is Amazon S3?
+
+**Amazon Simple Storage Service (S3)** is a fully managed **object-storage service**.
+
+The module states:
+
+* data is stored as objects in buckets;
+* storage is virtually unlimited;
+* an individual object is limited to 5 TB in the course material;
+* S3 is designed for **11 nines of durability**;
+* access can be controlled at bucket and object level. 
+
+Think:
+
+> **S3 = enormous cloud warehouse for objects.**
+
+---
+
+# 24. Bucket vs object
+
+An **S3 bucket** is the container.
+
+An **object** is the actual stored item.
+
+```text
+my-company-bucket
+├── photo.jpg
+├── report.pdf
+├── video.mp4
+└── backup.zip
+```
+
+So:
+
+```text
+Bucket
+→ Container
+
+Object
+→ Stored file/data + metadata + key
+```
+
+---
+
+# 25. Good subjective answer — Amazon S3
+
+> Amazon S3 is a fully managed object-storage service that stores data as objects inside buckets. It provides virtually unlimited storage and is designed for very high durability. S3 is suitable for use cases such as backups, application assets, static website content, media files, software distribution and big-data staging.
+
+The module lists these common S3 scenarios directly. 
+
+---
+
+# 26. S3 durability
+
+The module says S3 is designed for:
+
+```text
+99.999999999% durability
+```
+
+or:
+
+> **11 nines of durability.**
+
+
+
+Do not confuse:
+
+```text
+Durability
+→ Will the data survive?
+
+Availability
+→ Can I access it right now?
+```
+
+These are related but different ideas.
+
+---
+
+# 27. S3 data redundancy
+
+The module's page 26 diagram shows S3 data being redundantly stored across facilities within the selected Region. 
+
+Conceptually:
+
+```text
+S3 object
+↓
+Facility 1
+Facility 2
+Facility 3
+within Region
+```
+
+So S3 is different from an EBS volume that belongs to one Availability Zone.
+
+---
+
+# 28. Common S3 use cases
+
+The module gives examples including:
+
+* application assets;
+* static web hosting;
+* backup and disaster recovery;
+* big-data staging;
+* media hosting;
+* software delivery. 
+
+Scenario:
+
+> “A website needs somewhere to store millions of customer photos and videos.”
+
+Think:
+
+**S3**
+
+---
+
+# 29. Why S3 is not EBS
+
+Suppose a database constantly modifies small portions of a large database file.
+
+That behaves like a disk workload.
+
+Use:
+
+> **EBS**
+
+Suppose a customer uploads:
+
+```text
+holiday.jpg
+```
+
+and you want to store and retrieve that complete object.
+
+Use:
+
+> **S3**
+
+Memory:
+
+```text
+Frequently modify parts of a disk
+→ EBS
+
+Store/retrieve complete objects
+→ S3
+```
+
+---
+
+# 30. S3 storage classes
+
+The module lists six storage classes:
+
+1. S3 Standard
+2. S3 Intelligent-Tiering
+3. S3 Standard-Infrequent Access
+4. S3 One Zone-Infrequent Access
+5. S3 Glacier
+6. S3 Glacier Deep Archive 
+
+The entire purpose of these classes is to match **cost with access pattern**.
+
+---
+
+# 31. S3 Standard
+
+Use **S3 Standard** for frequently accessed data.
+
+Think:
+
+```text
+Website images
+Active application files
+Frequently downloaded content
+```
+
+Scenario:
+
+> “Users access these objects every day.”
+
+Answer:
+
+**S3 Standard**
+
+---
+
+# 32. S3 Intelligent-Tiering
+
+Use **S3 Intelligent-Tiering** when the access pattern is uncertain or changes over time.
+
+Example:
+
+```text
+Month 1 → Frequently accessed
+Month 4 → Rarely accessed
+Month 8 → Frequently accessed again
+```
+
+Think:
+
+> “We genuinely don't know whether this data will be hot or cold.”
+
+→ **Intelligent-Tiering**
+
+---
+
+# 33. S3 Standard-IA
+
+**IA** means **Infrequent Access**.
+
+Use S3 Standard-IA when:
+
+* data is accessed rarely;
+* but when it is needed, it still needs rapid access.
+
+Think:
+
+```text
+Rarely accessed
++
+Fast retrieval still needed
+→ Standard-IA
+```
+
+Typical example:
+
+> Backup files that are normally untouched but must be restored rapidly if something goes wrong.
+
+---
+
+# 34. Standard-IA is NOT Glacier
+
+This is a very important exam distinction.
+
+```text
+S3 Standard-IA
+→ Infrequent access
+→ Rapid retrieval
+
+S3 Glacier
+→ Archive
+→ Retrieval may take minutes or hours
+```
+
+“Infrequent access” does **not automatically mean Glacier**.
+
+Always ask:
+
+> **How quickly must the data be retrieved?**
+
+---
+
+# 35. S3 One Zone-IA
+
+S3 One Zone-IA is for infrequently accessed data where:
+
+* lower cost matters;
+* one Availability Zone is acceptable;
+* the data can be recreated.
+
+Think:
+
+```text
+Secondary/recreatable copy
++
+Rarely accessed
++
+One AZ acceptable
+→ One Zone-IA
+```
+
+Do not use this reasoning for the only existing copy of irreplaceable data.
+
+---
+
+# 36. S3 Glacier and Deep Archive
+
+The module lists both as archival classes.
+
+Think:
+
+```text
+Archive
+→ Glacier
+
+Very deep / very long-term archive
+→ Glacier Deep Archive
+```
+
+The general trade-off is:
+
+```text
+Less frequent access
+↓
+Lower storage cost
+↓
+Slower / more expensive retrieval
+```
+
+---
+
+# 37. S3 storage-class scenario table
+
+| Requirement                          | Storage class           |
+| ------------------------------------ | ----------------------- |
+| Frequently accessed                  | S3 Standard             |
+| Access pattern unpredictable         | S3 Intelligent-Tiering  |
+| Rarely accessed but rapid retrieval  | S3 Standard-IA          |
+| Rare, recreatable, one AZ acceptable | S3 One Zone-IA          |
+| Long-term archive                    | S3 Glacier              |
+| Deep long-term archive               | S3 Glacier Deep Archive |
+
+This is worth memorising.
+
+---
+
+# 38. S3 pricing factors
+
+The module identifies four main cost factors:
+
+```text
+1. Storage class
+2. Amount of storage
+3. Requests
+4. Data transfer
+```
+
+
+
+This is important because:
+
+> **S3 pricing is not only “how many GB are stored.”**
+
+---
+
+# 39. S3 request pricing
+
+The module states that request types can affect cost, including:
+
+```text
+PUT
+COPY
+POST
+LIST
+GET
+```
+
+
+
+So even a bucket storing a modest amount of data could still generate cost from millions of requests.
+
+---
+
+# 40. S3 data transfer
+
+According to the module:
+
+```text
+Transfer IN to S3
+→ Free
+
+Transfer OUT of the S3 Region
+→ Can incur charges
+```
+
+The module also states there is no transfer charge in its examples for S3 to CloudFront or EC2 in the same Region. 
+
+For the exam, use the wording taught by this course.
+
+---
+
+# Section 3 — Amazon EFS
+
+# 41. What is Amazon EFS?
+
+**Amazon Elastic File System (EFS)** provides shared file storage over a network.
+
+The module states that EFS:
+
+* provides file storage in AWS;
+* supports shared storage;
 * supports NFS 4.0 and 4.1;
 * works with Linux-based EC2 AMIs;
-* grows and shrinks automatically;
-* uses mount targets in VPC subnets;
-* normally has one mount target per Availability Zone.
+* can scale to petabyte size;
+* has elastic capacity;
+* is useful for web serving, content management, media processing, analytics and home directories. 
 
-## Glacier retrieval choices
+Think:
+
+> **EFS = shared network folder for Linux EC2 instances.**
+
+---
+
+# 42. The easiest EFS example
+
+Suppose three EC2 servers need the exact same files.
+
+```text
+EC2 A ─┐
+EC2 B ─┼── EFS
+EC2 C ─┘
+```
+
+All of them can access the same shared file system.
+
+This is the core reason EFS exists.
+
+---
+
+# 43. Why separate EBS volumes do not solve the same problem
+
+Suppose:
+
+```text
+EC2 A → EBS A
+EC2 B → EBS B
+EC2 C → EBS C
+```
+
+You now have three separate disks.
+
+They are not automatically one shared folder.
+
+If the question says:
+
+> “All instances need the same shared files.”
+
+Think:
+
+**EFS**, not “give everybody their own EBS volume and hope the files achieve telepathy.”
+
+---
+
+# 44. What is NFS?
+
+EFS supports **Network File System (NFS) 4.0 and 4.1** according to the module. 
+
+NFS allows a remote file system to appear like a normal mounted directory.
+
+Example:
+
+```text
+Amazon EFS
+↓ NFS
+/mnt/shared
+```
+
+Applications can then work with normal files and folders.
+
+---
+
+# 45. EFS mount targets
+
+The module's EFS architecture shows **mount targets** inside VPC subnets.
+
+A mount target is:
+
+> A network access point that EC2 instances use to reach the EFS file system.
+
+
+
+Important:
+
+```text
+EFS file system
+→ The actual shared files
+
+Mount target
+→ Network entrance to those files
+```
+
+A mount target is **not a second EFS file system**.
+
+---
+
+# 46. EFS and Availability Zones
+
+The module states:
+
+* mount targets are created in VPC subnets;
+* normally one is created per Availability Zone;
+* they must be in the same VPC. 
+
+Conceptually:
+
+```text
+AZ A → Mount target ┐
+AZ B → Mount target ├── One EFS file system
+AZ C → Mount target ┘
+```
+
+This allows EC2 instances in multiple AZs to access the same EFS file system.
+
+---
+
+# 47. EFS automatically scales
+
+EFS capacity grows and shrinks as files are added or removed.
+
+The module says:
+
+```text
+Add files
+→ Storage grows
+
+Remove files
+→ Storage shrinks
+
+Pay for what you use
+```
+
+
+
+This is a major difference from EBS, where you provision a volume size.
+
+---
+
+# 48. Good subjective answer — Amazon EFS
+
+> Amazon EFS is a fully managed shared file-storage service. It allows multiple Linux-based EC2 instances to access the same files through the NFS protocol. EFS uses mount targets in VPC subnets to provide network access to the file system and automatically scales its storage capacity as files are added or removed. It is suitable for workloads such as web serving, content management, media processing, analytics and shared home directories.
+
+---
+
+# 49. EFS vs EBS
+
+| EBS                  | EFS                                      |
+| -------------------- | ---------------------------------------- |
+| Block storage        | File storage                             |
+| Behaves like disk    | Behaves like shared folder               |
+| EC2 storage volume   | Shared across multiple EC2 instances     |
+| Capacity provisioned | Capacity scales automatically            |
+| AZ-based volume      | Network file system across mount targets |
+
+Memory:
+
+```text
+Need a disk
+→ EBS
+
+Need a shared folder
+→ EFS
+```
+
+---
+
+# 50. EFS vs S3
+
+| EFS                         | S3                              |
+| --------------------------- | ------------------------------- |
+| File system                 | Object storage                  |
+| Files/folders               | Buckets/objects                 |
+| Mounted through NFS         | Accessed as objects             |
+| Shared Linux workloads      | Massive scalable object storage |
+| Traditional file operations | Object operations/API access    |
+
+Scenario:
+
+> “Application expects `/shared/uploads/photo.jpg` to exist as a mounted file.”
+
+Think:
+
+**EFS**
+
+Scenario:
+
+> “Application stores millions of uploaded images as objects.”
+
+Think:
+
+**S3**
+
+---
+
+# Section 4 — Amazon S3 Glacier
+
+# 51. What is Amazon S3 Glacier?
+
+The module describes S3 Glacier as a storage service designed for:
+
+* security;
+* durability;
+* extremely low cost;
+* low-cost data archiving;
+* long-term backup. 
+
+Think:
+
+> **Glacier = archive warehouse.**
+
+You put data there because you want to keep it, not because you expect to read it every five minutes.
+
+---
+
+# 52. Typical Glacier scenarios
+
+Think:
+
+```text
+Legal records
+Historical backups
+Old media
+Compliance data
+Long-term records
+```
+
+The strongest keyword is:
+
+> **Archive**
+
+If the question says:
+
+> “Stored for ten years and almost never accessed.”
+
+Glacier should immediately come to mind.
+
+---
+
+# 53. Glacier durability and security
+
+The module states Glacier is designed for **11 nines durability** and supports encryption in transit and at rest. It also introduces **Vault Lock** for enforcing compliance policies. 
+
+For a subjective answer:
+
+> Glacier combines low-cost archival storage with durability and security controls for long-term data retention.
+
+---
+
+# 54. Glacier retrieval options
+
+The 2022 module gives three retrieval choices:
 
 | Retrieval option | Time stated in module |
 | ---------------- | --------------------: |
-| Expedited        |           1–5 minutes |
-| Standard         |             3–5 hours |
-| Bulk             |            5–12 hours |
+| **Expedited**    |           1–5 minutes |
+| **Standard**     |             3–5 hours |
+| **Bulk**         |            5–12 hours |
 
-Faster retrieval generally costs more. AWS may provide cheap storage, but it has not made urgency free. 
 
----
-
-# 2. Module 7 Mock Test
-
-**Questions:** 65
-**Suggested time:** 70 minutes
-**Instructions:** Choose one answer unless the question says **Select TWO**.
-
----
-
-## Storage fundamentals
-
-### 1. An application frequently modifies small portions of a large database file. Which storage type is the BEST fit?
-
-A. Object storage
-B. Block storage
-C. Archival storage
-D. Content-delivery storage
-
----
-
-### 2. Which storage type organises data as complete units containing data, metadata and a unique key?
-
-A. Block storage
-B. File storage
-C. Object storage
-D. Instance memory
-
----
-
-### 3. Which storage type provides familiar directories and file names that applications can mount over a network?
-
-A. File storage
-B. Object storage
-C. Block storage only
-D. Archival storage
-
----
-
-### 4. A company needs a persistent boot disk for an EC2 instance. Which service should it use?
-
-A. Amazon S3
-B. Amazon EBS
-C. Amazon EFS
-D. Amazon S3 Glacier
-
----
-
-### 5. Several Linux EC2 instances must access the same directory and files simultaneously. Which service should be used?
-
-A. Separate EBS boot volumes
-B. Amazon S3 Glacier
-C. Amazon EFS
-D. EC2 Instance Store
-
----
-
-### 6. A company must retain regulatory files for ten years and expects almost no retrieval. Which service is the BEST fit?
-
-A. Amazon EBS
-B. Amazon EFS
-C. Amazon S3 Glacier
-D. EC2 Instance Store
-
----
-
-## Amazon EBS
-
-### 7. What type of storage does Amazon EBS provide?
-
-A. Object storage
-B. Block storage
-C. Shared NFS storage
-D. DNS storage
-
----
-
-### 8. Which resource commonly uses an EBS volume?
-
-A. Amazon EC2 instance
-B. CloudFront edge location
-C. Route 53 hosted zone
-D. IAM group
-
----
-
-### 9. How does AWS protect an EBS volume against individual component failure?
-
-A. It automatically stores the volume in every AWS Region
-B. It replicates the volume within its Availability Zone
-C. It copies the volume to every EC2 instance
-D. It converts the volume to an S3 bucket
-
----
-
-### 10. What happens to EBS data when an attached EC2 instance is stopped?
-
-A. The data is always deleted
-B. The data persists independently of the instance
-C. The volume becomes an S3 object
-D. The data is moved automatically to Glacier
-
----
-
-### 11. An EBS volume is created in Availability Zone A. To which EC2 instance can it normally be directly attached?
-
-A. An instance in any Region
-B. An instance in Availability Zone A
-C. An instance at any edge location
-D. Only an instance in Availability Zone B
-
----
-
-### 12. A company wants to recreate an EBS volume in another Availability Zone. Which process should it use?
-
-A. Create a snapshot and create a new volume from it
-B. Attach the volume directly across Availability Zones
-C. Convert the volume to an IAM role
-D. Move the entire Availability Zone
-
----
-
-### 13. What is an EBS snapshot?
-
-A. A continuously running EC2 instance
-B. A point-in-time backup of an EBS volume
-C. A shared file system
-D. A route-table entry
-
----
-
-### 14. How can a company use an EBS snapshot?
-
-A. Attach the snapshot directly as a network interface
-B. Create a new EBS volume from the snapshot
-C. Use it as an IAM policy
-D. Use it as a CloudFront origin without restoration
-
----
-
-### 15. Which EBS feature enables a company to increase capacity or change the volume type?
-
-A. Elasticity
-B. DNS routing
-C. Object versioning
-D. VPC peering
-
----
-
-### 16. Which EBS volume type is recommended for most ordinary workloads?
-
-A. Cold HDD
-B. General Purpose SSD
-C. Throughput-Optimised HDD
-D. Provisioned IOPS SSD exclusively
-
----
-
-### 17. A critical production database requires sustained high numbers of input/output operations. Which EBS type is the BEST fit?
-
-A. Cold HDD
-B. Throughput-Optimised HDD
-C. Provisioned IOPS SSD
-D. S3 Standard-IA
-
----
-
-### 18. A big-data application reads large log files sequentially and requires consistent throughput at low cost. Which volume type should it use?
-
-A. General Purpose SSD
-B. Provisioned IOPS SSD
-C. Throughput-Optimised HDD
-D. Cold HDD only
-
----
-
-### 19. A company stores a large volume of infrequently accessed data and prioritises the lowest EBS storage cost. Which type should it use?
-
-A. Provisioned IOPS SSD
-B. General Purpose SSD
-C. Cold HDD
-D. S3 Standard
-
----
-
-### 20. Which EBS volume types cannot be used as boot volumes according to the module? **Select TWO.**
-
-A. General Purpose SSD
-B. Provisioned IOPS SSD
-C. Throughput-Optimised HDD
-D. Cold HDD
-E. All SSD volumes
-
----
-
-### 21. Which metric measures the number of storage operations completed each second?
-
-A. Throughput
-B. IOPS
-C. Latency zone
-D. Durability
-
----
-
-### 22. Which metric measures the quantity of data transferred during a period?
-
-A. Throughput
-B. IOPS
-C. Availability
-D. Object count
-
----
-
-### 23. Which workload is more dependent on high IOPS than sequential throughput?
-
-A. A transactional database performing many small reads and writes
-B. Reading one large archive file sequentially
-C. Transferring a long video stream
-D. Processing one large log file from beginning to end
-
----
-
-### 24. How are EBS volumes generally charged according to the module?
-
-A. Only for data that applications read
-B. According to provisioned capacity
-C. According to the number of IAM users
-D. Only when the attached EC2 instance is running
-
----
-
-### 25. A company provisions a 500-GB EBS volume but stores only 100 GB. Which capacity is generally relevant for volume charges?
-
-A. 100 GB only
-B. 500 GB provisioned
-C. No storage charges apply
-D. The EC2 instance’s memory size
-
----
-
-### 26. Which EBS items can create additional charges? **Select TWO.**
-
-A. Stored EBS snapshots
-B. Provisioned IOPS
-C. IAM group membership
-D. Security-group rules
-E. EC2 tags
-
----
-
-### 27. Which statement about EBS data transfer is correct according to the module?
-
-A. Inbound transfer is charged at the highest rate
-B. Inbound transfer is free, while outbound cross-Region transfer can incur charges
-C. All data transfer is always free
-D. Cross-Region transfer is impossible
-
----
-
-### 28. Which statement about EBS encryption is correct according to the module?
-
-A. Encryption is unavailable for EBS volumes
-B. Encryption is supported without an additional encryption charge
-C. Encryption requires converting EBS to EFS
-D. Encryption works only on HDD volumes
-
----
-
-## Amazon S3
-
-### 29. What type of storage does Amazon S3 provide?
-
-A. Block storage
-B. Object storage
-C. RAM storage
-D. NFS file storage
-
----
-
-### 30. How does Amazon S3 organise stored data?
-
-A. Objects are stored inside buckets
-B. Blocks are attached to IAM users
-C. Files are stored only in mounted Linux directories
-D. Volumes are attached to Availability Zones
-
----
-
-### 31. What identifies an object within an S3 bucket?
-
-A. An object key
-B. An EC2 key pair
-C. A security-group ID
-D. A route-table target
-
----
-
-### 32. What is the maximum size of one S3 object stated in the module?
-
-A. 5 GB
-B. 500 GB
-C. 5 TB
-D. Unlimited
-
----
-
-### 33. Which statement BEST describes S3 storage capacity?
-
-A. Each bucket must have a fixed capacity selected in advance
-B. S3 can store a virtually unlimited number of objects
-C. S3 is limited to one object per Availability Zone
-D. S3 capacity equals the attached EC2 instance’s disk size
-
----
-
-### 34. Amazon S3 is designed for how many nines of object durability?
-
-A. Two nines
-B. Four nines
-C. Nine nines
-D. Eleven nines
-
----
-
-### 35. What does durability describe?
-
-A. How quickly an object can be downloaded
-B. The likelihood that stored data will not be lost
-C. How many requests an IAM user can send
-D. The number of hours a bucket remains public
-
----
-
-### 36. Which statement correctly distinguishes durability from availability?
-
-A. Durability concerns data survival; availability concerns whether data can currently be accessed
-B. Durability concerns speed; availability concerns cost
-C. They are identical terms
-D. Availability concerns encryption only
-
----
-
-### 37. Where is S3 data redundantly stored in the module’s architecture?
-
-A. In several facilities within the selected Region
-B. On only one EC2 instance
-C. At every CloudFront edge location automatically
-D. In every AWS Region automatically
-
----
-
-### 38. When creating an S3 bucket, what location choice does the customer make?
-
-A. An AWS Region
-B. A physical server rack
-C. A specific CloudFront edge server
-D. An IAM group
-
----
-
-### 39. Which statement about S3 access is correct?
-
-A. Objects can be accessed only from the EC2 console
-B. S3 objects can be accessed through URLs, APIs, the CLI and SDKs
-C. An object must be mounted through NFS
-D. S3 requires a Dedicated Host
-
----
-
-### 40. Which workload is the BEST fit for Amazon S3?
-
-A. A database boot disk requiring block-level updates
-B. Millions of uploaded photos and videos
-C. A mounted shared Linux home directory
-D. Temporary processor cache
-
----
-
-### 41. Which storage class is intended for frequently accessed objects?
-
-A. S3 Standard
-B. S3 Glacier Deep Archive
-C. S3 One Zone-IA
-D. S3 Glacier only
-
----
-
-### 42. A company cannot predict whether its objects will be accessed frequently or rarely. Which storage class is the BEST fit?
-
-A. S3 Intelligent-Tiering
-B. S3 One Zone-IA
-C. S3 Glacier Deep Archive
-D. Amazon EBS Cold HDD
-
----
-
-### 43. A company accesses backup objects rarely but requires rapid retrieval when needed. Which storage class should it use?
-
-A. S3 Standard-IA
-B. S3 Glacier Bulk
-C. EBS Provisioned IOPS
-D. EC2 Instance Store
-
----
-
-### 44. A company stores an infrequently accessed secondary copy that can be recreated. It wants a lower cost and accepts storage in one Availability Zone. Which class should it use?
-
-A. S3 Standard
-B. S3 One Zone-IA
-C. S3 Intelligent-Tiering
-D. EFS
-
----
-
-### 45. Which S3 classes are intended primarily for archival data? **Select TWO.**
-
-A. S3 Standard
-B. S3 Standard-IA
-C. S3 Glacier
-D. S3 Glacier Deep Archive
-E. S3 Intelligent-Tiering
-
----
-
-### 46. Which factors affect S3 cost? **Select TWO.**
-
-A. Storage class
-B. Number and type of requests
-C. Number of IAM groups
-D. Number of VPC route tables
-E. EC2 key-pair type
-
----
-
-### 47. Which operations can contribute to S3 request charges? **Select TWO.**
-
-A. GET
-B. PUT
-C. Creating an IAM group
-D. Starting an EC2 instance
-E. Editing a security group
-
----
-
-### 48. Which statement about transfer into Amazon S3 is correct according to the module?
-
-A. Data transfer into S3 is free
-B. Data transfer into S3 is charged twice
-C. S3 cannot accept data from another Region
-D. Transfer into S3 requires Glacier retrieval
-
----
-
-### 49. Which transfer can incur S3 data-transfer charges?
-
-A. Transfer out of the S3 Region
-B. Transfer into S3
-C. Transfer from S3 to EC2 in the same Region according to the module
-D. Transfer from S3 to CloudFront according to the module
-
----
-
-### 50. A company stores only 20 GB in S3 but performs millions of GET and PUT operations. Which statement is correct?
-
-A. Only storage volume affects the bill
-B. Request volume can also affect the bill
-C. Requests are always free
-D. The company must use EBS instead
-
----
-
-## Amazon EFS
-
-### 51. What type of storage does Amazon EFS provide?
-
-A. Shared network file storage
-B. Object storage
-C. Archival object storage
-D. EC2 instance memory
-
----
-
-### 52. Which protocol does EFS support according to the module?
-
-A. DNS
-B. NFS 4.0 and 4.1
-C. SMTP
-D. BGP only
-
----
-
-### 53. Which operating systems are primarily compatible with EFS in the module?
-
-A. Linux-based EC2 AMIs
-B. Only mobile operating systems
-C. Only mainframe operating systems
-D. No EC2 operating systems
-
----
-
-### 54. A web application runs on several Linux EC2 instances. Every instance must read and write the same uploaded files. Which service is the BEST fit?
-
-A. An independent EBS volume for every instance
-B. Amazon EFS
-C. Amazon S3 Glacier
-D. EC2 Instance Store
-
----
-
-### 55. What is an EFS mount target?
-
-A. A network access point for the EFS file system in a subnet
-B. A separate copy of the entire file system
-C. An S3 lifecycle policy
-D. An EC2 pricing model
-
----
-
-### 56. Where is an EFS mount target created?
-
-A. In a VPC subnet
-B. At an edge location
-C. Inside an IAM group
-D. In an S3 bucket
-
----
-
-### 57. Which statements about EFS mount targets are correct? **Select TWO.**
-
-A. They must be in the same VPC as the file system’s clients
-B. One is normally created per Availability Zone
-C. Every mount target creates an independent file system
-D. They can exist only outside a VPC
-E. They replace EC2 network interfaces
-
----
-
-### 58. Which control can be associated with an EFS mount target to regulate network access?
-
-A. Security group
-B. S3 object key
-C. IAM password policy only
-D. CloudFront cache behaviour
-
----
-
-### 59. How does EFS handle storage capacity?
-
-A. Capacity must be permanently provisioned in advance
-B. It grows and shrinks as files are added and removed
-C. Capacity is fixed to the EC2 instance’s memory
-D. It stores only one file per mount target
-
----
-
-### 60. Which are suitable EFS use cases? **Select TWO.**
-
-A. Shared Linux home directories
-B. Media-processing workflows
-C. Long-term records that are never retrieved
-D. EC2 boot volumes
-E. Route 53 DNS records
-
----
-
-## Amazon S3 Glacier and service selection
-
-### 61. What is the primary purpose of Amazon S3 Glacier?
-
-A. Frequently updated database blocks
-B. Low-cost long-term data archiving
-C. Shared Linux file storage
-D. EC2 boot volumes
-
----
-
-### 62. Which Glacier feature can enforce a compliance policy on archived data?
-
-A. Vault Lock
-B. Elastic IP
-C. Auto Scaling
-D. Route 53 health check
-
----
-
-### 63. A company needs an archived file within approximately 1–5 minutes. Which Glacier retrieval option should it choose?
-
-A. Bulk
-B. Standard
-C. Expedited
-D. One Zone-IA
-
----
-
-### 64. A company can wait approximately 3–5 hours for archived data. Which retrieval option should it use?
-
-A. Expedited
-B. Standard
-C. Bulk
-D. Intelligent-Tiering
-
----
-
-### 65. A company needs to retrieve a large archive at the lowest retrieval cost and can wait approximately 5–12 hours. Which option should it choose?
-
-A. Expedited
-B. Standard
-C. Bulk
-D. General Purpose SSD
-
----
-
-# Stop before checking the answers
-
-<details>
-<summary><strong>Open answer key and explanations</strong></summary>
-
-## Questions 1–6: Storage fundamentals
-
-|  Q | Answer | Explanation                                                                        |
-| -: | :----: | ---------------------------------------------------------------------------------- |
-|  1 |  **B** | Block storage can modify the affected block instead of replacing the whole object. |
-|  2 |  **C** | Object storage treats data as complete objects with keys and metadata.             |
-|  3 |  **A** | File storage provides files and directory structures over a file-system protocol.  |
-|  4 |  **B** | EBS provides persistent block storage for EC2 boot volumes.                        |
-|  5 |  **C** | EFS provides shared file storage for multiple Linux EC2 instances.                 |
-|  6 |  **C** | Glacier is designed for low-cost, long-term archiving.                             |
-
----
-
-## Questions 7–28: Amazon EBS
-
-|  Q |  Answer  | Explanation                                                                          |
-| -: | :------: | ------------------------------------------------------------------------------------ |
-|  7 |   **B**  | EBS is block-level storage.                                                          |
-|  8 |   **A**  | EBS volumes are normally attached to EC2 instances.                                  |
-|  9 |   **B**  | EBS volumes are replicated inside their Availability Zone.                           |
-| 10 |   **B**  | EBS persists independently from the instance.                                        |
-| 11 |   **B**  | The volume and EC2 instance must normally be in the same AZ.                         |
-| 12 |   **A**  | A snapshot can be used to create a new volume in another AZ.                         |
-| 13 |   **B**  | A snapshot is a point-in-time backup.                                                |
-| 14 |   **B**  | Snapshots are used to create restored EBS volumes.                                   |
-| 15 |   **A**  | EBS elasticity supports increasing capacity and changing types.                      |
-| 16 |   **B**  | General Purpose SSD is recommended for most workloads.                               |
-| 17 |   **C**  | Provisioned IOPS SSD is intended for sustained high-performance workloads.           |
-| 18 |   **C**  | Throughput-Optimised HDD suits large sequential workloads such as logs and big data. |
-| 19 |   **C**  | Cold HDD prioritises low cost for infrequently accessed EBS data.                    |
-| 20 | **C, D** | The module states that the HDD types cannot be boot volumes.                         |
-| 21 |   **B**  | IOPS counts storage operations per second.                                           |
-| 22 |   **A**  | Throughput measures data transferred over time.                                      |
-| 23 |   **A**  | Transactional databases often perform many small independent operations.             |
-| 24 |   **B**  | EBS volume charges are generally based on provisioned capacity.                      |
-| 25 |   **B**  | Provisioning 500 GB generally means paying for 500 GB.                               |
-| 26 | **A, B** | Snapshots and provisioned IOPS can add costs.                                        |
-| 27 |   **B**  | Inbound transfer is free; outbound cross-Region transfer can be charged.             |
-| 28 |   **B**  | The module states that encrypted EBS volumes do not add an encryption fee.           |
-
-Amazon EBS provides AZ-based block storage, snapshots, encryption and adjustable capacity.
-
----
-
-## Questions 29–50: Amazon S3
-
-|  Q |  Answer  | Explanation                                                          |
-| -: | :------: | -------------------------------------------------------------------- |
-| 29 |   **B**  | S3 is object storage.                                                |
-| 30 |   **A**  | S3 stores objects in buckets.                                        |
-| 31 |   **A**  | The object key identifies the object in the bucket.                  |
-| 32 |   **C**  | The module states a maximum of 5 TB per S3 object.                   |
-| 33 |   **B**  | S3 supports a virtually unlimited number of objects.                 |
-| 34 |   **D**  | S3 is designed for eleven nines of durability.                       |
-| 35 |   **B**  | Durability concerns protection from data loss.                       |
-| 36 |   **A**  | Availability concerns current access; durability concerns survival.  |
-| 37 |   **A**  | S3 redundantly stores data within the selected Region.               |
-| 38 |   **A**  | Customers select the bucket’s AWS Region.                            |
-| 39 |   **B**  | S3 can be used through URLs, APIs, the CLI and SDKs.                 |
-| 40 |   **B**  | Photos and videos are a typical object-storage workload.             |
-| 41 |   **A**  | S3 Standard is intended for frequent access.                         |
-| 42 |   **A**  | Intelligent-Tiering suits unknown or changing access patterns.       |
-| 43 |   **A**  | Standard-IA provides lower-cost storage with rapid retrieval.        |
-| 44 |   **B**  | One Zone-IA is suitable for recreatable, infrequently accessed data. |
-| 45 | **C, D** | Glacier and Glacier Deep Archive are archival classes.               |
-| 46 | **A, B** | Storage class and request activity affect S3 cost.                   |
-| 47 | **A, B** | GET and PUT are among the billable request types.                    |
-| 48 |   **A**  | The module states that data transfer into S3 is free.                |
-| 49 |   **A**  | Transfer out of the S3 Region can incur charges.                     |
-| 50 |   **B**  | S3 pricing includes requests, not merely stored gigabytes.           |
-
-The module describes S3 as fully managed object storage with virtually unlimited object capacity, regional redundancy, several storage classes and pricing based on storage, requests and transfer.
-
----
-
-## Questions 51–60: Amazon EFS
-
-|  Q |  Answer  | Explanation                                                            |
-| -: | :------: | ---------------------------------------------------------------------- |
-| 51 |   **A**  | EFS is shared network file storage.                                    |
-| 52 |   **B**  | The module lists NFS versions 4.0 and 4.1.                             |
-| 53 |   **A**  | EFS is compatible with Linux-based EC2 AMIs.                           |
-| 54 |   **B**  | EFS allows multiple instances to mount the same shared files.          |
-| 55 |   **A**  | A mount target provides network access to the EFS file system.         |
-| 56 |   **A**  | Mount targets are created in VPC subnets.                              |
-| 57 | **A, B** | Mount targets must be in the same VPC and are normally created per AZ. |
-| 58 |   **A**  | Security groups regulate mount-target network access.                  |
-| 59 |   **B**  | EFS automatically expands and contracts with stored files.             |
-| 60 | **A, B** | Shared directories and media processing are common EFS workloads.      |
-
----
-
-## Questions 61–65: Amazon S3 Glacier
-
-|  Q | Answer | Explanation                                                                           |
-| -: | :----: | ------------------------------------------------------------------------------------- |
-| 61 |  **B** | Glacier is low-cost archival storage.                                                 |
-| 62 |  **A** | Vault Lock enforces archive compliance policies.                                      |
-| 63 |  **C** | Expedited retrieval is listed as approximately 1–5 minutes.                           |
-| 64 |  **B** | Standard retrieval is listed as approximately 3–5 hours.                              |
-| 65 |  **C** | Bulk retrieval takes approximately 5–12 hours and suits large, non-urgent retrievals. |
-
-</details>
-
----
-
-# 3. Score interpretation
-
-|        Score | Readiness                                                           |
-| -----------: | ------------------------------------------------------------------- |
-|    **59–65** | Strongly prepared                                                   |
-|    **51–58** | Nearly ready; revise isolated weaknesses                            |
-|    **41–50** | Core understanding exists, but similar storage choices remain mixed |
-| **Below 41** | Review storage types, S3 classes and EBS volume selection           |
 
-For multiple-response questions, count the answer as correct only when every required choice is selected and no incorrect choice is included. AWS does not award half a mark because one of the two selected services was emotionally appropriate.
+For an exam based on these slides, use these module values.
 
 ---
 
-# 4. The most dangerous exam confusions
+# 55. Glacier retrieval logic
 
-## EBS versus S3
+Think:
 
 ```text
-EBS → Block storage attached to EC2
-S3  → Objects stored in buckets
+Urgent archive retrieval
+→ Expedited
+
+Normal retrieval
+→ Standard
+
+Large, non-urgent retrieval
+→ Bulk
 ```
 
-Use EBS for operating systems and databases. Use S3 for complete objects such as images, backups and videos.
+General trade-off:
+
+```text
+Faster retrieval
+→ More expensive
+
+Slower retrieval
+→ Lower cost
+```
 
 ---
 
-## EBS versus EFS
+# 56. S3 vs Glacier
+
+The module compares S3 and S3 Glacier directly:
 
 ```text
-EBS → Disk for an EC2 workload
-EFS → Shared file system for multiple EC2 instances
+S3
+→ Millisecond-scale active object access
+→ Higher storage cost
+
+Glacier
+→ Minutes/hours archive retrieval
+→ Lower storage cost
 ```
 
-Creating three independent EBS volumes does not create shared storage. It creates three independent disks, which is impressively unhelpful when every server needs the same file.
+
+
+The key distinction is:
+
+```text
+S3
+→ Active objects
+
+Glacier
+→ Archive
+```
 
 ---
 
-## S3 Standard-IA versus Glacier
+# 57. Lifecycle policies
+
+The module explains that S3 content can automatically be moved into Glacier using lifecycle archiving.
+
+Example shown:
 
 ```text
-Standard-IA → Rare access, rapid retrieval
-Glacier     → Archive, slower retrieval
+S3 object
+↓ after 30 days
+Glacier archive
+↓ after 5 years
+Delete
 ```
 
-“Infrequently accessed” does not automatically mean Glacier. Retrieval-time requirements matter.
+
+
+This is extremely useful for cost optimisation.
 
 ---
 
-## General Purpose SSD versus Provisioned IOPS
+# 58. Why lifecycle rules matter
+
+Suppose CCTV footage is heavily accessed only for 30 days.
+
+Keeping seven years of footage in expensive frequently accessed storage is wasteful.
+
+A lifecycle design might be:
 
 ```text
-General Purpose → Most workloads
-Provisioned IOPS → Sustained high-performance databases
+Recent data
+→ S3 Standard
+
+Older data
+→ Lower-cost storage
+
+Archive
+→ Glacier
+
+Retention ends
+→ Delete
 ```
 
-Do not select Provisioned IOPS merely because “provisioned” sounds responsible and expensive.
+### Good answer
+
+> S3 lifecycle policies can automatically move objects between storage classes or archive them into S3 Glacier according to age. This helps organisations reduce storage cost while enforcing retention policies without manually moving every object.
 
 ---
 
-## IOPS versus throughput
+# 59. Likely subjective question — Differentiate EBS, S3, EFS and Glacier
 
-```text
-IOPS       → How many operations?
-Throughput → How much data?
-```
+A strong answer:
 
-Many small database requests require IOPS. Large sequential streams require throughput.
+> Amazon EBS provides block-level storage volumes primarily for EC2 instances and behaves like a virtual disk, making it suitable for boot volumes and databases. Amazon S3 provides highly scalable object storage for files such as images, backups and application assets. Amazon EFS provides a shared network file system that multiple Linux EC2 instances can access through NFS. Amazon S3 Glacier is designed for low-cost long-term archival data that is rarely accessed and can tolerate slower retrieval.
 
----
-
-## Snapshot versus volume
-
-```text
-EBS volume   → Active storage used by EC2
-EBS snapshot → Point-in-time backup
-```
-
-An instance uses a volume, not a photograph of the volume pretending to be a disk.
+That is probably the single most useful paragraph in Module 7.
 
 ---
 
-## Mount target versus EFS file system
+# 60. Likely subjective question — EBS volume types
 
-```text
-EFS file system → The shared stored data
-Mount target    → Network entrance to that file system
-```
-
-Multiple mount targets do not mean multiple copies of the file system.
+> Amazon EBS provides both SSD and HDD volume types. General Purpose SSD is recommended for most workloads and boot volumes. Provisioned IOPS SSD is designed for critical applications and large databases requiring sustained high IOPS. Throughput-Optimized HDD is suited to large sequential workloads such as logs, big data and data warehouses, while Cold HDD is intended for infrequently accessed throughput-oriented data where low cost is important.
 
 ---
 
-# 5. Rapid revision sheet
+# 61. Likely subjective question — EBS snapshots
+
+> An EBS snapshot is a point-in-time backup of an EBS volume. Snapshots can be used to recreate new EBS volumes and therefore support backup and recovery. A snapshot is different from an active EBS volume because the volume is the storage attached to an EC2 instance, while the snapshot is a backup representation of that storage.
+
+---
+
+# 62. Likely subjective question — S3 storage classes
+
+A concise full answer:
+
+> Amazon S3 provides several storage classes to match different access patterns. S3 Standard is intended for frequently accessed objects. S3 Intelligent-Tiering is suitable when access patterns are uncertain or changing. S3 Standard-IA is for infrequently accessed objects that still require rapid retrieval, while One Zone-IA is a lower-cost option for infrequently accessed recreatable data that can be stored in one Availability Zone. S3 Glacier and Glacier Deep Archive are designed for long-term archival storage.
+
+---
+
+# 63. Likely subjective question — Explain EFS
+
+> Amazon EFS provides managed shared file storage for Linux-based EC2 instances. It supports NFS and enables multiple instances to access the same files simultaneously. Mount targets provide network access to the EFS file system from VPC subnets, and EFS automatically grows and shrinks as files are added or removed.
+
+---
+
+# 64. Likely subjective question — Standard-IA vs Glacier
+
+> S3 Standard-IA is designed for objects that are accessed infrequently but still require rapid retrieval when needed. S3 Glacier is intended for long-term archival data and offers lower storage cost in exchange for slower retrieval that may take minutes or hours. Therefore, Standard-IA is more suitable when occasional immediate access is required, while Glacier is more appropriate when data is archived and retrieval speed is less important.
+
+---
+
+# 65. How to answer storage scenario questions
+
+Use this sequence:
 
 ```text
-STORAGE TYPES
-
-Block  → EBS
-Object → S3
-File   → EFS
-Archive → S3 Glacier
+1. Ask how the data must be accessed.
+2. Decide storage type.
+3. Consider performance.
+4. Consider access frequency.
+5. Consider whether multiple instances share it.
+6. Consider retrieval-time requirements.
+7. Choose the service/class and justify it.
 ```
 
-```text
-AMAZON EBS
+Example:
 
-- Persistent block storage
-- Attached to EC2
-- Availability Zone-based
-- Replicated within the AZ
-- Snapshots are point-in-time backups
-- Supports encryption
-- Capacity and type can be changed
+> Several Linux EC2 instances need simultaneous access to the same uploaded files.
+
+Weak answer:
+
+> EFS.
+
+Better answer:
+
+> Amazon EFS is the best choice because it provides shared network file storage that multiple Linux EC2 instances can mount and access through NFS. Separate EBS volumes would provide independent block devices rather than one common shared file system.
+
+---
+
+# 66. Scenario practice
+
+### Scenario A
+
+> An EC2 instance needs a boot disk.
+
+**Amazon EBS — General Purpose SSD**
+
+Because EBS provides block storage and General Purpose SSD is recommended for most workloads and boot volumes.
+
+---
+
+### Scenario B
+
+> A critical database needs sustained high I/O operations.
+
+**Provisioned IOPS SSD**
+
+Because the workload is IOPS-sensitive.
+
+---
+
+### Scenario C
+
+> A company processes huge sequential log files.
+
+**Throughput-Optimized HDD**
+
+Because the workload is throughput-oriented.
+
+---
+
+### Scenario D
+
+> A company stores millions of uploaded photos.
+
+**Amazon S3**
+
+Because photos are naturally stored as objects.
+
+---
+
+### Scenario E
+
+> The access pattern of objects changes unpredictably.
+
+**S3 Intelligent-Tiering**
+
+---
+
+### Scenario F
+
+> Backup files are rarely accessed, but when needed they must be available rapidly.
+
+**S3 Standard-IA**
+
+Not Glacier, because rapid retrieval is important.
+
+---
+
+### Scenario G
+
+> An infrequently used secondary copy can be recreated and only one AZ is required.
+
+**S3 One Zone-IA**
+
+---
+
+### Scenario H
+
+> Multiple Linux EC2 instances need the same shared directory.
+
+**Amazon EFS**
+
+---
+
+### Scenario I
+
+> Financial records must be retained for many years and almost never accessed.
+
+**Amazon S3 Glacier**
+
+---
+
+### Scenario J
+
+> A Glacier archive is urgently required within minutes.
+
+**Expedited retrieval**, using the module's retrieval options.
+
+---
+
+# 67. High-priority scenario clues
+
+| Question says...                   | Think...                 |
+| ---------------------------------- | ------------------------ |
+| Virtual disk                       | EBS                      |
+| EC2 boot volume                    | EBS                      |
+| Database disk                      | EBS                      |
+| High IOPS                          | Provisioned IOPS SSD     |
+| Big sequential logs                | Throughput-Optimized HDD |
+| Rarely accessed EBS data           | Cold HDD                 |
+| Point-in-time backup               | EBS snapshot             |
+| Photos/videos/objects              | S3                       |
+| Bucket                             | S3                       |
+| 11 nines durability                | S3 / Glacier in module   |
+| Frequent object access             | S3 Standard              |
+| Unknown access pattern             | Intelligent-Tiering      |
+| Rare + rapid retrieval             | Standard-IA              |
+| Rare + recreatable + one AZ        | One Zone-IA              |
+| Shared Linux files                 | EFS                      |
+| NFS                                | EFS                      |
+| Multiple EC2 instances same folder | EFS                      |
+| Mount target                       | EFS                      |
+| Long-term archive                  | Glacier                  |
+| Minutes/hours retrieval            | Glacier                  |
+| Automatically archive old S3 data  | Lifecycle policy         |
+
+---
+
+# 68. Common mistakes to avoid
+
+**EBS is object storage.**
+Wrong.
+
+```text
+EBS → Block
+S3  → Object
+```
+
+---
+
+**S3 behaves like a traditional EC2 disk.**
+Wrong.
+
+S3 stores objects.
+
+---
+
+**EFS is object storage.**
+Wrong.
+
+```text
+EFS → File storage
+```
+
+---
+
+**A snapshot is a running EBS disk.**
+Wrong.
+
+```text
+Volume   → Active storage
+Snapshot → Backup
+```
+
+---
+
+**Every infrequently accessed object belongs in Glacier.**
+Wrong.
+
+Ask whether **rapid retrieval** is required.
+
+```text
+Rare + rapid
+→ Standard-IA
+
+Archive + slower retrieval acceptable
+→ Glacier
+```
+
+---
+
+**Provisioned IOPS is always the best EBS volume because it is fastest.**
+Wrong.
+
+General Purpose SSD is recommended for most workloads in the module.
+
+---
+
+**Throughput and IOPS are the same thing.**
+Wrong.
+
+```text
+IOPS
+→ Number of operations
+
+Throughput
+→ Amount of data
+```
+
+---
+
+**Cold HDD and Glacier are the same.**
+Wrong.
+
+```text
+Cold HDD
+→ EBS disk
+
+Glacier
+→ Archival object storage
+```
+
+---
+
+**Several EBS disks automatically create shared storage.**
+Wrong.
+
+Use **EFS** when multiple Linux EC2 instances need the same shared file system.
+
+---
+
+**Each EFS mount target is a separate file system.**
+Wrong.
+
+Mount targets are network access points to **one EFS file system**.
+
+---
+
+**Glacier is designed for frequently accessed application files.**
+Wrong.
+
+It is for archival data.
+
+---
+
+# 69. What I would prioritise before the subjective exam
+
+If time is short, master these seven areas:
+
+```text
+1. Storage types
+   Block → EBS
+   Object → S3
+   File → EFS
+   Archive → Glacier
+
+2. EBS types
+   General Purpose
+   Provisioned IOPS
+   Throughput-Optimized
+   Cold
+
+3. IOPS vs throughput
+
+4. EBS snapshots
+
+5. S3 classes
+   Standard
+   Intelligent-Tiering
+   Standard-IA
+   One Zone-IA
+   Glacier
+   Deep Archive
+
+6. EFS
+   Shared
+   Linux
+   NFS
+   Mount targets
+
+7. Glacier
+   Archive
+   Lifecycle
+   Retrieval options
+```
+
+These align directly with the Module 7 learning objectives. 
+
+# Final 2-minute revision
+
+```text
+STORAGE TYPE
+────────────
+EBS
+→ Block
+→ Disk
+
+S3
+→ Object
+→ Bucket
+
+EFS
+→ File
+→ Shared folder
+
+Glacier
+→ Archive
 ```
 
 ```text
 EBS TYPES
-
+─────────
 General Purpose SSD
-→ Most workloads and boot volumes
+→ Most workloads / boot
 
 Provisioned IOPS SSD
-→ Critical databases and sustained IOPS
+→ High-performance database
 
-Throughput-Optimised HDD
-→ Logs, big data and sequential workloads
+Throughput-Optimized HDD
+→ Big sequential data / logs
 
 Cold HDD
-→ Rarely accessed, lowest-cost HDD data
+→ Rarely accessed low-cost HDD
 ```
 
 ```text
-AMAZON S3
+PERFORMANCE
+───────────
+IOPS
+→ How many operations?
 
-- Object storage
-- Buckets and objects
-- Maximum object size in module: 5 TB
-- Virtually unlimited objects
-- Eleven nines durability
-- Regional redundancy
-- Storage, requests and transfer affect cost
+Throughput
+→ How much data?
+```
+
+```text
+EBS BACKUP
+──────────
+Volume
+→ Active disk
+
+Snapshot
+→ Point-in-time backup
 ```
 
 ```text
 S3 CLASSES
+──────────
+Standard
+→ Frequent
 
-Standard            → Frequent access
-Intelligent-Tiering → Uncertain access
-Standard-IA         → Rare but rapid access
-One Zone-IA         → Re-creatable one-AZ data
-Glacier             → Archive
-Deep Archive        → Deep long-term archive
+Intelligent-Tiering
+→ Unknown/changing access
+
+Standard-IA
+→ Rare + rapid retrieval
+
+One Zone-IA
+→ Rare + recreatable + one AZ
+
+Glacier
+→ Archive
+
+Deep Archive
+→ Deep archive
 ```
 
 ```text
-AMAZON EFS
-
-- Shared network file system
-- NFS 4.0 and 4.1
-- Linux EC2 workloads
-- Mount targets in VPC subnets
-- One mount target per AZ
-- Automatically scales
-- Pay for used storage
+EFS
+───
+Shared network file system
+Linux EC2
+NFS 4.0 / 4.1
+Mount targets in subnets
+Automatically scales
 ```
 
 ```text
-S3 GLACIER
+GLACIER
+───────
+Long-term archival
+Low storage cost
 
-- Low-cost archive
-- Eleven nines durability
-- Vault Lock for compliance
-- Expedited: 1–5 minutes
-- Standard: 3–5 hours
-- Bulk: 5–12 hours
-- Lifecycle rules can archive S3 objects
+Expedited → 1–5 min
+Standard  → 3–5 hr
+Bulk      → 5–12 hr
+
+Lifecycle:
+S3 → Glacier → Delete
 ```
 
-[1]: https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02.html?utm_source=chatgpt.com "AWS Certified Cloud Practitioner (CLF-C02) - AWS Certified Cloud Practitioner"
+The **single most important mental model** in Module 7 is:
 
----
+```text
+EBS
+→ "I need a DISK."
+
+S3
+→ "I need to store OBJECTS."
+
+EFS
+→ "My servers need the same SHARED FILES."
+
+GLACIER
+→ "I need to KEEP this for a long time,
+   but I probably won't OPEN it often."
+```
+
+Once you can identify those four behaviours from a scenario, most Module 7 subjective questions become much easier. 
 
 </details>
 
 <details>
-<summary><strong>Module 8: Databases — AWS-Style Objective Test Preparation</strong></summary>
+<summary><strong>Module 8: Databases — Subjective Exam Preparation</strong></summary>
 
-# Module 8: Databases — AWS-Style Objective Test Preparation
+For a **subjective exam**, Module 8 is mainly testing whether you can look at a database requirement and decide:
 
-The AWS Certified Cloud Practitioner exam currently uses:
+> **What kind of database workload is this, and which AWS database service best fits it?**
 
-* **Multiple choice:** one correct response and three distractors.
-* **Multiple response:** two or more correct responses from at least five options.
-
-AWS’s official practice sets are designed to demonstrate the wording and style of certification questions. The questions below are original, but they use the same scenario-based approach: identify the service that **BEST** meets the stated requirement. ([AWS Documentation][1])
-
-Cloud Practitioner questions focus on recognising services and use cases rather than performing detailed database implementation or troubleshooting. Conveniently, nobody needs to memorise which console button sits three pixels to the left this week. ([AWS Documentation][2])
-
-This test follows the Module 8 objectives:
-
-* Explain Amazon RDS and its functionality.
-* Explain Amazon DynamoDB and its functionality.
-* Explain Amazon Redshift.
-* Explain Amazon Aurora.
-* Recognise appropriate database choices for different workloads. 
-
----
-
-# 1. What to know before attempting the test
-
-## Main database-selection map
-
-| Requirement                                                      | Best starting service  |
-| ---------------------------------------------------------------- | ---------------------- |
-| Managed relational database                                      | Amazon RDS             |
-| High-performance MySQL/PostgreSQL-compatible relational database | Amazon Aurora          |
-| Fast, scalable NoSQL key-value or document database              | Amazon DynamoDB        |
-| Large-scale historical analytics and data warehousing            | Amazon Redshift        |
-| Full operating-system and database-level control                 | Database on Amazon EC2 |
+The module focuses on four services:
 
 ```text
-Transactions and relationships → RDS or Aurora
-Simple key-based access        → DynamoDB
-Historical analytics           → Redshift
-Full OS control                → Database on EC2
+Amazon RDS      → Managed relational databases
+Amazon DynamoDB → Fast and flexible NoSQL
+Amazon Redshift → Data warehouse / analytics
+Amazon Aurora   → High-performance relational database
 ```
 
-The module’s final decision table recommends RDS for enterprise relational databases, DynamoDB for fast and flexible NoSQL workloads, EC2 when operating-system access is required, and purpose-built services for specialised requirements such as data warehousing. 
+The module objectives specifically require you to explain RDS, DynamoDB, Redshift and Aurora and understand their functionality. 
 
----
-
-## RDS: the crucial distinction
+The entire chapter can be reduced to this decision:
 
 ```text
-Multi-AZ deployment → High availability
-Read replica        → Read scalability
+Relationships + SQL + transactions?
+→ RDS
+
+Massive key-value/document data?
+→ DynamoDB
+
+Historical analytics / data warehouse?
+→ Redshift
+
+High-performance MySQL/PostgreSQL-compatible relational DB?
+→ Aurora
+
+Need full operating-system control?
+→ Database on EC2
 ```
-
-| Multi-AZ                       | Read replica                |
-| ------------------------------ | --------------------------- |
-| Primary and standby            | Primary and readable copy   |
-| Synchronous replication        | Asynchronous replication    |
-| Automatic failover             | Offloads read traffic       |
-| Standby is mainly for recovery | Replica serves read queries |
-| Availability                   | Performance and scaling     |
-
-The diagrams on pages 13–15 show synchronous replication to a standby in another Availability Zone and asynchronous replication to a read replica. 
 
 ---
 
-## DynamoDB essentials
+# 1. First understand the database problem
+
+Not all data should be stored in the same type of database.
+
+Imagine an online shop.
+
+It has:
+
+```text
+Customers
+Orders
+Payments
+Products
+```
+
+These records have relationships.
+
+For example:
+
+```text
+Customer
+   ↓ places
+Order
+   ↓ contains
+Product
+```
+
+A **relational database** makes sense.
+
+But suppose the company also stores millions of user sessions where the application simply wants:
+
+```text
+GET User123
+PUT User123
+```
+
+It may prefer a highly scalable NoSQL database such as DynamoDB.
+
+And if management wants to analyse:
+
+```text
+10 years of sales
+across
+500 million transactions
+```
+
+that is a different workload again.
+
+Use:
+
+> **Redshift**
+
+The main lesson of Module 8 is therefore:
+
+> **Use the right database for the right job.**
+
+Page 54 of the module makes exactly this point. 
+
+---
+
+# 2. Relational databases
+
+A relational database stores structured data in **tables**.
+
+Example:
+
+### Customers
+
+| CustomerID | Name  |
+| ---------- | ----- |
+| C001       | Amir  |
+| C002       | Sarah |
+
+### Orders
+
+| OrderID | CustomerID | Amount |
+| ------- | ---------- | -----: |
+| O101    | C001       |  RM200 |
+| O102    | C001       |  RM450 |
+
+The relationship is:
+
+```text
+Customers.CustomerID
+        ↓
+Orders.CustomerID
+```
+
+Relational databases are useful when:
+
+* relationships matter;
+* structured schemas matter;
+* SQL queries are required;
+* transactions must remain consistent.
+
+AWS services in this module:
+
+```text
+Amazon RDS
+Amazon Aurora
+```
+
+---
+
+# 3. NoSQL databases
+
+NoSQL databases are more flexible in how records are structured.
+
+One record might contain:
+
+```text
+UserID
+Name
+Country
+```
+
+while another has:
+
+```text
+UserID
+Name
+Country
+Subscription
+PreferredDevice
+```
+
+That flexibility is one of DynamoDB's characteristics: items in the same table can have different attributes. 
+
+Think:
+
+```text
+Relational
+→ Strong structure and relationships
+
+NoSQL
+→ Flexible structure and massive scalable access
+```
+
+---
+
+# Section 1 — Amazon RDS
+
+# 4. What is Amazon RDS?
+
+**Amazon Relational Database Service (RDS)** is a managed service for setting up and operating relational databases in AWS.
+
+The module's central definition is:
+
+> RDS is a managed service that sets up and operates a relational database in the cloud. 
+
+Think:
+
+> **RDS = AWS manages much of the database infrastructure for you.**
+
+---
+
+# 5. Why use a managed database?
+
+Running a relational database yourself involves work such as:
+
+```text
+Installing operating system
+Patching operating system
+Installing database software
+Patching database software
+Backups
+High availability
+Scaling
+Server maintenance
+Physical infrastructure
+```
+
+The module describes these as challenges of traditional relational database management. 
+
+RDS removes much of that operational burden.
+
+---
+
+# 6. Managed vs unmanaged
+
+The module contrasts:
+
+```text
+UNMANAGED
+
+You manage:
+Scaling
+Fault tolerance
+Availability
+```
+
+with:
+
+```text
+MANAGED
+
+These capabilities are
+typically built into the service
+```
+
+
+
+An intuitive example:
+
+### Database on EC2
+
+You have more control.
+
+But you also manage much more yourself.
+
+### Amazon RDS
+
+AWS manages more of the underlying database environment.
+
+---
+
+# 7. Who manages what in RDS?
+
+This is highly examinable.
+
+According to the course's RDS responsibility slide:
+
+### Customer manages
+
+```text
+Application optimisation
+```
+
+### AWS manages
+
+```text
+OS installation and patches
+Database software installation and patches
+Database backups
+High availability
+Scaling
+Physical power/racking
+Server maintenance
+```
+
+
+
+### Good subjective answer
+
+> Amazon RDS is a managed relational database service. AWS manages infrastructure-related tasks such as operating-system installation and patching, database software installation and patching, backups, high availability, scaling and server maintenance. The customer remains responsible for areas such as application optimisation.
+
+---
+
+# 8. RDS vs database on EC2
+
+This is a good scenario comparison.
+
+| Database on EC2                       | Amazon RDS                         |
+| ------------------------------------- | ---------------------------------- |
+| Customer manages OS                   | AWS manages OS                     |
+| Customer installs DB                  | AWS manages installation           |
+| Customer patches DB                   | AWS manages patching               |
+| Customer designs backups              | RDS provides managed backups       |
+| More infrastructure control           | Less infrastructure administration |
+| Useful if OS/custom features required | Good managed relational solution   |
+
+Page 54 specifically states that if the workload requires operating-system access or application/database features unsupported by AWS database services, running the database on **Amazon EC2** may be appropriate. 
+
+---
+
+# 9. Good subjective answer — RDS vs EC2
+
+> Running a database on Amazon EC2 provides greater control because the customer can access the operating system and customise the database environment. However, the customer must manage activities such as patching, backups and high availability. Amazon RDS is a managed relational database service in which AWS manages much of this operational work. Therefore, RDS is preferable when reduced administration is desired, while EC2 is more suitable when full operating-system access or unsupported custom features are required.
+
+---
+
+# 10. RDS database engines
+
+The module lists several RDS engines:
+
+```text
+MySQL
+Amazon Aurora
+Microsoft SQL Server
+PostgreSQL
+MariaDB
+Oracle
+```
+
+
+
+For the exam, the important idea is:
+
+> RDS is **not one database engine**.
+
+RDS is the managed service that supports several relational database engines.
+
+---
+
+# 11. RDS DB instance
+
+An RDS DB instance consists conceptually of three main decisions:
+
+```text
+Database engine
++
+DB instance class
++
+Storage
+```
+
+The module says the instance class determines:
+
+```text
+CPU
+Memory
+Network performance
+```
+
+while storage choices include options such as:
+
+```text
+Magnetic
+General Purpose SSD
+Provisioned IOPS
+```
+
+
+
+---
+
+# 12. RDS inside a VPC
+
+The page 12 architecture is very useful.
+
+It shows:
+
+```text
+Internet users
+      ↓
+EC2 application
+in public subnet
+      ↓
+Amazon RDS
+in private subnet
+```
+
+
+
+This makes sense because:
+
+> Users normally connect to the **application**, not directly to the database.
+
+The database can remain protected in the private part of the VPC.
+
+---
+
+# 13. Good architecture explanation
+
+A subjective answer could say:
+
+> An application server can be placed in a public subnet so that users can access the application, while the Amazon RDS database is placed in a private subnet. The application communicates with the database internally, reducing the need for the database itself to be directly accessible from the internet.
+
+This also connects Module 8 to what you learned in Module 5.
+
+---
+
+# 14. RDS Multi-AZ
+
+**Multi-AZ deployment** is about:
+
+> **High availability.**
+
+The module diagram shows:
+
+```text
+Availability Zone 1
+Primary RDS instance
+        ↓
+Synchronous replication
+        ↓
+Availability Zone 2
+Standby RDS instance
+```
+
+
+
+The important keywords:
+
+```text
+Primary
+Standby
+Different Availability Zones
+Synchronous replication
+High availability
+```
+
+---
+
+# 15. Why Multi-AZ helps
+
+Suppose the primary database fails.
+
+Without a standby:
+
+```text
+Primary fails
+↓
+Database unavailable
+```
+
+With Multi-AZ:
+
+```text
+Primary fails
+↓
+Standby can take over
+↓
+Application continues
+```
+
+So the purpose is:
+
+```text
+Availability
+Fault tolerance
+Failover
+```
+
+---
+
+# 16. Synchronous replication
+
+**Synchronous replication** means the standby database is updated as part of the primary database write process.
+
+Conceptually:
+
+```text
+Application writes order
+        ↓
+Primary records order
+        ↓
+Standby receives update
+        ↓
+Write completed
+```
+
+This helps keep the standby closely aligned with the primary.
+
+---
+
+# 17. Multi-AZ is NOT mainly read scaling
+
+This distinction is one of the most important in Module 8:
+
+```text
+MULTI-AZ
+→ High availability
+
+READ REPLICA
+→ Read scalability
+```
+
+Do not write:
+
+> “Use Multi-AZ because the application has too many read queries.”
+
+The better answer is:
+
+> **Use a read replica.**
+
+---
+
+# 18. RDS read replicas
+
+An RDS **read replica** is a copy of the primary database used to serve read operations.
+
+The module states that read replicas:
+
+* use **asynchronous replication**;
+* can be promoted to primary if needed;
+* are suitable for read-heavy workloads;
+* offload read queries. 
+
+Conceptually:
+
+```text
+            Write queries
+                ↓
+         Primary database
+                │
+       asynchronous replication
+                ↓
+           Read replica
+                ↑
+             Reads
+```
+
+---
+
+# 19. Why read replicas help
+
+Suppose:
+
+```text
+Writes per minute = 1,000
+Reads per minute  = 100,000
+```
+
+The primary database may become overloaded with read queries.
+
+Instead:
+
+```text
+Writes
+→ Primary
+
+Some reads
+→ Read replica
+```
+
+This reduces the workload on the primary.
+
+---
+
+# 20. Asynchronous replication
+
+With asynchronous replication:
+
+```text
+Primary receives update
+↓
+Primary can continue
+↓
+Replica receives update shortly afterward
+```
+
+Therefore, there may temporarily be a delay between the primary and replica.
+
+The important exam phrase is:
+
+> **Read replicas use asynchronous replication.**
+
+---
+
+# 21. Multi-AZ vs read replica
+
+This table is worth memorising.
+
+| Multi-AZ                | Read Replica                |
+| ----------------------- | --------------------------- |
+| High availability       | Read scalability            |
+| Primary + standby       | Primary + readable copy     |
+| Synchronous replication | Asynchronous replication    |
+| Standby for failover    | Replica serves read queries |
+| Protect against failure | Reduce read workload        |
+
+Memory:
+
+```text
+Multi-AZ
+→ Keep database alive
+
+Read replica
+→ Make reading lighter
+```
+
+---
+
+# 22. Likely subjective question — Multi-AZ vs read replica
+
+> An RDS Multi-AZ deployment improves high availability by synchronously replicating data from a primary database to a standby instance in another Availability Zone. If the primary fails, the standby can take over. A read replica is different because it uses asynchronous replication and is intended to serve read queries and reduce the workload on the primary database. Therefore, Multi-AZ is mainly for availability, while read replicas are mainly for read scalability.
+
+That is one of the most important answers to know.
+
+---
+
+# Section 2 — Amazon DynamoDB
+
+# 23. What is DynamoDB?
+
+The module describes **Amazon DynamoDB** as:
+
+> A fast and flexible NoSQL database service for any scale.
+
+It provides:
+
+* NoSQL database tables;
+* virtually unlimited storage;
+* items with differing attributes;
+* low-latency queries;
+* scalable read/write throughput. 
+
+Think:
+
+> **DynamoDB = fast NoSQL database for massive scalable key-based workloads.**
+
+---
+
+# 24. When should you think DynamoDB?
+
+Scenario keywords:
+
+```text
+NoSQL
+Key-value
+Document
+Massive scale
+Low latency
+Flexible attributes
+Rapidly changing workload
+Mobile
+Web
+Gaming
+IoT
+```
+
+The module specifically highlights mobile, web, gaming, advertising technology and IoT applications. 
+
+---
+
+# 25. DynamoDB's core components
+
+The module says DynamoDB has three core components:
 
 ```text
 Table
-└── Item
-    ├── Attribute
-    ├── Attribute
-    └── Attribute
+Item
+Attribute
 ```
 
-* NoSQL database.
-* Supports key-value and document models.
-* Items can contain different attributes.
-* Uses partition keys and optional sort keys.
-* Designed for low-latency access and scalable throughput.
-* Suitable for web, mobile, gaming, advertising and IoT workloads.
 
----
 
-## Redshift essentials
+Relational comparison:
+
+| Relational DB | DynamoDB  |
+| ------------- | --------- |
+| Table         | Table     |
+| Row           | Item      |
+| Column        | Attribute |
+
+So:
 
 ```text
-SQL or BI client
-       ↓
-Leader node
-       ↓
-Compute nodes working in parallel
+Table
+→ Collection
+
+Item
+→ One record
+
+Attribute
+→ One piece of information
 ```
 
-Amazon Redshift is a managed data warehouse that uses:
-
-* columnar storage;
-* parallel processing;
-* compute nodes;
-* SQL and business-intelligence tools.
-
-It is intended for analytics, not ordinary checkout transactions.
-
----
-
-## Aurora essentials
-
-Amazon Aurora is:
-
-* an enterprise relational database;
-* compatible with MySQL or PostgreSQL;
-* managed through Amazon RDS;
-* designed for high performance and availability;
-* able to automate provisioning, patching, backup, recovery, failure detection and repair. 
-
----
-
-# 2. Module 8 Mock Test
-
-**Questions:** 70
-**Suggested time:** 75 minutes
-**Instructions:** Select one answer unless the question says **Select TWO**.
-
----
-
-## Database fundamentals and service selection
-
-### 1. Which characteristic is commonly associated with a relational database?
-
-A. Data is stored only as unstructured objects
-B. Data is organised into related tables
-C. Every record must be retrieved using an object URL
-D. Data cannot be queried
-
----
-
-### 2. Which database type is generally most suitable when relationships, structured schemas and complex transactions are important?
-
-A. Relational database
-B. Key-value cache only
-C. Content delivery network
-D. Object-storage bucket
-
----
-
-### 3. A company stores customers, orders, payments and invoices. The records have clear relationships and require transactional consistency. Which AWS service is the BEST starting choice?
-
-A. Amazon CloudFront
-B. Amazon RDS
-C. Amazon S3 Glacier
-D. Amazon Route 53
-
----
-
-### 4. A mobile game retrieves player records by PlayerID and must scale rapidly to millions of users. Which database is the BEST fit?
-
-A. Amazon Redshift
-B. Amazon DynamoDB
-C. Amazon EFS
-D. Amazon RDS Multi-AZ standby only
-
----
-
-### 5. A company wants to analyse ten years of sales data using business-intelligence dashboards. Which service should it use?
-
-A. Amazon Redshift
-B. Amazon DynamoDB
-C. Amazon EC2 Instance Store
-D. Amazon Cognito
-
----
-
-### 6. A company requires direct operating-system access and unsupported custom database extensions. Which deployment should it use?
-
-A. Amazon DynamoDB
-B. Amazon Redshift
-C. A database running on Amazon EC2
-D. Amazon RDS Multi-AZ
-
----
-
-### 7. Which database services are relational? **Select TWO.**
-
-A. Amazon RDS
-B. Amazon DynamoDB
-C. Amazon Aurora
-D. Amazon CloudFront
-E. Amazon EFS
-
----
-
-### 8. Which service is a NoSQL database?
-
-A. Amazon Aurora
-B. Amazon DynamoDB
-C. Amazon Redshift
-D. Amazon RDS for Oracle
-
----
-
-## Amazon RDS: managed service and architecture
-
-### 9. What is Amazon RDS?
-
-A. A managed relational database service
-B. A container-orchestration service
-C. An object-storage service
-D. A content delivery network
-
----
-
-### 10. Which task is generally managed by AWS when a customer uses Amazon RDS?
-
-A. Designing the application’s database schema
-B. Optimising every customer SQL query
-C. Installing and patching the database software
-D. Deciding which data the application stores
-
----
-
-### 11. Which task remains primarily the customer’s responsibility when using Amazon RDS?
-
-A. Maintaining physical data-centre power
-B. Replacing failed physical disks
-C. Application and query optimisation
-D. Installing the host operating system
-
----
-
-### 12. Which responsibilities are generally handled by AWS for Amazon RDS? **Select TWO.**
-
-A. Operating-system patching
-B. Application code design
-C. Database software patching
-D. Choosing the customer’s table relationships
-E. Writing customer SQL queries
-
----
-
-### 13. Which database engines are supported by Amazon RDS in the module? **Select TWO.**
-
-A. MySQL
-B. PostgreSQL
-C. Amazon S3
-D. Amazon CloudFront
-E. Amazon EFS
-
----
-
-### 14. Which database engine is also listed as an Amazon RDS option?
-
-A. Amazon Aurora
-B. Amazon Route 53
-C. AWS Lambda
-D. Amazon CloudFront
-
----
-
-### 15. Which components define an RDS DB instance? **Select TWO.**
-
-A. DB instance class
-B. Database engine
-C. CloudFront edge location
-D. IAM group membership
-E. Route 53 routing policy
-
----
-
-### 16. What does an RDS DB instance class primarily determine?
-
-A. CPU, memory and network capacity
-B. The database schema
-C. The number of IAM users
-D. The customer's AWS Support plan
-
----
-
-### 17. Which storage choices are shown for an RDS DB instance in the module? **Select TWO.**
-
-A. General Purpose SSD
-B. Provisioned IOPS
-C. CloudFront cache
-D. Glacier vault
-E. Route 53 hosted zone
-
----
-
-### 18. An application server is publicly accessible, but its database should not accept connections directly from the internet. Where should the RDS database normally be placed?
-
-A. In a private subnet
-B. At a CloudFront edge location
-C. In a public S3 bucket
-D. Outside the VPC
-
----
-
-### 19. In the architecture shown on page 12, how do users normally access the RDS database?
-
-A. Users connect directly to the database through the internet gateway
-B. Users communicate with an application server, which accesses RDS
-C. Users retrieve the database through CloudFront
-D. Users assume the database’s IAM role
-
----
-
-### 20. Why is an RDS database commonly placed in a private subnet?
-
-A. To make it easier for every internet user to access
-B. To reduce direct exposure to the public internet
-C. To turn the relational database into NoSQL
-D. To create a CloudFront cache
-
----
-
-### 21. A company wants a managed relational database but already uses Microsoft SQL Server. Which service can meet the requirement?
-
-A. Amazon RDS
-B. Amazon DynamoDB
-C. Amazon Redshift only
-D. Amazon S3
-
----
-
-### 22. A company runs MySQL on EC2. Which responsibility does the company have that would normally be managed by AWS under RDS?
-
-A. Database software installation and patching
-B. AWS data-centre power
-C. Physical rack installation
-D. AWS network backbone maintenance
-
----
-
-### 23. Which statement correctly compares a database on EC2 with Amazon RDS?
-
-A. EC2 provides more database-management automation than RDS
-B. RDS generally reduces operating-system and database-maintenance work
-C. RDS gives the customer unrestricted host operating-system access
-D. Databases on EC2 cannot use relational engines
-
----
-
-### 24. A company must customise the operating system beneath its database. Why might it choose EC2 instead of RDS?
-
-A. EC2 provides greater host-level control
-B. EC2 automatically manages all backups and failover
-C. EC2 is a NoSQL service
-D. RDS cannot store data
-
----
-
-## RDS Multi-AZ and read replicas
-
-### 25. What is the primary purpose of an RDS Multi-AZ deployment?
-
-A. Reduce DNS latency
-B. Improve database high availability
-C. Store container images
-D. Analyse historical data
-
----
-
-### 26. How is data replicated from the primary RDS instance to the Multi-AZ standby in the module?
-
-A. Asynchronously
-B. Synchronously
-C. Through CloudFront
-D. Through an S3 lifecycle rule
-
----
-
-### 27. Where is the RDS Multi-AZ standby located?
-
-A. On the same physical disk as the primary
-B. In another Availability Zone
-C. At an edge location
-D. In every AWS Region
-
----
-
-### 28. What occurs if the primary instance in an RDS Multi-AZ deployment fails?
-
-A. AWS can fail over to the standby
-B. The standby is deleted
-C. All read replicas become S3 buckets
-D. The application must permanently stop
-
----
-
-### 29. Which statement about an RDS Multi-AZ standby is correct?
-
-A. Its main purpose is to serve normal analytical queries
-B. Its main purpose is failover and availability
-C. It replaces Amazon Redshift
-D. It is always deployed in the same Availability Zone
-
----
-
-### 30. What is the main purpose of an RDS read replica?
-
-A. Offload read queries from the primary database
-B. Protect physical AWS data centres
-C. Replace the database schema
-D. Process CloudFront requests
-
----
-
-### 31. How is data replicated to an RDS read replica in the module?
-
-A. Synchronously
-B. Asynchronously
-C. Through an internet gateway
-D. Through a network ACL
-
----
-
-### 32. What is a possible result of asynchronous replication to a read replica?
-
-A. The replica can temporarily lag behind the primary
-B. The primary becomes an S3 object
-C. The replica cannot process reads
-D. The replica must always be in the same physical server
-
----
-
-### 33. Which statements correctly compare Multi-AZ and read replicas? **Select TWO.**
-
-A. Multi-AZ primarily supports availability
-B. Read replicas primarily support read scaling
-C. Multi-AZ uses asynchronous replication in the module
-D. Read replicas cannot serve queries
-E. Multi-AZ standby is mainly an analytics warehouse
-
----
-
-### 34. An application performs significantly more reads than writes. Which RDS feature should be considered?
-
-A. Read replicas
-B. Multi-AZ standby only
-C. S3 Glacier
-D. Dedicated Host
-
----
-
-### 35. A database must continue operating if one Availability Zone fails. Which RDS feature is the BEST fit?
-
-A. Read replica only
-B. Multi-AZ deployment
-C. DynamoDB Scan
-D. Redshift leader node
-
----
-
-### 36. Which RDS resource can be promoted to become a primary database if necessary?
-
-A. Read replica
-B. Security group
-C. DB subnet group
-D. Internet gateway
-
----
-
-## RDS suitability and pricing
-
-### 37. Which workload is most suitable for Amazon RDS?
-
-A. Complex relational transactions and SQL queries
-B. Billions of simple key-value operations with no relational requirements
-C. Delivering cached video files
-D. Resolving domain names
-
----
-
-### 38. Which requirement indicates that DynamoDB may be more appropriate than RDS?
-
-A. Complex table joins
-B. Simple GET and PUT requests at massive scale
-C. Traditional relational transactions
-D. Oracle compatibility
-
----
-
-### 39. Which requirement may justify running a database on EC2 instead of RDS?
-
-A. RDBMS customisation and host operating-system access
-B. Automatic database patching
-C. Reduced administration
-D. No need for server control
-
----
-
-### 40. Which factors can affect Amazon RDS cost? **Select TWO.**
-
-A. DB instance class
-B. Database storage
-C. Number of CloudFront edge locations
-D. Number of IAM groups
-E. Route 53 domain name length
-
----
-
-### 41. Which RDS purchasing option provides flexibility without a long-term commitment?
-
-A. On-Demand DB instance
-B. Reserved DB instance only
-C. Spot database
-D. CloudFront reservation
-
----
-
-### 42. A company expects to run the same RDS database continuously for three years. Which purchasing option might reduce cost in exchange for commitment?
-
-A. Reserved DB instance
-B. Spot Instance
-C. Glacier Deep Archive
-D. S3 Intelligent-Tiering
-
----
-
-### 43. Which deployment generally costs more because additional database infrastructure is maintained?
-
-A. Multi-AZ
-B. Single-AZ
-C. DynamoDB table without items
-D. An IAM group
-
----
-
-### 44. Which statement about RDS data transfer is stated in the module?
-
-A. Inbound data transfer has no charge, while outbound transfer can be charged
-B. Every inbound request is charged twice
-C. All outbound data transfer is always free
-D. RDS cannot receive data from outside AWS
-
----
-
-## Amazon DynamoDB
-
-### 45. What is Amazon DynamoDB?
-
-A. A managed NoSQL database service
-B. A managed relational data warehouse
-C. A network file system
-D. A virtual machine
-
----
-
-### 46. Which data models does DynamoDB support? **Select TWO.**
-
-A. Key-value
-B. Document
-C. Block-storage volume
-D. DNS zone
-E. Shared NFS file system
-
----
-
-### 47. Which terms describe the basic DynamoDB data structure? **Select TWO.**
-
-A. Items
-B. Attributes
-C. EC2 volumes
-D. Availability Zones
-E. Edge caches
-
----
-
-### 48. Which statement about DynamoDB items is correct?
-
-A. Every item must contain exactly the same attributes
-B. Items in the same table can contain different attributes
-C. An item must be a relational join
-D. Every item is stored as an EBS snapshot
-
----
-
-### 49. What is the purpose of a DynamoDB partition key?
-
-A. Help identify and distribute items
-B. Encrypt an EC2 operating system
-C. Select a CloudFront edge location
-D. Create an RDS standby
-
----
-
-### 50. A DynamoDB table uses `CustomerID` as the partition key and `OrderDate` as the sort key. What does this allow?
-
-A. Multiple orders for one customer can be distinguished by date
-B. Every customer can have only one order
-C. The table becomes an RDS database
-D. DynamoDB stops using partitions
-
----
-
-### 51. Which DynamoDB operation is generally more efficient when the required key value is known?
-
-A. Query
-B. Scan
-C. Full table export for every request
-D. Multi-AZ failover
-
----
-
-### 52. What does a DynamoDB Scan generally do?
-
-A. Examines many or all table items
-B. Creates an Aurora replica
-C. Reads only one known partition key automatically
-D. Converts NoSQL into SQL
-
----
-
-### 53. Why is partition-key design important in DynamoDB?
-
-A. It helps distribute data and requests across partitions
-B. It determines the CloudFront origin
-C. It installs the database operating system
-D. It defines an RDS backup window
-
----
-
-### 54. Which partition key would generally distribute requests more effectively?
-
-A. A unique UserID with many possible values
-B. A field containing only `Yes` or `No`
-C. A field where every item has the value `Malaysia`
-D. A field containing one constant value
-
----
-
-### 55. Which workloads are good DynamoDB use cases? **Select TWO.**
-
-A. Online game player state
-B. Web-application user sessions
-C. Large historical SQL warehouse queries
-D. EC2 boot volumes
-E. Shared Linux directories
-
----
-
-### 56. Which feature is associated with DynamoDB in the module?
-
-A. Consistent single-digit millisecond latency
-B. Host operating-system access
-C. Traditional block-storage attachment
-D. Columnar data-warehouse storage
-
----
-
-### 57. Which statement correctly compares DynamoDB and RDS?
-
-A. DynamoDB is relational, while RDS is NoSQL
-B. DynamoDB suits simple high-scale key access, while RDS suits relational queries and transactions
-C. Both are content delivery networks
-D. RDS does not support SQL
-
----
-
-## Amazon Redshift
-
-### 58. What is Amazon Redshift primarily designed for?
-
-A. Data warehousing and analytics
-B. Transactional shopping carts
-C. EC2 boot storage
-D. User authentication
-
----
-
-### 59. Which workload is the BEST fit for Amazon Redshift?
-
-A. Recording one customer’s current shopping cart
-B. Analysing billions of historical sales records
-C. Hosting a Linux operating system
-D. Resolving a domain name
-
----
-
-### 60. What is the purpose of the Redshift leader node?
-
-A. Receive queries, coordinate work and combine results
-B. Store IAM passwords
-C. Provide DDoS protection
-D. Act as an internet gateway
-
----
-
-### 61. What is the purpose of Redshift compute nodes?
-
-A. Process portions of data in parallel
-B. Authenticate mobile users
-C. Store container images
-D. Patch EC2 operating systems
-
----
-
-### 62. Which architecture helps Redshift process large analytical queries efficiently?
-
-A. Massively parallel processing
-B. One read replica performing all work
-C. CloudFront edge caching
-D. Single-threaded DNS resolution
-
----
-
-### 63. What is a major benefit of Redshift columnar storage?
-
-A. Analytical queries can read only the required columns
-B. Every row requires a separate EC2 instance
-C. It makes Redshift a NoSQL key-value database
-D. It removes the need for SQL
-
----
-
-### 64. Which tools commonly connect to Amazon Redshift?
-
-A. SQL clients and business-intelligence tools
-B. EC2 key pairs only
-C. Internet gateways
-D. EBS boot loaders
-
----
-
-### 65. Which features are associated with Redshift? **Select TWO.**
-
-A. Columnar storage
-B. Parallel processing
-C. Application-user authentication
-D. EC2 operating-system access
-E. DNS registration
-
----
-
-## Amazon Aurora and final database selection
-
-### 66. What is Amazon Aurora?
-
-A. An AWS-designed enterprise relational database engine
-B. A NoSQL document database
-C. A content delivery network
-D. A block-storage service
-
----
-
-### 67. With which database engines is Aurora compatible? **Select TWO.**
-
-A. MySQL
-B. PostgreSQL
-C. Microsoft Access
-D. DynamoDB
-E. Amazon S3
-
----
-
-### 68. Through which AWS managed service is Aurora provided?
-
-A. Amazon RDS
-B. Amazon CloudFront
-C. Amazon ECS
-D. AWS Artifact
-
----
-
-### 69. Which tasks can Aurora automate? **Select TWO.**
-
-A. Database backup and recovery
-B. Failure detection and repair
-C. Application business-rule design
-D. Customer table relationship design
-E. Writing every SQL query
-
----
-
-### 70. A company has an existing MySQL application and needs an enterprise relational database with stronger cloud-based performance and availability. Which service is the BEST fit?
-
-A. Amazon Aurora MySQL-Compatible Edition
-B. Amazon DynamoDB
-C. Amazon Redshift
-D. Amazon EFS
-
----
-
-# Stop before opening the answers
-
-<details>
-<summary><strong>Open answer key and explanations</strong></summary>
-
-## Questions 1–8: Database fundamentals
-
-|  Q |  Answer  | Explanation                                                                   |
-| -: | :------: | ----------------------------------------------------------------------------- |
-|  1 |   **B**  | Relational databases organise structured data into related tables.            |
-|  2 |   **A**  | Relational databases suit relationships, transactions and structured schemas. |
-|  3 |   **B**  | RDS is a managed relational database service.                                 |
-|  4 |   **B**  | DynamoDB suits key-based, rapidly scaling application data.                   |
-|  5 |   **A**  | Redshift is intended for data warehousing and analytics.                      |
-|  6 |   **C**  | A database on EC2 gives the customer host operating-system control.           |
-|  7 | **A, C** | RDS and Aurora are relational database services.                              |
-|  8 |   **B**  | DynamoDB is AWS’s NoSQL service in this module.                               |
-
-The module’s service-selection section distinguishes enterprise relational, fast NoSQL, EC2-hosted and purpose-built database requirements. 
-
----
-
-## Questions 9–24: Amazon RDS
-
-|  Q |  Answer  | Explanation                                                                 |
-| -: | :------: | --------------------------------------------------------------------------- |
-|  9 |   **A**  | RDS is a managed relational database service.                               |
-| 10 |   **C**  | AWS manages database software installation and patching.                    |
-| 11 |   **C**  | Customers remain responsible for application optimisation.                  |
-| 12 | **A, C** | AWS manages OS and database-software patching under RDS.                    |
-| 13 | **A, B** | MySQL and PostgreSQL are supported RDS engines.                             |
-| 14 |   **A**  | Aurora is listed as an RDS database engine.                                 |
-| 15 | **A, B** | A DB instance includes an engine and an instance class, along with storage. |
-| 16 |   **A**  | The class controls compute, memory and network resources.                   |
-| 17 | **A, B** | General Purpose SSD and Provisioned IOPS are module storage options.        |
-| 18 |   **A**  | Databases are normally placed in private subnets.                           |
-| 19 |   **B**  | Users reach the application, and the application communicates with RDS.     |
-| 20 |   **B**  | A private subnet reduces direct internet exposure.                          |
-| 21 |   **A**  | RDS supports Microsoft SQL Server.                                          |
-| 22 |   **A**  | A database on EC2 requires customer-managed installation and patches.       |
-| 23 |   **B**  | RDS reduces infrastructure and database-administration work.                |
-| 24 |   **A**  | EC2 gives greater operating-system and software control.                    |
-
-Pages 6–12 contrast managed and unmanaged services, list RDS engines and show an EC2 application in a public subnet communicating with RDS in a private subnet. 
-
----
-
-## Questions 25–36: Multi-AZ and read replicas
-
-|  Q |  Answer  | Explanation                                                    |
-| -: | :------: | -------------------------------------------------------------- |
-| 25 |   **B**  | Multi-AZ primarily improves high availability.                 |
-| 26 |   **B**  | The module shows synchronous replication.                      |
-| 27 |   **B**  | The standby is placed in another Availability Zone.            |
-| 28 |   **A**  | AWS can fail over to the standby.                              |
-| 29 |   **B**  | Its main purpose is availability, not read scaling.            |
-| 30 |   **A**  | Read replicas handle read queries.                             |
-| 31 |   **B**  | Read replicas use asynchronous replication.                    |
-| 32 |   **A**  | Asynchronous replication can introduce replication lag.        |
-| 33 | **A, B** | Multi-AZ supports availability; replicas support read scaling. |
-| 34 |   **A**  | Read replicas reduce read load on the primary.                 |
-| 35 |   **B**  | Multi-AZ protects against AZ or primary failure.               |
-| 36 |   **A**  | A read replica can be promoted if required.                    |
-
-
-
----
-
-## Questions 37–44: RDS selection and pricing
-
-|  Q |  Answer  | Explanation                                                                           |
-| -: | :------: | ------------------------------------------------------------------------------------- |
-| 37 |   **A**  | RDS suits complex transactions, relational data and SQL.                              |
-| 38 |   **B**  | DynamoDB is better suited to massive simple key-based requests.                       |
-| 39 |   **A**  | EC2 is appropriate when deep customisation is required.                               |
-| 40 | **A, B** | Instance capacity and storage contribute to RDS cost.                                 |
-| 41 |   **A**  | On-Demand does not require a long-term commitment.                                    |
-| 42 |   **A**  | Reserved DB instances suit predictable long-term use.                                 |
-| 43 |   **A**  | Multi-AZ maintains additional database infrastructure.                                |
-| 44 |   **A**  | The module states that inbound transfer is free and outbound transfer can be charged. |
-
-The module identifies RDS suitability, running time, database characteristics, purchasing options, storage, I/O, deployment type and transfer as pricing or selection considerations. 
-
----
-
-## Questions 45–57: DynamoDB
-
-|  Q |  Answer  | Explanation                                                                    |
-| -: | :------: | ------------------------------------------------------------------------------ |
-| 45 |   **A**  | DynamoDB is a fully managed NoSQL database.                                    |
-| 46 | **A, B** | It supports key-value and document models.                                     |
-| 47 | **A, B** | DynamoDB tables contain items and attributes.                                  |
-| 48 |   **B**  | Items can have different attributes.                                           |
-| 49 |   **A**  | The partition key identifies items and affects distribution.                   |
-| 50 |   **A**  | A sort key distinguishes several records under one partition key.              |
-| 51 |   **A**  | Query uses known key information efficiently.                                  |
-| 52 |   **A**  | Scan examines many or all items.                                               |
-| 53 |   **A**  | Good key design spreads data and traffic.                                      |
-| 54 |   **A**  | Many well-distributed values reduce hot partitions.                            |
-| 55 | **A, B** | Gaming state and user sessions are appropriate key-based workloads.            |
-| 56 |   **A**  | The module highlights consistent single-digit millisecond latency.             |
-| 57 |   **B**  | DynamoDB serves flexible, high-scale key access; RDS supports relational work. |
-
-The module describes DynamoDB as a fast NoSQL service with flexible attributes, scalable throughput and suitability for mobile, web, gaming, advertising and IoT applications.
-
----
-
-## Questions 58–65: Redshift
-
-|  Q |  Answer  | Explanation                                                 |
-| -: | :------: | ----------------------------------------------------------- |
-| 58 |   **A**  | Redshift is a managed data warehouse.                       |
-| 59 |   **B**  | It is designed for large historical analytical workloads.   |
-| 60 |   **A**  | The leader coordinates and combines query processing.       |
-| 61 |   **A**  | Compute nodes process distributed portions of the data.     |
-| 62 |   **A**  | Redshift uses massively parallel processing.                |
-| 63 |   **A**  | Columnar storage avoids reading irrelevant columns.         |
-| 64 |   **A**  | Redshift supports SQL and BI clients.                       |
-| 65 | **A, B** | Columnar storage and parallel processing are core features. |
-
-The module’s Redshift architecture shows SQL and BI tools connecting to a leader node and multiple compute nodes, while its summary identifies columnar storage and parallel processing.
-
----
-
-## Questions 66–70: Aurora
-
-|  Q |  Answer  | Explanation                                                                                             |
-| -: | :------: | ------------------------------------------------------------------------------------------------------- |
-| 66 |   **A**  | Aurora is an AWS-designed enterprise relational database.                                               |
-| 67 | **A, B** | Aurora supports MySQL- and PostgreSQL-compatible editions.                                              |
-| 68 |   **A**  | Aurora is managed through Amazon RDS.                                                                   |
-| 69 | **A, B** | Aurora automates backup, recovery, failure detection and repair.                                        |
-| 70 |   **A**  | Aurora MySQL-Compatible fits an existing MySQL relational application requiring enterprise performance. |
-
-
-
-</details>
-
----
-
-# 3. Score interpretation
-
-|        Score | Readiness                                                               |
-| -----------: | ----------------------------------------------------------------------- |
-|    **63–70** | Strongly prepared                                                       |
-|    **55–62** | Nearly ready; revise isolated mistakes                                  |
-|    **44–54** | Core understanding exists, but database use cases are still being mixed |
-| **Below 44** | Review RDS versus DynamoDB and Multi-AZ versus read replicas            |
-
-For multiple-response questions, mark the answer correct only when every correct option is selected and no incorrect option is added. AWS does not normally award half credit because one answer was correct and the other was selected through optimism.
-
 ---
 
-# 4. The most dangerous exam confusions
+# 26. DynamoDB example
 
-## RDS versus Aurora
+Suppose you have a table:
 
 ```text
-RDS    → Managed relational database service
-Aurora → AWS-designed relational engine provided through RDS
+Players
 ```
 
-Aurora is not a competitor completely outside RDS. RDS is the managed service; Aurora is one of its database-engine options.
-
----
-
-## Multi-AZ versus read replica
+One item:
 
 ```text
-Multi-AZ   → Availability and failover
-Read replica → Read performance
+PlayerID = P001
+Name = Amir
+Level = 12
 ```
 
-The word **standby** points toward Multi-AZ.
-
-The phrase **read-heavy** points toward read replicas.
-
----
-
-## Synchronous versus asynchronous replication
+Another:
 
 ```text
-Multi-AZ     → Synchronous
-Read replica → Asynchronous
+PlayerID = P002
+Name = Sarah
+Level = 42
+PreferredDevice = Mobile
+Membership = Premium
 ```
 
-A read replica may temporarily lag behind the primary.
+The items do not necessarily need identical attributes.
+
+That is part of DynamoDB's flexibility.
 
 ---
 
-## RDS versus DynamoDB
+# 27. Primary keys
+
+DynamoDB supports two primary-key designs in the module:
 
 ```text
-RDS:
-- Relational
-- SQL
-- Transactions
-- Joins and structured relationships
+1. Partition key
 
-DynamoDB:
-- NoSQL
-- Key-value and document
-- Flexible attributes
-- Large-scale simple access
+2. Partition key + sort key
 ```
 
-Selecting DynamoDB merely because it sounds fast is not enough. A database can be fast and still be completely wrong for a complex accounting system.
+
 
 ---
 
-## RDS versus Redshift
+# 28. Partition key
+
+A simple primary key contains one **partition key**.
+
+Example:
 
 ```text
-RDS      → Operate the business
-Redshift → Analyse the business
+PlayerID = P001
 ```
 
-* Record one sale: RDS or Aurora.
-* Analyse five years of sales: Redshift.
+This uniquely identifies the item.
 
-Both use SQL, but so do many tools. Sharing a language does not make two services interchangeable.
-
----
-
-## Query versus Scan
+Think:
 
 ```text
-Query → Uses key information
-Scan  → Examines many or all items
+Partition key
+→ Which item / partition?
 ```
 
-A repeated full-table Scan is generally not a clever substitute for designing the DynamoDB key properly.
-
 ---
 
-## DynamoDB partition key versus sort key
+# 29. Partition key + sort key
+
+A composite key contains:
 
 ```text
-Partition key → Determines the item group and distribution
-Sort key      → Organises multiple items within that partition key
+Partition key
++
+Sort key
 ```
 
 Example:
 
 ```text
-CustomerID + OrderDate
+CustomerID = C001
+OrderDate = 2026-08-01
 ```
 
-One customer can have several orders, each identified by a different date.
+This allows several items to share the same partition key while being distinguished by the sort key.
+
+Example:
+
+| CustomerID | OrderDate |
+| ---------- | --------- |
+| C001       | 1 Aug     |
+| C001       | 5 Aug     |
+| C001       | 8 Aug     |
+
+Same customer.
+
+Different orders.
 
 ---
 
-## Aurora versus DynamoDB
+# 30. What does partitioning mean?
+
+As DynamoDB grows, data is distributed across **partitions**.
+
+The partition key helps determine where an item is stored.
+
+Conceptually:
 
 ```text
-Aurora   → Enterprise relational database
-DynamoDB → High-scale NoSQL database
+Partition key
+     ↓
+Hash calculation
+     ↓
+Storage partition
 ```
 
-MySQL/PostgreSQL compatibility points strongly toward Aurora.
+This allows DynamoDB to scale horizontally across resources.
 
-PlayerID, DeviceID or SessionID lookups point toward DynamoDB.
+The module's partitioning section is directly connected to this primary-key design. 
 
 ---
 
-# 5. Rapid revision sheet
+# 31. Query vs Scan
+
+This distinction is very useful in a subjective question.
+
+## Query
+
+Uses a key to find relevant items.
+
+```text
+CustomerID = C001
+```
+
+DynamoDB can target the relevant data.
+
+## Scan
+
+Examines many or all items in a table.
+
+```text
+Look through everything
+until matching items are found
+```
+
+The important concept:
+
+```text
+Query
+→ More targeted
+
+Scan
+→ Broader / potentially less efficient
+```
+
+---
+
+# 32. DynamoDB low latency
+
+The module states that DynamoDB provides:
+
+> **consistent, single-digit millisecond latency at any scale**
+
+and says it has no limits on table size or throughput in the course material. 
+
+For your exam based on this module, associate:
+
+```text
+Single-digit millisecond latency
+→ DynamoDB
+```
+
+---
+
+# 33. DynamoDB storage model
+
+The module states that DynamoDB:
+
+* runs exclusively on SSDs;
+* supports key-value and document models;
+* can replicate tables across chosen AWS Regions;
+* supports console, CLI and API access. 
+
+You probably do not need to memorise every bullet, but the strongest exam keywords are:
+
+```text
+NoSQL
+Key-value
+Document
+Low latency
+Scalable throughput
+```
+
+---
+
+# 34. RDS vs DynamoDB
+
+| Amazon RDS                      | DynamoDB                    |
+| ------------------------------- | --------------------------- |
+| Relational                      | NoSQL                       |
+| Structured relationships        | Flexible items              |
+| SQL                             | Key/document access         |
+| Complex relational queries      | Key-based scalable access   |
+| Transactions and related tables | Massive scalable workloads  |
+| Managed DB instance             | Fully managed NoSQL service |
+
+Scenario:
+
+> Customers, orders, payments and invoices have clear relationships.
+
+**RDS**
+
+Scenario:
+
+> Millions of game players are retrieved by PlayerID.
+
+**DynamoDB**
+
+---
+
+# 35. Good subjective answer — DynamoDB
+
+> Amazon DynamoDB is a fully managed NoSQL database service designed for fast and flexible performance at scale. It stores data in tables containing items and attributes and supports key-value and document data models. DynamoDB uses primary keys consisting of either a partition key or a partition key and sort key. It provides scalable read and write throughput and low-latency access, making it suitable for mobile, web, gaming and IoT workloads.
+
+---
+
+# Section 3 — Amazon Redshift
+
+# 36. What is Amazon Redshift?
+
+**Amazon Redshift** is AWS's managed **data warehouse**.
+
+The module's section summary describes it as a:
+
+> Fast, fully managed data warehouse service.
+
+It also highlights:
+
+* scaling;
+* columnar storage;
+* parallel processing;
+* automatic monitoring;
+* built-in encryption. 
+
+Think:
+
+> **Redshift = analyse huge amounts of historical data.**
+
+---
+
+# 37. Transaction database vs data warehouse
+
+This is the central distinction.
+
+### Operational database
+
+Handles individual business transactions.
+
+Example:
+
+```text
+Create one order
+Update one customer
+Process one payment
+```
+
+Use:
+
+```text
+RDS / Aurora
+```
+
+### Data warehouse
+
+Handles large analytical questions.
+
+Example:
+
+```text
+Analyse 500 million orders
+over 10 years
+by country and month
+```
+
+Use:
+
+```text
+Redshift
+```
+
+---
+
+# 38. RDS vs Redshift
+
+Memorise:
+
+```text
+RDS
+→ Run the business
+
+Redshift
+→ Analyse the business
+```
+
+More formally:
+
+| RDS                         | Redshift                |
+| --------------------------- | ----------------------- |
+| Transactional relational DB | Data warehouse          |
+| Day-to-day records          | Historical analytics    |
+| Individual writes/reads     | Large aggregate queries |
+| Application database        | BI/analytics database   |
+
+---
+
+# 39. Redshift architecture
+
+The module's page 42 diagram shows:
+
+```text
+SQL Clients / BI Tools
+          ↓
+      Leader node
+          ↓
+   Compute nodes
+```
+
+and shows Redshift working with data from sources such as:
+
+```text
+Amazon S3
+Amazon DynamoDB
+```
+
+
+
+---
+
+# 40. Leader node
+
+The **leader node** coordinates queries.
+
+Conceptually:
+
+```text
+Analyst submits SQL query
+        ↓
+Leader node
+        ↓
+Divides the work
+        ↓
+Compute nodes
+        ↓
+Results combined
+```
+
+Think:
+
+> **Leader node = manager.**
+
+---
+
+# 41. Compute nodes
+
+Compute nodes perform the actual processing on portions of the data.
+
+Instead of:
+
+```text
+One computer
+→ Process 10 billion rows alone
+```
+
+Redshift can do:
+
+```text
+Node 1 → Part A
+Node 2 → Part B
+Node 3 → Part C
+Node 4 → Part D
+```
+
+at the same time.
+
+This is **parallel processing**.
+
+---
+
+# 42. Massively parallel processing
+
+The concept is:
+
+```text
+Big job
+↓
+Divide into smaller jobs
+↓
+Many compute nodes process simultaneously
+↓
+Combine results
+```
+
+This is one major reason Redshift is suited for large analytical workloads.
+
+---
+
+# 43. Columnar storage
+
+Traditional transactional databases often organise information primarily by rows.
+
+For analytics, Redshift uses **columnar storage**.
+
+Conceptually, instead of:
+
+```text
+Order1: Date | Customer | Product | Price
+Order2: Date | Customer | Product | Price
+```
+
+it can organise data around columns:
+
+```text
+Dates
+Customers
+Products
+Prices
+```
+
+Why is that useful?
+
+Suppose the query only needs:
+
+```text
+Date
+Price
+```
+
+Redshift can focus on those relevant columns instead of reading all unrelated data.
+
+The module explicitly identifies columnar storage as a core Redshift feature. 
+
+---
+
+# 44. Redshift use cases
+
+The module gives use cases including:
+
+* enterprise data warehousing;
+* big data;
+* SaaS analytics;
+* scaling analytical capacity;
+* adding analytics to applications. 
+
+Scenario clues:
+
+```text
+Data warehouse
+Business intelligence
+Historical analytics
+Big data
+Dashboard
+Large analytical SQL query
+```
+
+→ **Amazon Redshift**
+
+---
+
+# 45. Good subjective answer — Redshift
+
+> Amazon Redshift is a fast, fully managed data-warehouse service designed for large-scale analytics. It uses columnar storage so analytical queries can focus on relevant columns and uses parallel-processing architecture to distribute work across compute nodes. A leader node coordinates queries submitted by SQL clients or business-intelligence tools. Redshift is suitable for enterprise data warehousing, big-data analytics and reporting over large historical datasets.
+
+---
+
+# 46. Common Redshift scenario
+
+> A retailer wants to analyse ten years of sales data to identify long-term purchasing trends.
+
+Answer:
+
+**Amazon Redshift**
+
+Why?
+
+Because this is:
+
+```text
+Historical
+Large-scale
+Analytical
+```
+
+not ordinary day-to-day transaction processing.
+
+---
+
+# Section 4 — Amazon Aurora
+
+# 47. What is Amazon Aurora?
+
+Amazon Aurora is a relational database engine designed by AWS.
+
+It is compatible with:
+
+```text
+MySQL
+PostgreSQL
+```
+
+and is provided through the Amazon RDS managed environment.
+
+The module includes Aurora among the RDS engine choices. 
+
+Think:
+
+> **Aurora = AWS-designed high-performance relational database compatible with MySQL or PostgreSQL.**
+
+---
+
+# 48. Aurora is relational
+
+Do not confuse it with DynamoDB.
+
+```text
+Aurora
+→ Relational
+
+DynamoDB
+→ NoSQL
+```
+
+Aurora is appropriate when you still need things associated with a relational database:
+
+```text
+SQL
+Tables
+Relationships
+Transactions
+```
+
+but want an AWS-designed database with strong performance and availability.
+
+---
+
+# 49. Aurora compatibility
+
+A company might already use MySQL.
+
+It wants to migrate but does not want to rewrite its entire application for a completely different database system.
+
+Aurora provides:
+
+```text
+Aurora MySQL-Compatible
+
+or
+
+Aurora PostgreSQL-Compatible
+```
+
+This is one of its key benefits.
+
+---
+
+# 50. Managed Aurora capabilities
+
+The module's Aurora material highlights automation of tasks such as:
+
+```text
+Provisioning
+Patching
+Backup
+Recovery
+Failure detection
+Repair
+```
+
+Aurora is designed as a managed relational database experience.
+
+---
+
+# 51. Aurora high availability
+
+The module's Aurora architecture emphasises resilience across multiple Availability Zones.
+
+The underlying idea is:
+
+```text
+Copies of database storage
+across multiple AZs
+↓
+Failure of one component/location
+does not mean loss of every copy
+```
+
+This supports:
+
+```text
+High availability
+Durability
+Recovery
+```
+
+---
+
+# 52. Aurora benefits
+
+The Aurora section emphasises characteristics such as:
+
+```text
+High performance
+Scalability
+High availability
+Durability
+Security
+MySQL compatibility
+PostgreSQL compatibility
+Managed operation
+```
+
+The core exam clue is:
+
+> **Enterprise-class relational database compatible with MySQL or PostgreSQL.**
+
+---
+
+# 53. RDS vs Aurora
+
+This can be confusing because Aurora is associated with RDS.
+
+The easiest way to think about it is:
+
+```text
+Amazon RDS
+→ Managed relational database service
+
+Amazon Aurora
+→ AWS-designed relational database engine
+   available through that managed environment
+```
+
+Other RDS engines include:
+
+```text
+MySQL
+PostgreSQL
+MariaDB
+Oracle
+SQL Server
+```
+
+Aurora is the AWS-designed option.
+
+---
+
+# 54. Aurora vs DynamoDB
+
+| Aurora                             | DynamoDB                             |
+| ---------------------------------- | ------------------------------------ |
+| Relational                         | NoSQL                                |
+| SQL                                | Key-value/document                   |
+| Structured relationships           | Flexible attributes                  |
+| MySQL/PostgreSQL compatible        | AWS NoSQL model                      |
+| Transactional relational workloads | Massive scalable key-based workloads |
+
+Scenario:
+
+> Existing MySQL application needs an enterprise-class AWS database.
+
+Think:
+
+**Aurora MySQL-Compatible**
+
+Scenario:
+
+> Mobile game needs millions of PlayerID lookups.
+
+Think:
+
+**DynamoDB**
+
+---
+
+# 55. Aurora vs Redshift
+
+```text
+Aurora
+→ Run transactional relational applications
+
+Redshift
+→ Analyse large datasets
+```
+
+Example:
+
+> “Process today's customer order.”
+
+**Aurora/RDS**
+
+> “Analyse every order from the last decade.”
+
+**Redshift**
+
+---
+
+# 56. Good subjective answer — Aurora
+
+> Amazon Aurora is an AWS-designed relational database engine that is compatible with MySQL and PostgreSQL and is managed through Amazon RDS. It is designed for enterprise relational workloads and provides high performance, scalability, availability and durability. Aurora also automates operational tasks such as provisioning, patching, backup, recovery and failure repair.
+
+---
+
+# 57. The right database for the right job
+
+The module's own page 54 gives a useful decision structure. 
+
+| Requirement                                           | Best fit                                |
+| ----------------------------------------------------- | --------------------------------------- |
+| Enterprise relational database                        | Amazon RDS                              |
+| Fast flexible NoSQL at scale                          | DynamoDB                                |
+| Full OS access/custom features                        | Database on EC2                         |
+| Data warehouse / specialised analytics                | Purpose-built database such as Redshift |
+| High-performance MySQL/PostgreSQL relational workload | Aurora                                  |
+
+---
+
+# 58. Likely subjective question — Explain Amazon RDS
+
+A good answer:
+
+> Amazon RDS is a managed relational database service that simplifies the setup, operation and scaling of relational databases in AWS. It supports multiple database engines including MySQL, PostgreSQL, MariaDB, Oracle, Microsoft SQL Server and Amazon Aurora. AWS manages tasks such as operating-system and database software installation and patching, backups, scaling and high availability, while the customer focuses more on application optimisation.
+
+---
+
+# 59. Likely subjective question — Multi-AZ vs read replica
+
+> Amazon RDS Multi-AZ is primarily designed for high availability. It maintains a standby database in another Availability Zone using synchronous replication so that the standby can take over if the primary fails. An RDS read replica uses asynchronous replication and is designed to handle read-heavy workloads by offloading read queries from the primary database. Therefore, Multi-AZ is for availability while read replicas are for read scalability.
+
+Memorise that answer.
+
+---
+
+# 60. Likely subjective question — Explain DynamoDB
+
+> Amazon DynamoDB is a fully managed NoSQL database service designed for fast and flexible performance at scale. It stores information in tables consisting of items and attributes and supports key-value and document models. DynamoDB uses primary keys consisting of a partition key or a partition key with a sort key and provides scalable read/write throughput with low-latency access.
+
+---
+
+# 61. Likely subjective question — Explain Redshift
+
+> Amazon Redshift is a fully managed data-warehouse service used for analysing large amounts of data. It uses columnar storage to improve analytical query efficiency and parallel-processing architecture to distribute workloads across compute nodes. A leader node coordinates queries from SQL clients and business-intelligence tools, making Redshift suitable for big-data analytics and historical business reporting.
+
+---
+
+# 62. Likely subjective question — Explain Aurora
+
+> Amazon Aurora is an AWS-designed relational database engine that is compatible with MySQL and PostgreSQL and is managed through Amazon RDS. It provides high performance, scalability, availability and durability and automates tasks such as provisioning, patching, backup, recovery and failure detection. It is suitable for enterprise applications that require a high-performance relational database while maintaining MySQL or PostgreSQL compatibility.
+
+---
+
+# 63. Likely subjective question — Relational vs NoSQL
+
+> A relational database stores structured information in tables with defined relationships and is suitable for applications requiring transactions, SQL and relationships between records. A NoSQL database such as DynamoDB provides a more flexible data model using items and attributes and is suitable for workloads that need rapid scaling, key-value or document access and low latency.
+
+---
+
+# 64. How to answer a database scenario
+
+Use this method:
+
+```text
+1. Ask whether relationships matter.
+2. Ask whether the workload is transactional or analytical.
+3. Ask whether massive key-based scale is required.
+4. Ask whether MySQL/PostgreSQL compatibility matters.
+5. Ask whether OS-level control is required.
+6. Choose the service.
+7. Explain why.
+```
+
+Example:
+
+> An ecommerce company stores customers, orders, invoices and payments. These records have relationships and transactions must remain consistent.
+
+Weak answer:
+
+> RDS.
+
+Better answer:
+
+> Amazon RDS is appropriate because the workload contains structured relational data such as customers, orders, invoices and payments that have clear relationships and require transactional processing. RDS provides a managed relational database while AWS manages much of the underlying maintenance, backups and availability.
+
+That second answer is what subjective marking normally rewards.
+
+---
+
+# 65. Scenario practice
+
+### Scenario A
+
+> A company needs a database for customers, orders and payments.
+
+**Amazon RDS**
+
+Reason:
+
+```text
+Structured
+Relational
+Transactional
+```
+
+---
+
+### Scenario B
+
+> An application must survive failure of the Availability Zone containing its primary database.
+
+**RDS Multi-AZ**
+
+Reason:
+
+```text
+Primary + standby
+Different AZ
+Synchronous replication
+```
+
+---
+
+### Scenario C
+
+> An application has extremely heavy read traffic.
+
+**RDS read replica**
+
+Reason:
+
+```text
+Offload reads
+Asynchronous replication
+```
+
+---
+
+### Scenario D
+
+> A mobile game stores millions of player records accessed by PlayerID.
+
+**DynamoDB**
+
+Reason:
+
+```text
+NoSQL
+Key-based
+Low latency
+Large scale
+```
+
+---
+
+### Scenario E
+
+> The organisation wants to analyse ten years of sales data using BI dashboards.
+
+**Redshift**
+
+Reason:
+
+```text
+Data warehouse
+Historical analytics
+```
+
+---
+
+### Scenario F
+
+> A company already has a MySQL application but wants an AWS-designed enterprise relational database.
+
+**Amazon Aurora MySQL-Compatible**
+
+---
+
+### Scenario G
+
+> A company must install unsupported database extensions and requires direct OS access.
+
+**Database on EC2**
+
+Page 54 specifically maps operating-system access or unsupported application features to databases on Amazon EC2. 
+
+---
+
+# 66. High-priority scenario clues
+
+| If the question says...          | Think...        |
+| -------------------------------- | --------------- |
+| Managed relational               | RDS             |
+| SQL + transactions               | RDS             |
+| Several relational DB engines    | RDS             |
+| High availability                | Multi-AZ        |
+| Synchronous replication          | Multi-AZ        |
+| Standby database                 | Multi-AZ        |
+| Read-heavy                       | Read replica    |
+| Asynchronous replication         | Read replica    |
+| NoSQL                            | DynamoDB        |
+| Key-value                        | DynamoDB        |
+| Document                         | DynamoDB        |
+| Flexible attributes              | DynamoDB        |
+| Single-digit millisecond latency | DynamoDB        |
+| Partition key                    | DynamoDB        |
+| Sort key                         | DynamoDB        |
+| Data warehouse                   | Redshift        |
+| Business intelligence            | Redshift        |
+| Historical analysis              | Redshift        |
+| Columnar storage                 | Redshift        |
+| Parallel processing              | Redshift        |
+| Leader + compute nodes           | Redshift        |
+| MySQL/PostgreSQL compatible      | Aurora          |
+| AWS-designed relational engine   | Aurora          |
+| Full OS access                   | Database on EC2 |
+
+---
+
+# 67. Common mistakes to avoid
+
+**RDS is NoSQL.**
+Wrong.
+
+```text
+RDS → Relational
+DynamoDB → NoSQL
+```
+
+---
+
+**DynamoDB items must all have identical attributes.**
+Wrong.
+
+The module explicitly says items can have differing attributes. 
+
+---
+
+**Multi-AZ and read replicas are the same thing.**
+Wrong.
+
+```text
+Multi-AZ
+→ Availability
+
+Read replica
+→ Read performance/scalability
+```
+
+---
+
+**Multi-AZ standby is mainly used to handle normal read traffic.**
+Wrong for the concept taught here.
+
+The standby's main role is availability and failover.
+
+---
+
+**Read replicas use synchronous replication.**
+Wrong.
+
+```text
+Multi-AZ → Synchronous
+Read replica → Asynchronous
+```
+
+---
+
+**Redshift is best for ecommerce checkout transactions.**
+Wrong.
+
+```text
+RDS/Aurora → Transaction
+Redshift → Analytics
+```
+
+---
+
+**DynamoDB is a data warehouse.**
+Wrong.
+
+Redshift is the data warehouse service in this module.
+
+---
+
+**Aurora is unrelated to RDS.**
+Wrong.
+
+Aurora appears as one of the engines within the RDS environment in the module. 
+
+---
+
+**Aurora supports Oracle and SQL Server compatibility.**
+Wrong.
+
+The module associates Aurora with:
+
+```text
+MySQL
+PostgreSQL
+```
+
+---
+
+**Managed database means the customer has nothing to manage.**
+Wrong.
+
+The course specifically keeps **application optimisation** on the customer's side for RDS. 
+
+---
+
+# 68. What I would prioritise before the subjective exam
+
+If time is short, master these **six areas**:
+
+```text
+1. RDS
+   Managed relational database
+   AWS vs customer responsibility
+
+2. Multi-AZ vs Read Replica
+   Multi-AZ → availability
+   Replica → reads
+
+3. DynamoDB
+   NoSQL
+   Table / item / attribute
+   Partition key / sort key
+
+4. Redshift
+   Data warehouse
+   Columnar
+   Parallel processing
+
+5. Aurora
+   MySQL/PostgreSQL compatible
+   High-performance relational database
+
+6. Database selection
+   RDS vs DynamoDB vs Redshift vs Aurora vs EC2
+```
+
+Those areas directly cover the module objectives. 
+
+# Final 2-minute revision
 
 ```text
 AMAZON RDS
+──────────
+Managed relational DB
 
-- Managed relational database
-- Supports MySQL, PostgreSQL, MariaDB,
-  Oracle, SQL Server and Aurora
-- AWS manages OS and database patching
-- Customer manages data and application optimisation
-- Usually deployed in a private subnet
+AWS manages:
+OS
+DB software
+Patching
+Backups
+Scaling
+High availability
+
+Customer:
+Application optimisation
 ```
 
 ```text
-RDS AVAILABILITY AND SCALING
+RDS AVAILABILITY
+────────────────
+Multi-AZ
+→ Primary + standby
+→ Synchronous
+→ High availability
 
-Multi-AZ:
-- Primary and standby
-- Synchronous
-- Different Availability Zones
-- Automatic failover
-- High availability
-
-Read replica:
-- Asynchronous
-- Handles reads
-- Reduces primary workload
-- Can be promoted
+Read Replica
+→ Asynchronous
+→ Read-heavy workloads
+→ Offload queries
 ```
 
 ```text
-AMAZON DYNAMODB
+DYNAMODB
+────────
+NoSQL
+Table
+Item
+Attribute
 
-- Fully managed NoSQL
-- Key-value and document
-- Tables, items and attributes
-- Partition key
-- Optional sort key
-- Flexible attributes
-- Low latency
-- Horizontal scaling
+Primary key:
+Partition key
+
+or
+
+Partition key + Sort key
+
+Low latency
+Scalable read/write throughput
 ```
 
 ```text
-AMAZON REDSHIFT
+REDSHIFT
+────────
+Data warehouse
+Historical analytics
+SQL / BI
 
-- Managed data warehouse
-- Large-scale analytics
-- SQL and BI tools
-- Leader node
-- Compute nodes
-- Columnar storage
-- Parallel processing
+Leader node
+↓
+Compute nodes
+
+Columnar storage
+Parallel processing
 ```
 
 ```text
-AMAZON AURORA
+AURORA
+──────
+Relational
+AWS-designed
+Managed through RDS
 
-- Enterprise relational engine
-- Managed through Amazon RDS
-- MySQL compatible
-- PostgreSQL compatible
-- Automated backup and recovery
-- High availability and performance
+Compatible with:
+MySQL
+PostgreSQL
+
+High performance
+Scalable
+Highly available
 ```
 
 ```text
-FAST DECISION
+FAST DATABASE DECISION
+──────────────────────
 
-Transactions and relationships? → RDS
-Enterprise MySQL/PostgreSQL?    → Aurora
-Simple key-based massive scale? → DynamoDB
-Historical business analytics?  → Redshift
-Full OS and database control?    → EC2
+Transactions + relationships?
+→ RDS
+
+Massive NoSQL / key-value?
+→ DynamoDB
+
+Historical analytics?
+→ Redshift
+
+Enterprise MySQL/PostgreSQL?
+→ Aurora
+
+Full OS control?
+→ Database on EC2
 ```
 
-Send your answers in the format `1B, 2A, 3B...`; multiple-response answers can be written as `7AC`.
+The **single most important mental model** for Module 8 is:
 
-[1]: https://docs.aws.amazon.com/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02.html?utm_source=chatgpt.com "AWS Certified Cloud Practitioner (CLF-C02)"
-[2]: https://docs.aws.amazon.com/pdfs/aws-certification/latest/cloud-practitioner-02/cloud-practitioner-02.pdf?utm_source=chatgpt.com "AWS Certified Cloud Practitioner - Exam Guide (CLF-C02)"
+```text
+RDS
+→ "RUN my relational business data."
 
----
+DYNAMODB
+→ "LOOK UP massive flexible data quickly."
+
+REDSHIFT
+→ "ANALYSE huge amounts of historical data."
+
+AURORA
+→ "Give me a high-performance AWS relational database
+   that still works with MySQL/PostgreSQL."
+```
+
+Once those four purposes are clear, most Module 8 subjective scenarios become a matter of identifying **what the database is being asked to do**, rather than trying to memorise four similar-looking AWS service names. 
+
 </details>
